@@ -1,22 +1,22 @@
-\newpage \newpage
+\clearpage
 \section{Tests}
 Eine der Fragen, die sich bei der Rekonstruktion von Attraktoren aus experimentellen
-Zeitreihen stellte, war ob ob es sich hierbei wirklich um ein deterministisches System
+Zeitreihen stellte, war ob es sich hierbei wirklich um ein deterministisches System
 handelt.  Man k"onnte hier m"oglicherweise versuchen, "uber die Dimension des
-rekonstruierten Attraktors zu argumentieren. Die Dimension eines deterministischen,
-nichtlinearen Systems hat immer einen endlichen Wert. Dagegen spannen die Rekonstruktionen
+rekonstruierten Attraktors zu argumentieren. Die Dimension eines deterministischen
+Systems hat immer einen endlichen Wert. Dagegen spannen die Rekonstruktionen
 stochastischer Signale immer den ganzen Phasenraum auf. Die berechnete Dimension
 konvergiert nicht mit steigender Einbettungsdimension. K"onnen also "uber die
 Dimensionsberechnungen deterministische von stochastischen Systemen unterschieden werden?
 
 Die Antwort ist leider \naja(Nein). Wie \autor(A. R. Osborne) und \autor(A. Provencale)
 nachwiesen, k"onnen auch stochastische Systeme mit Leistungsspektren
-$P(\omega)\propto\omega^{-\alpha}$, gegen eine endliche Korrelationsdimension
-konvergieren\cite{Osborne89a}. F"ur $1<\alpha<3$ erhielten sie $D_2=2/(\alpha-1)$.  Dies
+$P(\omega)\propto\omega^{-\alpha}$, gegen eine endliche Dimension
+konvergieren\cite{Osborne89a}. F"ur $1<\alpha<3$ erhielten sie die Korrelationsdimension $D_2=2/(\alpha-1)$.  Dies
 liegt an zeitlichen Korrelationen aufeinanderfolgender Werte in der Zeitreihe. Diese
-k"onnen zwar durch die Methode von \autor(Theiler) (siehe Abschnitt \ref{corrdimtheiler})
+k"onnen zwar durch die Methode von \autor(Theiler) (s. Abschnitt \ref{corrdimtheiler})
 vermieden werden, andererseits existieren noch andere Effekte, die eine Konvergenz der
-Korrelationsdimension bei wei"sem oder farbigem Rauschen bewirken k"onnen.
+Korrelationsdimension bei wei"sem oder farbigem Rauschen bewirken k"onnen \cite{Kennel92b}.
 
 \comment{
   \epsfigfour{surrogate/noise/noise}{surrogate/noise/fourier}{surrogate/noise/corrint}{surrogate/noise/corrdim}
@@ -27,40 +27,49 @@ Korrelationsdimension bei wei"sem oder farbigem Rauschen bewirken k"onnen.
 \subsection{Statitische Hypothesentests}
 Es sind noch weitere M"oglichkeiten vorgeschlagen worden, Zeitreihen hinsichtlich eines
 zugrundeliegenden deterministischen Systems zu untersuchen (beispielsweise der
-Determinismustest von \autor(Kaplan) und \autor(Glass) \cite{kaplan-glass}).  Diese sind
+Determinismustest von \autor(Kaplan) und \autor(Glass) \cite{Kaplan-glass}).  Diese sind
 jedoch in der Anwendung oft sehr beschr"ankt.  Die umfassendste und mathematisch
-fundierteste M"oglichkeit diesem Problem zu begegnen, ergibt sich im Feld statistischer
-Hypothesentests. Hiermit sind wir zugleich nicht mehr beschr"ankt auf die Frage nach dem
-Determinismus, sondern haben ein Grundger"ust, um Fragen der verschiedensten Art an die
-vorliegende Zeitreihen zu stellen. Beispielweise
+fundierteste M"oglichkeit diesem Problem zu begegnen, liegt im Feld statistischer
+Hypothesentests.  Hypothesentests besitzen zugleich den Vorteil, sich nicht nur auf die
+Frage nach einem zugrunde liegenden Determinismus zu beschr"anken.  Sie bieten ein
+Ger"ust, um Fragen aller Art an die vorliegende Zeitreihen zu stellen, zum Beispiel
 \begin{itemize}
 \item Sind die Daten nicht-gau"sverteilt ?
 \item Gibt es zeitliche Korrelationen in der Zeitreihe ?
 \item Existiert eine nichtlineare Struktur ?
 \item Sind die Daten durch eine chaotische Dynamik erzeugt ?
 \end{itemize}
-Um eine dieser Frage zu beantworten, wird nun eine \begriff(Nullhypothese) $\nullhyp$
-aufgestellt, welcher eine Verneinung eben dieser Frage entspricht.  Die Nullhypothese kann
-nun weder bewiesen noch widerlegt werden. Man versucht hingegen, die Nullhypothese
-abzulehnen, d.h. zu zeigen, da"s es unwahrscheinlich ist, da"s die Daten mit der Hypothese
-in Einklang stehen.
+Um eine dieser Frage, im Rahmen eines Hypothesentests, zu beantworten, wird zuerst eine
+\begriff(Nullhypothese) $\nullhyp$ aufgestellt, welche einer Verneinung eben dieser
+entspricht.  Die Nullhypothese w"are beispielsweise im ersten Fall, {\em da"s} die Daten
+gau"sverteilt sind.
 
-Um genauer zu sein: der Nullhypothese $\nullhyp$ wird ein Proze"s bzw.\ eine Klasse von
-Prozessen $\process$ zugeordnet, die mit $\nullhyp$ in Einklang stehen. Bei der ersten
-Fragen w"are dies beispielsweise die Menge aller Prozesse, die gau"sverteilte Daten
-erzeugen. Die Frage ist nun, ob die realen Daten durch einen Proze"s aus $\process$
-erzeugt worden sein k"onnen. Hierzu wird eine \begriff(Teststatistik) $T$ berechnet. Liegt
-der $T$-Wert der realen Daten au"serhalb des Bereichs, den man f"ur Prozesse aus
-$\process$ erwarten kann, wird die Nullhypothese abgelehnt. Liegt der Wert innerhalb des
-\begriff(Annahme-) oder \begriff(Akzeptanzbereichs) der Nullhypothese wird sie angenommen.
-Man sagt hier auch, der Test h"atte versagt, die Nullhypothese abzulehnen, da das i.allg.\ 
-das Ergebnis ist, das man haben m"ochte. Da die Teststatistik dazu dienen soll, die realen
-Daten von mit der Nullhypothese konsistenten Prozessen $\process$ zu \naja(unterscheiden),
-bezeichnet man $T$ auch als \begriff(Diskriminator).
+Eine Nullhypothese kann weder bewiesen noch widerlegt werden. Man versucht hingegen,
+die Nullhypothese abzulehnen, d.h. zu zeigen, da"s es unwahrscheinlich ist, da"s die Daten
+mit der Hypothese in Einklang stehen. Eine Nullhypothese mu"s daher mit einem Modell
+verkn"upft werden, welches beschreibt, wie die Daten erzeugt worden sein k"onnen.
+Anders gesagt: der Nullhypothese $\nullhyp$ wird ein Proze"s bzw.\ eine Klasse von
+Prozessen $\process$ zugeordnet, die mit $\nullhyp$ in Einklang stehen
+(beispielsweise die Menge aller Prozesse, die gau"sverteilte Daten
+erzeugen). Um die Nullhypothese abzulehnen, wird nun gezeigt werden, da"s die
+Wahrscheinlichlichkeit, da"s die realen Daten durch einen Proze"s aus $\process$
+erzeugt worden sind, sehr gering ist. 
+
+Hierzu wird eine \begriff(Teststatistik) $T$ berechnet, wobei $T$ irgendeine skalare
+Funktion der Daten ist.  F"ur Prozesse aus $\process$ kann man erwarten, da"s die Werte
+innerhalb eines bestimmten Bereichs liegen. Dieser Bereich hei"st \begriff(Annahme-) oder
+\begriff(Akzeptanzbereichs) der Nullhypothese.  Liegt der $T$-Wert der realen Daten
+au"serhalb des Akzeptanzbereichs, wird die Nullhypothese abgelehnt, andernfalls wird sie
+angenommen.  Man sagt hier auch, der Test h"atte versagt, die Nullhypothese abzulehnen, da
+das ja i.allg.\ das Ergebnis ist, das man haben m"ochte\footnotemark. \footnotetext{Da die
+  Teststatistik dazu dienen soll, die realen Daten von den mit der Nullhypothese
+  konsistenten Prozessen $\process$ zu \naja(unterscheiden), bezeichnet man $T$ auch als
+  \begriff(Diskriminator).}
 
 \subsubsection{Fehler 1. und 2. Art}
-Bei der Annahme oder Ablehnung einer Nullhypothese k"onnen jeweils Fehler auftreten. Der
-erste Fehler ist, da"s die Nullhypothese abgelehnt wird, obwohl sie eigentlich wahr ist.
+Bei der Annahme oder Ablehnung einer Nullhypothese k"onnen verschiedener Art Fehler
+auftreten (s. \psref{taberrors}). Der
+erste m"ogliche Fehler ist, da"s die Nullhypothese abgelehnt wird, obwohl sie eigentlich wahr ist.
 Man spricht hier von einem \begriff(Fehler 1. Art). Die Wahrscheinlichkeit $\alpha$, mit
 der Fehler 1. Art auftreten, kann frei bestimmt werden. Dies geschieht, indem als
 Annahmebereich des Tests das $(1-\alpha)$\begriff(-Konfidenzintervall) der Teststatistik
@@ -68,8 +77,8 @@ f"ur die betrachteten Prozesse gew"ahlt wird. Das $(1-\alpha)$-Konfidenzinterval
 Bereich der $T$-Werte, f"ur den mit Wahrscheinlichkeit $1-\alpha$ Realisierungen von
 Prozessen aus $\process$ in diesem Bereich liegen\korrektur(einfacher formulieren).  Man
 spricht bei einem Test mit vorgegebenem $\alpha$ auch von einem \begriff(Niveau
-$\alpha$-Test) bzw.\ von einem \begriff(Test zum Signifikanzniveau $\alpha$). Anstatt die
-Signifikanz von vorneherein festzulegen, wird ab und zu auch der $p$-Wert eines Tests
+$\alpha$-Test) bzw.\ von einem \begriff(Test zum Signifikanzniveau $\alpha$). Anstatt das
+Signifikanzniveau von vorneherein festzulegen, wird ab und zu auch der $p$-Wert eines Tests
 angegeben. Dies ist der kleinste Wert von $\alpha$, f"ur den die Nullhypothese gerade noch
 abgelehnt w"urde.
 
@@ -80,11 +89,37 @@ Test in der Lage ist, die Nullhypothese f"ur mit ihr inkonsistenten Daten abzule
 bezeichnet $1-\beta$ daher auch als die \begriff(G"ute) des Tests.  Da die G"ute eines
 Tests davon abh"angt, wie nicht-konsistent die wirklichen Daten mit der Nullhypothese
 sind, kann $\beta$ im Gegensatz zu $\alpha$ nicht vorgegeben werden.  Allerdings h"angt
-die G"ute des Tests von $\alpha$ ab -- je h"oher das Signifikanzniveau $\alpha$ des Test ist,
-desto geringer ist $\beta$. Es ist andererseits nicht sinnvoll, um die G"ute $1-\beta$
-gro"s zu machen, ein sehr hohes $\alpha$ zu w"ahlen. Man w"urde sich die h"ohere G"ute des Tests
-mit einer geringeren Signifikanz, d.h.\ Aussagekraft, des Test erkaufen.
+die G"ute des Tests von $\alpha$ ab -- je h"oher das Signifikanzniveau $\alpha$ des Test
+ist, desto geringer ist $\beta$. Es ist andererseits nicht sinnvoll, um die G"ute
+$1-\beta$ gro"s zu machen, ein sehr hohes $\alpha$ zu w"ahlen. Man w"urde sich die h"ohere
+G"ute des Tests mit einer geringeren Signifikanz\footnotemark, d.h.\ Aussagekraft, des
+Test erkaufen.  
+\footnotetext{Hier mu"s unterschieden werden zwischen den Begriffen
+  Signifikanz und Signifikanzniveau. Ein niedriges Signifikanzniveau bedeutet eine hohe
+  Signifikanz und umgekehrt.}
 
+\epsfigcommon{M"ogliche Fehler bei der Entscheidungsfindung durch einen Hypothesentest.}{taberrors}{0cm}{
+\newcommand{\rb}[1]{\raisebox{1.5ex}[-1.5ex]{#1}}
+\begin{tabular}{|c|c|c|}
+\hline
+& & \\
+ & \rb{$\nullhyp$ ist wahr} & \rb{$\nullhyp$ ist falsch} \\ \hline
+& & \\
+$\nullhyp$ wird & falsche Entscheidung &    \\
+abgelehnt & Fehler 1. Art & \rb{richtige Entscheidung} \\ 
+& & \\ 
+\hline
+ & & \\
+$\nullhyp$ wird &   & falsche Entscheidung  \\
+angenommen &  \rb{richtige Entscheidung} & Fehler 2. Art \\
+& & \\
+\hline
+\end{tabular}
+}
+
+
+
+\comment{
 \begin{center}
 \newcommand{\rb}[1]{\raisebox{1.5ex}[-1.5ex]{#1}}
 \begin{tabular}{c|c|c}
@@ -100,145 +135,464 @@ angenommen &  \rb{richtige Entscheidung} & Fehler 2. Art \\
 & & \\
 \end{tabular}
 \end{center}
+}
 
-
-Hieraus wird auch ersichtlich, warum uns daran gelegen ist, die Nullhypothese abzulehnen.
-Die Wahrscheinlichkeit, da"s die Nullhypothese abgelehnt, obwohl sie wahr ist, l"a"st sich
-genau angeben. Es handelt sich dabei ja um einen Fehler 1. Art, der mit der
-Wahrscheinlichkeit $\alpha$ auftritt. K"onnen wir die Nullhypothese dagegen nicht
-ablehnen, so kann nichts dar"uber gesagt werden, mit welcher Wahrscheinlichkeit die
-Annahmen der Nullhypothese korrekt ist. Die Wahrscheinlichkeit f"ur Fehler 2. Art h"angt
-stark von den Daten selber ab, als auch vom Umfang der Daten. Man kann die G"ute i.allg.
-nur f"ur den Test \rem{bestimmter} Daten gegen die Nullhypthese in Abh"angigkeit vom
-Datenumfang angeben.
+Hieraus wird auch ersichtlich, warum wir die Nullhypothese negativ formulieren und uns
+daran gelegen ist, sie abzulehnen.  Die Wahrscheinlichkeit daf"ur, da"s unsere
+Entscheidung korrekt ist, l"a"st sich genau angeben. W"are die Entscheidung falsch,
+handelte sich es ja um einen Fehler 1. Art, der mit der Wahrscheinlichkeit $\alpha$
+auftritt. Wir haben also mit Wahrscheinlichkeit $1-\alpha$ die richtige Entscheidung
+getroffen.  K"onnen wir die Nullhypothese dagegen nicht ablehnen, so kann nichts dar"uber
+gesagt werden, mit welcher Wahrscheinlichkeit die Entscheidung zur Annahme der
+Nullhypothese korrekt ist. Die Wahrscheinlichkeit f"ur Fehler 2. Art h"angt stark von den
+Daten selber ab, als auch vom Umfang der Daten. Man kann die G"ute i.allg.\ nur f"ur den
+Test {\em bestimmter} Daten gegen die Nullhypthese in Abh"angigkeit vom Datenumfang
+angeben.
 
 
 \subsubsection{Einfache Nullhypothesen}
 Bei der Konstruktion eines Tests ist zu beachten, da"s zwei verschiedene Typen von
 Nullhypothesen existieren: \begriff(einfache) und \begriff(zusammengesetzte). Bei
 einfachen Nullhypothesen besteht die Menge der mit $\nullhyp$ konsistenten Prozesse
-$\process$ aus nur einem Element. Ein Beispiel f"ur eine solche Nullhypothese w"are die,
-da"s die Daten gau"sverteilt mit einem vorher festgelegten Mittelwert $\mu_0$ und
-festgelegter Varianz $\sigma_0$ sind. Als Diskriminator $T$ k"onnten wir f"ur diese
-Nullhypothese ein h"oheres Moment der Verteilung w"ahlen, sagen wir
-\eqnl[teststatistik1]{T=\frac{1}{N}\sum_{i=1}^N x_i^4} 
-Prinzipiell h"atten wir jede beliebige
-Funktion der $N$ Argumente $X=(x_1,\dots,x_n) $ w"ahlen k"onnen. Allerdings h"angt die
-G"ute des Tests stark von der Teststatistik $T$ ab\footnotemark.  \footnotetext{In der Tat
-  ist das hier gew"ahlte $T$ nicht die optimale Wahl, da nicht-gau"sf"ormige Verteilungen
-  existieren, die das gleiche vierte Moment wie eine Gau"sverteilung besitzen. Dies ist
-  f"ur die folgenden Betrachtungen jedoch ohne Belang.}
+$\process$ aus nur einem Element, w"ahrend sie bei zusammengesetzten Hypothesen aus
+meheren bis m"oglicherweise "uberabz"ahlbar unendlich vielen besteht.
+
+Es soll nun ein Beispiel f"ur eine einfache Nullhypothese etwas genauer betrachtet werden.
+Die Nullhypothese sei, da"s die Daten gau"sverteilt sind, mit einem vorher festgelegten
+Mittelwert $\mu_0$ und festgelegter Varianz $\sigma_0$. Als Diskriminator $T$
+k"onnen wir f"ur diese Nullhypothese ein h"oheres Moment der Verteilung w"ahlen, beispielsweise:
+\eqnl[teststatistik1]{T=\frac{1}{N}\sum_{i=1}^N x_i^4 .} 
+Prinzipiell h"atte jede beliebige Funktion der $N$ Argumente $X=(x_1,\dots,x_n) $ gew"ahlt
+werden k"onnen. Allerdings h"angt die G"ute des Tests stark von der Teststatistik $T$
+ab\footnotemark.  \footnotetext{In der Tat ist das hier gew"ahlte $T$ nicht die optimale
+  Wahl, da nicht-gau"sf"ormige Verteilungen existieren, die das gleiche vierte Moment wie
+  eine Gau"sverteilung besitzen. Dies ist f"ur die folgenden Betrachtungen jedoch ohne
+  Belang.}
 
 
 Wir berechnen nun eine Anzahl $B$ von sogenannten \begriff(Surrogatdaten) oder kurz
-\begriff(Surrogaten) $\{X_k, k=1,\dots,B\}$. Zur Erzeugung der Surrogatdaten nehmen wir
-einen Gau"sproze"s $N(\mu_0,\sigma_0^2)$, der $N$ unabh"angige, gau"sverteilte Zufallszahlen mit
-Mittelwert $\hat\mu\simeq \mu_0$ und empirischer Varianz $\hat\sigma^2\simeq \sigma_0^2$
-erzeugt\footnotemark. Wir berechnen nun $T$ f"ur die Surrogatdaten als auch f"ur die
-realen Daten. Die $T$-Werte seien mit $\{T_k,k=1,\dots,B\}$ bzw.\ $T_R$ bezeichnet. Wollen
-dir die Nullhypothese auf dem $\alpha$-Signifikanzniveau ablehnen, mu"s $T_R$ unter den
-$(B+1)/alpha/2$ kleinsten oder den $(B+1)\alpha/2$ gr"o"sten Werten der sortierten Liste
-sein, die sowohl die $T_k$ als auch $T_R$ enth"alt\footnotemark. Zu beachten ist, da"s
-$B+1$ mindestens gleich $2/\alpha$ sein mu"s. Im allgemeinen wird als ein Vielfaches von
-$2/alpha$ gew"ahlt. F"ur ein "ubliches Signifikanzniveau von $\alpha=0,05$ w"are $B=39$,
-die minimale Anzahl an verwendeten Surrogaten.  \footnotetext{Ein Gau"sproze"s
-  $N(\mu,\sigma^2)$ erzeugt Zufallszahlen mit Erwartungswert $\mu$ und Standardabweichung
-  $\sigma$. Bei der Realisierung $X$ eines solchen Prozesses k"onnen der Mittelwert
-  $\hat\mu$ und die empirische Standardabweichung$\hat\sigma$ der erzeugten Daten hiervon abweichen.
-  Die Werte f"ur die Realisierung eines solchen Prozesses sollen daher durch ein Dach
-  "uber der Variablen unterschieden werden. F"ur sehr gro"se $N$ konvergieren $\hat\mu$ und
-  $\hat\sigma$ gegen Erwartungswert $\mu$ und Standardabweichung $\sigma$.}  \footnotetext{Bei sehr
+\begriff(Surrogaten) $\{X_k, k=1,\dots,B\}$. Der Proze"s zur Erzeugung der Surrogatdaten
+mu"s mit der Nullhypothese konsistent sein. Da es bei diesem Test nur auf die Verteilung
+der Daten und nicht auf zeitliche Korrelationen ankommt, k"onnen wir einen Gau"sproze"s
+$\gauss(\mu_0,\sigma_0^2)$, der unabh"angige, normalverteilte Zufallszahlen mit
+Erwartungswert $\mu_0$ und Varianz $\sigma_0^2$ erzeugt, w"ahlen. Wir berechnen nun die
+Teststatistik $T$ sowohl f"ur die Surrogatdaten als auch f"ur die realen Daten. Die
+$T$-Werte seien mit $\{T_k,k=1,\dots,B\}$ bzw.\ $T_0$ bezeichnet.
+
+Es gibt zwei M"oglichkeiten die Nullhypothese $\nullhyp$ abzulehnen. Die erste erfolgt
+durch eine sogenannte \begriff(Ranganalyse) \cite{Prichard-theiler3}.  Hierzu bilden wir
+aus der Menge der $T$-Werte einschlie"slich $T_0$ eine aufsteigend sortierte Liste.
+Wollen dir die Nullhypothese nun auf dem $\alpha$-Signifikanzniveau ablehnen, mu"s $T_0$
+unter den $(B+1)\alpha/2$ kleinsten oder den $(B+1)\alpha/2$ gr"o"sten Werten der
+sortierten Liste sein. Zu beachten ist, da"s $B+1$ mindestens gleich $2/\alpha$ sein mu"s.
+Im allgemeinen wird $B+1$ als ein Vielfaches von $2/\alpha$ gew"ahlt. F"ur ein "ubliches
+Signifikanzniveau von $\alpha=0,05$ w"are $B=39$, die minimale Anzahl zu erzeugender 
+Surrogatdaten.
+
+Statt der eben vorgestellten Ranganalyse kann auch auch der $p$-Wert f"ur die Ablehnung der
+Nullhypothese berechnet werden. Hierzu wird aus der Teststatistik der Surrogatdaten der
+Mittelwert $\bar T$ und die Standardabweichung $\sigma_T$ berechnet. Wir k"onnen nun "uber
+\eqn{\mathcal{S} = \frac{\abs{T_0-\bar T}}{\sigma_T}}
+ein Ma"s f"ur die Signifikanz der Abweichung von Original- zu Surrogatdaten definieren
+\cite{Theiler92b}. Unter der Annahme, da"s die $T$-Werte der Surrogatdaten normalverteilt
+sind\footnote{Diese Annahme ist i.allg. vern"unftig und kann auch durch numerische
+  Experimente best"atigt werden.}, kann der $p$-Wert "uber $p =
+\mathrm{erfc}(\mathcal{S}/\sqrt2)$ berechnet werden\footnote{Es gilt
+  $\mathrm{erfc}(x)=1-\mathrm{erf}(x)$, wobei $\mathrm{erf}$ das Gau"ssche Fehlerintegral
+  $\mathrm{erf}(x)=\frac2{\sqrt{2}}\int_0^xe^{-t^2} dt$ ist. }.  Dies ist die
+Wahrscheinlichkeit eine Abweichung gr"o"ser oder gleich $\mathcal{S}$ zu erhalten, obwohl
+die Nullhypothese wahr ist.
+
+\comment{\footnotetext{Bei sehr
   gro"sem $B$ oder bekannter $T$-Verteilung h"atten wir auch den $\alpha$-Konfidenzbereich
-  $[T_{\alpha,\tmin},T_{\alpha,\tmax}]$ berechnen k"onnen. Liegt $T_R$ au"serhalb des
+  $[T_{\alpha,\tmin},T_{\alpha,\tmax}]$ berechnen k"onnen. Liegt $T_0$ au"serhalb des
   Kondidenzbereichs, kann die Nullhypothese abgelehnt werden.}
+}
 
 \subsubsection{Zusammengesetzte Nullhypothesen}
-Dieses Beispiel ist nun -- au"ser zu Demonstrationszwecken -- reichlich uninteressant. Bei
-vorliegenden Daten wollen wir die Nullhypothese pr"ufen, ob die Daten allgemein
-gau"sverteilt mit unbekanntem Mittelwert $\mu$ und Varianz $\sigma^2$ sind. Dies ist
-jedoch eine zusammengesetzte Nullhypothese. Die mit $\nullhyp$ konsistenten Prozesse, sind
-alle Gau"sprozesse mit beliebigem $\mu$ und $\sigma^2$. Es w"are nun offensichtlich nicht
-sinnvoll und auch nicht praktikabel, die Teststatistik \eqnref{teststatistik1} f"ur alle
-m"oglichen Gau"sprozesse $N(\mu,\sigma^2)$ zu berechnen. Es existieren nun zwei verschiedene
-Ans"atze, die wir im folgenden diskutieren und vergleichen wollen.
+Das vorangegangene Beispiel ist aufgrund der Beschr"ankung auf ein bestimmtes $\mu_0$
+bzw.\ $\sigma_0$ recht praxisfern und -- au"ser zu Demonstrationszwecken -- eher
+uninteressant. Bei vorliegenden Daten wollen wir die Nullhypothese pr"ufen, ob die Daten
+allgemein gau"sverteilt mit unbekanntem, beliebigem Mittelwert $\mu$ und Varianz
+$\sigma^2$ sind. Dies ist allerdings eine zusammengesetzte Nullhypothese. Die mit
+$\nullhyp$ konsistenten Prozesse, sind alle Gau"sprozesse mit beliebigem $\mu$ und
+$\sigma^2$. Es w"are nun offensichtlich weder sinnvoll noch praktikabel, die Teststatistik
+\eqnref{teststatistik1} f"ur alle m"oglichen Gau"sprozesse $\gauss(\mu,\sigma^2)$ zu
+berechnen. Um die Anzahl der betrachteten Prozesse einzuschr"anken, existieren zwei
+verschiedene Ans"atze, die wir im folgenden diskutieren und vergleichen wollen
+\cite{Prichard-theiler3}.
 
 \paragraph{Typische Realisierungen}
-Eine M"oglichkeit den Bereich der Modelle einzuengen besteht in der beschr"ankung auf
-typische Realisierungen. Man berechnet hierzu $\hat\mu$ und $\hat\sigma$ der Originaldaten
-und berechnet dann die Surrogatdaten durch Gau"sprozesse $N(\mu,\sigma^2)$ mit
+Eine M"oglichkeit den Bereich der Prozesse einzuengen besteht in der Beschr"ankung auf
+\begriff(typische Realisierungen). Man berechnet hierzu $\hat\mu$ und $\hat\sigma$ der Originaldaten
+und erzeugt dann die Surrogatdaten durch Gau"sprozesse $\gauss(\mu,\sigma^2)$ mit
 $\mu=\hat\mu$ und $\sigma=\hat\sigma$. Ein Problem hierbei ist, da"s f"ur die
 Surrogatdaten der empirische Mittelwert und die Standardabweichung im allgemeinen ungleich
-$\hat\mu$ bzw.\ $\hat\sigma$ sind. Dies hat zur Folge, da"s die Teststatistik relativ
-breit streut und die G"ute des Tests sehr schlecht wird (s.\psref{gurke}). Dem l"a"st sich
-abhelfen, indem wir statt der Teststatitstik \eqnref{teststatistik1} ein
-\begriff(zentrale) Teststatistik verwenden. Ein zentral Teststastitik ist eine, die f"ur
-alle Realisierungen der betrachteten Prozesse die gleiche Verteilung aufweist. Dies w"are
-in unserem Beispiel 
-\eqnl[teststatistik2]{T'=\frac{1}{N}\sum_{i=1}^N \left(\frac{x_i-\hat\mu}{\hat\sigma} \right)^4} 
-
+$\hat\mu$ bzw.\ $\hat\sigma$ sind\footnotemark. Die Verteilung der Daten ist f"ur Realisierungen von 
+Prozessen mit verschiedenem $\hat\mu$ und $\hat\sigma$ unterschiedlich. Dies hat zur Folge, da"s die Teststatistik relativ
+breit streut und die G"ute des Tests sehr schlecht wird. Dem l"a"st sich
+abhelfen, indem wir statt der Teststatitstik \eqnref{teststatistik1} eine
+\begriff(zentrale Teststatistik) (engl. pivotal test statistic) verwenden. Eine zentrale
+Teststatistik ist dadurch definiert, da"s sie f"ur
+alle Realisierungen der betrachteten Prozesse die gleiche Verteilung aufweist. 
+Betracheten wir statt des vierten Moments (\eqnref{teststatistik1}) das vierte, zentrale
+und normierte Moment:
+\eqnl[teststatistik2]{T'=\frac{1}{N}\sum_{i=1}^N \left(\frac{x_i-\hat\mu}{\hat\sigma} \right)^4.} 
 Die so definierte Teststatistik ist unabh"angig vom Mittelwert und der empirischen
-Standardwabweichung der Surrogat- bzw.\ Originaldaten
-
-\begin{itemize}
-\item Wir benutzen eine \begriff(zentrale) Teststatistik. Bei einer zentralen
-  Teststatistik ist die $T$-Verteilung f"ur alle Elemente von $\process$ gleich.
-\item Wir berechnen $\hat\mu_R$ und $\hat\sigma_R$ f"ur die realen Daten und betrachten f"ur die
-  Erzeugung der Surrogatdaten nur Gau"sprozesse mit $\mu=\hat\mu_R$ und $\sigma=\hat\sigma_R$,
-  d.h.\ wir nehmen nur eine Teilmenge von $\process_0\subset\process$ mit
-  $\process_0=\{N(\mu,\sigma),\mu=\hat\mu_R\land\sigma=\hat\sigma_R\}$. Man spricht hier von \begriff(typischen
-  Realisierungen).
-\item Wir benutzen nur Surrogatdaten f"ur das berechnete $\hat\mu$ und $\hat\sigma$ exakt gleich
-  Mittelwert und Varianz der Originaldaten sind. Dieser als \begriff(eingeschr"ankte
-  Realisierung) bezeichnete Ansatz, weicht von dem vorherigen leicht, aber doch
-  signifikant ab.
-\end{itemize}
-
-Um aus der Teststatistik \eqnref{teststatistik1} eine zentrale Teststattistik zu machen definieren wir $T$
- nun folgenderma"sen
-\eqnl[teststatistik2]{T'=\frac{1}{N}\sum_{i=1}^N \left( \frac{x_i-\hat\mu}{\hat\sigma} \right)^4} 
-Durch die in der Gleichung vorgenommene Umskalierung hat den Effekt, da"s die Teststatistik
-f"ur alle Gau"sprozesse $N(\mu,\sigma^2)$ die gleiche Verteilung aufweist. 
+Standardabweichung der Surrogat- bzw.\ Originaldaten. Die $T'$-Verteilung ist f"ur alle
+Prozesse gleich und die Statistik somit zentral.
+\footnotetext{Ein Gau"sproze"s $\gauss(\mu,\sigma^2)$ erzeugt Zufallszahlen
+  mit Erwartungswert $\mu$ und Standardabweichung $\sigma$. Bei der Realisierung $X$ eines
+  solchen Prozesses k"onnen der Mittelwert $\hat\mu$ und die empirische
+  Standardabweichung $\hat\sigma$ der erzeugten Daten hiervon abweichen.  Die Werte f"ur
+  die Realisierung eines solchen Prozesses sollen daher durch ein Dach "uber der Variablen
+  unterschieden werden. F"ur sehr gro"se $N$ konvergieren $\hat\mu$ und $\hat\sigma$ gegen
+  Erwartungswert $\mu$ und Standardabweichung $\sigma$.}
 
 
-\paragraph{Zentrale Teststatistiken}
+%Die Ablehnung der Nullhypothese entspricht einem Fehler 1. Art.
+%Diese Fehler sollten nach Voraussetzung mit der Wahrscheinlichkeit $0,05$ auftreten, da
 
+Die beiden Teststatistiken sollen nun bez"uglich ihres empirischen Signifikanzniveaus und ihrer
+G"ute verglichen werden (s. \psref{typicalreal}). 
+F"ur die Berechnung
+des empirischen Signifikanzniveaus wurden $\gauss(0,1)$ verteilte Daten verschiedenen Umfangs $N$
+gegen die Nullhypothese getestet. Zu jeder Testreihe wurden $B=39$ Surrogatdatenreihen
+durch einen Gau"sproze"s $\gauss(\hat\mu,\hat\sigma^2)$ erzeugt, wobei $\hat\mu$ bzw.\ 
+$\hat\sigma$ Mittelwert und Standardabweichung der Testreihe sind.  Das Signifikanzniveau
+$\alpha$ f"ur diesen Test wurde auf $0,05$ festgelegt. Diese H"aufigkeit $\hat\alpha$ mit
+der Fehler 1. Art, d.h.\ Ablehnungen der Nullhypothese, auftreten wurde berechnet, indem
+der Test f"ur $M=10000$ Testdaten durchgef"uhrt wurde und die Anzahl der Ablehnung der
+Nullhypothese durch $M$ geteilt wurde. Die eingezeichneten Fehlerbalken der L"ange
+$\sqrt{\alpha(1-\alpha)/M}$, ergeben sich aus der Annahme, da"s die Anzahl der Ablehnungen
+der Nullhypothese einer Binominalverteilung $\mathrm{Bin}(\alpha,M)$ folgt\footnotemark.
+Um die G"ute der beiden Teststatistiken zu bestimmen wurden als Testreihen gleichverteilte
+Daten im Intervall $[-1,1]$ verwendet. Da die Ablehnung der Nullhypothese hier korrekt
+ist, stellt ein Versagen der Ablehnung einen Fehler zweiter Art dar. Die relative
+H"aufigkeit der Ablehnungen der Nullhypothese  $1-\hat\beta$ ist also die G"ute des Tests 
+gegen gleichverteilte Daten. 
 
+ \epsfigdouble{surrogate/typcon/typicalsize}{surrogate/typcon/typicalpower} {Numerisch
+   bestimmtes Signifikanzniveau $\hat\alpha$ (links) und G"ute $1-\hat\beta$ (rechts)
+   aufgetragen "uber der Datensatzgr"o"se $N$. Die Surrogatdaten wurden als typische
+   Realisierungen erstellt. Die gestrichelte Kurve kennzeichnet die jeweiligen Werte f"ur
+   die nichtzentrale Teststastik $T$, die durchgezogene f"ur die zentrale Teststatistik $T'$.  }
+ {typicalreal}{-0.2cm}
+
+\footnotetext{Der beschriebene Proze"s entspricht einem Urnenmodell mit Zur"ucklegen ohne
+  Beachtung der Reihenfolge. Hierbei entspricht das Ziehen einer Kugel der ersten Art der
+  Ablehnung der Nullhypothese. Dieses Ereignis tritt mit Wahrscheinlichkeit $\alpha$ auf,
+  das komplement"are Ereignis mit Wahrscheinlichkeit $1-\alpha$. Ein solches Urnenmodell
+  wird durch die Binominalverteilung $\mathrm{Bin}(\alpha,M)$ beschrieben. Der
+  Erwartungswert f"ur die Anzahl der Ablehnungen der Nullhypothese betr"agt daher $\alpha
+  M$, die Standardabweichung $\sqrt{\alpha(1-\alpha)M}$. Der relative Fehler ist
+  $\sqrt{\alpha(1-\alpha)/M}$.  }
+
+Die H"aufigkeit mit der Fehler 1. Art auftreten, ist bei der nichtzentralen Statistik
+deutlich geringer als $0,05$. Auf der einen Seite mag dies begr"u"senswert erscheinen, da
+besagte Fehler seltener vorkommen, auf der anderen ist $\alpha$ jedoch ein festgelegter
+Parameter und die Teststatistik sollte nicht beliebig davon abweichen. Ung"unstiger ist
+aber noch das die G"ute des Tests bei vergleichbarem Datenumfang weitaus schlechter ist,
+als bei der zentralen Statistik. Die zentrale Teststatistik kann schon bei einem
+Datenumfang $N=100$ die gleichverteilten Daten fast mit Wahrscheinlichkeit $1$ von
+normalverteilten unterscheiden. F"ur die nichtzentrale Statistik gelingt dies erst bei
+ca.\  $N=560$.
 
 
 \paragraph{Eingeschr"ankte Realisierungen}
+Die im vorherigen Abschnitt dargestellte Methode der Hypothesentests mit zentralen
+Teststatistiken funktionierte f"ur dieses Beispiel sehr gut. In allgemeineren F"allen
+stellt sie jedoch eine starke Einschr"ankung dar. F"ur kompliziertere Nullhypothesen und
+darauf zugeschnittene Teststatistiken ist es ein schwieriges Unterfangen, die
+Teststatistik zentral zu machen.  Man denke beispielsweise an die Nullhypothese, da"s die
+Daten einem linearen, autokorrelierten stochastischen Proze"s $\arma(p,q)$ entstammen,
+wobei als Teststatistik die Vorhersagezeit $\tau_p$ oder die Korrelationsdimension $D_2$
+verwendet werden sollen. Die Teststatistiken so umzuformulieren, da"s sie zentral
+bez"uglich der betrachteten Prozesse werden, d"urfte unm"oglich sein. Ein Ansatz der hier
+weiterhilft, ist die Methode der \begriff(eingeschr"ankten Realisierungen).
+
+Die Unzul"anglichkeit der nichtzentralen Teststatistik aus dem vorangegangen Beispiel
+resultierte aus den Schwankungen des Mittelwerts $\hat\mu$ und der Standardabweichung $\hat\sigma$ 
+f"ur die typischen Realisierungen. Bei der Methode der eingeschr"ankten Realisierungen
+wird dies ausgeschlossen indem nur Surrogatdaten verwendet werden, bei denen Mittelwert
+und Standardabweichung exakt mit denen der Testreihe "ubereinstimmen. In diesem Fall ist
+das sehr einfach zu erreichen. Wir berechnen wieder eine Surrogatreihe
+$X_k=(x_{k,1},\dots,x_{k,N})$ "uber einen Gau"sproze"s $\gauss(\hat\mu,\hat\sigma)$. Nun
+berechnen wir Mittelwert $\hat\mu_k$ und Standardabweichung $\hat\sigma_k$ der erzeugten
+Daten und skalieren sie um:
+\eqn{x'_{k,l} = \hat\mu_0 + (x_{k,l}-\hat\mu_k)\hat\sigma_0/\hat\sigma_k .}
+Die so erzeugten Daten haben exakt gleichen Mittelwert und Standardabweichung wie die
+Testdaten.
+
+\psref{constrainedreal} zeigt die Ergebnisse f"ur Signifikanzniveau und G"ute des Tests
+mit eingeschr"anken Realisierungen. Die Unterschiede bei den relativen H"aufigkeiten der
+Fehler 1. Art sind statistisch bedingt. Sie liegen im Rahmen der Standardabweichung
+$\Delta\hat\alpha=\sqrt{\alpha(1-\alpha)/M}$ von $\hat\alpha$. Bez"uglich der G"ute
+$1-\hat\beta$ sind beide Statistiken nicht zu unterscheiden. Auch im Vergleich zu den
+typischen Realisierungen mit zentraler Teststatistik ist kein Unterschied zu erkennen.
+Die Methode der eingeschr"ankten Realisierungen macht uns unabh"angig von dem Zwang,
+eine zentrale Statistik zu verwenden.
+
+Da"s beide Teststatistiken die gleichen Ergebnisse erbringen, kann auch theoretisch
+begr"undet werden.  Die Berechnung der nichtzentralen Statistik $T$ f"ur die
+eingeschr"ankte Realisierung $X'_k$ ergibt:
+\eqna{T''&=&\frac1N \sum_{i=1}^N (x'_{k,i})^4\nonumber\\
+&=& \frac1N\left\{ \frac{\hat\sigma_0^4}{\hat\sigma_k^4} \sum_{i=1}^N (x'_{k,i}-\hat\mu_k)^4 +
+\frac{4\hat\mu_0\hat\sigma_0^3}{\hat\sigma_k^3} \sum_{i=1}^N (x'_{k,i}-\hat\mu_k)^3 \right\} +
+6\hat\mu_0^2\hat\sigma_0^2+\hat\sigma_0^4 .
+}
+Diese Teststatistik ist unabh"angig von $\hat\mu_k$ und $\hat\sigma_k$ und somit
+bez"uglich der $X_k$ auch wieder zentral. 
+
+\epsfigdouble{surrogate/typcon/constrainedsize}{surrogate/typcon/constrainedpower}
+{Numerisch
+   bestimmtes Signifikanzniveau $\hat\alpha$ (links) und G"ute $1-\hat\beta$ (rechts)
+   aufgetragen "uber der Datensatzgr"o"se $N$. Die Surrogatdaten wurden als eingeschr"ankte
+   Realisierungen erstellt. Die gestrichelte Kurve kennzeichnet die jeweiligen Werte f"ur
+   die nichtzentrale Teststastik $T$, die durchgezogene f"ur die zentrale Teststatistik $T'$. 
+}
+{constrainedreal}{-0.2cm}
 
 
+\subsubsection{Nichtlinearit"atstests}
 
+\paragraph{ARMA-Prozesse}
+Zur"uckkehrend zu unserer Eingangs gestellten Frage, ob eine vorliegende Zeitreihe deterministisch 
+sei, k"onnen wir nun versuchen hierf"ur geeignete Nullhypothesen und Teststatistiken
+aufzustellen. Da die Nullhypothese einer Verneinung der Frage, entspricht m"ussen wir also 
+ein allgemeines Modell f"ur ein nicht-deterministisches System benutzen. Ein solches
+Modell kann durch sogenannte \begriff(ARMA-Prozesse) beschrieben werden. Hierbei steht
+das AR f"ur \begriff(autoregressiv) und MA f"ur \begriff(moving average). ARMA-Prozesse $\arma(p,q)$
+beschreiben lineare, autokorrelierte stochastische Systeme, welche "uber eine Abbildung 
+\eqn{ x_{i} = a_0 + \sum_{k=1}^p a_k x_{i-k}+\sum_{k=0}^q b_k \eps_{i-k} }
+modelliert werden k"onnen \cite{Theiler92b}. Hierbei ist $x_i$ das Signal zur Zeit $t_i$, $\eps_i$ sind
+$\gauss(0,1)$ verteilte, unkorrelierte Rauschterme .
+
+Wir betrachten zun"achst die einfachste Form eines ARMA-Prozesses, einen
+\begriff(Ornstein-Uhlenbeck-Proze"s) $\arma(1,0)$:
+\eqnl[ornstein]{ x_{i} = a_0 +  a_1 x_{i-1}+ b_0 \eps_{i}. }
+Um Surrogatdaten, die diesem Proze"s entsprechen zu erstellen, mu"s der Mittelwert
+$\hat\mu$, die Standardabweichung $\hat\sigma$ und die Autokorrelationsfunktion $\ac(k)$
+f"ur $k=1$ aus den Originaldaten berechnet werden. Die Parameter k"onnen dann
+folgenderma"sen angepa"st werden:
+\eqna{a_0&=&\hat\mu(1-\ac(1)^2) \\ a_1&=&\ac(1) \\b_0&=&\hat\sigma\sqrt{1-\ac(1)^2}.}
+Die Surrogatdaten erh"alt man indem man \eqnref{ornstein} f"ur einen Startwert $x_0$ mit
+diesen Parametern iteriert. F"ur die Berechnung der $\eps_i$ benutzt man einen
+Zufallszahlengenerator, der normalverteilte Zufallszahlen mit Mittelwert 0 und Varianz 1
+liefert.  
+
+Die hierdurch erzeugten Surrogatdaten sind offensichtlich typische Realisierungen, da
+$\hat\mu$, $\hat\sigma$ und $\ac(1)$ f"ur die Surrogatdaten sicherlich von den Werten der
+Originaldaten abweichen werden.  Dies bringt uns wieder das Problem eine zentrale
+Teststatistik finden zu m"ussen.  Zudem haben wir hier einen sehr einfachen ARMA-Proze"s
+betrachtet und die Aufgabe, die Parameter zu fitten, wird bei Prozessen h"oherer Ordnung
+$\arma(p,q)$ immer schwieriger.  Weiterhin ist es bei diesem Proze"s nicht offensichtlich,
+wie eingeschr"ankte Realisierungen erzeugt werden k"onnen.
+
+
+\paragraph{FT-Surrogate}
+Dies soll nun f"ur reine autoregressive Prozesse gezeigt werden\footnotemark. F"ur
+Prozesse $\arpr(q)$ (bzw.\ $\arma(q,0)$) gilt \footnotetext{F"ur gro"se $q$ sind AR- und
+  ARMA-Modelle im wesentlichen "aquivalent. Wir werden daher im folgenden nur AR-Modelle
+  betrachten \cite{Theiler92b}.}:
+\eqn{ x_{i} = a_0 + \sum_{k=1}^q a_k x_{i-k}+b_0 \eps_{i}. }
+Wie sich durch Bildung der Erwartungswerte $<x_ix_{i+k}>$ bzw.\  $<x_i>$ zeigen l"a"st,
+sind die Koeffizienten $a_k$ und $b_0$ nur von Mittelwert $\hat\mu$, Standardabweichung 
+$\hat\sigma$ und Autokorrelation $\ac(k)$ f"ur Zeiten $k=1,\dots,q$ der Originalzeitreihe abh"angig. Zur
+Erzeugung eingeschr"ankter Realisierungen mu"s also die Autokorrelationsfuntion erhalten
+bleiben. "Aquivalent dazu ist, nach Wiener-Khintchine, da"s das Leistungsspektrum der
+Originaldaten mit dem der Surrogatdaten "ubereinstimmt. Dies liefert uns eine
+einfache Methode eingeschr"ankte Realisierungen von Surrogatdaten zu erzeugen. Die
+Originalzeitreihe wird fouriertransformiert. \comment{und "uber Betragsbildung das Leistungsspektrum 
+berechnet.} Die komplexen Amplituden der auftretenden Frequenzen $f=-\frac12, \dots, -\frac1N, 0,
+\frac1N, \dots, \frac12$ seien mit  $\alpha(f)$ bezeichnet. Da die Originalzeitreihe rein
+reell ist gilt $\alpha(f)=\alpha(-f)^*$. Nun wird ein neues (Surrogat-) Frequenzspektrum
+erzeugt mit $\alpha'(f)=\abs{\alpha(f)}e^{i\phi(f)}$. Auch die Surrogatdaten wieder rein
+reell sein sollen mu"s $\phi(-f)=-\phi(f)$ und insbesondere $\phi(0)=0$ gew"ahlt
+werden. Nach inverser Fouriertransformation der $\alpha'(f)$ hat man eine
+Surrogatzeitreihe mit gleichem Leistungsspektrum und Autokorrelationsfunktion wie die Originalzeitreihe.
+Der beschriebene Proze"s wird auch als \begriff(Phasenrandomisierung), die enstandenen
+Surrogatdaten als FT-Surrogate bezeichnet.
+
+
+\paragraph{AAFT-Surrogate}
+Durch Phasenrandomisierung erzeugte FT-Surrogate weisen im allgemeinen eine gau"sf"ormige
+Verteilung auf. Dies kann "uber den zentralen Grenzwertsatz begr"undet werden. Jeder Wert
+der Surrogatreihe $x'_k$ enth"alt $N$ Summanden der Form
+$\abs{\alpha(f)}\cos(\phi(f)+kf)$. Die einzelnen Summanden sind statistisch unabh"angig
+und besitzen eine beschr"ankte Wahrscheinlichkeitsverteilung. F"ur gro"se $N$ konvergiert
+die Summe dieser Verteilungen gegen eine Normalverteilung. 
+
+Im allgemeinen werden wir nun Testdaten vorfinden, die keine Normalverteilung besitzen.
+Ein Test dieser Daten gegen die FT-Surrogate daher mit hoher Wahrscheinlichkeit ein
+negatives Resultat erbringen\footnote{Ein negatives Resultat bedeutet eine Ablehnung der
+  Nullhypothese, in unserem Sinne eigentlich positiv.}. Damit ist jedoch nicht
+zwingend ein Beweis daf"ur erbracht, da"s die Daten keinem linearen, stochastischen Proze"s
+entstammen. Das Signal k"onnte beispielsweise einem solchen Proze"s entspringen und bei
+oder vor der Messung einer nichtlinearen Transformation, sagen wir $h$, unterworfen sein.
+Das Ursprungssignal $y$ w"are dann normalverteilt und das Me"ssignal $x=h(y)$ folgt einer
+beliebigen nicht gau"sf"ormigen Verteilung. \footnote{Im Prinzip k"onnte man dies schon als
+  nichtlineares System bezeichnen. Die zugrundeliegende Dynamik, an der wir ja interessiert sind, ist
+  jedoch linear.}
+
+Eine entsprechende Nullhypothese w"are demnach, da"s den Daten ein stochastischer Proze"s
+zugrunde liegt, der durch eine nichtlineare Funktion gefiltert worden ist. Surrogatdaten, die
+mit dieser Nullhypothese konsistent sind, bezeichnet man als \begriff(AAFT-Surrogate),
+wobei AA f"ur ``Amplituden angepa"st'' (engl. amplitude adjusted) steht.  
+Das Verfahren l"auft in  folgendem Schritten ab.
 \begin{itemize}
-\item Nullhypothesen: einfache und zusammengesetzte
-\item Teststatistik bei zusammengesetzten: pivotal
-\item andere M"oglichkeit: typische Realisierung, eingeschr"ankte (gezwungene, gez"ugelt) Realisierungen 
-\item Realisierungen und Kofidenzintervalle "uber Monte-Karlo-Methoden
-\item Beispiel der Gau"sverteilung: a) 1,0 Test b) pivotal c) typische Realisierung d) eingeschr"ankte Realisierung
-\item Beispiel typische Realisierungen: ARMA-prozesse
-\item Eingeschr"ankte Realisierungen: FT-Surrogate, AAFT-Surrogate
+\item Es wird eine Reihe von normalverteilten Daten $y_i$ wird erstellt. Diese Reihe wird
+  in der Weise  sortiert, da"s wenn $x_j$ der $k$-kleinste Wert der Reihe $x_i$ ist, dann
+  auch $y_j$ der $k$-kleinste Wert der Reihe $y_i$ ist. Etwas bildlicher ausgedr"uckt
+  kann man sagen, die Reihe $y_i$ \naja(folge) der Originalreihe $x_i$.
+  
+  Ein entsprechender Algorithmus arbeitet wie folgt.  Eine normalverteilte Zeitreihe $z_i$
+  wird "uber einen geeigneten Zufallszahlengenerator erzeugt. Diese wird nach
+  aufsteigenden Werten sortiert $z_1\leq\dots\leq z_N$.  Nun werden aus den Originaldaten
+  Wertepaare $(x_i,i)$ erzeugt, die wiederum nach aufsteigenden $x_i$ sortiert werden. Wir
+  erhalten eine Reihe $(x'_j,n_j)$ mit $x'_1\leq\dots\leq x'_N$ und $x_{n_j}=x'_j$. Die
+  $n_j$ werden nun mit den $z_j$ zu Wertepaaren $(z_j,n_j)$ verkn"upft, welche nun nach
+  den $n_j$ aufsteigend sortiert werden. Die sortierten Paaren $(z'_j,j)$ enhalten nun die
+  gesuchte, sortierte Reihe $y_j=z'_j$, da nach Konstruktion gilt $y_i<y_j\Leftrightarrow
+  x_i<x_j$.
+\item Aus der Zeitreihe $y_i$ wird "uber die Methode der Phasenrandomisierung eine
+  Surrogatreihe $y'_i$ gebildet. 
+\item Die Originalreihe $x_i$ wird nun so geordnet, da"s sie der Reihe $y'_i$ folgt. Die
+  enstandene Surrogatreihe $x'_i$ hat, da sie nur umsortiert wurde, die gleiche
+  Verteilung, wie die Originaldaten. Dar"uber hinaus haben die zugrundeliegenden
+  Zeitreihen $y_i$ und $y'_i$ das gleiche Leistungsspektrum und die gleiche Autokorrelationsfunktion.
 \end{itemize}
+Dies ist die Methode, die auch im folgenden grunds"atzlich verwendet wird. Ein Test mit
+FT-Surrogaten, macht wenig Sinn, da im Falle, da"s die Originaldaten nicht normalverteilt
+sind, die Nullhypothese mit hoher Wahrscheinlichkeit abgelehnt wird. Der Grund f"ur die
+Ablehnung, wird in diesem Fall jedoch eher an der Verteilung der Daten, als an einer 
+eventuell zugrundeliegenden deterministischen Struktur liegen. Sind die Originaldaten dagegen
+normalverteilt, so besteht kein Unterschied zwischen den FT- und den AAFT-Surrogatdaten.
 
 
-Bei Nullhyptothesen sind zwei Klassen zu unterscheiden: einfache und zusammengesetzte
-Nullhypothesen.  Eine einfacher Nullhypothese
+\paragraph{Teststatistiken}
+Wie im einf"uhrenden Abschnitt bereits dargestellt wurde, ist die spezielle Wahl der
+Teststatistik bei einem Hypothesentest relativ unwichtig. Was den eigentlichen Kern des
+Tests ausmacht, ist die Wahl des Modells und die entsprechende Generierung der
+Surrogatdaten. Nichtsdestotrotz k"onnen manche Teststatitiken besser geeignet sein, eine
+Nullhypothese abzulehnen, als andere. Eine Teststatistik sollte immer auf Merkmale
+ausgerichtet sein, die \naja(inhaltlich) mit der Nullhypothese in Zusammenhang stehen.
+Beispielsweise macht es f"ur einen Determinismustest "uber AAFT-Surrogate wenig Sinn, die
+Original- und Surrogatzeitreihen auf statistische Eigenschaften hin zu untersuchen.
+Geeigneter sind da Merkmale, die f"ur deterministische Systeme kennzeichnend sind. In der
+Regel wird eine der drei folgenden Statistiken benutzt.
+\begin{itemize}
+\item \rem(Der mittlere Vorhersagefehler $\eps$.) Eine wesentliche Eigenschaft deterministischer 
+  Systeme ist, da"s sie sich f"ur eine begrenzte Zeit vorhersagen lassen. Sei der Zustand
+  des Systems $\x$ zu Zeit $t<t_0$ bekannt, so l"a"st sich der Zustand zur Zeit
+  $t_0+\Delta t$ mit einer gewissen, von der Dynamik des Systems und der Qualit"at der
+  Daten abh"angigen Genauigkeit vorhersagen. Diese Vorhersage geschieht im allgemeinen
+  durch Anpassung lokaler, linearer Modelle an die Dynamik. Der mittlere Unterschied zwischen vorhergesagtem Zustand
+  $\x_\mathrm{pred}(t_0+\Delta)$ und tats"achlichem Zustand $\x(t_0+\Delta)$ ist bei
+  deterministischen Systemen deutlich geringer als bei stochastischen, und kann so als
+  Teststatistik dienen. 
+\item \rem(Der gr"o"ste Lyapunovexponent.) Lyapuovexponenten beschreiben das
+  Auseinanderdriften benachbarter Trajektorien im Phasenraum. Sie kennzeichnen die
+  Eigenschaft chaotischer Systeme der sensitiven Abh"angigkeit von den
+  Anfangsbedingungen. W"ahrend lineare, deterministische Systeme keine positiven
+  Lyapunovexponenten besitzen, exitiert f"ur ein chaotisches System mindestens ein
+  positiver. F"ur stochastische Systeme divergieren sie. 
+\item \rem(Fraktale Dimensionen.) Wie im Kapitel "uber fraktale Dimensionen bereits
+  beschrieben, besitzen deterministische Systeme eine endliche Dimension, w"ahrend sie
+  f"ur stochastische i.allg.\ mit steigender Einbettungsdimension divergiert. F"ur
+  stochastische Systeme mit $\omega^{-\alpha}$ Leistungsspektrum weisen auch die Surrogate
+  ein solches Leistungsspektrum auf, soda"s die Nullhypothese auch hier nicht f"alschlich
+  abgelehnt w"urde. Als Teststatistik w"ahlt man hier im allgemeinen die
+  Korrelationsdimension aufgrund ihrer einfachen Berechenbarkeit.
+\end{itemize}
+In unseren Untersuchungen wurde grunds"atzlich die Korrelationsdimension als Teststatistik 
+benutzt. Dies liegt zum einen daran, da"s sie einfacher zu berechnen ist als die beiden
+anderen Vorschl"age. F"ur den ersten ist das fitten lokaler, linearer Modelle f"ur
+verschiedene Bereiche des Phasenraums notwendig, was ein komplizierter und
+rechenaufwendiger Proze"s ist. Die Berechnung von Lyapunovexponenten ist dagegen nicht
+sehr robust gegen Rauschen. Zum anderen spricht nichts gegen die Korrelationsdimension,
+wenn sie in der Lage ist, die Nullhypothese abzulehnen. Im Falle des Versagens k"onnten
+dann allerdings andere Statistiken verwendet werden. 
 
-Bei zusammengesetzten Nullhypothesen, h"angt diese noch von einem oder mehreren freien
-Parametern ab. Ein Beispiel f"ur eine solche, w"are die Nullhypothese, da"s die Daten
-gau"sverteilt sind. Die freien Parameter w"aren hier der Mittelwert $\bar x$ und die
-Varianz $\sigma_x$. Ein einfache Nullhypothese w"are dagegen, da"s die Daten gau"sverteilt
-mit Mittelwert $0$ und Varianz $1$ sind. Ein Test f"ur einfache Nullhypothese ist
-offensichtlich weitaus einfacher als f"ur eine zusammengesetzte. Jedoch sind die meisten
-Nullhypothesen, die von Interesse sind, zusammengesetzt. Wie man f"ur diese vern"unftige
-Tests und Modelle entwirft wird uns im folgenden besch"aftigen.
+\paragraph{Beispiele}
+Die Methode soll nun an zwei Beispielen getestet werden. Zum einen werden Testdaten
+f"ur einen Ornstein-Uhlenbeck-Proze"s generiert. Ein Test f"ur diese Daten sollte zu
+keiner Ablehnung der Nullhypothese f"uhren. Zum anderen werden aus dem Lorenzsystem
+extrahierte Zeitreihen getestet, bei denen der Test zu einer Ablehnung f"uhren sollte.
+
+F"ur den Ornstein-Uhlenbeck-Prozess wurde eine zuf"alliger Anfangswert $x_0'$
+gew"ahlt. Dann wurde \eqnref{ornstein} $9192$ mal iteriert, wobei als Zeitreihe die
+letzten $N=8192$ Werte der berechneten Reihe verwendet wurden\footnote{Die ersten 1000
+  Werte werden bei jeder Generierung von Zeitreihen weggelassen, um ein eventuell noch
+  anhaltendes transientes Verhalten auszuschlie"sen. Der Wert 8192 begr"undet sich darin,
+  da"s f"ur die Anwendung der schnellen Fouriertransformation (FFT)ganzzahlige  Potenzen
+  von 2 erforderlich sind. }. Einen Ausschnitt der Zeitreihe zeigt \psref{ornsteinfig}
+links. Danach wurden $B=39$ AAFT-Surrogatzeitreihen erstellt, von denen eine in
+\psref{ornsteinfig} rechts zu sehen ist. Bereits optisch ist kein gravierender,
+qualitativer Unterschied feststellbar. F"ur die Original- und Surrogatzeitreihen wurden
+die Korrelationsintegral f"ur die Einbettungsdimensionen $d=1,\dots,5$ und die Verz"ogerungszeit
+$k=4$ (s. \psref{ornsteincorrint}) berechnet. Die Korrelationsdimension
+$D_2$ wurde "uber Takens' Sch"atzer mit oberer Grenze $\ln\rmax=-2,5$ abgesch"atzt.
+
+F"ur das Lorenzsystem wurde in der gleichen Weise eine Zeitreihe mit $N=8192$
+Datenpunkten erstellt. Um die Robustheit des Verfahrens gegen Rauschen zu testen, wurde
+auf diese Zeitreihe 10, 30 und 50 Prozent Rauschen addiert. In den Abbildungen
+\psref{lorentsurr1} und \psref{lorentsurr2} ist zu erkennen, da"s die Nullhypothese bei
+alleiniger Einbeziehung  der Einbettungsdimension $d=1$ bei keiner der Zeitreihen abgelehnt werden
+kann. Dies ist auch nicht weiter verwunderlich, da ein System mit einer Dimension gr"o"ser 
+als der Einbettungsdimension sich bez"uglich des Korrelationsintegrals wie ein
+stochastisches System verh"alt. F"ur gr"o"sere Einbettungsdimensionen $d\geq2$ kann die
+Nullhypothese dagegen bis zu einer St"arke des Rauschens von 30 Prozent abgelehnt werden,
+was zu erwarten war. Bei 50 Prozent Rauschen oder mehr ist die Nullhypothese erst ab der
+Einbettungsdimension $d=4$ abzulehnen. In einem solchen Fall sollte man jedoch i.allg.\   vorsichtig sein und
+eventuell noch andere Teststatistiken hinzuziehen.
+
+\clearpage
+{
+\def\psposmode{\psseparate}
+\epsfigdouble{surrogate/ornstein/orig}{surrogate/ornstein/surr}{
+Links ein Auschnitt aus einer Zeitreihe generiert durch eine Ornstein-Uhlenbeck-Proze"s mit den
+Parametern $a_0=0$, $a1=0,9$ und $b_0=0,43$ (entspricht $\mu=0$, $\sigma^2=1$ und
+$\ac(1)=0.9$). Rechts ein gleich langer Auschnitt aus einer Surrogatzeitreihe. 
+}
+{ornsteinfig}{-0.2cm}
+\epsfigdouble{surrogate/ornstein/corrint}{surrogate/ornstein/surcint1}{
+Korrelationsintegrale der Zeitreihen aus \psref{ornsteinfig} f"ur Einbettungsdimensionen
+$\embed=1,\dots,5$. Von Bereichen sehr kleiner $r$ abgesehen, weisen die
+Korrelationsintegrale keine signifikanten Unterchiede auf.
+}
+{ornsteincorrint}{-0.2cm}
+\epsfigdouble{surrogate/ornstein/variance}{surrogate/ornstein/pvalue}{
+Links abgebildet ist die Verteilung der Dimensionsberechnungen normalisiert auf Mittelwert 
+und Standardabweichung der Surrogatdaten \gpmarkb.  Die entsprechenden Werte der
+Originalzeitreihe sind durch \gpmarkf gekennzeichnet.
+}
+{ornsteinsigni}{-0.2cm}
+}
+
+
+\epsfigsix{surrogate/lorentz/noise0/orig}{surrogate/lorentz/noise10/orig}
+{surrogate/lorentz/noise0/variance}{surrogate/lorentz/noise10/variance}
+{surrogate/lorentz/noise0/pvalue}{surrogate/lorentz/noise10/pvalue}
+{Oben Ausschnitte aus einer Zeitreihe des Lorenzsystems ohne (links) bzw.\  mit 10 Prozent
+  Rauschen (rechts). In der Mitte sind die Verteilung der normalisierten
+  Korrelationsdimensionen und unten die entsprechenden $p$-Werte abgebildet. Die
+  Nullhypothese kann in beiden F"allen abgelehnt werden.
+}{lorentsurr1}{-0.2cm}
+
+\epsfigsix{surrogate/lorentz/noise30/orig}{surrogate/lorentz/noise50/orig}
+{surrogate/lorentz/noise30/variance}{surrogate/lorentz/noise50/variance}
+{surrogate/lorentz/noise30/pvalue}{surrogate/lorentz/noise50/pvalue}
+{Die gleichen Abbildungen wie in \psref{lorentsurr1} f"ur Zeitreihen mit 30 bzw.\  50
+  Prozent Rauschen. F"ur 50 Prozent Rauschen ist eine Ablehnung der Nullhypothese anhand
+  der $p$-Werte schon zweifelhaft.
+}{lorentsurr2}{-0.2cm}
 
 
 
 
-
-
-Eine bessere Methode \cite{prichard-theiler3}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \comment{
 \subsection{Statistische Testverfahren}

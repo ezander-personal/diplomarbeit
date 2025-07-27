@@ -1,72 +1,85 @@
-
-\newpage
-\newpage
+\clearpage
 %\section{Quantitative Charakterisierung seltsamer Attraktoren}
 \section{Fraktale Dimensionen}
-Bei der Untersuchung chaotischer System ist es wichtig ein Ma"s f"ur die Komplexit"at der
-Dynamik zu haben. Ein solches Komplexit"atsma"s ist durch die fraktale Dimension des Attraktors
-gegeben. Bei integrablen Systemen ist die Dimension des Attraktors gleichzeitig auch die Anzahl der 
-Freiheitsgrade. Bei chaotischen Systemen dagegen wird die Anzahl der Freiheitsgrade durch
+Bei der Untersuchung chaotischer Systems ist es wichtig, ein Ma"s f"ur die Komplexit"at der
+Dynamik zu haben. Ein solches Komplexit"atsma"s ist z.B. durch die fraktale Dimension des
+Attraktors gegeben. W"ahrend integrable Systeme stets Attraktoren mit ganzzahliger
+Dimension besitzen, ist dies f"ur chaotische Systeme in der Regel nicht mehr der Fall.
+Versucht man beispielsweise die Struktur des H\'enonattraktors zu beschreiben, so stellt
+man fest, da"s er in gewissem Sinne \naja(mehr) ist als eine Kurve, jedoch \naja(weniger)
+als eine Fl"ache. Seine Dimension liegt zwischen eins und zwei.  Im folgenden sollen
+verschiedene Definitionen f"ur die Dimension solcher fraktalen Objekte sowie Verfahren zur
+Berechnung selbiger beschrieben werden.  Das Hauptaugenmerk liegt hierbei auf der
+\begriff(numerischen) Berechenbarkeit der Dimension.
+
+\comment{Bei nichtdissipativen integrablen Systemen ist die Dimension des
+Attraktors gleichzeitig auch die Anzahl der Freiheitsgrade. Bei dissipativen Systemen
+hingegen wird die Anzahl der effektiven Freiheitsgrade durch die Dissipation stark
+eingeschr"ankt. Im integrablen Fall ist
+
+Bei chaotischen Systemen dagegen wird die Anzahl der Freiheitsgrade durch
 Dissipation (s. Abschnitt \ref{chapdynsystems}) stark reduziert auf wenige effektive
-Freiheitsgrade. Die Dimension des Attraktor ist i.allg. weit geringer als die Anzahl der
+Freiheitsgrade. Die Dimension des Attraktor ist i.allg.\  weit geringer als die Anzahl der
 Freiheitsgrade. Dar"uber hinaus l"a"st sie sich  die Dimension seltsamer Attraktoren nicht
 mehr durch ganze Zahlen 
 beschreiben. Beispielsweise ist der Attraktor des H\'enonsystems \naja(mehr) als eine
 Kurve, jedoch \naja(weniger) als eine Fl"ache. Seine Dimension liegt irgendwo zwischen
-eins und zwei. Es sollen im folgenden meherere Verfahren zur Berechnung der Dimension
+eins und zwei. Es sollen im folgenden mehrere Verfahren zur Berechnung der Dimension
 solcher fraktalen Objekte beschrieben werden. Dabei liegt das Hauptaugenmerk auf der
 numerischen Berechenbarkeit durch das Verfahren. 
+}
 
 \subsection{Hausdorffdimension}
-Von den verschiedenen Dimensionsbegriffen soll als erster der grundlegendste, n"amlich der 
-der \begriff(Hausdorffdimension) eingef"uhrt werden.
-Der Grundgedanke ist der folgende. Wenn ein geometrisches Objekt, beispielsweise eine
-Fl"ache, mit einem Ma"s niedrigerer Dimensionalit"at, z.B. durch Geradenst"ucke, ausgemessen 
-wird, ergibt sich ein unendlicher Wert bez"uglich dieses Ma"ses, da wir unendlich viele
-Geradenst"ucke brauchen um die Fl"ache zu "uberdecken. Wird dagegen mit einem Ma"s h"oherer Dimension gemessen,
-z.B. indem die Fl"ache durch W"urfel ausgemessen wird, ergibt der Wert Null, da eine
-Fl"ache kein Volumen besitzt. Nur wenn mit einem 
-Ma"s der gleichen Dimension gemessen wird, resultiert ein endlicher\footnote{Vorausgesetzt 
-die Menge ist kompakt. Dies ist im weiteren nicht wesentlich, da es nur darauf ankommt, da"s
-eine Sprungstelle von Unendlich auf Null existiert.} Wert. Aus diesem Sprungverhalten kann auf die Dimension des Objekts 
-geschlossen werden.
+Von den verschiedenen Dimensionsbegriffen soll als erster der grundlegendste, n"amlich der
+der \begriff(Hausdorffdimension) eingef"uhrt werden. Die Definition kann "uber die
+folgenden "Uberlegungen veranschaulicht werden. Wenn ein geometrisches Objekt,
+beispielsweise eine Fl"ache, mit einem Ma"s niedrigerer Dimensionalit"at, z.B. durch
+Geradenst"ucke, ausgemessen wird, ergibt sich ein unendlicher Wert bez"uglich dieses
+Ma"ses, da wir unendlich viele Geradenst"ucke brauchen um die Fl"ache zu "uberdecken. Wird
+dagegen mit einem Ma"s h"oherer Dimension gemessen, z.B. indem die Fl"ache durch W"urfel
+ausgemessen wird, ergibt der Wert 0, da eine Fl"ache kein Volumen besitzt. Nur wenn mit
+einem Ma"s der gleichen Dimension gemessen wird, resultiert ein endlicher
+Wert\footnote{Vorausgesetzt die Menge ist kompakt. Dies ist im weiteren nicht wesentlich,
+  da es nur darauf ankommt, da"s eine Sprungstelle von Unendlich auf 0 existiert.}. Aus
+diesem Sprungverhalten kann auf die Dimension des Objekts geschlossen werden.
 
-Nun m"ussen die oben benutzten Begriffe genauer, mathematisch spezifiziert werden. 
+Nun m"ussen die oben benutzten Begriffe genauer mathematisch spezifiziert werden. 
 Sei $\B$ eine beliebige, nichtleere Teilmenge des $\R^n$, deren Dimension wir messen m"ochten. Um das
 $d$-dimensionale Ma"s  der Menge zu bestimmen, "uberdecken wir sie mit Teilmengen 
-$\set C_{\eps,i}$ des $\R^n$ deren Durchmesser $\norm{\set C_{\eps,i}}$ kleiner als eine obere
-Schranke $\eps$ sein soll. Ein solche "Uberdeckung bezeichnen wir mit $\mathcal
-C_\eps$. Wir definieren nun 
-\eqnl[hausdorffmass1]{\hdm(\B,d,\eps) = \inf_{\mathcal C_\eps} \sum_{\set C_{\eps,i} \in \mathcal C_\eps}\norm{\set C_{\eps,i}}^d }
-Auf diese Weise betrachten wir alle m"oglichen "Uberdeckungen von $\B$, durch Mengen,
-deren Durchmesser h"ochstens $\eps$ ist, und \naja(versuchen) die Summe der $d$-ten Potenzen der
-Durchmesser zu minimieren. Wenn $\eps$ kleiner wird reduziert sich die Anzahl der
-m"oglichen "Uberdeckungen und $\hdm(\B,d,\eps)$ strebt einem Grenzwert entgegen.
-\eqnl[hausdorffmass2]{\hdm(\B,d) = \lim_{\eps\to 0}\hdm(\B,d,\eps)}
+$\set C_{r,i}$ des $\R^n$, deren Durchmesser $\norm{\set C_{r,i}}$ kleiner als eine obere
+Schranke $r$ sein soll. Ein solche "Uberdeckung bezeichnen wir mit $\mathcal
+C_r$. Wir definieren nun:
+\eqnl[hausdorffmass1]{\hdm(\B,d,r) = \inf_{\mathcal C_r} \sum_{\set C_{r,i} \in \mathcal C_r}\norm{\set C_{r,i}}^d .}
+Auf diese Weise betrachten wir alle m"oglichen "Uberdeckungen von $\B$ durch Mengen,
+deren Durchmesser h"ochstens $r$ ist, und \naja(versuchen) die Summe der $d$-ten Potenzen der
+Durchmesser zu minimieren. Wenn $r$ kleiner wird, reduziert sich die Anzahl der
+m"oglichen "Uberdeckungen, und $\hdm(\B,d,r)$ strebt einem Grenzwert entgegen:
+\eqnl[hausdorffmass2]{\hdm(\B,d) = \lim_{r\to 0}\hdm(\B,d,r) .}
 Der Grenzwert $\hdm(\B,d)$ existiert f"ur alle $\B$ und $d$ und hei"st das
 $d$-dimensionale \begriff(Hausdorffma"s) der Menge $\B$. F"ur ganzzahlige $d$ entspricht
-es, bis auf einen konstanten Faktor, dem $d$-dimensionalen Lebesguesma"s der Menge
-$\B$. Nach dem weiter oben gesagten, sollte nun eine Sprungstelle $D_H$ existieren, so
-da"s
+es, bis auf einen konstanten Faktor, dem $d$-dimensionalen Lebesgue-Ma"s der Menge
+$\B$. Nach dem oben gesagten sollte nun eine Sprungstelle $D_H$ existieren, so
+da"s:
 \eqnl[hausdorffmass3]{\hdm(\B,d) = \left\{ \begin{array}{ll}
-					  \infty, & d<D_H\\
-					  0,      & d>D_H
-					  \end{array}\right. }
-Diese Sprungstelle existiert immer\footnotemark. Das Hausdorffma"s $\hdm(\B,d)$ kann f"ur
-$d=D_H$ einen unendlichen oder einen endlichen Wert gr"o"ser Null annehmen\footnotemark. Wir definieren als
-\begriff(Hausdorffdimension) der Menge $\B$
-\eqnl[hausdorffdim]{D_H(\B) = \inf\{d\vert \hdm(\B,d)=0 \} }
-\footnotetext{Dies folgt aus den Skalierungseigenschaften von $\hdm(\B,d,\eps)$. Es gilt
-$\hdm(\B,t,\eps)\leq\eps^{t-d}\hdm(\B,d,\eps)$. L"a"st man $\eps$ gegen Null laufen, kann
+                                          \infty, & d<D_H\\
+                                          0,      & d>D_H
+                                          \end{array}\right.  .}
+Diese Sprungstelle existiert immer\footnotemark. 
+\footnotetext{Dies folgt aus den Skalierungseigenschaften von $\hdm(\B,d,r)$. Es gilt
+$\hdm(\B,t,r)\leq r^{t-d}\hdm(\B,d,r)$. L"a"st man $r$ gegen 0 laufen, kann
 mit \eqnref{hausdorffmass2} die Existenz der Sprungstelle gefolgert werden. } 
- \footnotetext{Nicht jedoch den Wert Null, wie in manchen Publikationen f"alschlich
+Das Hausdorffma"s $\hdm(\B,d)$ kann f"ur
+$d=D_H$ einen unendlichen oder einen endlichen Wert gr"o"ser 0 annehmen\footnotemark. Wir definieren als
+\begriff(Hausdorffdimension) der Menge $\B$:
+\eqnl[hausdorffdim]{D_H(\B) = \inf\{d\vert \hdm(\B,d)=0 \} .}
+ \footnotetext{Nicht jedoch den Wert 0, wie in manchen Publikationen f"alschlich
 behauptet, au"ser im trivialen Fall $\B=\emptyset$. Hierf"ur ist die Hausdorffdimension
 jedoch nicht definiert.}
 
 Die Hausdorffdimension ist die mathematisch am \naja(saubersten) definierte. Ihr
 Anwendungsbereich liegt vor allem in der Theorie. F"ur die Verwendung in
 Computeralgorithmen ist sie dagegen schlecht geeignet. Dies liegt haupts"achlich an
-Einbeziehung beliebiger "Uberdeckungen, was mit Computermethoden nicht zu realisieren
+der Einbeziehung beliebiger "Uberdeckungen, was mit Computermethoden nicht zu realisieren
 ist. F"ur numerische Berechnungen ist es sinnvoller die Menge der m"oglichen
 "Uberdeckungen einzuschr"anken. Eine dieser Einschr"ankungen f"uhrt uns auf den Begriff
 der Kapazit"at.
@@ -76,42 +89,45 @@ der Kapazit"at.
 \subsection{Kapazit"at}
 \label{chapcapacity}
 Bei der auf \autor(Kolmogorov) zur"uckgehenden \begriff(Kapazit"at) wird die Klasse der
-$\eps$-"Uberdeckungen von $\B$ beschr"ankt auf "Uberdeckungen $\mathcal C^K_\eps$, die als Teilmengen nur
-$n$-dimensionale W"urfel mit Durchmesser $\eps$ enthalten. Der Summand in
-\eqnref{hausdorffmass1} ist nun konstant gleich $\eps^d$. Das auf die "Uberdeckungen $\mathcal C^K_\eps$
+$r$-"Uberdeckungen von $\B$ beschr"ankt auf "Uberdeckungen $\mathcal C^K_r$, die als Teilmengen nur
+$n$-dimensionale W"urfel mit Durchmesser $r$ enthalten. Der Summand in
+\eqnref{hausdorffmass1} ist nun konstant gleich $r^d$. Das auf die "Uberdeckungen $\mathcal C^K_r$
 beschr"ankte Ma"s $\kpm$ ist also nur abh"angig von der Anzahl der Mengen, die zur "Uberdeckung
-von $\B$ minimal gebraucht werden. Bezeichnen wir diese Anzahl mit $N(\eps)$, so gilt f"ur das
-Ma"s $\kpm$
-\eqn{\kpm(\B,d,\eps)=N(\eps)\eps^d}
-Auch dieses Ma"s hat eine Sprungstelle bei einem bestimmten $d=D_K$ auf. Diese l"a"st sich 
+von $\B$ minimal gebraucht werden. Bezeichnen wir diese Anzahl mit $N(r)$, so gilt f"ur das
+Ma"s $\kpm$:
+\eqn{\kpm(\B,d,r)=N(r)r^d.}
+Auch dieses Ma"s hat eine Sprungstelle bei einem bestimmten $d=D_K$. Diese l"a"st sich 
 jedoch weit einfacher ermitteln als bei der Hausdorffdimension in
-\eqnref{hausdorffdim}. Offensichtlich kann $\kpm(\B,d,\eps)$ nur dann ein endlichen Wert
-annehmen, wenn $N(\eps)$ mit $(1/\eps)^d$ skaliert. Daher definieren wir
-\eqnl[capacity]{D_K(\B) = \lim_{\eps\to0} \frac{\log N(\eps)}{\log(1/\eps)}}
+\eqnref{hausdorffdim}. Offensichtlich kann $\kpm(\B,d,r)$ f"ur $r\to0$ nur dann ein
+endlichen Wert annehmen, wenn $N(r)$ mit $(1/r)^d$ skaliert. Daher definieren wir:
+\eqnl[capacity]{D_K(\B) = \lim_{r\to0} \frac{\log N(r)}{\log(1/r)} .}
 Dies ist die Kapazit"at der Menge $\B$. Da die Bestimmung der Kapazit"at nach
 \eqnref{capacity} nur darauf beruht, da"s die \naja(K"astchen), die zur "Uberdeckung der
 Menge $\B$ ben"otigt werden, gez"ahlt werden, spricht man auch von der
-\begriff(boxcounting-) oder \begriff(K"astchenz"ahldimension). F"ur typische Attraktoren
+\begriff(Boxcounting-Dimension). F"ur typische Attraktoren
 wird erwartet, da"s Kapazit"at und Hausdorffdimension "ubereinstimmen
-\cite{farmer-ott-yorke}. Es k"onnen jedoch Mengen konstruiert werden f"ur die das nicht der 
+\cite{Farmer-ott-yorke}. Es k"onnen jedoch Mengen konstruiert werden, f"ur die das nicht der 
 Fall ist.\footnote{Beispielsweise hat die Menge $\B=\{1/i\vert i\in\N\}$ die 
-Hausdorffdimension $D_H=0$ und die Kapzit"at $D_K=1/2$ \cite{Leven89}. Dies ist im "ubrigen einer der
-Schwachpunkte der Kapzit"at, da"s sie abz"ahlbaren Mengen endliche Dimension zuordnen kann.}
+Hausdorffdimension $D_H=0$ und die Kapazit"at $D_K=1/2$ \cite{Leven89}. Dies ist im "ubrigen einer der
+Schwachpunkte der Kapazit"at, da"s sie abz"ahlbaren Mengen endliche Dimension zuordnen kann.}
 
 K"astchenz"ahlalgorithmen sind auf Computern sehr einfach zu implementieren. Der
-Phasenraum braucht nur in K"astchen der Kantenl"ange $\eps$ eingeteilt werden\footnotemark. Dies
-geschieht auf dem Computer, indem in Feld $F$ mit $(L/\eps)^n$ Eintr"agen angelegt
-werden, wobei $L$ die lineare Ausdehnung des Attraktors ist. Jedem dieser Eintr"age wird
-nun genau ein K"astchen des Phasenraumes 
+Phasenraum braucht nur in K"astchen der Kantenl"ange $r$ eingeteilt werden\footnotemark.
+Dies geschieht auf dem Computer, indem ein \begriff(Array) $F$ mit $(L/r)^n$ Eintr"agen
+angelegt wird, wobei $L$ die lineare Ausdehnung des Attraktors ist\footnote{Ein Array ist
+  eine indizierte Menge von Variablen, wobei die Menge der Indizes beim Dimensionieren des
+  Arrays vorher festgelegt wird. Der entsprechende deutsche Fachbegriff \naja(Feld) wird
+  hier nicht verwendet, um Verwechselungen mit der physikalischen Bedeutung des Wortes
+  auszuschlie"sen.}. Jedem dieser Eintr"age wird nun genau ein K"astchen des Phasenraumes
 zugeordnet. F"ur jeden Rekonstruktionspunkt wird der Eintrag $i$ ermittelt und $F(i)$ um
 eins erh"oht. Die Anzahl der Eintr"age, f"ur die $F(i)\neq 0$, entspricht (ungef"ahr) der
-Anzahl $N(\eps)$. Hieraus kann dann "uber \eqnref{capacity} die Kapazit"at abgesch"atzt
-werden. Dieses direkte Verfahren ist jedoch sehr Speicher- und Zeitaufwendig, da 
-sowohl Speicherbedarf als auch Rechendauer mit der Ordnung \order{(L/\eps)^n} anwachsen.
-\footnotetext{Dies entspricht nicht genau dem bei der Definiton der Kapzit"at gemachten
-Ansatz, da hier ein festes Gitter mit Gitterkonstante $\eps$, statt einer "Uberdeckung
-durch beliebige K"astchen der Kantenl"ange $\eps$ benutzt wird. Generisch ist der
-Grenzwert in \eqnref{capacity} jedoch bei beiden Ans"atzen gleich.  }
+Anzahl $N(r)$. Hieraus kann dann "uber \eqnref{capacity} die Kapazit"at abgesch"atzt
+werden. Dieses direkte Verfahren ist jedoch sehr Speicher- und Zeitaufwendig, da sowohl
+Speicherbedarf als auch Rechendauer mit der Ordnung \order{(L/r)^n} anwachsen.
+\footnotetext{Dies entspricht nicht genau dem bei der Definition der Kapazit"at gemachten
+  Ansatz, da hier ein festes Gitter mit Gitterkonstante $r$, statt einer "Uberdeckung
+  durch beliebige K"astchen der Kantenl"ange $r$ benutzt wird. Der Grenzwert f"ur $r\to0$
+  ist jedoch bei beiden Ans"atzen gleich.  }
 
 
 Ein wesentlich schnelleres und speicherschonenderes Verfahren soll im folgenden
@@ -119,22 +135,22 @@ vorgestellt werden \cite{Junglas}.
 \comment{Das Verfahren, da"s sich aus der Definition der Kapazit"at f"ur eine computergest"utzte
 Berechnung ableitet, ist sehr einfach und erfolgt  in folgenden Schritten \cite{Junglas}:}
 \begin{itemize}
-\item Jeder Punkt der Menge\footnote{Da jede auf einem
+\item Jeder Punkt $\x$ aus der Menge\footnote{Da jede auf einem
 Computer darstellbare Menge abz"ahlbar sein mu"s, gehen wir hier wie auch im folgenden bei 
-rechnerischen Verfahren von abz"ahlbaren Mengen aus.} $\x\in\B\,\subset\,\R^n$ wird auf einen
-Punkt $\y\in\Z^n$, den sogenannten \begriff(Indexraum),  abgebildet. Hierzu wird jede
-der Komponenten von $\x$ durch $\eps$ geteilt und der gebrochene Teil abgeschnitten
-d.h.\  $y_i=\lfloor x_i/\eps \rfloor$. Durch diese Abbildung wird jedem Element $\x$ der
+rechnerischen Verfahren von abz"ahlbaren Mengen aus.} $\B\,\subset\,\R^n$ wird auf einen
+Punkt $\y\in\Z^n$ des sogenannten \begriff(Indexraumes)  abgebildet. Hierzu wird jede
+der Komponenten von $\x$ durch $r$ geteilt und der gebrochene Teil abgeschnitten,
+d.h.\  $y_i=\lfloor x_i/r \rfloor$. Durch diese Abbildung wird jedem Element $\x$ der
 Menge das $\x$ enthaltende K"astchen mit den Indizes $y_1,\dots,y_n$ zugeordnet.
 \item Die Menge der $\y_i$ wird nun geordnet. Dazu ist es notwendig eine Ordnungsrelation
 auf $\Z^n$ zu definieren. Die genaue Definition dieser Relation ist hier unwesentlich. Sie mu"s nur den
-mathematischen Anforderungen an eine Ordnungsrelation entsprechen. Wir definieren: $y_i$
-ist genau dann kleiner als $y_j$, wenn ein $k\in\{1,\dots,n\}$ existiert, so da"s
-alle $(\y_i)_m=(\y_j)_m$ f"ur alle $m<k$ und $(\y_i)_m<(\y_j)_m$ f"ur $m=k$ gilt.
-\item Nach der Konstruktion im ersten Schritt ist $N(\eps)$ identisch mit der Anzahl
+mathematischen Anforderungen an eine Ordnungsrelation entsprechen. Wir definieren: $\y_i$
+ist genau dann kleiner als $\y_j$, wenn ein $k\in\{1,\dots,n\}$ existiert, so da"s
+$\y_{i,m}=\y_{j,m}$ f"ur alle $m<k$ und $\y_{i,m}<\y_{j,m}$ f"ur $m=k$ gilt. 
+\item Nach der Konstruktion im ersten Schritt ist $N(r)$ identisch mit der Anzahl
 verschiedener $\y_i$, da dies genau der Anzahl von $\B$ belegter K"astchen
 entspricht. Durch die Sortierung in Schritt zwei kann diese Anzahl sehr schnell abgez"ahlt 
-werden. Division von $N(\eps)$ durch $\log(1/\eps)$ liefert eine Absch"atzung f"ur $D_0$.
+werden. Division von $\log N(r)$ durch $\log(1/r)$ liefert eine Absch"atzung f"ur $D_0$.
 \end{itemize}
 Der zeitaufwendigste Teil ist die Sortierung der Punkte mit \order{n N\log N} Schritten
 w"ahrend der erste und dritte Teil des Verfahrens nur \order{n N} Schritte ben"otigen. 
@@ -145,45 +161,64 @@ ben"otigte Datenmenge $N$, wie wir sp"ater noch sehen werden, exponentiell oder
 f"ur $N$.} mit $D_K$. Dies ist jedoch ein gemeinsames Charakteristikum
 aller Dimensionsberechnungen.
 
-Bei der Berechnung der Kapazit"at stellt sich jedoch ein anderes Problem. Aufgrund der
+Bei der Berechnung der Kapazit"at stellt sich allerdings ein anderes Problem. Aufgrund der
 endlichen Datenmenge werden manche K"astchen nicht mitgez"ahlt, obwohl sie f"ur
 $N\to\infty$ auch von Trajektorien besucht w"urden. Dies f"uhrt zu relativ gro"sen Fehlern 
 bei der Anwendung dieses Verfahrens. 
 
-K"astchen werden bei der Kapzit"at
-entweder gez"ahlt oder nicht gez"ahlt. Besser w"are, bei endlichen Datenmengen, statt die
-K"astchen  einfach zu z"ahlen, sie entsprechend ihrer Wahrscheinlichkeit zu
-gewichten. Dies f"uhrt uns zu den sogenannten \begriff(probabilistischen) Dimensionen, der 
-Informations- und der Korrelationsdimension, sowie den verallgemeinerten Dimensionen.
+Auf der anderen Seite wird die Tatsache, da"s manche K"astchen sehr oft besucht werden,
+ignoriert.  Bei der Kapazit"at werden K"astchen entweder gez"ahlt oder nicht. Besser w"are
+-- gerade bei endlichen Datenmengen -- den Beitrag der einzelnen K"astchen entsprechend
+ihrer Wahrscheinlichkeit zu gewichten. Dies f"uhrt zu den sogenannten
+\begriff(probabilistischen) Dimensionen, der Informations- und der Korrelationsdimension,
+sowie den verallgemeinerten Dimensionen.
 
 
 
 \subsection{Informationsdimension}
 Die \begriff(Informationsdimension) w"ahlt einen v"ollig anderen Zugang zum Begriff der Dimension,
 als die beiden vorangegangenen. Um einen Punkt in einem $n$-dimensionalen Raum festzulegen 
-werden genau $n$ reelle Zahlen ben"otigt. Anstatt anzugeben, wie wieviele reelle Zahlen
+werden genau $n$ reelle Zahlen ben"otigt. Anstatt anzugeben, wieviele reelle Zahlen
 hierzu ben"otigt werden, kann auch die Menge an Information angegeben
-werden, die ben"otigt wird um die Position des Punktes mit einer Genauigkeit $\eps$
-festzulegen. Diese Information betr"agt $I(\eps)=-n\ln(\eps)$, wobei wir hier wieder die
+werden, die ben"otigt wird, um die Position des Punktes mit einer Genauigkeit $r$
+festzulegen. Diese Information betr"agt $I(r)=-n\ln(r)$, wobei wir hier wieder die
 \naja(physikalischere) Einheit der Information in $\nat's$ gew"ahlt haben. Ist nun bekannt, da"s
 sich der Punkt in einer $D_I$-dimensionalen Teilmenge $\B$ des $\R^n$ befindet, reduziert 
-sich die notwendige Information auf $I(\eps)=-D_I\ln(\eps)$. Andererseits bringt uns die 
-Informationstheorie eine Ausdruck f"ur die mittlere Information, die die Messung eines
-Punktes aus $\B$ liefert\footnote{Vorrausgesetzt auf $\B$ ist ein Wahrscheinlichkeitsma"s
-definiert.}. "Uberdecken wir die Menge mit K"astchen der Kantenl"ange $\eps$ und sei $\Prob_i$ 
-das Wahrscheinlichkeitsma"s des $i$-ten K"astchens $\bar I(\eps)=-\sum_i \Prob_i\ln \Prob_i$. F"ur 
-$\eps\to 0$ k"onnen wir beide Ausdr"ucke gleichsetzen und nach $D_I$ aufl"osen.
-\eqnl[informationdim]{D_I(\B)=\lim_{\eps\to 0}\frac{\sum_i \Prob_i\ln \Prob_i}{\ln\eps}}
-Dies ist die Informationsdimension der Menge $B$. Die Informationsdimension hat in der
-letzten Zeit gegen"uber der noch zu besoprechenden Korrelationsdimension wieder vermehrt
-Anwendung gefunden. Dies liegt daran, da"s sie "uber sogenannte
-\begriff(N"achst-Nachbar-Algorithmen) gut berechenbar gemacht wurde\cite{Badii85}. Sei
-$\delta(k)$ der Abstand eines Referenzpunktes zu seinem $k$-ten n"achsten Nachbarn, dann
-gilt
-\eqn{D_I=-\frac{\log N}{<\log \delta(k)>}}
+sich die notwendige Information auf $I(r)=-D_I\ln(r)$. Andererseits bringt uns die 
+Informationstheorie einen Ausdruck f"ur die mittlere Information, die die Messung eines
+Punktes aus $\B$ liefert\footnote{Vorausgesetzt auf $\B$ ist ein Wahrscheinlichkeitsma"s
+definiert.}. "Uberdecken wir die Menge mit K"astchen der Kantenl"ange $r$ und sei $\Prob_i$ 
+das Wahrscheinlichkeitsma"s des $i$-ten K"astchens, dann gilt f"ur die mittlere
+Information, die bei der Bestimmung, in welchem K"astchen der Punkt liegt, gewonnen wird $\bar I(r)=-\sum_i
+\Prob_i\ln \Prob_i$. F"ur 
+$r\to 0$ k"onnen wir beide Ausdr"ucke gleichsetzen und nach $D_I$ aufl"osen:
+\eqnl[informationdim]{D_I(\B)=\lim_{r\to 0}\frac{\sum_i \Prob_i\ln \Prob_i}{\ln r} .}
+Dies ist die Informationsdimension der Menge $B$. 
+
+Die Informationsdimension hat in der
+letzten Zeit gegen"uber der noch zu besprechenden Korrelationsdimension wieder vermehrt
+Anwendung gefunden. Dies liegt daran, da"s sie durch die Einf"uhrung  sogenannter
+\begriff(N"achst-Nachbar-Algorithmen) gut berechenbar wurde\cite{Badii85}. Sei
+$\delta(k)$ der Abstand eines Referenzpunktes $\x$ zu seinem $k$-ten n"achsten Nachbarn, dann
+gilt:
+\eqn{D_I=-\frac{\log N}{<\log \delta(k)>} ,}
 wobei $<\log \delta(k)>$ der Erwartungswert von $\delta(k)$ ist. Dieser wird durch
 Mittelung "uber geeignete Referenzpunkte berechnet. F"ur die Vorteile dieser Methode
-gegen"uber den Korrelationsintegralen sie auf \cite{Liebert91} verwiesen.
+gegen"uber den Korrelationsintegralen sei auf \cite{Liebert91} verwiesen.
 
 
+
+Bevor wir im n"achsten Abschnitt auf die Korrelationsdimension eingehen, sollen hier
+vorher kurz die generalisierten Dimensionen $D_q$ eingef"uhrt werden. Diese sind definiert
+durch:
+\eqnl[gendim]{D_q = \frac1{q-1}\lim_{r\to0}\frac{\log\sum_i\Prob_i^q}{\log r}}
+mit $q\in\R^{\geq0}$.
+\autor(H. Hentschel) und \autor(I. Procaccia) zeigten \cite{Hentschel-procaccia}, da"s
+f"ur $q\to0$ bzw.\ $q\to1$ die generalisierte Dimension $D_q$ in die Kapazit"at $D_K$
+bzw.\\ die Informationsdimension $D_I$ "ubergeht:
+\eqn{D_K=\lim_{q\to0}D_q   , \qquad  D_I=\lim_{q\to1}D_q .} 
+Weiterhin konnten sie zeigen, da"s $D_q\leq D_{q'}$ f"ur $q>q'$, wobei das
+Gleichheitszeichen genau dann gilt, wenn es sich bei dem betrachteten Objekt um ein
+homogenes Fraktal handelt. Die Folge der $D_q$ ist also monoton fallend mit $D_0\geq
+D_q\geq D_\infty$. 
 

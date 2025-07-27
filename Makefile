@@ -19,7 +19,7 @@ RM=rm -f
 
 arbeit: view gliederung pslist
 
-all: view gliederung bib gliederung2 gliederung3
+all: view gliederung bib gliederung2 gliederung3 pslist
 
 
 

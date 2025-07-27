@@ -107,7 +107,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{5}
+\setcounter{tocdepth}{3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Verschiedene allgemeines Befehle
@@ -127,9 +127,13 @@
 \newcommand\etal{{et al.}}
 
 % Befehl um Korrekturen an den Rand zu schreiben
-\def\inkorrektur(#1){{\bf[#1]}}
-\def\outkorrektur(#1){{\marginpar{\begin{flushleft}\bf #1\end{flushleft}}}}
-\def\korrektur(#1){\outkorrektur(#1)}
+%\def\inkorrektur(#1){{\bf[#1]}}
+%\def\outkorrektur(#1){{\marginpar{\begin{flushleft}\bf #1\end{flushleft}}}}
+%\def\korrektur(#1){\outkorrektur(#1)}
+
+\def\inkorrektur(#1){}
+\def\outkorrektur(#1){}
+\def\korrektur(#1){}
 
 
 \def\thema(#1){{\marginline{\thema@font #1}}}
@@ -253,8 +257,8 @@
 \mathchardef\@geq="3215
 \newcommand{\lt}{\@mathopw{<}}
 \newcommand{\gt}{\@mathopw{>}}
-\renewcommand{\geq}{\@mathopw{\@geq}}
-\renewcommand{\leq}{\@mathopw{\@leq}}
+%\renewcommand{\geq}{\@mathopw{\@geq}}
+%\renewcommand{\leq}{\@mathopw{\@leq}}
 
 \newcommand{\ltn}{\@mathopn{<}}
 \newcommand{\gtn}{\@mathopn{>}}
@@ -290,7 +294,7 @@
 \newcommand{\y}{\vec{y}}
 
 % Einheitsmatrix
-\newcommand{\unity}{{\mat E}}
+\newcommand{\unity}{{\mat I}}
 
 % Das `Transponiert`-Zeichen
 \newcommand{\Tr}{\mathrm{T}}
@@ -354,7 +358,7 @@
 \newcommand{\kpm}{\mu_K}
 
 % Zeiten: sample und delay-time
-\newcommand{\sample}{{t_s}}
+\newcommand{\sample}{t_s}
 \newcommand{\delay}{{\tau}}
 
 % dimensionen
@@ -383,6 +387,11 @@
 
 \newcommand{\nullhyp}{{{\mathcal H}_0}}
 \newcommand{\process}{{{\mathcal F}}}
+
+\newcommand{\gauss}{\mathrm{N}}
+\newcommand{\arma}{\mathrm{ARMA}}
+\newcommand{\arpr}{\mathrm{AR}}
+\newcommand{\mapr}{\mathrm{MA}}
 
 % Information
 
@@ -542,29 +551,34 @@
 
 \def\psdonothing#1{}
 
-%\xdef\psfile#1{
-%\psfileyesno{#1}
-%}
-
 \def\writepstoaux#1{
 \immediate\write\@auxout{\string\psdonothing{./postscript/#1.eps}}
 }
-%\xdef\psfile#1{\comment{\@writefile{hallo}{gurke}}#1}
-
-
 
 % Gemeinsam f"ur alle figures
 
 \newcommand{\epsfigcommon}[4]{{
-        {
-                \begin{figure}[ht]
-                \begin{center}
+%\def\epsfigcommon#1#2#3#4{{
+    {
+      \ifnum\psposmode=0
+           \begin{figure}[\tbp]
+       \else
+           \begin{figure}[\htp]
+       \fi
+    \begin{center}
                 #4
                 \end{center}
                 \vspace{#3}\pscaption{#1}{#2}
                 \end{figure}
         }
 }}
+
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.9}
+\def\psnormal{1}
+\def\psseparate{0}
+\def\psposmode{\psnormal}
+
 
 
 % Einzelne Figure
