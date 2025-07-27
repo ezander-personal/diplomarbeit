@@ -5,7 +5,7 @@ Bei der Untersuchung chaotischer Systems ist es wichtig, ein Ma"s f"ur die Kompl
 Dynamik zu haben. Ein solches Komplexit"atsma"s ist z.B. durch die fraktale Dimension des
 Attraktors gegeben. W"ahrend integrable Systeme stets Attraktoren mit ganzzahliger
 Dimension besitzen, ist dies f"ur chaotische Systeme in der Regel nicht mehr der Fall.
-Versucht man beispielsweise die Struktur des H\'enonattraktors zu beschreiben, so stellt
+Versucht man beispielsweise die Struktur des H\'enon-Attraktors zu beschreiben, so stellt
 man fest, da"s er in gewissem Sinne \naja(mehr) ist als eine Kurve, jedoch \naja(weniger)
 als eine Fl"ache. Seine Dimension liegt zwischen eins und zwei.  Im folgenden sollen
 verschiedene Definitionen f"ur die Dimension solcher fraktalen Objekte sowie Verfahren zur
@@ -18,20 +18,20 @@ hingegen wird die Anzahl der effektiven Freiheitsgrade durch die Dissipation sta
 eingeschr"ankt. Im integrablen Fall ist
 
 Bei chaotischen Systemen dagegen wird die Anzahl der Freiheitsgrade durch
-Dissipation (s. Abschnitt \ref{chapdynsystems}) stark reduziert auf wenige effektive
+Dissipation (siehe Abschnitt \ref{chapdynsystems}) stark reduziert auf wenige effektive
 Freiheitsgrade. Die Dimension des Attraktor ist i.allg.\  weit geringer als die Anzahl der
 Freiheitsgrade. Dar"uber hinaus l"a"st sie sich  die Dimension seltsamer Attraktoren nicht
 mehr durch ganze Zahlen 
-beschreiben. Beispielsweise ist der Attraktor des H\'enonsystems \naja(mehr) als eine
+beschreiben. Beispielsweise ist der Attraktor des H\'enon-Systems \naja(mehr) als eine
 Kurve, jedoch \naja(weniger) als eine Fl"ache. Seine Dimension liegt irgendwo zwischen
 eins und zwei. Es sollen im folgenden mehrere Verfahren zur Berechnung der Dimension
 solcher fraktalen Objekte beschrieben werden. Dabei liegt das Hauptaugenmerk auf der
 numerischen Berechenbarkeit durch das Verfahren. 
 }
 
-\subsection{Hausdorffdimension}
+\subsection{Hausdorff-Dimension}
 Von den verschiedenen Dimensionsbegriffen soll als erster der grundlegendste, n"amlich der
-der \begriff(Hausdorffdimension) eingef"uhrt werden. Die Definition kann "uber die
+der \begriff(Hausdorff-Dimension) eingef"uhrt werden. Die Definition kann "uber die
 folgenden "Uberlegungen veranschaulicht werden. Wenn ein geometrisches Objekt,
 beispielsweise eine Fl"ache, mit einem Ma"s niedrigerer Dimensionalit"at, z.B. durch
 Geradenst"ucke, ausgemessen wird, ergibt sich ein unendlicher Wert bez"uglich dieses
@@ -56,7 +56,7 @@ Durchmesser zu minimieren. Wenn $r$ kleiner wird, reduziert sich die Anzahl der
 m"oglichen "Uberdeckungen, und $\hdm(\B,d,r)$ strebt einem Grenzwert entgegen:
 \eqnl[hausdorffmass2]{\hdm(\B,d) = \lim_{r\to 0}\hdm(\B,d,r) .}
 Der Grenzwert $\hdm(\B,d)$ existiert f"ur alle $\B$ und $d$ und hei"st das
-$d$-dimensionale \begriff(Hausdorffma"s) der Menge $\B$. F"ur ganzzahlige $d$ entspricht
+$d$-dimensionale \begriff(Hausdorff-Ma"s) der Menge $\B$. F"ur ganzzahlige $d$ entspricht
 es, bis auf einen konstanten Faktor, dem $d$-dimensionalen Lebesgue-Ma"s der Menge
 $\B$. Nach dem oben gesagten sollte nun eine Sprungstelle $D_H$ existieren, so
 da"s:
@@ -68,15 +68,15 @@ Diese Sprungstelle existiert immer\footnotemark.
 \footnotetext{Dies folgt aus den Skalierungseigenschaften von $\hdm(\B,d,r)$. Es gilt
 $\hdm(\B,t,r)\leq r^{t-d}\hdm(\B,d,r)$. L"a"st man $r$ gegen 0 laufen, kann
 mit \eqnref{hausdorffmass2} die Existenz der Sprungstelle gefolgert werden. } 
-Das Hausdorffma"s $\hdm(\B,d)$ kann f"ur
+Das Hausdorff-Ma"s $\hdm(\B,d)$ kann f"ur
 $d=D_H$ einen unendlichen oder einen endlichen Wert gr"o"ser 0 annehmen\footnotemark. Wir definieren als
-\begriff(Hausdorffdimension) der Menge $\B$:
+\begriff(Hausdorff-Dimension) der Menge $\B$:
 \eqnl[hausdorffdim]{D_H(\B) = \inf\{d\vert \hdm(\B,d)=0 \} .}
  \footnotetext{Nicht jedoch den Wert 0, wie in manchen Publikationen f"alschlich
-behauptet, au"ser im trivialen Fall $\B=\emptyset$. Hierf"ur ist die Hausdorffdimension
+behauptet, au"ser im trivialen Fall $\B=\emptyset$. Hierf"ur ist die Hausdorff-Dimension
 jedoch nicht definiert.}
 
-Die Hausdorffdimension ist die mathematisch am \naja(saubersten) definierte. Ihr
+Die Hausdorff-Dimension ist die mathematisch am \naja(saubersten) definierte. Ihr
 Anwendungsbereich liegt vor allem in der Theorie. F"ur die Verwendung in
 Computeralgorithmen ist sie dagegen schlecht geeignet. Dies liegt haupts"achlich an
 der Einbeziehung beliebiger "Uberdeckungen, was mit Computermethoden nicht zu realisieren
@@ -97,7 +97,7 @@ von $\B$ minimal gebraucht werden. Bezeichnen wir diese Anzahl mit $N(r)$, so gi
 Ma"s $\kpm$:
 \eqn{\kpm(\B,d,r)=N(r)r^d.}
 Auch dieses Ma"s hat eine Sprungstelle bei einem bestimmten $d=D_K$. Diese l"a"st sich 
-jedoch weit einfacher ermitteln als bei der Hausdorffdimension in
+jedoch weit einfacher ermitteln als bei der Hausdorff-Dimension in
 \eqnref{hausdorffdim}. Offensichtlich kann $\kpm(\B,d,r)$ f"ur $r\to0$ nur dann ein
 endlichen Wert annehmen, wenn $N(r)$ mit $(1/r)^d$ skaliert. Daher definieren wir:
 \eqnl[capacity]{D_K(\B) = \lim_{r\to0} \frac{\log N(r)}{\log(1/r)} .}
@@ -105,10 +105,10 @@ Dies ist die Kapazit"at der Menge $\B$. Da die Bestimmung der Kapazit"at nach
 \eqnref{capacity} nur darauf beruht, da"s die \naja(K"astchen), die zur "Uberdeckung der
 Menge $\B$ ben"otigt werden, gez"ahlt werden, spricht man auch von der
 \begriff(Boxcounting-Dimension). F"ur typische Attraktoren
-wird erwartet, da"s Kapazit"at und Hausdorffdimension "ubereinstimmen
+wird erwartet, da"s Kapazit"at und Hausdorff-Dimension "ubereinstimmen
 \cite{Farmer-ott-yorke}. Es k"onnen jedoch Mengen konstruiert werden, f"ur die das nicht der 
 Fall ist.\footnote{Beispielsweise hat die Menge $\B=\{1/i\vert i\in\N\}$ die 
-Hausdorffdimension $D_H=0$ und die Kapazit"at $D_K=1/2$ \cite{Leven89}. Dies ist im "ubrigen einer der
+Hausdorff-Dimension $D_H=0$ und die Kapazit"at $D_K=1/2$ \cite{Leven89}. Dies ist im "ubrigen einer der
 Schwachpunkte der Kapazit"at, da"s sie abz"ahlbaren Mengen endliche Dimension zuordnen kann.}
 
 K"astchenz"ahlalgorithmen sind auf Computern sehr einfach zu implementieren. Der

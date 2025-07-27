@@ -12,7 +12,7 @@ Die Grundidee ist folgende. Wir betten den Attraktor in einen hochdimensionalen 
 $\R^\embed$ der Dimension $\embed$ ein. Dann spannt der so rekonstruierte Attraktor
 $\attr$ in der Regel nur einen $\minembed$-dimensio\-nalen Unterraum
 $\subspace=\mathop{\mathrm{span}}(\folge(\x,1,N))$  des
-$\R^\embed$ auf, wobei die Dimension dieses Unterraums im allgemeinen sehr viel niedriger
+$\R^\embed$ auf, wobei die Dimension dieses Unterraumes im allgemeinen sehr viel niedriger
 als die des Einbettungsraumes ist.  Dieser Unterraum $\subspace$ wird nun bestimmt und der
 Attraktor $\attr$ hieraus in den niedrigdimensionalen $\R^\minembed$ projiziert.
 
@@ -63,7 +63,7 @@ den $i$ten Eigenvektor von $\gmat \Theta$ sowie f"ur $\sigma_i$ die Wurzel des e
 \eqnl[svdeigen1]{\gmat \Theta \vec s_i = \sigma_i^2 \vec s_i.}
 Dies best"atigt man leicht durch Einsetzen in \eqnref{svdbla1} und Ausnutzung der Orthogonalit"at der
 Eigenvektoren symmetrischer Matrizen\footnote{Dies ist i.allg.\  nicht die einzige L"osung 
-  von \eqnref{svdbla1}. Zur Bestimmung des Unterraums $\subspace$ reicht jedoch die
+  von \eqnref{svdbla1}. Zur Bestimmung des Unterraumes $\subspace$ reicht jedoch die
   Kenntnis {\em einer} L"osung. }. 
 
 %Kovarianzmatrix
@@ -186,7 +186,7 @@ Wir k"onnen nun das Verfahren zusammenfassen.
   
   Liegen hier"uber keine oder ungen"ugende Angaben vor, kann $\xi_0$ auch anders
   abgesch"atzt werden.  $\sigma_i$ strebt f"ur gro"se $i$ i.allg.\ gegen einen Grenzwert
-  $\sigma_\tmin$, der durch das Rauschen bestimmt ist (s. \psref{svdvalnoise}). F"ur
+  $\sigma_\tmin$, der durch das Rauschen bestimmt ist (siehe \psref{svdvalnoise}). F"ur
   $\xi_0$ wird dann dieser Grenzwert benutzt.
 \item Die Rekonstruktionsvektoren k"onnen nun gem"a"s \eqnref{svdrecvec} berechnet werden.
   Statt alle $\minembed$ Komponenten zu verwenden, kann allerdings alternativ auch nur die
@@ -200,18 +200,18 @@ Wir k"onnen nun das Verfahren zusammenfassen.
 \end{enumerate}
 
 \subsubsection{Anwendung des Verfahrens}
-Das Verfahren soll nun am Beispiel des Lorenzattraktors angewendet werden.  Nach
+Das Verfahren soll nun am Beispiel des Lorenz-Attraktors angewendet werden.  Nach
 Integration der Differentialgleichungen wurde aus der $x$-Komponente des Zustandvektors
 eine Zeitreihe gebildet.  Nach Berechnung der Kovarianzmatrix zu $\embed=7$ wurden die
 Eigenwerte und Eigenvektoren ermittelt.  Die Ergebnisse der Berechnungen zeigen
 \psref{svdval} und \psref{svdvec}.
 \epsfigsingle{svd/simple/lorsvdval}
 {Logarithmus der Eigenwerte $\sigma_i$ der Kovarianzmatrix $\gmat \Xi$ f"ur den
-Lorenzattraktor mit Einbettungsdimension $\embed=7$.
+Lorenz-Attraktor mit Einbettungsdimension $\embed=7$.
 }
 {svdval}{-0.2cm}
 \epsfigtriplehigh{svd/simple/lorsvdvec1}{svd/simple/lorsvdvec2}{svd/simple/lorsvdvec3}
-{Die ersten drei Eigenvektoren der Kovarianzmatrix f"ur den Lorenzattraktor
+{Die ersten drei Eigenvektoren der Kovarianzmatrix f"ur den Lorenz-Attraktor
 ($\embed=7$). F"ur jeden Eigenvektor $\vec c_k$ ist die $i$-te Komponente
 $\vec c_{k,i}$ "uber den Index $i$ aufgetragen.}
 {svdvec}{-0.2cm}
@@ -254,11 +254,11 @@ genauer eingehen.
 
 Wir wollen nun die Singular Value Decomposition bei Vorhandensein additiven Rauschens
 untersuchen. 
-Als Beispiel m"oge hier wieder eine Zeitreihe des Lorenzattraktor dienen. 
+Als Beispiel m"oge hier wieder eine Zeitreihe des Lorenz-Attraktor dienen. 
 Auf diese wurde gau"ssches Rauschen in verschiedener St"arke addiert (Angaben in 
 Prozent der Varianz von $x$). 
 F"ur die so entstandenen, verrauschten Zeitreihen wurden jeweils die
-Kovarianzmatrix $\gmat \Xi$ und ihre Eigenwerte $\sigma_i^2$ bestimmt (s. \psref{svdvalnoise}).
+Kovarianzmatrix $\gmat \Xi$ und ihre Eigenwerte $\sigma_i^2$ bestimmt (siehe \psref{svdvalnoise}).
 \afterpage{
 \epsfigsingle{svd/noise/lorsvd}
 {Logarithmus der Eigenwerte der Kovarianzmatrix $\gmat \Xi$ f"ur verschiedene
@@ -271,7 +271,7 @@ Rauschens bestimmt sind.
 Die Verh"altnisse der Eigenwerte sind durch die relative St"arke der
 Rauschamplitude gegeben. 
 
-Verschiedene Rekonstruktionen des Lorenzattraktors aus der Zeitreihe mit 5\% Rauschen sind
+Verschiedene Rekonstruktionen des Lorenz-Attraktors aus der Zeitreihe mit 5\% Rauschen sind
 in \psref{svdrecnoise} abgebildet. Hierbei wurden unterschiedliche Verfahren angewendet.
 Im linken Bild wurde einfach durch die Verz"ogerungskoordinatenabbildung das 2-Tupel
 $(x_i,x_{i+k_R})$ rekonstruiert. In der Mitte wurden die ersten beiden Komponenten
@@ -282,7 +282,7 @@ wird.
 
 \afterpage{
 \epsfigtriple{svd/noise/lorrec50_1}{svd/noise/lorsrec50_1}{svd/noise/lorrecs50_1}
-{Rekonstruktionen des Lorenzattraktors bei 5\% Rauschen. 
+{Rekonstruktionen des Lorenz-Attraktors bei 5\% Rauschen. 
 Links durch einfache Verz"ogerungskoordinatenabbildung, in der Mitte durch normale
 SVD-Rekonstruktion, rechts durch Verz"ogerungskoordinateneinbettung der ersten Komponente
 der SVD-Rekonstruktion. 
@@ -294,7 +294,7 @@ Die Vorteile der Singular Value Decomposition zur Rauschverminderung sind klar
 ersichtlich. Auf der anderen Seite kann die Rekonstruktion "uber Verz"ogerungskoordinaten
 bei Verwendung der durch Redundanzanalyse gewonnenen Verz"ogerungszeit $\delay_R$
 \naja(bessere) Einbettungen liefern. Dies zeigte \autor(A. M. Fraser), indem er ein
-sogenanntes \begriff(Verzerrungsfunktional) (engl. distortion functional)
+sogenanntes \begriff(Verzerrungsfunktional) (engl.: distortion functional)
 einf"uhrte. Dieses mi"st, wie gut die Lage eines Punktes im Originalphasenraum aus der
 Kenntnis seines rekonstruierten Bildes bestimmt ist\cite{Fraser}. Das Funktional mi"st,
 mit Frasers Worten, wie \naja(diffeomorph) die Rekonstruktion ist bzw.\  welche

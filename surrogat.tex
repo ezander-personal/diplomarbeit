@@ -14,13 +14,13 @@ nachwiesen, k"onnen auch stochastische Systeme mit Leistungsspektren
 $P(\omega)\propto\omega^{-\alpha}$, gegen eine endliche Dimension
 konvergieren\cite{Osborne89a}. F"ur $1<\alpha<3$ erhielten sie die Korrelationsdimension $D_2=2/(\alpha-1)$.  Dies
 liegt an zeitlichen Korrelationen aufeinanderfolgender Werte in der Zeitreihe. Diese
-k"onnen zwar durch die Methode von \autor(Theiler) (s. Abschnitt \ref{corrdimtheiler})
+k"onnen zwar durch die Methode von \autor(Theiler) (siehe Abschnitt \ref{corrdimtheiler})
 vermieden werden, andererseits existieren noch andere Effekte, die eine Konvergenz der
 Korrelationsdimension bei wei"sem oder farbigem Rauschen bewirken k"onnen \cite{Kennel92b}.
 
 \comment{
   \epsfigfour{surrogate/noise/noise}{surrogate/noise/fourier}{surrogate/noise/corrint}{surrogate/noise/corrdim}
-  {Links oben Zeitreihe $1/f^2$ Rauschen. Rechts oben Fourierspektrum. Links unten
+  {Links oben Zeitreihe $1/f^2$ Rauschen. Rechts oben Fourier-Spektrum. Links unten
     Korrelationsintegral. Rechts unten Korrelationsdimension, s"attigt bei ca.\ $5,0\dots
     5,5$ }{einsfnoise}{-0.2cm} }
 
@@ -68,7 +68,7 @@ das ja i.allg.\ das Ergebnis ist, das man haben m"ochte\footnotemark. \footnotet
 
 \subsubsection{Fehler 1. und 2. Art}
 Bei der Annahme oder Ablehnung einer Nullhypothese k"onnen verschiedener Art Fehler
-auftreten (s. \psref{taberrors}). Der
+auftreten (siehe \psref{taberrors}). Der
 erste m"ogliche Fehler ist, da"s die Nullhypothese abgelehnt wird, obwohl sie eigentlich wahr ist.
 Man spricht hier von einem \begriff(Fehler 1. Art). Die Wahrscheinlichkeit $\alpha$, mit
 der Fehler 1. Art auftreten, kann frei bestimmt werden. Dies geschieht, indem als
@@ -166,14 +166,14 @@ Prinzipiell h"atte jede beliebige Funktion der $N$ Argumente $X=(x_1,\dots,x_n) 
 werden k"onnen. Allerdings h"angt die G"ute des Tests stark von der Teststatistik $T$
 ab\footnotemark.  \footnotetext{In der Tat ist das hier gew"ahlte $T$ nicht die optimale
   Wahl, da nicht-gau"sf"ormige Verteilungen existieren, die das gleiche vierte Moment wie
-  eine Gau"sverteilung besitzen. Dies ist f"ur die folgenden Betrachtungen jedoch ohne
+  eine Gau"s-Verteilung besitzen. Dies ist f"ur die folgenden Betrachtungen jedoch ohne
   Belang.}
 
 
 Wir berechnen nun eine Anzahl $B$ von sogenannten \begriff(Surrogatdaten) oder kurz
 \begriff(Surrogaten) $\{X_k, k=1,\dots,B\}$. Der Proze"s zur Erzeugung der Surrogatdaten
 mu"s mit der Nullhypothese konsistent sein. Da es bei diesem Test nur auf die Verteilung
-der Daten und nicht auf zeitliche Korrelationen ankommt, k"onnen wir einen Gau"sproze"s
+der Daten und nicht auf zeitliche Korrelationen ankommt, k"onnen wir einen Gau"s-Proze"s
 $\gauss(\mu_0,\sigma_0^2)$, der unabh"angige, normalverteilte Zufallszahlen mit
 Erwartungswert $\mu_0$ und Varianz $\sigma_0^2$ erzeugt, w"ahlen. Wir berechnen nun die
 Teststatistik $T$ sowohl f"ur die Surrogatdaten als auch f"ur die realen Daten. Die
@@ -215,9 +215,9 @@ bzw.\ $\sigma_0$ recht praxisfern und -- au"ser zu Demonstrationszwecken -- eher
 uninteressant. Bei vorliegenden Daten wollen wir die Nullhypothese pr"ufen, ob die Daten
 allgemein gau"sverteilt mit unbekanntem, beliebigem Mittelwert $\mu$ und Varianz
 $\sigma^2$ sind. Dies ist allerdings eine zusammengesetzte Nullhypothese. Die mit
-$\nullhyp$ konsistenten Prozesse, sind alle Gau"sprozesse mit beliebigem $\mu$ und
+$\nullhyp$ konsistenten Prozesse, sind alle Gau"s-Prozesse mit beliebigem $\mu$ und
 $\sigma^2$. Es w"are nun offensichtlich weder sinnvoll noch praktikabel, die Teststatistik
-\eqnref{teststatistik1} f"ur alle m"oglichen Gau"sprozesse $\gauss(\mu,\sigma^2)$ zu
+\eqnref{teststatistik1} f"ur alle m"oglichen Gau"s-Prozesse $\gauss(\mu,\sigma^2)$ zu
 berechnen. Um die Anzahl der betrachteten Prozesse einzuschr"anken, existieren zwei
 verschiedene Ans"atze, die wir im folgenden diskutieren und vergleichen wollen
 \cite{Prichard-theiler3}.
@@ -225,14 +225,14 @@ verschiedene Ans"atze, die wir im folgenden diskutieren und vergleichen wollen
 \paragraph{Typische Realisierungen}
 Eine M"oglichkeit den Bereich der Prozesse einzuengen besteht in der Beschr"ankung auf
 \begriff(typische Realisierungen). Man berechnet hierzu $\hat\mu$ und $\hat\sigma$ der Originaldaten
-und erzeugt dann die Surrogatdaten durch Gau"sprozesse $\gauss(\mu,\sigma^2)$ mit
+und erzeugt dann die Surrogatdaten durch Gau"s-Prozesse $\gauss(\mu,\sigma^2)$ mit
 $\mu=\hat\mu$ und $\sigma=\hat\sigma$. Ein Problem hierbei ist, da"s f"ur die
 Surrogatdaten der empirische Mittelwert und die Standardabweichung im allgemeinen ungleich
 $\hat\mu$ bzw.\ $\hat\sigma$ sind\footnotemark. Die Verteilung der Daten ist f"ur Realisierungen von 
 Prozessen mit verschiedenem $\hat\mu$ und $\hat\sigma$ unterschiedlich. Dies hat zur Folge, da"s die Teststatistik relativ
 breit streut und die G"ute des Tests sehr schlecht wird. Dem l"a"st sich
 abhelfen, indem wir statt der Teststatitstik \eqnref{teststatistik1} eine
-\begriff(zentrale Teststatistik) (engl. pivotal test statistic) verwenden. Eine zentrale
+\begriff(zentrale Teststatistik) (engl.: pivotal test statistic) verwenden. Eine zentrale
 Teststatistik ist dadurch definiert, da"s sie f"ur
 alle Realisierungen der betrachteten Prozesse die gleiche Verteilung aufweist. 
 Betracheten wir statt des vierten Moments (\eqnref{teststatistik1}) das vierte, zentrale
@@ -241,7 +241,7 @@ und normierte Moment:
 Die so definierte Teststatistik ist unabh"angig vom Mittelwert und der empirischen
 Standardabweichung der Surrogat- bzw.\ Originaldaten. Die $T'$-Verteilung ist f"ur alle
 Prozesse gleich und die Statistik somit zentral.
-\footnotetext{Ein Gau"sproze"s $\gauss(\mu,\sigma^2)$ erzeugt Zufallszahlen
+\footnotetext{Ein Gau"s-Proze"s $\gauss(\mu,\sigma^2)$ erzeugt Zufallszahlen
   mit Erwartungswert $\mu$ und Standardabweichung $\sigma$. Bei der Realisierung $X$ eines
   solchen Prozesses k"onnen der Mittelwert $\hat\mu$ und die empirische
   Standardabweichung $\hat\sigma$ der erzeugten Daten hiervon abweichen.  Die Werte f"ur
@@ -254,11 +254,11 @@ Prozesse gleich und die Statistik somit zentral.
 %Diese Fehler sollten nach Voraussetzung mit der Wahrscheinlichkeit $0,05$ auftreten, da
 
 Die beiden Teststatistiken sollen nun bez"uglich ihres empirischen Signifikanzniveaus und ihrer
-G"ute verglichen werden (s. \psref{typicalreal}). 
+G"ute verglichen werden (siehe \psref{typicalreal}). 
 F"ur die Berechnung
 des empirischen Signifikanzniveaus wurden $\gauss(0,1)$ verteilte Daten verschiedenen Umfangs $N$
 gegen die Nullhypothese getestet. Zu jeder Testreihe wurden $B=39$ Surrogatdatenreihen
-durch einen Gau"sproze"s $\gauss(\hat\mu,\hat\sigma^2)$ erzeugt, wobei $\hat\mu$ bzw.\ 
+durch einen Gau"s-Proze"s $\gauss(\hat\mu,\hat\sigma^2)$ erzeugt, wobei $\hat\mu$ bzw.\ 
 $\hat\sigma$ Mittelwert und Standardabweichung der Testreihe sind.  Das Signifikanzniveau
 $\alpha$ f"ur diesen Test wurde auf $0,05$ festgelegt. Diese H"aufigkeit $\hat\alpha$ mit
 der Fehler 1. Art, d.h.\ Ablehnungen der Nullhypothese, auftreten wurde berechnet, indem
@@ -317,7 +317,7 @@ f"ur die typischen Realisierungen. Bei der Methode der eingeschr"ankten Realisie
 wird dies ausgeschlossen indem nur Surrogatdaten verwendet werden, bei denen Mittelwert
 und Standardabweichung exakt mit denen der Testreihe "ubereinstimmen. In diesem Fall ist
 das sehr einfach zu erreichen. Wir berechnen wieder eine Surrogatreihe
-$X_k=(x_{k,1},\dots,x_{k,N})$ "uber einen Gau"sproze"s $\gauss(\hat\mu,\hat\sigma)$. Nun
+$X_k=(x_{k,1},\dots,x_{k,N})$ "uber einen Gau"s-Proze"s $\gauss(\hat\mu,\hat\sigma)$. Nun
 berechnen wir Mittelwert $\hat\mu_k$ und Standardabweichung $\hat\sigma_k$ der erzeugten
 Daten und skalieren sie um:
 \eqn{x'_{k,l} = \hat\mu_0 + (x_{k,l}-\hat\mu_k)\hat\sigma_0/\hat\sigma_k .}
@@ -409,7 +409,7 @@ berechnet.} Die komplexen Amplituden der auftretenden Frequenzen $f=-\frac12, \d
 reell ist gilt $\alpha(f)=\alpha(-f)^*$. Nun wird ein neues (Surrogat-) Frequenzspektrum
 erzeugt mit $\alpha'(f)=\abs{\alpha(f)}e^{i\phi(f)}$. Auch die Surrogatdaten wieder rein
 reell sein sollen mu"s $\phi(-f)=-\phi(f)$ und insbesondere $\phi(0)=0$ gew"ahlt
-werden. Nach inverser Fouriertransformation der $\alpha'(f)$ hat man eine
+werden. Nach inverser Fourier-Transformation der $\alpha'(f)$ hat man eine
 Surrogatzeitreihe mit gleichem Leistungsspektrum und Autokorrelationsfunktion wie die Originalzeitreihe.
 Der beschriebene Proze"s wird auch als \begriff(Phasenrandomisierung), die enstandenen
 Surrogatdaten als FT-Surrogate bezeichnet.
@@ -438,7 +438,7 @@ beliebigen nicht gau"sf"ormigen Verteilung. \footnote{Im Prinzip k"onnte man die
 Eine entsprechende Nullhypothese w"are demnach, da"s den Daten ein stochastischer Proze"s
 zugrunde liegt, der durch eine nichtlineare Funktion gefiltert worden ist. Surrogatdaten, die
 mit dieser Nullhypothese konsistent sind, bezeichnet man als \begriff(AAFT-Surrogate),
-wobei AA f"ur ``Amplituden angepa"st'' (engl. amplitude adjusted) steht.  
+wobei AA f"ur ``Amplituden angepa"st'' (engl.: amplitude adjusted) steht.  
 Das Verfahren l"auft in  folgendem Schritten ab.
 \begin{itemize}
 \item Es wird eine Reihe von normalverteilten Daten $y_i$ wird erstellt. Diese Reihe wird
@@ -491,11 +491,11 @@ Regel wird eine der drei folgenden Statistiken benutzt.
   $\x_\mathrm{pred}(t_0+\Delta)$ und tats"achlichem Zustand $\x(t_0+\Delta)$ ist bei
   deterministischen Systemen deutlich geringer als bei stochastischen, und kann so als
   Teststatistik dienen. 
-\item \rem(Der gr"o"ste Lyapunovexponent.) Lyapuovexponenten beschreiben das
+\item \rem(Der gr"o"ste Lyapunov-Exponent.) Lyapunov-Exponenten beschreiben das
   Auseinanderdriften benachbarter Trajektorien im Phasenraum. Sie kennzeichnen die
   Eigenschaft chaotischer Systeme der sensitiven Abh"angigkeit von den
   Anfangsbedingungen. W"ahrend lineare, deterministische Systeme keine positiven
-  Lyapunovexponenten besitzen, exitiert f"ur ein chaotisches System mindestens ein
+  Lyapunov-Exponenten besitzen, exitiert f"ur ein chaotisches System mindestens ein
   positiver. F"ur stochastische Systeme divergieren sie. 
 \item \rem(Fraktale Dimensionen.) Wie im Kapitel "uber fraktale Dimensionen bereits
   beschrieben, besitzen deterministische Systeme eine endliche Dimension, w"ahrend sie
@@ -508,8 +508,8 @@ Regel wird eine der drei folgenden Statistiken benutzt.
 In unseren Untersuchungen wurde grunds"atzlich die Korrelationsdimension als Teststatistik 
 benutzt. Dies liegt zum einen daran, da"s sie einfacher zu berechnen ist als die beiden
 anderen Vorschl"age. F"ur den ersten ist das fitten lokaler, linearer Modelle f"ur
-verschiedene Bereiche des Phasenraums notwendig, was ein komplizierter und
-rechenaufwendiger Proze"s ist. Die Berechnung von Lyapunovexponenten ist dagegen nicht
+verschiedene Bereiche des Phasenraumes notwendig, was ein komplizierter und
+rechenaufwendiger Proze"s ist. Die Berechnung von Lyapunov-Exponenten ist dagegen nicht
 sehr robust gegen Rauschen. Zum anderen spricht nichts gegen die Korrelationsdimension,
 wenn sie in der Lage ist, die Nullhypothese abzulehnen. Im Falle des Versagens k"onnten
 dann allerdings andere Statistiken verwendet werden. 
@@ -517,7 +517,7 @@ dann allerdings andere Statistiken verwendet werden.
 \paragraph{Beispiele}
 Die Methode soll nun an zwei Beispielen getestet werden. Zum einen werden Testdaten
 f"ur einen Ornstein-Uhlenbeck-Proze"s generiert. Ein Test f"ur diese Daten sollte zu
-keiner Ablehnung der Nullhypothese f"uhren. Zum anderen werden aus dem Lorenzsystem
+keiner Ablehnung der Nullhypothese f"uhren. Zum anderen werden aus dem Lorenz-System
 extrahierte Zeitreihen getestet, bei denen der Test zu einer Ablehnung f"uhren sollte.
 
 F"ur den Ornstein-Uhlenbeck-Prozess wurde eine zuf"alliger Anfangswert $x_0'$
@@ -525,16 +525,16 @@ gew"ahlt. Dann wurde \eqnref{ornstein} $9192$ mal iteriert, wobei als Zeitreihe 
 letzten $N=8192$ Werte der berechneten Reihe verwendet wurden\footnote{Die ersten 1000
   Werte werden bei jeder Generierung von Zeitreihen weggelassen, um ein eventuell noch
   anhaltendes transientes Verhalten auszuschlie"sen. Der Wert 8192 begr"undet sich darin,
-  da"s f"ur die Anwendung der schnellen Fouriertransformation (FFT)ganzzahlige  Potenzen
+  da"s f"ur die Anwendung der schnellen Fourier-Transformation (FFT) ganzzahlige  Potenzen
   von 2 erforderlich sind. }. Einen Ausschnitt der Zeitreihe zeigt \psref{ornsteinfig}
 links. Danach wurden $B=39$ AAFT-Surrogatzeitreihen erstellt, von denen eine in
 \psref{ornsteinfig} rechts zu sehen ist. Bereits optisch ist kein gravierender,
 qualitativer Unterschied feststellbar. F"ur die Original- und Surrogatzeitreihen wurden
 die Korrelationsintegral f"ur die Einbettungsdimensionen $d=1,\dots,5$ und die Verz"ogerungszeit
-$k=4$ (s. \psref{ornsteincorrint}) berechnet. Die Korrelationsdimension
+$k=4$ (siehe \psref{ornsteincorrint}) berechnet. Die Korrelationsdimension
 $D_2$ wurde "uber Takens' Sch"atzer mit oberer Grenze $\ln\rmax=-2,5$ abgesch"atzt.
 
-F"ur das Lorenzsystem wurde in der gleichen Weise eine Zeitreihe mit $N=8192$
+F"ur das Lorenz-System wurde in der gleichen Weise eine Zeitreihe mit $N=8192$
 Datenpunkten erstellt. Um die Robustheit des Verfahrens gegen Rauschen zu testen, wurde
 auf diese Zeitreihe 10, 30 und 50 Prozent Rauschen addiert. In den Abbildungen
 \psref{lorentsurr1} und \psref{lorentsurr2} ist zu erkennen, da"s die Nullhypothese bei
@@ -574,7 +574,7 @@ Originalzeitreihe sind durch \gpmarkf gekennzeichnet.
 \epsfigsix{surrogate/lorentz/noise0/orig}{surrogate/lorentz/noise10/orig}
 {surrogate/lorentz/noise0/variance}{surrogate/lorentz/noise10/variance}
 {surrogate/lorentz/noise0/pvalue}{surrogate/lorentz/noise10/pvalue}
-{Oben Ausschnitte aus einer Zeitreihe des Lorenzsystems ohne (links) bzw.\  mit 10 Prozent
+{Oben Ausschnitte aus einer Zeitreihe des Lorenz-Systems ohne (links) bzw.\  mit 10 Prozent
   Rauschen (rechts). In der Mitte sind die Verteilung der normalisierten
   Korrelationsdimensionen und unten die entsprechenden $p$-Werte abgebildet. Die
   Nullhypothese kann in beiden F"allen abgelehnt werden.

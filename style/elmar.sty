@@ -124,7 +124,7 @@
 
 \def\rem(#1){{\bf #1}}
 
-\newcommand\etal{{et al.}}
+\newcommand\etal{{\rm et al.}}
 
 % Befehl um Korrekturen an den Rand zu schreiben
 %\def\inkorrektur(#1){{\bf[#1]}}
@@ -174,7 +174,7 @@
 \def\eqnal[#1]#2{ \begin{eqnarray} \label{#1} #2 \end{eqnarray} }
 
 % Referenzen auf Gleichungen
-\def\eqnref#1{{Gl.~\ref{#1}}}
+\def\eqnref#1{{Gl.~(\ref{#1})}}
 
 
 
@@ -436,15 +436,18 @@
 \theoremstyle{break}
 \theoremheaderfont{\scshape}
 \newtheorem{theorem}{Theorem}[chapter]
+\renewcommand{\thetheorem}{\arabic{theorem}}
 
 \newtheorem{corollar}{Korollar}[chapter]
+\renewcommand{\thecorollar}{}
 
 % Definition
 \newtheorem{definition}{Definition}[chapter]
+\renewcommand{\thedefinition}{}
 \theoremstyle{plain}
 
 % Anmerkung
-\newtheorem{annotate}{Anmerkung}[theorem]
+%\newtheorem{annotate}{Anmerkung}[theorem]
 
 
 
@@ -510,6 +513,9 @@
 
 \newlength{\pswidthdouble}
 \setlength{\pswidthdouble}{200pt}
+
+\newlength{\pswidthnewdouble}
+\setlength{\pswidthnewdouble}{\pswidthsingle}
 
 \newlength{\pswidthtriple}
 \setlength{\pswidthtriple}{130pt}
@@ -597,8 +603,8 @@
 \writepstoaux{#2}
         \epsfigcommon{#3}{#4}{#5}
         {
-                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#1.eps}}}
-                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#2.eps}}}
+                \resizebox{\pswidthnewdouble}{!}{\includegraphics[width=\pswidthnewdouble]{\psfile{./postscript/#1.eps}}}
+                \resizebox{\pswidthnewdouble}{!}{\includegraphics[width=\pswidthnewdouble]{\psfile{./postscript/#2.eps}}}
         }
 }}
 

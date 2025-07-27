@@ -1,4 +1,3 @@
-
 \subsection{Korrelationsdimension}
 \label{chapcorrdim}
 
@@ -35,7 +34,7 @@ Die Korrelationsdimension ist also gleich der verallgemeinerten Dimension $D_2$ 
 uns so als untere Absch"atzung f"ur die  Kapazit"atsdimension. 
 
 Aufgrund der Unabh"angigkeit von $D_q$ von der speziellen Form der Partitionierung
-(s. \eqnref{gendim}) ist das Korrelationsintegral (im Grenzfall $\eps\to0$) unabh"angig von
+(siehe \eqnref{gendim}) ist das Korrelationsintegral (im Grenzfall $\eps\to0$) unabh"angig von
 der Wahl der Norm. F"ur die numerische Berechnung des Korrelationsintegrals ist es daher
 aus Gr"unden der Geschwindigkeit sinnvoll, statt der euklidischen Norm $\norm{\cdot}_2$ die
 Maximumsnorm $\norm{\cdot}_\infty$ zu verwenden. Da die Definition des
@@ -86,14 +85,14 @@ der Maximumsnorm aus $r_{ij,d}=\max(r_{ij,d-1},\abs{\x_{i,d}-\x_{j,d}})$. Der In
 mu"s nur dann neu berechnet werden, wenn $r_{ij,d}\gt r_{ij,d-1}$ ist.
 
 \epsfigsingle{corrint/perfect/corrint700b}
-{Korrelationsintegral f"ur eine Zeitreihe ($N=7\times 10^5$)des R"osslerattraktor mit $\rho=2^{1/10}$,
+{Korrelationsintegral f"ur eine Zeitreihe ($N=7\times 10^5$)des R"ossler-Attraktor mit $\rho=2^{1/10}$,
 $m=102$ und $d=1\dots 8$ (von oben nach unten). Die Abst"ande sind einheitlich auf
 $\rmax=1$ skaliert worden. Aufgrund des Skalierungsverhaltens des
 Korrelationsintegrals erfolgt die Darstellung doppelt logarithmisch.} 
 {corrintperf}{-0.2cm}
 
 \psref{corrintperf} zeigt eine Berechnung des Korrelationsintegrals f"ur eine aus dem
-R"osslersystem \cite{Roessler76} gewonnenen Zeitreihe mit $7\times 10^5$ Punkten 
+R"ossler-System \cite{Roessler76} gewonnenen Zeitreihe mit $7\times 10^5$ Punkten 
 f"ur Einbettungsdimensionen $d=1\dots 8$. In der Abbildung sind deutlich zwei Bereiche zu
 unterscheiden. F"ur $\log r>-1$ geht $\log C(r)$ gegen 0. Der Grund liegt einfach
 darin, da"s der Attraktor nur einen begrenzten Raumbereich aufspannt und f"ur hinreichend
@@ -103,7 +102,7 @@ Korrelationsintegrals. Den Abstand, ab dem S"attigung auftritt, bezeichnen wir m
 $\rsaett$. F"ur $\log r<-1$ zeigt das Korrelationsintegral das 
  erwartete Skalierungsverhalten $C(r)\propto r^\nu$, wobei die Konstante
 $\nu$ f"ur unterschiedliche Einbettungsdimensionen verschiedene Werte annimmt. Da der
-R"osslerattraktor die Korrelationsdimension $\corrdim\sim 2.07>2$ besitzt, skaliert das $C(r)$
+R"ossler-Attraktor die Korrelationsdimension $\corrdim\sim 2.07>2$ besitzt, skaliert das $C(r)$
 f"ur Einbettungsdimensionen $d\leq 2<\corrdim$ mit $r^d$, da in diesem Fall der gesamte Phasenraum
 aufgespannt wird. F"ur Einbettungsdimensionen $d>\corrdim$ skaliert das Korrelationsintegral
 mit $r^{\corrdim}$. Dieser Bereich, auf dessen Bestimmung bei der Korrelationsanalyse das
@@ -166,7 +165,7 @@ eine der Voraussetzungen f"ur die Durchf"uhrung einer linearen Regression hier n
 erf"ullt ist. Die Werte von $\log C(r)$ sind f"ur verschiedene Werte von $r$ nicht
 voneinander unabh"angig. Zudem hat die Absch"atzung des Fehlers bei einer solchen Methode
 kleinster Quadrate meist wenig mit dem wirklichen Fehler bei der Dimensionsberechnung zu
-tun. Wir werden sp"ater eine Methode entwickeln, die diese Schwachstellen nicht teilt (s.
+tun. Wir werden sp"ater eine Methode entwickeln, die diese Schwachstellen nicht teilt (siehe
 Abschnitt \ref{chaptakensest}).
 
 \paragraph{Korrelationskoeffizient}
@@ -327,7 +326,7 @@ geht die obige Gleichung "uber in:
 \eqn{\corrdim(r_n) = \sum\limits_{i=1}^{n-1} \frac{C(r_i+1)-C(r_i)}{C(r_n)}\ln(r_i/r_n), }
 wobei $r_n=\rmax$ gesetzt wurde.
 Ein Vergleich dieser Methode mit der im vorigen Abschnitt beschriebenen zeigt, da"s der
-Takens' Sch"atzer bei bekannten Systemen im allgemeinen bessere Werte liefert (s. \psref{corrdimcomp}).
+Takens' Sch"atzer bei bekannten Systemen im allgemeinen bessere Werte liefert (siehe \psref{corrdimcomp}).
 %\inkorrektur(Fehlerabsch"atzung)
 
 \epsfigdouble{corrint/perfect/corrdim700b}{corrint/perfect/takdim700b} { Vergleich der
@@ -341,7 +340,7 @@ Takens' Sch"atzer bei bekannten Systemen im allgemeinen bessere Werte liefert (s
 Das Korrelationsintegral in \psref{corrintperf} ist nahezu optimal im Sinne des erwarteten 
 theoretischen Verlaufs. Der Skalierungsbereich 
 erstreckt sich "uber einige Gr"o"senordnungen ($\rmax/\rmin\simeq 54)$ und die Steigung innerhalb
-dieses Bereichs ist nahezu konstant (s. \psref{corrslpperf}). Der Grund liegt vor allem
+dieses Bereichs ist nahezu konstant (siehe \psref{corrslpperf}). Der Grund liegt vor allem
 darin, da"s f"ur die Berechnung eine gro"se Anzahl Datenpunkte ($7\times10^5$) vorlag und
 mit nahezu rauschfreien Daten gearbeitet wurde. In experimentellen Situationen liegt
 beides meist nicht vor. Die Fehler, die hieraus (und auch aus anderen Quellen) resultieren,
@@ -384,7 +383,7 @@ erkennbar. Sobald eine wesentliche Anzahl Punkte einen Abstand von weniger als $
 stark vom theoretischen Verlauf ab.
 
 Der Wert $r_s$, f"ur den das Skalierungsverhalten durch den \begriff(Kanteneffekt)
-(engl. edge effect) abbricht, h"angt sehr von
+(engl.: edge effect) abbricht, h"angt sehr von
 der Dimension und der Geometrie des Attraktors ab. 
 F"ur einen $m$-dimensionalen Hyperkubus der Kantenl"ange 1 kann das 
 Korrelationsintegral jedoch exakt berechnet werden\footnotemark:
@@ -452,7 +451,7 @@ Bei Digitalisierungsrauschen verh"alt sich die Sache etwas anders. Sei $\eps$ de
 Diskretisierungslevel. Dann ist jeder Me"swert und somit auch jeder Abstand zwischen
 Attraktorpunkten  ein ganzzahliges Vielfaches von $\eps$ \footnotemark. Das Korrelationsintegral
 verl"auft daher nicht kontinuierlich sondern in Spr"ungen bei jedem $r=n\eps$ ($n\in\N$)
-(s. \psref{corrnoise} rechts). 
+(siehe \psref{corrnoise} rechts). 
 Zus"atzlich werden verschiedene Attraktorpunkte auf ein und denselben Punkt
 abgebildet, so da"s Punkte mit $\rij=0$ mit endlicher Wahrscheinlichkeit auftreten. Ein
 Algorithmus zur Berechnung der Korrelationsdimension mu"s mit diesen Punkten umgehen
@@ -475,7 +474,7 @@ Skalierungsverhaltens f"uhrt auf den oben angegebenen Term.}
 Um Rauschen zu vermindern k"onnen verschiedene Filtertechniken angewandt werden. Die
 einfachsten hiervon sind Tief- oder Bandpa"sfilter. Diese haben jedoch den Nachteil, da"s
 ihre Anwendung dem System einen Freiheitsgrad hinzuf"ugt und somit auch die gemessene
-Dimension erh"ohen kann (s. Abschnitt \ref{chapcorrdimfiltered}). Zudem ist im
+Dimension erh"ohen kann (siehe Abschnitt \ref{chapcorrdimfiltered}). Zudem ist im
 allgemeinen nicht direkt ersichtlich ab welcher Oberfrequenz gefiltert werden sollte. Das
 Abschneiden aller Frequenzen oberhalb einer bestimmten Grenzfrequenz birgt auch die
 Gefahr, da"s eventuell f"ur die Dynamik wesentliche Informationen verloren gehen.
@@ -489,7 +488,7 @@ anderer Verfahren teilt diese Methode nicht, da sie sich automatisch dem System 
 und das Problem der Dimensionserh"ohung hier prinzipiell nicht auftreten kann.
 
 \epsfigdouble{corrint/errors/noise/corrint02b}{corrint/errors/discrete/corrint05b}
-{Links das Korrelationsintegral zu einer Zeitreihe des Lorenzsystems dem wei"ses
+{Links das Korrelationsintegral zu einer Zeitreihe des Lorenz-Systems dem wei"ses
 Rauschen "uberlagert ist. Die Varianz des Rauschsignals betr"agt 0,2 Prozent der Varianz des
 Originalsignals. Rechts wurde dasselbe Signal diskretisiert in Schritten von 0,5 Prozent
 der Varianz des Signals.
@@ -544,7 +543,7 @@ auftaucht \cite{Mitschke}.
 Aus deterministischen Systemen gewonnene Signale sind grunds"atzlich autokorreliert. Es
 existiert eine Autokorrelationszeit $\tau_\ac$, so da"s f"ur Zeiten $\tau<\tau_\ac$ sind
 $x(t)$ und $x(t+\tau)$ stark miteinander korreliert. Falls die Autokorrelationszeit gro"s 
-gegen sie Samplingzeit $\sample$ ist, kann im Korrelationsintegral eine anormale Stufe
+gegen sie Sampling Time $\sample$ ist, kann im Korrelationsintegral eine anormale Stufe
 auftreten. Nach einem Vorschlag von \autor(Theiler) l"a"st sich dies vermeiden, indem das
 Korrelationsintegral nur "uber Punktepaare  gebildet wird, die zeitlich mindestens
 $W\sample>\tau_\ac$ auseinanderliegen \cite{Theiler}. Das so korrigierte Korrelationsintegral lautet dann:
@@ -561,11 +560,11 @@ Die fraktale Struktur einer Menge kann au"ser durch ihre Dimension auch durch di
 sogenannte \begriff(Lakunarit"at) (lat.\  lacuna = Loch, H"ohle), einem von
 \autor(B. Mandelbrot) \cite{Mandelbrot82} gepr"agten Begriff, charakterisiert werden. 
 Bei Fraktalen gleicher Dimension ist dasjenige mit der h"oheren Lakunarit"at st"arker
-texturiert und erscheint fraktal-"ahnlicher. Ein Beispiel f"ur zwei \begriff(Cantormengen)
+texturiert und erscheint fraktal-"ahnlicher. Ein Beispiel f"ur zwei \begriff(Cantor-Mengen)
 unterschiedlicher Lakunarit"at zeigt \psref{lacunarity}.
 %
 \epsfigdouble{corrint/errors/lacunarity/sevena}{corrint/errors/lacunarity/sevenb}
-{Die ersten f"unf Konstruktionschritte zweier Cantormengen. In jedem Schritt werden die
+{Die ersten f"unf Konstruktionschritte zweier Cantor-Mengen. In jedem Schritt werden die
 Intervalle in sieben gleich gro"se Teilintervalle unterteilt von denen im linken jeweils
 das dritte, vierte und f"unfte und im rechten das zweite, vierte und sechste Teilintervall
 gestrichen wird. Die Kapazit"at der entstehenden fraktalen Mengen ist 
@@ -577,14 +576,14 @@ Relation $C(r)\propto r^\corrdim$ ist hier falsch, da $C(r)$ eine stufenweise Fu
 (\begriff(Teufelstreppe)) ist \cite{Broggi88}. 
 Die Auswirkungen sind Oszillationen im Korrelationsintegrals, d.h.\  $C(r)$ ist nun proportional zu
 $k(r)r^\corrdim$, wobei $k(r)$ im allgemeinen periodisch in $\log r$ ist
-(s. \psref{corrintlac}). Der Einflu"s der  Lakunarit"at kann minimiert werden, wenn bei
+(siehe \psref{corrintlac}). Der Einflu"s der  Lakunarit"at kann minimiert werden, wenn bei
 der Dimensionbestimmung "uber volle Perioden von $k(r)$ gemittelt wird.
 \autor(Grassberger) zeigte andererseits, da"s die Oszillationen im Grenzfall $r\to 0$
 ausged"ampft werden\cite{Grassberger88}.
 %
 \epsfigfour{corrint/errors/lacunarity/canacint}{corrint/errors/lacunarity/canbcint}
 {corrint/errors/lacunarity/canacslp}{corrint/errors/lacunarity/canbcslp}
-{Korrelationsintegrale und Steigungskurven f"ur die Cantormengen aus \psref{lacunarity}
+{Korrelationsintegrale und Steigungskurven f"ur die Cantor-Mengen aus \psref{lacunarity}
 (Die linke Menge ist durch \gpmarkb, die rechte durch \gpmarkd{} gekennzeichnet.). Die
 Korrelationsdimension ergibt sich zu $\mcorrdim=0,710$ bzw.\  $\mcorrdim=0,718$, was sehr gut mit dem
 theoretischen Wert $\corrdim=\ln 4 /\ln 7\simeq 0,712$ "ubereinstimmt\footnotemark.
