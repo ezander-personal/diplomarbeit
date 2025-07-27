@@ -1,25 +1,12 @@
-TEXFILES=$(wildcard *.tex)
-BIBFILES=$(wildcard *.bbl)
-
-NUM1:=$(shell number1)
-NUM2:=$(shell number2)
-TARFILE:=tex.tar
-GZFILE:=tex$(NUM2).tgz
-
-TEXINPUTS+=":./style/:./bib:./bst"
-
-RM=rm -f
-
-
 .PHONY: arbeit all gliederung bib view print ps backup tar disk clean
 
 #
 # normal targets section
 #
 
-arbeit: view gliederung pslist
+arbeit: clean pdf ps
 
-all: view gliederung bib gliederung2 gliederung3 pslist
+all: arbeit pslist
 
 
 
@@ -27,32 +14,14 @@ all: view gliederung bib gliederung2 gliederung3 pslist
 # commands section
 #
 
-gliederung:
-	latex gliederung
+pdf:
+	TEXINPUTS=".//:" ./latexmk.pl -pdf gliederung
 
-gliederung2:
-	latex gliederung
+ps:
+	TEXINPUTS=".//:" ./latexmk.pl gliederung
 
-gliederung3:
-	latex gliederung
-
-
-bib:
-	bibtex gliederung
-
-view:
-	runxdvi
-
-print:
-	lpr gliederung
-
-split:
-	dvips gliederung	
-	dsplit gliederung.ps 
-
-#
-#
-#
+clean:
+	./latexmk.pl -C gliederung
 
 nops:
 	@rm -f style/psyesno.sty
@@ -67,37 +36,4 @@ showps:
 
 pslist: gliederung.aux
 	@grep psdo gliederung.aux | cut -d"{" -f 2 | cut -d "}" -f 1 > pslist
-
-#
-# backup section
-#
-
-backup:	disk
-
-tar:
-	tar cf $(TARFILE)
-	tar rf $(TARFILE)  Makefile settexvars runxdvi number* .number* gliederung killps.cc
-	tar rf $(TARFILE)  *.tex style/* bst/* bib/tsa.bib
-	gzip -f -c $(TARFILE) > $(GZFILE)
-	@mv .number$(NUM1) .number$(NUM2)
-
-disk:	tar
-	mcopy -n $(GZFILE) a:$(GZFILE)
-	rm $(GZFILE)
-
-psbackup: pslist
-	tar cf allps 
-	tar rfh allps `cat pslist` ./postscript/*.eps
-	gzip -f -c allps > allps.tgz
-	
-
-#
-# cleanup section
-#
-
-clean:
-	$(RM) *.dvi *.ps  dsplit* *~  "#"*"#"
-
-distclean:
-	$(RM) *.aux *.bbl *.blg *.dvi *.log *.toc *.ps  dsplit* *~  "#"*"#"
 

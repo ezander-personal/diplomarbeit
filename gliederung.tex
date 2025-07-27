@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{scrreprt}
+\documentclass[a4paper,12pt,enabledeprecatedfontcommands]{scrreprt}
 
 % Befehle, die in Standard, aber nicht in den KOMA classes zur Verf"ugung stehen
 \def\frontmatter{}
@@ -6,7 +6,7 @@
 \def\backmatter{}
 
 % Deutsche Layouts und Trenntabellen
-\usepackage{german}
+\usepackage[german]{babel}
 
 % Zum einbinden von PostScript-Grafiken
 \usepackage{graphicx}
@@ -98,7 +98,7 @@
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 %\selectlanguage{english}
 \bibliography{bib/tsa}
-\bibliographystyle{myalpha}
+\bibliographystyle{./bst/myalpha}
 %\bibliographystyle{plain}
 %\bibliographystyle{./bst/mysiam}
 
@@ -108,18 +108,3 @@
 \hbox{}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
