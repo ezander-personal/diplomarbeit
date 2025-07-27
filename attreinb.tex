@@ -28,7 +28,7 @@ im allgemeinen eine Koordinate des Phasenraumes\footnote{Bei Hamilton-Systemen w
   definiert. In diesem Fall ist die Dimension des Phasenraumes gleich $2f$.}. Die Anzahl
 der Freiheitsgrade und damit die Dimension des Phasenraumes ist in vielen F"allen endlich,
 kann jedoch bei \naja(ausgedehnten) Systemen\footnote{Gemeint sind hier beispielsweise
-  hydrodynamische Systeme deren, Zustand durch Dichte- , Temperatur- und
+  hydrodynamische Systeme, deren Zustand durch Dichte- , Temperatur- und
   Geschwindigkeitsfelder beschrieben wird. Die hier auftretenden partiellen
   Differentialgleichungen k"onnen oftmals durch eine Modenentwicklung (z.B. nach
   \autor(Ritz-Galerkin)) auf eine \eqnref{evolut} entsprechende Form gebracht werden.}
@@ -74,9 +74,8 @@ einpr"agsamen Namen \begriff(seltsame Attraktoren).
 
 
 \epsfigdouble{attraktoren/lornew}{attraktoren/fournew}
-{Links eine typische Trajektorie des Lorenz-Systems. \comment{ zu den 
-Standardparameterwerten $\sigma =10$, $r=28$, $b=8/3$} Rechts das Leistungsspektrum $P(\omega)$ der 
-$x$-Komponente.}{attrlor}{-0.2cm}
+{Oben eine typische Trajektorie des Lorenz-Systems. Unten das Leistungsspektrum $P(f)$ der
+  $x$-Komponente.}{attrlor}{-0.2cm} 
 
 Eine mathematisch exakte Definition seltsamer Attraktoren ist ein schwieriges
 Problem. Eine endg"ultige Fassung, auf die sich alle geeinigt h"atten, ist bis heute nicht
@@ -123,11 +122,11 @@ Lyapunov-Exponenten.
   Verfahren zur Extraktion instabiler periodischer Orbits aus experimentellen Zeitreihen
   findet sich in \cite{Pawelzik91,Pawelzik91a}.
 \end{itemize}
-Die aufgez"ahlten Eigenschaften sind nicht voneinander unabh"angig. \autor(J. Banks \etal)
+Die aufgez"ahlten Eigenschaften sind nicht voneinander unabh"angig. \autor(Banks \etal)
 konnten zeigen, da"s die exponentielle Separation der Trajektorien aus den beiden anderen
 Eigenschaften gefolgert werden kann \cite{Banks92}. Da die Eigenschaften des Durchmischens
 als auch das Dichtliegen periodischer Orbits topologische Invarianten sind, gilt
-dies somit abenfalls f"ur die exponentielle Separation der Trajektorien. Unter
+dies somit ebenfalls f"ur die exponentielle Separation der Trajektorien. Unter
 topologischen Abbildungen bleiben also die dynamischen und geometrischen Eigenschaften
 seltsamer Attraktoren unber"uhrt.
 
@@ -155,11 +154,10 @@ Die Theorie seltsamer Attraktoren kann oftmals gute Erkl"arungsans"atze f"ur das
 Ver\-st"andnis dynamischer Systeme liefern. So kann beispielsweise das Lorenz-System als
 Modell f"ur bestimmte Konvektionszellen (sogenannte Rayleigh-B\'enard-Zellen) verwendet
 werden\footnote{\autor(Lorenz) benutzte zur Aufstellung seiner Gleichungen das
-  \autor(Rayleigh)sche Modell der Str"omungsdynamik in bestimmten rechteckigen
-  Fl"ussigkeitszellen. Er betrachtete die Amplituden spezieller L"osungen der
-  Modellgleichungen als zeitabh"angig und setzte diese wieder in das Modell ein. Durch
-  Streichung bestimmter Terme gelangte er so zu einem System von Differentialgleichungen
-  f"ur die zeitabh"angigen Amplituden \cite{Peitgen92}.}. Durch Variation eines Parameters kann der
+  \autor(Rayleigh)sche str"omungsdynamische Modell f"ur bestimmte rechteckige
+  Fl"ussigkeitszellen. Die im Lorenz-Modell auftretenden Phasenraumvariablen sind die
+  zeitabh"angig gemachten Amplituden spezieller L"osungen des Rayleigh-Modells
+  \cite{Peitgen92}.}. Durch Variation eines Parameters kann der 
 "Ubergang dieser Zellen von laminarem zu turbulentem Verhalten studiert werden. Die vielen
 N"aherungen, die f"ur dieses System gemacht werden, erlauben zwar keine direkten
 Voraussagen "uber reale Konvektionszellen, die Dynamik kann jedoch prinzipiell verstanden
@@ -222,14 +220,16 @@ Struktur\footnote{Durch Analyse der Gleichungen kann man bei diesem System sehr 
   Cantor-Menge.}.
 
 Aus den Differentialgleichungen wird durch numerische Integration ein diskreter
-Orbit $\folge(\x,1,N)$\footnotemark erzeugt (siehe \psref{rekroe} oben).  Als Observable $v$ dient die $x$-Komponente der
-Punkte $\x$: $v(\x)=x$, so da"s wir eine Zeitreihe $v_i = v(\x(i\sample))$ erhalten. 
-Die Zeitreihe wurde zur Verdeutlichung ihres diskreten Charakters durch Punkte
-dargestellt (siehe \psref{rekroe} unten).  \footnotetext{Verwendet wird ein Runge-Kutta-Verfahren vierter Ordnung mit
+Orbit $\folge(\x,1,N)$ erzeugt\footnote{Verwendet wird ein Runge-Kutta-Verfahren vierter Ordnung mit
   Schrittweite $\sample=0.009$. Nach einer Transienzzeit von $1000\sample$, nach der sich
   das System dem Attraktor hinreichend gen"ahert hat, wird der Orbit in diskreten
   Schritten $\sample$ aufgezeichnet.  Die Anzahl der berechneten Orbitpunkte betr"agt
   $N=20000$.}
+ (siehe \psref{rekroe} oben).  Als Observable $v$ dient die $x$-Komponente der
+Punkte $\x$: $v(\x)=x$, so da"s wir eine Zeitreihe $v_i = v(\x(i\sample))$ erhalten. 
+Die Zeitreihe wurde zur Verdeutlichung ihres diskreten Charakters durch Punkte
+dargestellt (siehe \psref{rekroe} unten).  
+
 
 
 \epsfigdouble{rekonstruktion/roenew}{rekonstruktion/timenew}
@@ -245,7 +245,7 @@ $(x_i,y_i,z_i)$ ebenso durch $(x_i,\dot x_i,\ddot x_i)$ oder $(x_i,x_{i+1},x_{i+
 beschrieben werden k"onnen.
 
 Wir wollen nun anhand einer einfachen "Uberlegung 
-plausibel machen, da"s in den Verz"ogerungskoordinaten
+plausibel machen, da"s in den Ver\-z"ogerungskoordinaten
 tats"achlich die gleiche Information steckt wie in den originalen Phasenraumkoordinaten.
 Wenn die Zeit $\sample$ zwischen zwei Messungen klein ist, gilt n"aherungsweise:
 \eqnal[recidea1]{\dot x_i &\simeq& (x_{i+1} - x_i) / \sample \nonumber \\
@@ -410,7 +410,7 @@ Der Begriff \naja(generisch) ist jedoch relativ schwach und sagt nichts "uber di
 Wahrscheinlichkeit aus, da"s dies tats"achlich der Fall ist, wenngleich man dies gerne
 meinen m"ochte. 
 
-Dies soll genauer erl"autert werden.  Der Audruck \naja(generisch) beschreibt die H"aufigkeit
+Dies soll genauer erl"autert werden.  Der Ausdruck \naja(generisch) beschreibt die H"aufigkeit
 des Auftretens bestimmter Eigenschaften bei Elementen einer Menge $\A$.
 Eine \label{generisch} Eigenschaft hei"st bereits dann generisch auf $\set A$, wenn
 eine \begriff(residuale Teilmenge)\footnote{Eine Menge $\set R\subset\set A$ hei"st
@@ -461,21 +461,7 @@ eins) "aquivalent ist.
 
 Aufgrund des oben beschriebenen Mankos von Takens' Theorem bewiesen \autor(Sauer),
 \autor(Yorke) und \autor(Casdagli) ein erweitertes Einbettungstheorem \cite{Sauer91}, das
-sogenannte \begriff(Fractal Delay Embedding Prevalence Theorem). Wir geben hier die (etwas 
-verst"andlichere) Version aus ``Coping with chaos'' \cite{Ott94} wieder:
-
-\begin{theorem}
-  Ein kontinuierliches dynamisches System (gegeben durch ein Vektorfeld $\vec F$) besitze
-  eine kompakte, invariante glatte Mannigfaltigkeit $\M$ der Kapazit"at $\fracdim$. 
-  Sei $\embed>2\fracdim$ ganzzahlig und $\delay>0$ die Verz"ogerungszeit.  $\set M$ enthalte h"ochstens
-  eine endliche Anzahl Fixpunkte, keine periodischen Orbits der Periode $\delay$ oder
-  $2\delay$, und h"ochstens endlich viele periodische Orbits der Periode
-  $3\delay,4\delay,\dots,\embed\delay$, und die Jakobimatrizen der Wiederkehrabbildungen dieser
-  periodischen Orbits haben verschiedene Eigenwerte.  Dann gilt f"ur fast alle glatten
-  Me"sfunktionen $v:\set M\to\R$, da"s die Verz"ogerungskoordinatenabbildung
-  $\diffeo_{(\vec F,v,\delay)}:\set M\to\R^\embed$ (siehe~\eqnref{takmod}) eine Einbettung ist.
-\end{theorem}
-
+sogenannte \begriff(Fractal Delay Embedding Prevalence Theorem).
 
 \begin{theorem}
   Sei $\flow^t$ ein (durch ein Vektorfeld $\vec F$ erzeugter) Flu"s auf einer offenen Teilmenge $\set U$ des $\R^k$ und sei $\set A$
@@ -487,14 +473,19 @@ verst"andlichere) Version aus ``Coping with chaos'' \cite{Ott94} wieder:
   periodischen Orbits haben paarweise verschiedene Eigenwerte. Dann
   gilt f"ur fast alle glatten Me"sfunktionen $v:\set U\to\R$, da"s die
   Verz"ogerungskoordinatenabbildung $\diffeo_{(\vec F,v,\delay)}:\set U\to\R^\embed$
-  (siehe~\eqnref{takmod}): \comment{ eine Einbettung von $\set A$ liefert.}
+  (siehe~\eqnref{takmod}) eine Einbettung von $\set A$ nach  $\diffeo_{(\vec
+    F,v,\delay)}(\set A)$ 
+  ist.
+\end{theorem}
+\comment{
+: \comment{ eine Einbettung von $\set A$ liefert.}
 \begin{myitemize}
 \item eineindeutig auf $\set A$ ist.
 \item auf jeder kompakten Teilmenge $\set C$ einer in $\set A$ enthaltenen 
-  glatten Mannigfaltigkeit eine Einbettung ist.
+  glatten Mannigfaltigkeit eine \naja(Immersion) ist.
 \end{myitemize}
 \end{theorem}
-
+}
 Die wesentlichen Unterschiede zu Takens' Theorem sind erstens, da"s statt glatter
 Mannigfaltigkeiten der Dimension $\mandim$ kompakte Mengen der Kapazit"at $\fracdim$
 (welche erstere beinhalten)betrachtet werden, und zweitens, da"s generisch durch die

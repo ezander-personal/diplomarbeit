@@ -76,7 +76,7 @@ backup:	disk
 
 tar:
 	tar cf $(TARFILE)
-	tar rf $(TARFILE)  Makefile settexvars runxdvi number* .number* gliederung
+	tar rf $(TARFILE)  Makefile settexvars runxdvi number* .number* gliederung killps.cc
 	tar rf $(TARFILE)  *.tex style/* bst/* bib/tsa.bib
 	gzip -f -c $(TARFILE) > $(GZFILE)
 	@mv .number$(NUM1) .number$(NUM2)

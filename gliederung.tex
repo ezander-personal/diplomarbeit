@@ -40,17 +40,29 @@
 
 \frontmatter
 
+\comment{
 \titlepage
-\subject{Diplomarbeit angefertigt am Institut f"ur Theoretische Physik
-I\\Wilhelm-Klemm-Str.\  9}
 \title{Grundlagen der Zeitreihenanalyse und ihre Anwendung auf die Atmungsdynamik Fr"uhgeborener}
-\author{Vorgelegt von \\ Elmar Zander}
-\date{\today}
+\author{Diplomarbeit\\vorgelegt von \\ Elmar Zander}
+\thanks{Institut f"ur Theoretische Physik I\\Westf"alische Wilhelms-Universit"at M"unster}
+\date{---\ \today\ --- }
 
 \maketitle
+}
+
+\pagestyle{empty}
+
+\input{titel.tex}
+
+\input{titel.tex}
+\clearpage
+
+\pagestyle{headings}
+\setcounter{page}{1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Inhaltsverzeichnis
+
 \tableofcontents
 
 
@@ -59,15 +71,15 @@ I\\Wilhelm-Klemm-Str.\  9}
 
 \mainmatter
 
-%\input{einleitung.tex}
+\input{einleitung.tex}
 
 \input{theorie.tex}
 
-%\input{anwendung.tex}
+\input{anwendung.tex}
 
-%\input{schluss.tex}
+\input{schluss.tex}
 
-%\input{extrabib.tex}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Anh"ange
@@ -86,9 +98,14 @@ I\\Wilhelm-Klemm-Str.\  9}
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 %\selectlanguage{english}
 \bibliography{bib/tsa}
-%\bibliographystyle{myalpha}
+\bibliographystyle{myalpha}
 %\bibliographystyle{plain}
-\bibliographystyle{./bst/mysiam}
+%\bibliographystyle{./bst/mysiam}
+
+\input{unterschrift.tex}
+
+\clearpage
+\hbox{}
 
 \end{document}
 

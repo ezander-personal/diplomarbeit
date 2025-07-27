@@ -42,7 +42,7 @@ vorstellen.
   nicht, kann die Abbildung in den $\R^\embed$ keine Einbettung gewesen sein.
   
   Man bestimmt nun zu einer Einbettungsdimension $\embed$ zu jedem Punkt $\x$ die
-  \begriff(n"achsten Nachbarn), die innerhalb einer $\eps$-Umgebung  von $\x$ liegen. Die
+  \begriff(n"ach\-sten Nachbarn), die innerhalb einer $\eps$-Umgebung  von $\x$ liegen. Die
   Nachbarpunkte, die beim "Ubergang zur Einbettungsdimension $\embed+1$ aus der
   $\eps$-Umgebung von $\x$ \metapher(entweichen), werden als \begriff(falsche n"achste
   Nachbarn) bezeichnet. F"ur ausreichende Einbettungsdimensionen wird das Verh"altnis
@@ -72,7 +72,7 @@ vorstellen.
   Das Verfahren wird ausf"uhrlicher in Abschnitt~\ref{chapsvd} diskutiert.
 \end{myitemize}
 Die Reihe der Verfahren lie"se sich beliebig fortsetzen. Ein gute "Ubersicht
-findet sich bei \autor(T. Buzug) \cite{Buzug94}. 
+findet sich bei \autor(Buzug) \cite{Buzug94}. 
 
 Wir wollen nun eines der noch nicht
 aufgef"uhrten Verfahren genauer betrachten, da es sich u.a.\  gut dazu eignet,
@@ -137,24 +137,23 @@ Das Ergebnis einer solchen Berechnung ist in \psref{pakdim} am Beispiel des
 R"ossler-Attraktors dargestellt. Die Anzahl der Intervalle betr"agt $200$, die
 Vergleichskoordinaten wurden zu $x^0_1=0.0$ und $x^0_2=5.0$ (entspricht $i^0_1=124,
 i^0_2=196$) gew"ahlt. F"ur die Verz"ogerungszeit $\delay=32\sample$ 
-sieht man deutlich, da"s die Verteilung f"ur $\mandim'=2$ sehr scharf wird (\psref{pakdim} unten). Dies steht im
+sieht man deutlich, da"s die Verteilung f"ur $\mandim'=2$ sehr scharf wird (\psref{pakdim}
+unten) und somit $\mandim=2$ gilt. Dies steht im
 Einklang mit der lokalen Struktur des R"ossler-Attraktors, n"amlich einer Cantor-Menge
 zweidimensionaler Schichten. Die Tatsache, da"s $\Prob$ auch neben dem Maximalwert nicht
 verschwindet, ist  bedingt durch die endliche Rechengenauigkeit und durch
 die \emph{eben nicht} exakt zweidimensionale Struktur des R"ossler-Attraktors.
 
 In \psref{pakdimb} sind die Wahrscheinlichkeitsverteilungen f"ur
-$\delay=35\sample$ bei sonst gleichen Parameterwerten dargestellt. Man erkennt deutlich ein
-Problem dieses Verfahrens. F"ur geringf"ugig\footnote{Da"s diese Abweichung in Bezug auf
+$\delay=35\sample$ bei sonst gleichen Parameterwerten dargestellt. Die Verteilungen zeigen 
+weder f"ur $\mandim'=1$ noch f"ur $\mandim'=2$ ein einzelnes scharfes Maximum. Man erkennt
+hieran deutlich ein
+Problem dieses Verfahrens. F"ur geringf"ugig andere Verz"ogerungszeiten\footnote{Da"s diese Abweichung in Bezug auf
   die Bestimmbarkeit optimaler Verz"ogerungszeiten wirklich \begriff(geringf"ugig) ist,
-  wird sich in Abschnitt~\ref{chapdelay} zeigen.} andere Verz"ogerungszeiten wird die
+  wird sich in Abschnitt~\ref{chapdelay} zeigen.} wird die
 Verteilung $\Prob(i\vert i_1,i_2)$ nicht mehr singul"ar, sondern zeigt mehrere Maxima. Wir
 m"u"sten f"ur diese Verz"ogerungszeit schlie"sen, da"s der Attraktor mindestens
 dreidimensional ist.
-
-
-
-
 
 Diese Tatsache w"are nicht so interessant, wenn die abweichenden Resultate bei
 unterschiedlichen Parameterwerten nicht ein f"ur viele Verfahren der Zeitreihenanalyse
@@ -248,7 +247,7 @@ und $Y$ "uber deren \begriff(Kreuzkorrelation) $C(X,Y)$ definiert:
 \eqnl[crosskorr]{C(X,Y)=\lim_{T\to\infty}\frac{1}{2T}\int_{-T}^{+T} (x(t)-\bar
   x)(y(t)-\bar y) \mathrm{dt}.} 
  Hierbei sind $x(t)$ und $y(t)$ die Werte der Signale zur
-Zeit $t$ und $\bar x$ und $\bar y$ ihre Mittelwerte\footnotetext{Die hier definierte
+Zeit $t$ und $\bar x$ und $\bar y$ ihre Mittelwerte\footnote{Die hier definierte
   Kreuzkorrelation hei"st in der Signaltheorie eigentlich \begriff(Kreuzkovarianz). Beide
   Gr"o"sen unterscheiden sich dadurch, da"s bei der Kreuzkorrelation die Subtraktion der
   Mittelwerte {\em nicht} vorgenommen wird \cite{Lueke92}. Das Resultat ist, da"s beide
@@ -290,9 +289,9 @@ Die Implementierung des entsprechenden Algorithmus nach \eqnref{autokorr2} und
 \eqnref{acmean} ist direkt durch Bildung der jeweiligen Summen durchf"uhrbar. Die Laufzeit
 betr"agt $\order{N^2}$. Dies l"a"st sich jedoch beschleunigen durch Anwendung des
 \begriff(Wiener-Khintchine-Theorems). Demnach ist die Autokorrelationsfunktion eines
-Signals $X$ die Fourier-Transformierte des Leistungsspektrums $P_X(\omega)$. Wir ben"otigen
+Signals $X$ die Fourier-Transformierte des Leistungsspektrums $P_X(f)$. Wir ben"otigen
 also nur zwei Fourier-Transformationen, deren Laufzeit bei Verwendung der
-Fast-Fourier-Transformation (FFT) jeweils nur $\order{N\log N}$ betr"agt.  Algorithmen zur
+Fast-Fourier-Transformation (FFT) jeweils nur \linebreak[4]  $\mathcal{O}(N\log N)$  betr"agt.  Algorithmen zur
 Berechnung 
 der FFT finden sich in nahezu jeder Mathematikbibliothek (siehe z.B. \cite{Numerical-recipes}), so da"s
 hier nicht n"aher darauf eingegangen wird. Beispiele f"ur die
@@ -324,12 +323,12 @@ negativ ist. Die hier bestimmte Verz"ogerungszeit entspricht also ungef"ahr der 
 Aufenthaltszeit des Systems auf einem der Fl"ugel.
 
 Aufgrund dieser Schw"achen gibt es Ans"atze, statt des Nulldurchgangs das erste lokale
-Minimum oder den Abfall auf $1/e$-tel des Anfangswertes $A(0)$ der Autokorrelationsfunktion zu betrachten. Diese
+Minimum oder den Abfall auf ein $e$-tel des Anfangswertes $A(0)$ der Autokorrelationsfunktion zu betrachten. Diese
 Ans"atze bringen zwar zum Teil bessere Ergebnisse, sind jedoch theoretisch nicht zu
 begr"unden. Wir wollen sie hier deshalb beiseite lassen und ein allgemeineres Verfahren
 besprechen.
 
-\subparagraph{Redundanzanalyse.}  Wie wir gesehen haben stellt die lineare
+\subparagraph{Redundanzanalyse.} \label{chapredundancy} Wie wir gesehen haben stellt die lineare
 Un\-ab\-h"an\-gig\-keit zweier Koordinaten nicht das optimale Kriterium f"ur eine gute
 Verz"ogerungszeit dar. Die Probleme resultieren haupts"achlich daraus, da"s wir es mit
 \emph{nichtlinearen} Systemen zu tun haben. Wir suchen eine allgemeinere Unabh"angigkeit
@@ -486,7 +485,7 @@ existieren dazu verschiedene Ans"atze.
   $\{[\xi^m_k,\xi^m_{k+1}[\times[\xi^m_l,\xi^m_{l+1}[\,\vert 1\leq k,l \leq 2^m\}$.
   Das Verfahren ist jedoch recht aufwendig und bringt meiner Einsch"atzung nach keine
   wesentlich besseren Ergebnisse.
-\item \autor(K. Pawelzik) entwickelte ein Verfahren, um die Redundanz aus
+\item \autor(Pawelzik) entwickelte ein Verfahren, um die Redundanz aus
   verallgemeinerten Korrelationsintegralen zu bestimmen \cite{Pawelzik91}.
   Es gilt $R(X,\delay,\eps)=2C_1(1,0,\eps)-C_1(2,\delay,\eps)$, wobei $C_1(d,\delay,\eps)$
   das verallgemeinerte Korrelationsintegral\footnote{Die verallgemeinerten
@@ -498,9 +497,11 @@ existieren dazu verschiedene Ans"atze.
 
 
 Die Ergebnisse f"ur die Messung der Verz"ogerungszeit $\delay_R$ "uber das erste lokale
-Minimum der Redundanz zeigt \psref{redresulta} und \psref{redresultb}. W"ahrend sich das Ergebnis beim
-R"ossler-Attraktor nicht wesentlich ge"andert hat, ist das Resultat beim Lorenz-Attraktor
-deutlich besser als bei der Rekonstruktion mit $\delay_\ac$. Die Verz"ogerungszeiten sind
+Minimum der Redundanz zeigen \psref{redresulta} (oben) und \psref{redresultb}
+(oben). W"ahrend sich die Qualit"at der Rekonstruktion beim
+R"ossler-Attraktor nicht wesentlich verbessert hat (siehe \psref{redresulta} unten), ist
+das Resultat beim Lorenz-Attraktor (siehe \psref{redresultb} unten)
+deutlich besser als bei der vorherigen Rekonstruktion mit $\delay_\ac$ (siehe \psref{acfigsb} unten). Die Verz"ogerungszeiten sind
 bei beiden Systemen kleiner geworden: beim R"ossler-System von $1.29$ auf $1.16$, beim
 Lorenz-System sogar von $2.50$ auf $0.162$.  
 
@@ -514,11 +515,11 @@ Unabh"angigkeit impliziert.
 \noafterpage{
   \epsfigdouble{redundancy/roemut}{redundancy/roerec2}
   {Redundanz $R(\delay)$ (oben) und der zum ersten lokalen Minimum von $R(\delay)$
-    rekonstruierten Attraktoren (unten) f"ur das R"ossler-System ($\delay_R=1.16$).
+    rekonstruierte Attraktoren (unten) f"ur das R"ossler-System ($\delay_R=1.16$).
     }{redresulta}{-0.2cm} 
   \epsfigdouble{redundancy/lormut}{redundancy/lorrec2}
   {Redundanz $R(\delay)$ (oben) und der zum ersten lokalen Minimum von $R(\delay)$
-    rekonstruierten Attraktoren (unten) f"ur das Lorenz-System ($\delay_R=0.162$).
+    rekonstruierte Attraktoren (unten) f"ur das Lorenz-System ($\delay_R=0.162$).
     }{redresultb}{-0.2cm} 
 } 
 

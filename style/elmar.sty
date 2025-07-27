@@ -301,8 +301,8 @@
 \newcommand{\Trs}{\mathsf{T}}
 
 %min und max
-\newcommand{\tmin}{\mathrm{min}}
-\newcommand{\tmax}{\mathrm{max}}
+\newcommand{\tmin}{{min}}
+\newcommand{\tmax}{{max}}
 
 \newcommand{\rang}{{\mathop\mathrm{rang}}}
 
@@ -316,10 +316,12 @@
 \newcommand{\rij}{{r_{ij}}}
 \newcommand{\rmin}{{r_\tmin}}
 \newcommand{\rmax}{{r_\tmax}}
-\newcommand{\rsmin}{{r^{\mathrm{skal}}_\tmin}}
-\newcommand{\rsmax}{{r^{\mathrm{skal}}_\tmax}}
-\newcommand{\rsaett}{{r_\mathrm{s"att}}}
-\newcommand{\rnoise}{{r_\mathrm{noise}}}
+%\newcommand{\rsmin}{{r^{\mathit{skal}}_\tmin}}
+%\newcommand{\rsmax}{{r^{\mathit{skal}}_\tmax}}
+\newcommand{\rsmin}{{r_\tmin}}
+\newcommand{\rsmax}{{r_\tmax}}
+\newcommand{\rsaett}{{r_\mathit{s"att}}}
+\newcommand{\rnoise}{{r_\mathit{noise}}}
 
 
 
@@ -349,8 +351,6 @@
 % Subspace
 \newcommand{\subspace}{\mathcal{S}}
 
-% Die Korrelationsdimension
-\newcommand{\Cd} {\mathrm{D_2}}
 
 % Hausdorff-Ma"s
 %\newcommand{\hdm}{\mathcal{H}}
@@ -366,11 +366,13 @@
 \newcommand{\minembed}{{d'}}
 \newcommand{\fracdim}{{D_0}}
 \newcommand{\mandim}{{m}}
-\newcommand{\corrdim} {\mathrm{D_2}}
-\newcommand{\mcorrdim} {\mathrm{\hat D_2}}
+
+\newcommand{\corrdim} {{D_2}}
+%\newcommand{\mcorrdim} {{\hat D_2}}
+\newcommand{\mcorrdim} {{D_2}}
 
 %Wahrscheinlichkeit
-\newcommand{\Prob}{{\mathrm{P}}}
+\newcommand{\Prob}{{P}}
 
 \newcommand{\buzvol}[1]{{{\mathop \mathrm{Vol}\nolimits}_{#1}}}
 
@@ -388,7 +390,7 @@
 \newcommand{\nullhyp}{{{\mathcal H}_0}}
 \newcommand{\process}{{{\mathcal F}}}
 
-\newcommand{\gauss}{\mathrm{N}}
+\newcommand{\gauss}{\mathrm{G}}
 \newcommand{\arma}{\mathrm{ARMA}}
 \newcommand{\arpr}{\mathrm{AR}}
 \newcommand{\mapr}{\mathrm{MA}}
@@ -398,7 +400,8 @@
 \newcommand{\bit}{{\mathop{\mathit{bit}}\nolimits}}
 \newcommand{\nat}{{\mathop{\mathit{nat}}\nolimits}}
 
-
+% bla
+\newcommand{\sek}{\mathrm{\,s}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -411,7 +414,7 @@
 \newcommand{\norm}[1]{{\@mraise{\lVert}{0.25}#1\@mraise{\rVert}{0.25}}}
 
 % Ableitungen
-\renewcommand{\d}{\mathrm{d}}
+\renewcommand{\d}{\mathit{d}}
 
 %\def\abl#1#2{\frac{\d #1}{\d #2}}
 %\def\abls#1#2{{{\rm d}#1 / {\rm d} #2}}
@@ -427,6 +430,7 @@
 % Folge z.B. \folge(x,1,n) -> x_1,...,x_n
 \def\folge(#1,#2,#3){{{#1}_{#2},\dots,{#1}_{#3}}}
 
+\def\forall(#1,#2,#3){\mraise{\rvert}{-0.2}_{{#1}= {#2}\dots{#3}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Umgebungen
@@ -506,7 +510,7 @@
 
 \newlength{\pswidthsingle}
 \setlength{\pswidthsingle}{\textwidth}
-\addtolength{\pswidthsingle}{-50pt}
+\addtolength{\pswidthsingle}{-10pt}
 
 \newlength{\pswidthonehalf}
 \setlength{\pswidthonehalf}{260pt}
@@ -515,7 +519,8 @@
 \setlength{\pswidthdouble}{220pt}
 
 \newlength{\pswidthnewdouble}
-\setlength{\pswidthnewdouble}{\pswidthsingle}
+\setlength{\pswidthnewdouble}{\textwidth}
+\addtolength{\pswidthnewdouble}{-50pt}
 
 \newlength{\pswidthtriple}
 \setlength{\pswidthtriple}{130pt}
@@ -605,6 +610,16 @@
         {
                 \resizebox{\pswidthnewdouble}{!}{\includegraphics[width=\pswidthnewdouble]{\psfile{./postscript/#1.eps}}}
                 \resizebox{\pswidthnewdouble}{!}{\includegraphics[width=\pswidthnewdouble]{\psfile{./postscript/#2.eps}}}
+        }
+}}
+
+\newcommand\epsfigolddouble[5]{{
+\writepstoaux{#1}
+\writepstoaux{#2}
+        \epsfigcommon{#3}{#4}{#5}
+        {
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#1.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#2.eps}}}
         }
 }}
 
