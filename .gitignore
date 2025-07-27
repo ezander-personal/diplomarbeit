@@ -162,7 +162,8 @@ acs-*.bib
 *-tikzDictionary
 
 # latexindent will create succesive backup files by default
-#*.bak*
+*.bak*
+*~
 
 # listings
 *.lol

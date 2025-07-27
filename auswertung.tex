@@ -1,0 +1,339 @@
+\section{Auswertung der Zeitreihen} 
+
+\subsection{Fourier-Analyse}
+Die gemessen Zeitreihen wurden zuerst einer Fourier-Analyse
+unterzogen, wobei hier nur die Leistungsspektren $P(f)$ (d.h. der Betrag der Amplituden der
+Fourier-Transfor\-mier\-ten) von Interesse sind. Die Leistungsspektren der beiden
+ausgew"ahlten Zeitreihen zeigen \psref{medfourierr} (oben) und \psref{medfourierp}
+(oben). Im Spektrum der regelm"a"sigen Atmung sind vier Peaks gut zu unterscheiden, von
+denen allerdings nur die ersten drei durchgehend in den Leistungsspektren der
+regelm"a"sigen Atmung auftauchen. Der 
+erste liegt bei ca.\ 0,8 Hz und entspricht der mittleren Atemfrequenz des Kindes. Die
+Atemfrequenzen Fr"uhgeborener liegen in der Regel bei ca.\ 
+0,6-0,8 Hz, und k"onnen in Ausnahmef"allen auch bis 1,2 Hz reichen, ohne da"s dies als
+pathologische Indikation zu werten ist. Die Atemfrequenz dieser Patienten liegt damit
+deutlich h"oher als die von erwachsenen Individuen. Die beiden weiteren Peaks (bei 2,2 bzw. 4,3 Hz)
+r"uhren von der Herzt"atigkeit her, was durch Vergleich mit den Spektren des gleichzeitig
+aufgenommenen EKGs best"atigt wird (siehe \psref{medfourierr} unten). Auch die Herzfrequenz
+Fr"uhgeborener liegt h"oher als die Erwachsener, wobei eine Frequenz von ca.\ 2 Hz als normal
+anzusehen ist. Die deutlich zu erkennenden Oberfrequenzen werden vornehmlich hervorgerufen
+durch die steilen Flanken des sogenannten QRS-Komplexes, eines im EKG-Signal auftretenden sehr
+starken Ausschlags.
+
+Bei der periodischen Atmung liegen die Peaks an etwa der gleichen Stelle. Im dargestellten
+Spektrum (\psref{medfourierp} oben) erkennt man Peaks bei 0,7 und 2,1 Hz sowie
+andeutungsweise bei 4,3 Hz.  Die Auspr"agung ist jedoch weniger deutlich als bei der
+regelm"a"sigen Atmung. Auch hier k"onnen die Peaks mit Frequenzen "uber 2 Hz mit
+entsprechenden Peaks des Leistungsspektrums des EKGs identifiziert werden.
+
+Da die Peaks bei Frequenzen "uber 2 Hz im allgemeinen von der Herzt"atigkeit herr"uhren, ist es
+h"aufige Praxis, auf die Zeitreihen Tiefpa"sfilter mit Grenzfrequenzen von 2 bis 2,5 Hz
+anzuwenden. Da hierbei jedoch nicht klar ist, ob durch die Filterung eventuell f"ur die
+Atmungsdynamik wesentliche Informationen verlorengehen, findet diese Vorgehensweise hier
+keine Anwendung. 
+
+
+\epsfigdouble
+{anwendung/fourier/fr_r_3}
+{anwendung/herzfreq/hfr_r}
+{Oben das Leistungsspektrum der ausgew"ahlten Zeitreihe des thorakalen Impedanzsignals bei regelm"a"siger Atmung.
+  Darunter zum Vergleich das entsprechende Spektrum  des gleichzeitig aufgenommen EKGs.
+}
+{medfourierr}{-0.5cm}
+
+\epsfigdouble
+{anwendung/fourier/fr_p_2}
+{anwendung/herzfreq/hfr_p}
+{Oben das Leistungsspektrum der ausgew"ahlten Zeitreihe des thorakalen Impedanzsignals bei
+  periodischer Atmung.
+  Darunter zum Vergleich das entsprechende Spektrum  des gleichzeitig aufgenommen EKGs.
+}
+{medfourierp}{-0.5cm}
+
+
+\subsection{Bestimmung der Verz"ogerungszeit}
+Die Verz"ogerungszeiten f"ur die Phasenraumrekonstruktionen wurden "uber das Verfahren der
+Redundanzanalyse (siehe Seite \pageref{chapredundancy}ff) bestimmt. Die Redundanz $R(t)$
+f"ur die beiden ausgew"ahlten Zeitreihen zeigt \psref{medredund}.  Die "uber das erste
+lokale Minimum der Redundanz bestimmten Verz"ogerungszeiten $\delay_R$
+lagen bei 0,27 -- 0,42 s f"ur regelm"a"sige und bei 0,24 -- 0,36 s f"ur periodische Atmung,
+wobei der Unterschied nicht signifikant ist. Eine "Ubersicht "uber die gemessenen Werte
+zeigt die untenstehende Tabelle. Da die Verz"ogerungszeiten eine recht geringe Streuung
+aufweisen, wurde f"ur die meisten Auswertungen ein Standardwert von $\delay_R=0,32$ s
+benutzt. 
+
+\begin{center}
+\begin{tabular}{|l||c|c|c|}
+  \hline
+  Atmungstyp & $\delay_{R,\tmin}/$s & $\delay_{R,\tmax}/$s & $\bar \delay_{R}/$s \\
+  \hline
+  regelm"a"sig   &  0,27 &  0,42   &  0,33$\pm$0,04 \\
+  periodisch        &  0,24 &  0,36   &  0,31$\pm$0,03 \\
+  \hline
+\end{tabular}
+\end{center}
+
+\epsfigdouble
+{anwendung/redund/mut_r_3}
+{anwendung/redund/mut_p_1}
+{Redundanzanalyse f"ur die Zeitreihen mit regelm"a"siger (oben) bzw.\  periodischer
+  (unten) Atmung. Die Verz"ogerungszeiten
+  liegen bei $\delay_R=0,33 s$ f"ur regelm"a"siges bzw.\ bei $\delay_R=0,27 s$ f"ur
+  periodisches Atmen. 
+}
+{medredund}{-0.5cm}
+
+\clearpage
+\subsection{Versuch einer Phasenraumrekonstruktion}
+Mit den so gewonnenen Verz"ogerungszeiten wurden Darstellungen der Phasenraumrekonstruktionen
+erzeugt. Es sei darauf hingewiesen, da"s diese Abbildungen {\em keine} g"ultigen
+Rekonstruktionen eventuell zugrunde liegender seltsamer Attraktoren darstellen, da die
+verwendete Einbettungsdimension $\embed=2$ mit Sicherheit nicht ausreichend ist. Sie sollen
+nur Hinweise auf die  Struktur der Dynamik und Anhaltspunkte f"ur die weitere
+Verfahrensweise geben.
+
+In der Rekonstruktion des regelm"a"sigen Atemsignals erkennt man deutlich eine toroidale
+Struktur (siehe \psref{medrekonst} links oben). Diese ist allerdings gest"ort durch Rauschen
+sowie ein gewisses \naja(Hin-und-her-Driften) der Trajektorien entlang der
+Hauptdiagonalen; die Rekonstruktion erweckt den Eindruck eines Grenzzyklus, der entlang dieser Diagonalen hin
+und her geschoben wird. Dies kann als Hinweis auf
+eine Instationarit"at der Zeitreihe aufgefa"st werden. Die Rekonstruktion des periodischen Atmens
+zeigt keine klare Struktur sondern eher ein \naja(Kn"auel) durcheinander laufernder
+Trajektorien (siehe \psref{medrekonst} rechts oben).  Um das sichtbar starke Rauschen zu
+unterdr"ucken wurde f"ur beide Signale eine Singular Value Decomposition durchgef"uhrt und
+die erste Komponente der SVD-Rekonstruktion wieder eingebettet (siehe \psref{medrekonst}
+unten). Die Trajektorien scheinen ein wenig gegl"attet zu sein, lassen jedoch auch nicht
+mehr von der Struktur der Dynamik erahnen. 
+
+\afterpage{
+\epsfigfour
+{anwendung/rects/rct_r_3}
+{anwendung/rects/rct_p_1}
+{anwendung/rects/rctsf_r_3}
+{anwendung/rects/rctsf_p_1}
+{Oben dargestellt sind die Rekonstruktionen eines regelm"a"sigen (links) bzw.\  periodischen Atemsignals (rechts)
+  zur Einbettungsdimension $\embed=2$ und zur Verz"ogerungszeit $\delay_R=3,2$ s; unten
+ die entsprechenden Rekonstruktionen der "uber SVD gefilterten Signale.
+}
+{medrekonst}{-0.5cm}
+}
+
+Die Instationarit"at der Zeitreihen l"a"st sich auch an "Anderungen der Verteilungen
+$n(x)$ der Me"swerte "uber verschiedene Zeitr"aume beobachten, wobei die Gr"o"se $n(x)$
+besagt wieviele Me"swerte in ein enges Intervall um den Me"swert $x$ fallen.
+\psref{medinstat} zeigt jeweils die Verteilungen sowohl f"ur die gesamte als auch getrennt
+f"ur die erste und zweite H"alfte der Zeitreihe. Zwischen den Verteilungen f"ur beide
+H"alften bestehen signifikante Unterschiede. Sowohl die Lage des Maximums
+als auch die Form der Verteilung variieren zwischen den beiden H"alften der Zeitreihen 
+deutlich. Dies l"a"st sich auch quantitativ "uber die Mittelwerte und die
+Streuungen der Verteilungen ausdr"ucken. Bei der Zeitreihe des regelm"a"sigen Atemsignals
+betr"agt der Unterschied der Mittelwerte beider H"alften $1,2$ Prozent und der Unterschied
+der Streuungen $9,5$ Prozent, wobei die Prozentangaben jeweils auf die Streuung
+der gesamten Zeitreihe bezogen sind. Bei
+der Zeitreihe aus periodischer Atmung betragen die entsprechenden Unterschiede $5,5$
+Prozent bei den Mittelwerten und $55,8$ Prozent bei den Streuungen. Zum Vergleich: Bei
+einer Zeitreihe des Lorenz-System mit vergleichbarer L"ange betrugen die gemessenen
+Unterschiede nur $0,5$ bzw. $0,4$ Prozent.
+
+Es sei an dieser Stelle noch darauf hingewiesen, da"s die bei diesen beiden
+Zeitreihen beobachteten Instationarit"aten noch relativ gering sind und bei anderen
+Zeitreihen weit gravierender ausfallen.
+
+\afterpage{
+\epsfigdouble
+{anwendung/instat/cmphsregel}
+{anwendung/instat/cmphsperiod}
+{ Verteilungen $n$ der Me"swerte $x$ f"ur das regelm"a"sige Atmen (oben) und das periodische 
+  Atmen (unten). Die Kurve f"ur die gesamte Zeitreihe (4 min) ist jeweils durchgezogen, f"ur die beiden 
+  H"alften der Zeitreihe (je 2 min) jeweils gestrichelt dargestellt.
+}
+{medinstat}{-0.5cm}
+}
+
+\subsection{Bestimmung der Korrelationsintegrale und -dimensionen}
+F"ur die Atemsignale wurden Korrelationsintegrale bis zu einer Einbettungsdimension
+$\embed=8$ berechnet. Zwar sind bei dem gegebenen Datenumfang maximal
+Korrelationsdimensionen bis $\corrdim\simeq 4$ berechenbar, was auch nur eine
+Einbettungsdimension von $d=4$ erfordern w"urde, jedoch l"a"st die Berechnung  bis $d=8$
+erkennen, ob die berechneten Integrale bzw.\  Dimensionen konvergieren oder nicht.
+
+Die zu den Parameterwerten $d_\tmax=8$, $\delay=0,32$ s und $W=60$ berechneten
+Korrelationsintegrale zeigt \psref{medcorrint}. In dem Korrelationsintegral der
+regelm"a"sigen Atmung scheint ein Skalierungsbereich zwischen $\ln r$-Werten von  $-4$ und 
+$-3$ zu liegen (siehe \psref{medcorrint} oben), bei der periodischen Atmung k"onnte man einen Skalierungsbereich zwischen
+$-4,5$ und $-3$ vermuten (siehe \psref{medcorrint} unten).
+Ob die Steigung des Korrelationsintegrals in diesen Bereichen wirklich konstant ist,
+l"a"st sich jedoch besser an den entsprechenden Slopeplots erkennen erkennen. F"ur die
+regelm"a"sige Atmung existiert (entgegen dem bei den Korrelationsintegralen gewonnenen Eindruck)
+kein gr"o"serer Bereich von $r$-Werten
+mit konstantem $\corrdim(r)$; weiterhin ist keine Konvergenz der Steigungen festzustellen
+(siehe \psref{medcorrslp} oben). F"ur die
+periodische Atmung scheint bei etwa $\ln r=-4$ Konvergenz aufzutreten (siehe
+\psref{medcorrslp} unten). Dies ist jedoch eher
+als Artefakt des bei h"oheren Einbettungsdimensionen auftretenden \begriff(Randeffekts)
+zu deuten. Auch die "uber Takens' Sch"atzverfahren zum Maximalabstand $\ln\rmax=-2,5$ bestimmten
+Dimensionen zeigen keine Konvergenz (siehe \psref{medcorrdim}). 
+
+
+\epsfigdouble{anwendung/corrint/ci_r_3}{anwendung/corrint/ci_p_1}
+{
+Korrelationsintegrale der beiden ausgew"ahlten Zeitreihen f"ur regelm"a"sige (oben) und
+periodische (unten) Atmung mit den Parameterwerten $\delay=0,32$ s und $W=60$ f"ur die
+Einbettungsdimensionen $d=1,\dots,8$ (jeweils von oben nach unten).
+}
+{medcorrint}{-0.5cm}
+
+\epsfigdouble{anwendung/corrint/cs_r_3}{anwendung/corrint/cs_p_1}
+{
+Slopekurven zu den Korrelationsintegralen aus \psref{medcorrint} f"ur die 
+Einbettungsdimensionen $d=1,\dots,8$ (jeweils von unten nach oben).
+}
+{medcorrslp}{-0.5cm}
+
+\epsfigdouble{anwendung/corrint/td_r_3}{anwendung/corrint/td_p_1}
+{
+"Uber Takens' Sch"atzverfahren berechnete Korrelationsdimension  zu den
+Korrelationsintegralen aus \psref{medcorrint} mit dem Parameterwert $\ln\rmax=-2,5 $.
+}
+{medcorrdim}{-0.5cm}
+
+
+
+Die Berechnungen wurden auch mit Variationen der Parameterwerte sowie mit verschiedenen
+auf die Zeitreihen angewandten Filtertechniken
+ausgef"uhrt. Die nachfolgend aufgez"ahlten Parametereinstellungen und Filtermethoden
+wurden auf verschiedene Weisen kombiniert, f"uhrten jedoch zu keiner
+Verbesserung der Ergebnisse.
+\begin{description}
+\item[Filterung:] Es wurden Zeitreihen mit und ohne SVD-Filterung verwendet, wobei f"ur
+  die Singular Value Decomposition Einbettungsdimensionen zwischen $d=5$ und $d=30$
+  gew"ahlt wurden. Weiterhin wurden Tiefpa"sfilterungen mit Grenzfrequenz bei 2,5 Hz
+  durchgef"uhrt, um Beeinflussungen durch die Herzdynamik zu minimieren.
+\item[Stationarit"at:] Biologische Zeitreihen sind, wie gesehen, oftmals instation"ar und weisen von
+  der eigentlichen Dynamik unabh"angige langreichweitige Schwankungen (Bias) auf. 
+  Um diese herauszufiltern wurden Fenster "uber die Zeitreihe gelegt, in denen dieser
+  Grundwert berechnet und nachfolgend von den Signalwerten subtrahiert wurde.
+\item[Verz"ogerungszeiten:] Kleine Verz"ogerungszeiten bringen bei der Berechnung der
+  Korrelationsintegrale oftmals besseres Ergebnisse als die berechneten
+  Verz"ogerungszeiten. Es wurden Verz"ogerungszeiten bis hinunter zu $\delay=0,1$ s
+  getestet.
+\item[Autokorrelationszeit:] Um Effekte durch Autokorrelationen auszuschlie"sen, wurde
+  der Parameter f"ur die Autokorrelationsl"ange $W$ von 1 bis zu Vielfachen der
+  Verz"ogerungszeit ausgetestet.
+\end{description}
+Da eine endliche fraktale Dimension Voraussetzung f"ur die Existenz eines seltsamen
+Attraktors ist und die Korrelationsanalyse (die Korrelationsdimension ist eine untere
+Absch"atzung f"ur die fraktale Dimension) keine konvergenten Ergebnisse erbrachte, k"onnen wir somit
+nicht auf die Existenz eines solchen schlie"sen. 
+
+F"ur den Atemtypus der regelm"a"sigen Atmung ist noch eine andere (sehr vorsichtige)
+Deutung m"oglich. Es k"onnte sich hierbei um eine Grenzzyklus handeln, der jedoch stark
+verrauscht ist. Dies st"unde sowohl im Einklang mit dem gemessenen Fourier-Spektrum, das
+relativ klar hervortretende Peaks aufweist, als auch mit 2 bzw.\ 3-dimensionalen
+Rekonstruktionen, die eine toroidale Struktur zeigen. Zudem weisen nicht-chaotische Systeme
+einen verk"urzten Skalierungsbereich im Korrelationsintegral auf: Das Korrelationsintegral
+skaliert nur "uber einen Bereich der Ordnung \order{N} statt der Ordnung \order{N^2} wie
+im chaotischen Fall \cite{Theiler}.
+
+\subsection{Vorhersagbarkeit von Apnoen}
+Da die im vorigen Abschnitt berechneten Korrelationsintegrale keinen Skalierungsbereich
+aufwiesen und auch keine Konvergenz der Slopekurven vorlag, konnte die Existenz eines
+niedrigdimensionalen Attraktors mit bestimmter Korrelationsdimension $\corrdim$ f"ur die
+Atmungsdynamik nicht nachgewiesen werden. Betrachtet man den Wert der f"ur eine bestimmte
+Einbettungsdimension $d$ und eine bestimmte Verz"ogerungszeit $\delay$ berechneten
+Korrelationsdimension $\corrdim$ jedoch nicht als wirkliche Dimension des zugrunde
+liegenden dynamischen Systems sondern als ein Ma"s, da"s die relative Komplexit"at der
+Dynamik in dem durch die Zeitreihe gegebenen Zeitabschnitt beschreibt, k"onnen die f"ur
+verschiedene zeitlich versetzte Zeitreihen berechneten Werte "Anderungen dieses
+Komplexit"atsmasses anzeigen und so eventuell eine Vorhersage von Atemstillst"anden
+erm"oglichen.
+
+Zum Test dieser M"oglichkeit wurde eine Zeitreihe, in der zwei Apnoen kurz
+hintereinander auftraten,
+verwendet (siehe \psref{medtestapnoe} oben). Die L"ange dieser Zeitreihe betrug 9 Minuten
+(statt der "ublicherweise benutzen 4 min"utigen Zeitreihen), damit auch in  gr"o"seren
+Zeitabst"anden vor Auftreten der Apnoen die Korrelationsdimensionen berechnet werden
+konnten. Aus dieser Zeitreihe wurden St"ucke von jeweils 2 Minuten L"ange
+extrahiert, wobei die Anfangszeiten dieser Zeitreihen jeweils um 15 Sekunden verschoben
+wurden. Jede dieser Zeitreihen erstreckt sich somit "uber einen Zeitraum von $t_{i,a}=i
+15\sek$ bis $t_{i,e}=i 15\sek + 120\sek$. Es wurden nun die
+entsprechenden Korrelationsintegrale zur Einbettungsdimension $d=5$ berechnet und die Korrelationsdimensionen $D_{2,i}$ "uber Takens' 
+Sch"atzverfahren mit dem Maximalabstand $\ln\rmax=-2,5$
+bestimmt. Die Berechnung der Korrelationsdimension geschieht immer "uber einen bestimmten
+Zeitraum, so da"s eine Auftragung der Korrelationsdimension "uber der Zeit nicht ganz
+trivial ist.
+Da zur Berechnung der Korrelationsdimension die Zeitreihe jedoch komplett vorliegen
+mu"s, ist es sinnvoll bei dieser Auftragung jeweils das zeitliche Ende der Reihe als Wert auf
+der Zeitachse zu w"ahlen, d.h. man betrachtet die Auftragung von $D_{2,i}$ "uber
+$t_{i,e}$. Das Ergebnis einer solchen Berechnung zeigt \psref{medtestapnoe} (unten).
+
+\epsfigdouble
+{anwendung/apnoe/apn2}
+{anwendung/apnoe/dimensionen}
+{
+Oben die verwendete Zeitreihe mit Apnoen bei $t=390\sek$ und $t=460\sek$. Unten die
+zeitabh"angige Korrelationsdimension $D_2(t)$ f"ur $t\geq 120\sek$. F"ur $t<120\sek$ lie"s 
+sich die Berechnung aufgrund der L"ange der Zeitreihen von 2 min nicht durchf"uhren.
+}
+{medtestapnoe}{-0.5cm}
+
+Die Werte der Korrelationsdimension f"ur $t\leq390\sek$ schwanken in einem Bereich
+zwischen ca.\ $4,0$ und ca.\ $4,3$, wobei in diesen Schwankungen kein bestimmter Trend auszumachen ist.
+Ferner liegen die Werte in einem Bereich, der auch bei anderen Zeitreihen, in denen
+keine Apnoen auftreten, typisch ist. Erst bei $t=405\sek$ zeigt sich ein deutlicher Abfall
+der Korrelationsdimension auf ca.\ $2,1$, die sich nachfolgend langsam wieder zu h"oheren
+Werten hin entwickelt.  Da der Atemstillstand jedoch schon bei $t=400\sek$ eintritt, ist
+die Korrelationsdimension folglich f"ur die Vorhersage von Apnoen nicht zu gebrauchen.
+
+
+\subsection{Determinismustest "uber AAFT-Surrogate}
+
+Trotz der negativen Ergebnisse bei der Dimensionsanalyse k"onnen die f"ur bestimmte
+Einbettungsdimensionen $d$ und f"ur einen bestimmten Maximalabstand $\rmax$ berechneten Werte der
+Korrelationsdimension zum Vergleich mit entsprechenden Werten von Surrogatdaten im Rahmen
+eines Determinismustests herangezogen werden. Da die Dichteverteilung der Me"swerte eine
+deutlich nicht-gau"ssche Verteilung zeigen (siehe \psref{medinstat}) wurden als Surrogatdaten
+AAFT-Surrogate verwendet. Die Anzahl der erstellten Datenreihen betrug in beiden F"allen
+(d.h. f"ur regelm"a"sige bzw.\ periodische Atmung) 39. F"ur diese wurden mit den gleichen
+Parametern ($\embed_\tmax=8, \delay=0,32, W=60)$ wie f"ur die Originalzeitreihen
+Korrelationsintegrale berechnet. Aus diesen wurde "uber Takens' Sch"atzverfahren die
+Korrelationsdimension $\corrdim$ in Abh"angigkeit von der Einbettungsdimension bestimmt. Die
+Maximalabst"ande lagen bei $\rmax=-2,5$. Den Vergleich der Dimensionsberechnungen zwischen
+Original- und Surrogatdaten zeigt \psref{medsurrodim}. Deutlich zu erkennen ist, da"s sich 
+f"ur beide Atemtypen bei Einbettungsdimensionen $d\geq4$ die Korrelationsdimension der
+Originaldaten stark von den Korrelationsdimensionen der Surrogatdaten unterscheidet.
+Aus der Verteilung der Korrelationdimensionen wurde gem"a"s \eqnref{eqnsigni} die
+Signifikanz $\mathcal S$ der Abweichungen berechnet (siehe \psref{medsurrosigni}).
+Au"ser f"ur $d=7$ und $d=8$ bei der regelm"a"sigen Atmung und $d=1,\dots,3$ bei der
+periodischen Atmung liegt die Signifikanz sehr hoch ($\mathcal{S}>5$). 
+Die entsprechenden $p$-Werte (siehe \eqnref{eqnpvalue}) liegen in diesen F"allen unter
+$10^{-7}$. 
+
+Da die $p$-Werte angeben, mit welcher Wahrscheinlichkeit die Ablehnung der Nullhypothese
+falsch ist, k"onnen wir mit "uber $99,9$ prozentiger Sicherheit davon ausgehen, da"s es
+sich bei der Atmungsdynamik um kein durch ein ARMA-Modell beschreibbares stochastisches
+System handelt. Selbst bei Zugrundelegung des vorher festlegegten Signifikanzniveaus
+$\alpha=0,05$, das ja f"ur die minimale Anzahl der berechneten Surrogatzeitreihen
+ausschlaggebend ist, liegt die Wahrscheinlichkeit, da"s der Atmung ein deterministischer
+Charakter zugesprochen werden kann, bei mindestens $95$ Prozent.
+
+\epsfigdouble{anwendung/surrogat/regel/cmpsurcdim}{anwendung/surrogat/period/cmpsurcdim}
+{
+Vergleich der berechneten Korrelationdimensionen zwischen Original- \gpmarkb\  und
+Surrogatdaten \gpmarka\  f"ur regelm"a"sige Atmung (oben) und periodische Atmung (unten). 
+}
+{medsurrodim}{-0.5cm}
+
+\epsfigdouble{anwendung/surrogat/regel/signi}{anwendung/surrogat/period/signi}
+{
+Signifikanz $\mathcal{S}$ der Abweichung der Korrelationsdimension der Originaldaten vom
+Mittelwert der Korrelationsdimensionen der Surrogatdaten f"ur regelm"a"sige Atmung (oben)
+und periodische Atmung (unten).
+}
+{medsurrosigni}{-0.5cm}
+
+\comment{
+{anwendung/surrogat/regel/pvalue}
+{anwendung/surrogat/period/pvalue}
+}
+

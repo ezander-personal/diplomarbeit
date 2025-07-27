@@ -1,0 +1,100 @@
+\documentclass[a4paper,12pt]{scrreprt}
+
+% Befehle, die in Standard, aber nicht in den KOMA classes zur Verf"ugung stehen
+\def\frontmatter{}
+\def\mainmatter{}
+\def\backmatter{}
+
+% Deutsche Layouts und Trenntabellen
+\usepackage[german]{babel}
+
+% Zum einbinden von PostScript-Grafiken
+\usepackage{graphicx}
+\usepackage{psfrag}
+
+% Bindet die AMS-fonts ein um Symbole f"ur reelle und complexe Zahlen
+% zur Verf"ugung zu haben
+\usepackage{amsfonts}
+
+% Definiert \layout Befehl: coole Sache um Seitenlayout zu "uberpr"ufen
+\usepackage{layout}
+
+% Definiert befehl (\newtheroem) um theorem-umgebungen zu erstellen
+\usepackage{theorem}
+
+% Einige packages die ich vielleicht noch brauchen werde
+% indentfirst, fancyheadings, float, subfigure, psfig
+
+% Allgemeines zeug und trennungen
+\usepackage{trennungen}
+\usepackage[themabf,newint,normsect]{elmar}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Titelseite
+
+\frontmatter
+
+\pagestyle{empty}
+
+\input{titel.tex}
+
+\input{titel.tex}
+\clearpage
+
+\pagestyle{headings}
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Inhaltsverzeichnis
+
+\tableofcontents
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hauptteil
+
+\mainmatter
+
+\input{einleitung.tex}
+
+\input{theorie.tex}
+
+\input{anwendung.tex}
+
+\input{schluss.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Anh"ange
+
+\backmatter
+
+\begin{appendix}
+\input{medfach.tex}
+\end{appendix}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Literaturverzeichnis
+
+\newpage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+%\selectlanguage{english}
+\bibliography{bib/tsa}
+%\bibliographystyle{./bst/myalpha}
+%\bibliographystyle{plain}
+\bibliographystyle{./bst/mysiam}
+
+\input{unterschrift.tex}
+
+\clearpage
+\hbox{}
+
+\end{document}
