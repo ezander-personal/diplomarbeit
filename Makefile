@@ -6,6 +6,8 @@ NUM2:=$(shell number2)
 TARFILE:=tex.tar
 GZFILE:=tex$(NUM2).tgz
 
+TEXINPUTS+=":./style/:./bib:./bst"
+
 RM=rm -f
 
 
@@ -74,8 +76,8 @@ backup:	disk
 
 tar:
 	tar cf $(TARFILE)
-	tar rf $(TARFILE)  Makefile settexvars runxdvi number* .number*
-	tar rf $(TARFILE)  *.tex style/* bst/* bib/*
+	tar rf $(TARFILE)  Makefile settexvars runxdvi number* .number* gliederung
+	tar rf $(TARFILE)  *.tex style/* bst/* bib/tsa.bib
 	gzip -f -c $(TARFILE) > $(GZFILE)
 	@mv .number$(NUM1) .number$(NUM2)
 

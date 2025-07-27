@@ -22,8 +22,9 @@ da"s die ersten $\minembed$ Vektoren der Basis den Unterraum $\subspace$ aufspan
 \eqn{\subspace = \mathop{\mathrm{span}}(\folge(\vec c,1,\minembed))} Da $\subspace$ nach
 Voraussetzung auch von den Rekonstruktionsvektoren $\folge(\x,1,N)$ aufgespannt wird,
 lassen sich die $\vec c_i\mraise{\rvert}{-0.2}_{i=1\dots\minembed}$ offensichtlich als
-Linearkombination der $\x_j$ darstellen \eqnl[svdkomp]{\vec c_i = \sum_{k=1}^N
-  \frac{1}{\sigma_i} s_{ik} \x_k} Hierbei seien die $\vec s_i = (s_{i1},\dots,s_{iN})^\Tr$
+Linearkombination der $\x_j$ darstellen 
+\eqnl[svdkomp]{\vec c_i = \sum_{k=1}^N \frac{1}{\sigma_i} s_{ik} \x_k} 
+Hierbei seien die $\vec s_i = (s_{i1},\dots,s_{iN})^\Tr$
 Vektoren aus $\R^N$. Da die $\vec c_i$ linear unabh"angig sind, gilt dies auch f"ur die
 $\vec s_i$\footnote{Sonst h"atte die Matrix $\mat S=(\vec s_1,\dots,\vec s_\minembed)$ den
   Rang $\rang(S)<\minembed$ und die $\vec c_i$ k"onnten nach \eqnref{svdkomp} nicht mehr
@@ -32,9 +33,11 @@ sind. Au"serdem seien ihr Betrag durch den Faktor $1/\sigma_i$ auf eins normiert
 definieren nun die \begriff(Trajektorienmatrix) $\mat X$ durch\footnote{In
   \cite{broomhead-king} wird die Trajektorienmatrix durch $\mat X = N^{-1/2}(\x_1, \dots,
   \x_N)^\Tr$ definiert. Die hier getroffene Definition l"a"st die Ergebnisse unver"andert,
-  f"uhrt jedoch zu einfacheren Gleichungen.}  \eqn{\mat X = N^{-1/2}(\x_1, \dots, \x_N)}
+  f"uhrt jedoch zu einfacheren Gleichungen.}  
+\eqn{\mat X = N^{-1/2}(\x_1, \dots, \x_N)}
 wobei der Faktor $N^{-1/2}$ der Normierung dient.  \eqnref{svdkomp} kann dann in der
-folgenden Form geschrieben werden \eqnl[svdbase]{\sigma_i \vec c_i = \mat X \vec s_i}
+folgenden Form geschrieben werden 
+\eqnl[svdbase]{\sigma_i \vec c_i = \mat X \vec s_i}
 %Strukturmatrix
 Multiplizieren wir die linke und rechte Seite von \eqnref{svdbase} mit ihrer jeweiligen
 Transponierten, so erhalten wir unter Ausnutzung der Orthonormalit"at der $\vec c_i$
@@ -77,7 +80,8 @@ Um die Bedeutung der Eigenwerte zu erhellen, m"ussen wir erst die Struktur des n
 Phasenraumes analysieren. Die Basis des Rekonstruktionsraumes wird gebildet durch die
 Eigenvektoren der Kovarianzmatrix $\vec c_i$. Die Darstellung der Rekonstruktionsvektoren
 $\vec x'_i$ bez"uglich dieser neuen Basis erhalten wir "uber
-\comment{\eqn{\vec y_j=\left( \begin{array}{c} \x_j \vec c_1 \\ \x_j \vec c_2 \\ \vdots \\ \x_j \vec c_\embed
+\comment{
+\eqn{\vec y_j=\left( \begin{array}{c} \x_j \vec c_1 \\ \x_j \vec c_2 \\ \vdots \\ \x_j \vec c_\embed
 \end{array} \right)}}
 \eqnl[svdrecvec]{\vec x'_i = \sum_{j=1}^{n} (\vec x_i \cdot \vec c_j) \vec e'_j } 
 Die mittlere Ausdehnung $\delta'_k$ des rekonstruierten Attraktors in Richtung eines Basisvektors

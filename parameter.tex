@@ -226,7 +226,8 @@ daher sinnvoll, die Verz"ogerung so zu w"ahlen, da"s die Koordinaten m"oglichst
 unabh"angig werden. In der Signaltheorie wird die \begriff(lineare Unabh"angigkeit) zweier
 Signale $X$ und $Y$ "uber deren \begriff(Kreuzkorrelation) $C(X,Y)$ beschrieben.
 \eqnl[crosskorr]{C(X,Y)=\lim_{T\to\infty}\frac{1}{2T}\int_{-T}^{+T} (x(t)-\bar
-  x)(y(t)-\bar y) \mathrm{dt} } Hierbei sind $x(t)$ und $y(t)$ die Werte der Signale zur
+  x)(y(t)-\bar y) \mathrm{dt} } 
+Hierbei sind $x(t)$ und $y(t)$ die Werte der Signale zur
 Zeit $t$ und $\bar x$ und $\bar y$ die Mittelwerte der Signale \footnotemark. Die
 Kreuzkorrelation wird maximal, wenn die Signale proportional zueinander sind, und Null,
 wenn sie linear unabh"angig sind. Bei der Verz"ogerungskoordinatenabbildung ist das Signal
@@ -238,8 +239,10 @@ Autokorrelationsfunktion $\ac$: \footnotetext{Teilweise wird die Kreuzkorrelatio
 \eqnl[autokorr1]{\ac(X,\delay)=\lim_{T\to\infty}\frac{1}{2T}\int_{-T}^{+T} (x(t)-\bar
   x)(x(t+\delay)-\bar x) \mathrm{dt} } F"ur diskrete, endliche Zeitreihen
 $\{x_i\}_{i=1\dots N}\,$der L"ange $N$, erhalten wir
-\eqnl[autokorr2]{\ac(k)=\frac{1}{N-k}\sum_{i_1}^{N-k} (x_i-\bar x)(x_{i+k}-\bar x)} mit
-\eqnl[acmean]{\bar x = \frac{1}{N}\sum_{i=1}^N x_i} Die aufeinanderfolgenden Koordinaten
+\eqnl[autokorr2]{\ac(k)=\frac{1}{N-k}\sum_{i_1}^{N-k} (x_i-\bar x)(x_{i+k}-\bar x)} 
+mit
+\eqnl[acmean]{\bar x = \frac{1}{N}\sum_{i=1}^N x_i}
+ Die aufeinanderfolgenden Koordinaten
 werden maximal unabh"angig, wenn die Verz"ogerung $k=k_\ac$ so gew"ahlt wird, da"s
 $\ac(k_\ac)=0$ wird. Da wir eine "Uberfaltung des Attraktors vermeiden wollen, w"ahlen wir
 den ersten Nulldurchgang\footnote{Da die durch \eqnref{autokorr2} definierte
@@ -307,14 +310,17 @@ Dann liefert eine Messung der Observablen $X$ im Mittel die
   ist $1\,\bit$. Wir benutzen hier, wie in der Physik "ublich, den nat"urlichen
   Logarithmus. Die Einheit in der hier die Information gemessen wird ist das sogenannte
   $\nat$ (von engl. natural). Beide Ma"se sind linear "uber $1\,\nat =\log_2
-  e\,\bit\,$miteinander verkn"upft.}  \eqn{H(X)=-\sum_i \Prob_X(i) \ln \Prob_X(i)} Die
+  e\,\bit\,$miteinander verkn"upft.}  
+\eqn{H(X)=-\sum_i \Prob_X(i) \ln \Prob_X(i)} 
+Die
 mittlere Information ist maximal, wenn alle Ausg"ange der Messung gleich wahrscheinlich
 sind $\Prob_X(1)=\dots=\Prob_X(n)$. Sie wird umso kleiner, je st"arker die
 Wahrscheinlichkeiten auf wenige Ausg"ange konzentriert sind.
 
 Werden am betrachteten System zwei Messungen $X$ und $Y$ durchgef"uhrt, so betr"agt die
-mittlere Information der kombinierten Messung \eqn{H(X,Y)=-\sum_{i,j} \Prob_{XY}(i,j) \ln
-  \Prob_{XY}(i,j)} wobei $\Prob_{XY}(i,j)$ die Verbundwahrscheinlichkeit ist, da"s bei der
+mittlere Information der kombinierten Messung 
+\eqn{H(X,Y)=-\sum_{i,j} \Prob_{XY}(i,j) \ln\Prob_{XY}(i,j)} 
+wobei $\Prob_{XY}(i,j)$ die Verbundwahrscheinlichkeit ist, da"s bei der
 Messung von $X$ der Wert $x_i$ und bei der Messung von $Y$ der Wert $y_j$ festgestellt
 wird\footnote{Die Verbundwahrscheinlichkeit $\Prob_{XY}(i,j)$ ist zu unterscheiden von der
   bedingten Wahrscheinlichkeit $\Prob_{Y|X}(i,j)$, die angibt mit welcher
@@ -323,7 +329,9 @@ wird\footnote{Die Verbundwahrscheinlichkeit $\Prob_{XY}(i,j)$ ist zu unterscheid
   $\Prob_{XY}(i,j)=\Prob_{Y|X}(i,j)\Prob_X(i)$. Die Herleitung der nachfolgenden
   Ergebnisse gelingt genauso, ist jedoch ein wenig schwerf"alliger.}.  Die Information,
 die die zus"atzliche Messung von $Y$ liefert, ist daher i.allg.\ kleiner als $H(Y)$,
-n"amlich \eqn{H(Y|X)=H(X,Y)-H(X)} Hierbei bezeichnet $H(Y|X)$ die mittlere Information der
+n"amlich 
+\eqn{H(Y|X)=H(X,Y)-H(X)} 
+Hierbei bezeichnet $H(Y|X)$ die mittlere Information der
 Messung von $Y$ bei Kenntnis des Me"sergebnisses von $X$. Diese zus"atzliche Information
 wird genau dann gleich $H(Y)$ wenn $X$ und $Y$ unabh"angige Me"sgr"o"sen sind. In diesem
 Fall gilt f"ur die Verbundwahrscheinlichkeiten $\Prob_{XY}(i,j)=\Prob_X(i)\Prob_Y(j)$ und
@@ -337,7 +345,8 @@ Information $H(Y|X)=0$.
 Wir definieren nun die \begriff(Redundanz) der kombinierten Messung $X,Y$. Redundanz
 bedeutet im allgemeinen die Menge an "uberfl"ussiger Information -- in diesem Fall die
 Information, die sowohl in der Messung von $X$ als auch in der von $Y$ enthalten ist.
-\eqnl[genredundancy]{R(X,Y)=H(X)+H(Y)-H(X,Y)} Die Redundanz $R$ wird genau dann minimal,
+\eqnl[genredundancy]{R(X,Y)=H(X)+H(Y)-H(X,Y)}
+ Die Redundanz $R$ wird genau dann minimal,
 wenn die Me"sgr"o"sen maximal unabh"angig voneinander sind. Die Redundanz wird auch
 manchmal als \begriff(Transinformation) (engl.\ Mutual Information) bezeichnet. Dies
 Bezeichnung r"uhrt daher, da"s die Information $R(X,Y)$ von $X$ nach $Y$ \slang("ubergeht)
@@ -355,7 +364,8 @@ Observable $Y$ als den zu einer Zeit $t+\delay$ gemessenen Wert von $X$, w"ahren
 Zeit $t$ gemessen wird. Damit geht \eqnref{genredundancy} "uber in
 \eqnal[redundancy2]{R(X,\delay)&=&2H(X)-H(X,X_\delay) \nonumber \\
   &=& -2 \sum_i \Prob_X(i) \ln \Prob_x(i) + \sum_{i,j} \Prob_{x,\delay}(i,j) \log
-  \Prob_{x,\delay}(i,j) } wobei $\Prob_{x,\delay}(i,j)$ die Wahrscheinlichkeit ist, da"s
+  \Prob_{x,\delay}(i,j) } 
+wobei $\Prob_{x,\delay}(i,j)$ die Wahrscheinlichkeit ist, da"s
 eine Messung an $X$ zu einer beliebigen Zeit $t$ den Wert $x_i$ und zur Zeit $t+\delay$
 den Wert $x_j$ liefert\comment{Genauer haben wir es hier mit der bedingten
   Wahrscheinlichkeit $\Prob(x_j=x(t+\delay)|x_i=x(t))$ zu tun.}.  Da wir nach

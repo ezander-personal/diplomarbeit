@@ -60,7 +60,7 @@ bezeichnet man $T$ auch als \begriff(Diskriminator).
 
 \subsubsection{Fehler 1. und 2. Art}
 Bei der Annahme oder Ablehnung einer Nullhypothese k"onnen jeweils Fehler auftreten. Der
-erste Fehler ist, da"s die Nullhypothese abgelehnt wird, obwohl sie eigentlich zutrifft.
+erste Fehler ist, da"s die Nullhypothese abgelehnt wird, obwohl sie eigentlich wahr ist.
 Man spricht hier von einem \begriff(Fehler 1. Art). Die Wahrscheinlichkeit $\alpha$, mit
 der Fehler 1. Art auftreten, kann frei bestimmt werden. Dies geschieht, indem als
 Annahmebereich des Tests das $(1-\alpha)$\begriff(-Konfidenzintervall) der Teststatistik
@@ -80,31 +80,60 @@ Test in der Lage ist, die Nullhypothese f"ur mit ihr inkonsistenten Daten abzule
 bezeichnet $1-\beta$ daher auch als die \begriff(G"ute) des Tests.  Da die G"ute eines
 Tests davon abh"angt, wie nicht-konsistent die wirklichen Daten mit der Nullhypothese
 sind, kann $\beta$ im Gegensatz zu $\alpha$ nicht vorgegeben werden.  Allerdings h"angt
-die G"ute des Tests von $\alpha$ ab -- je h"oher die Signifikanz $\alpha$ des Test ist,
-desto geringer ist die G"ute $1-\beta$. Es ist andererseits nicht sinnvoll, um $1-\beta$
-gro"s zu machen $\alpha$ sehr klein zu machen. Man w"urde sich die h"ohere G"ute des Tests
+die G"ute des Tests von $\alpha$ ab -- je h"oher das Signifikanzniveau $\alpha$ des Test ist,
+desto geringer ist $\beta$. Es ist andererseits nicht sinnvoll, um die G"ute $1-\beta$
+gro"s zu machen, ein sehr hohes $\alpha$ zu w"ahlen. Man w"urde sich die h"ohere G"ute des Tests
 mit einer geringeren Signifikanz, d.h.\ Aussagekraft, des Test erkaufen.
+
+\begin{center}
+\newcommand{\rb}[1]{\raisebox{1.5ex}[-1.5ex]{#1}}
+\begin{tabular}{c|c|c}
+ & $\nullhyp$ ist wahr & $\nullhyp$ ist falsch \\ \hline
+& & \\
+$\nullhyp$ wird & falsche Entscheidung &    \\
+abgelehnt & Fehler 1. Art & \rb{richtige Entscheidung} \\ 
+& & \\ 
+\hline
+ & & \\
+$\nullhyp$ wird &   & falsche Entscheidung  \\
+angenommen &  \rb{richtige Entscheidung} & Fehler 2. Art \\
+& & \\
+\end{tabular}
+\end{center}
+
+
+Hieraus wird auch ersichtlich, warum uns daran gelegen ist, die Nullhypothese abzulehnen.
+Die Wahrscheinlichkeit, da"s die Nullhypothese abgelehnt, obwohl sie wahr ist, l"a"st sich
+genau angeben. Es handelt sich dabei ja um einen Fehler 1. Art, der mit der
+Wahrscheinlichkeit $\alpha$ auftritt. K"onnen wir die Nullhypothese dagegen nicht
+ablehnen, so kann nichts dar"uber gesagt werden, mit welcher Wahrscheinlichkeit die
+Annahmen der Nullhypothese korrekt ist. Die Wahrscheinlichkeit f"ur Fehler 2. Art h"angt
+stark von den Daten selber ab, als auch vom Umfang der Daten. Man kann die G"ute i.allg.
+nur f"ur den Test \rem{bestimmter} Daten gegen die Nullhypthese in Abh"angigkeit vom
+Datenumfang angeben.
+
 
 \subsubsection{Einfache Nullhypothesen}
 Bei der Konstruktion eines Tests ist zu beachten, da"s zwei verschiedene Typen von
 Nullhypothesen existieren: \begriff(einfache) und \begriff(zusammengesetzte). Bei
 einfachen Nullhypothesen besteht die Menge der mit $\nullhyp$ konsistenten Prozesse
 $\process$ aus nur einem Element. Ein Beispiel f"ur eine solche Nullhypothese w"are die,
-da"s die Daten Gau"sverteilt mit Mittelwert $\mu_0=0$ und Varianz $\sigma_0^2=1$ sind. Als Diskriminator
-$T$ k"onnten wir f"ur diese Nullhypothese ein h"oheres Moment der Verteilung w"ahlen, sagen
-wir 
-\eqnl[discrim1]{T=\frac{1}{N}\sum_{i=1}^N x_i^4} 
-Prinzipiell h"atten wir jede beliebige Funktion der $N$ Argumente $X=(x_1,\dots,x_n) $ 
-w"ahlen k"onnen. Allerdings h"angt die G"ute des Tests stark von der Teststatistik $T$ ab\footnotemark.
-\footnotetext{In der Tat ist das hier gew"ahlte $T$ nicht die optimale Wahl, da nicht-gau"sf"ormige 
-Verteilungen existieren, die das gleiche vierte Moment wie eine Gau"sverteilung besitzen. Dies ist f"ur die
- folgenden Betrachtungen jedoch ohne Belang.}
+da"s die Daten gau"sverteilt mit einem vorher festgelegten Mittelwert $\mu_0$ und
+festgelegter Varianz $\sigma_0$ sind. Als Diskriminator $T$ k"onnten wir f"ur diese
+Nullhypothese ein h"oheres Moment der Verteilung w"ahlen, sagen wir
+\eqnl[teststatistik1]{T=\frac{1}{N}\sum_{i=1}^N x_i^4} 
+Prinzipiell h"atten wir jede beliebige
+Funktion der $N$ Argumente $X=(x_1,\dots,x_n) $ w"ahlen k"onnen. Allerdings h"angt die
+G"ute des Tests stark von der Teststatistik $T$ ab\footnotemark.  \footnotetext{In der Tat
+  ist das hier gew"ahlte $T$ nicht die optimale Wahl, da nicht-gau"sf"ormige Verteilungen
+  existieren, die das gleiche vierte Moment wie eine Gau"sverteilung besitzen. Dies ist
+  f"ur die folgenden Betrachtungen jedoch ohne Belang.}
 
 
 Wir berechnen nun eine Anzahl $B$ von sogenannten \begriff(Surrogatdaten) oder kurz
 \begriff(Surrogaten) $\{X_k, k=1,\dots,B\}$. Zur Erzeugung der Surrogatdaten nehmen wir
-einen Gau"sproze"s $G(0,1)$, der $N$ unabh"angige, gau"sverteilte Zufallszahlen mit
-Mittelwert $\hat\mu\simeq 0$ und empirischer Varianz $\hat\sigma^2\simeq 1$
+einen Gau"sproze"s $N(\mu_0,\sigma_0^2)$, der $N$ unabh"angige, gau"sverteilte Zufallszahlen mit
+Mittelwert $\hat\mu\simeq \mu_0$ und empirischer Varianz $\hat\sigma^2\simeq \sigma_0^2$
 erzeugt\footnotemark. Wir berechnen nun $T$ f"ur die Surrogatdaten als auch f"ur die
 realen Daten. Die $T$-Werte seien mit $\{T_k,k=1,\dots,B\}$ bzw.\ $T_R$ bezeichnet. Wollen
 dir die Nullhypothese auf dem $\alpha$-Signifikanzniveau ablehnen, mu"s $T_R$ unter den
@@ -113,7 +142,7 @@ sein, die sowohl die $T_k$ als auch $T_R$ enth"alt\footnotemark. Zu beachten ist
 $B+1$ mindestens gleich $2/\alpha$ sein mu"s. Im allgemeinen wird als ein Vielfaches von
 $2/alpha$ gew"ahlt. F"ur ein "ubliches Signifikanzniveau von $\alpha=0,05$ w"are $B=39$,
 die minimale Anzahl an verwendeten Surrogaten.  \footnotetext{Ein Gau"sproze"s
-  $G(\mu,\sigma)$ erzeugt Zufallszahlen mit Erwartungswert $\mu$ und Standardabweichung
+  $N(\mu,\sigma^2)$ erzeugt Zufallszahlen mit Erwartungswert $\mu$ und Standardabweichung
   $\sigma$. Bei der Realisierung $X$ eines solchen Prozesses k"onnen der Mittelwert
   $\hat\mu$ und die empirische Standardabweichung$\hat\sigma$ der erzeugten Daten hiervon abweichen.
   Die Werte f"ur die Realisierung eines solchen Prozesses sollen daher durch ein Dach
@@ -129,16 +158,34 @@ vorliegenden Daten wollen wir die Nullhypothese pr"ufen, ob die Daten allgemein
 gau"sverteilt mit unbekanntem Mittelwert $\mu$ und Varianz $\sigma^2$ sind. Dies ist
 jedoch eine zusammengesetzte Nullhypothese. Die mit $\nullhyp$ konsistenten Prozesse, sind
 alle Gau"sprozesse mit beliebigem $\mu$ und $\sigma^2$. Es w"are nun offensichtlich nicht
-sinnvoll und auch nicht praktikabel, die Teststatistik \eqnref{discrim1} f"ur alle
-m"oglichen Gau"sprozesse $G(\mu,\sigma)$ zu berechnen. Es existieren nun drei verschiedene
-Ans"atze
+sinnvoll und auch nicht praktikabel, die Teststatistik \eqnref{teststatistik1} f"ur alle
+m"oglichen Gau"sprozesse $N(\mu,\sigma^2)$ zu berechnen. Es existieren nun zwei verschiedene
+Ans"atze, die wir im folgenden diskutieren und vergleichen wollen.
+
+\paragraph{Typische Realisierungen}
+Eine M"oglichkeit den Bereich der Modelle einzuengen besteht in der beschr"ankung auf
+typische Realisierungen. Man berechnet hierzu $\hat\mu$ und $\hat\sigma$ der Originaldaten
+und berechnet dann die Surrogatdaten durch Gau"sprozesse $N(\mu,\sigma^2)$ mit
+$\mu=\hat\mu$ und $\sigma=\hat\sigma$. Ein Problem hierbei ist, da"s f"ur die
+Surrogatdaten der empirische Mittelwert und die Standardabweichung im allgemeinen ungleich
+$\hat\mu$ bzw.\ $\hat\sigma$ sind. Dies hat zur Folge, da"s die Teststatistik relativ
+breit streut und die G"ute des Tests sehr schlecht wird (s.\psref{gurke}). Dem l"a"st sich
+abhelfen, indem wir statt der Teststatitstik \eqnref{teststatistik1} ein
+\begriff(zentrale) Teststatistik verwenden. Ein zentral Teststastitik ist eine, die f"ur
+alle Realisierungen der betrachteten Prozesse die gleiche Verteilung aufweist. Dies w"are
+in unserem Beispiel 
+\eqnl[teststatistik2]{T'=\frac{1}{N}\sum_{i=1}^N \left(\frac{x_i-\hat\mu}{\hat\sigma} \right)^4} 
+
+Die so definierte Teststatistik ist unabh"angig vom Mittelwert und der empirischen
+Standardwabweichung der Surrogat- bzw.\ Originaldaten
+
 \begin{itemize}
 \item Wir benutzen eine \begriff(zentrale) Teststatistik. Bei einer zentralen
   Teststatistik ist die $T$-Verteilung f"ur alle Elemente von $\process$ gleich.
 \item Wir berechnen $\hat\mu_R$ und $\hat\sigma_R$ f"ur die realen Daten und betrachten f"ur die
   Erzeugung der Surrogatdaten nur Gau"sprozesse mit $\mu=\hat\mu_R$ und $\sigma=\hat\sigma_R$,
   d.h.\ wir nehmen nur eine Teilmenge von $\process_0\subset\process$ mit
-  $\process_0=\{G(\mu,\sigma),\mu=\hat\mu_R\land\sigma=\hat\sigma_R\}$. Man spricht hier von \begriff(typischen
+  $\process_0=\{N(\mu,\sigma),\mu=\hat\mu_R\land\sigma=\hat\sigma_R\}$. Man spricht hier von \begriff(typischen
   Realisierungen).
 \item Wir benutzen nur Surrogatdaten f"ur das berechnete $\hat\mu$ und $\hat\sigma$ exakt gleich
   Mittelwert und Varianz der Originaldaten sind. Dieser als \begriff(eingeschr"ankte
@@ -146,15 +193,16 @@ Ans"atze
   signifikant ab.
 \end{itemize}
 
-\paragraph{Zentrale Teststatistiken}
-Um aus der Teststatistik \eqnref{discrim1} eine zentrale Teststattistik zu machen definieren wir $T$
+Um aus der Teststatistik \eqnref{teststatistik1} eine zentrale Teststattistik zu machen definieren wir $T$
  nun folgenderma"sen
-\eqnl[discrim2]{T'=\frac{1}{N}\sum_{i=1}^N \left( \frac{x_i-\hat\mu}{\hat\sigma} \right)^4} 
+\eqnl[teststatistik2]{T'=\frac{1}{N}\sum_{i=1}^N \left( \frac{x_i-\hat\mu}{\hat\sigma} \right)^4} 
 Durch die in der Gleichung vorgenommene Umskalierung hat den Effekt, da"s die Teststatistik
-f"ur alle Gau"sprozesse $G(\mu,\sigma)$ die gleiche Verteilung aufweist. 
+f"ur alle Gau"sprozesse $N(\mu,\sigma^2)$ die gleiche Verteilung aufweist. 
 
 
-\paragraph{Typische Realisierungen}
+\paragraph{Zentrale Teststatistiken}
+
+
 
 
 \paragraph{Eingeschr"ankte Realisierungen}

@@ -1,7 +1,12 @@
 #!/bin/sh
 
+if !(test -e "gliederung.dvi" ); then 
+	exit 0;
+fi
+
+
 if [ "$TERM" = "linux" ]; then 
-	exit;
+	exit 0;
 fi
 
 if ! (xlsclients | grep "xdvi.*gliederung"  > /dev/null ); then
@@ -10,3 +15,4 @@ if ! (xlsclients | grep "xdvi.*gliederung"  > /dev/null ); then
 	#sleep 1s
 	until ( (xwininfo -root -children -tree | grep "Xdvi: gliederung") > /dev/null ); do ls>/dev/null ; done
 fi
+exit 0
