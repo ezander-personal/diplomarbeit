@@ -1,0 +1,528 @@
+\comment{
+\chapter{Gurke}
+\section{Gurke}
+\subsection{Gurke}
+}
+\subsection{Korrelationsdimension}
+\label{chapcorrdim}
+
+
+Die momentan g"angigste Methode der Dimensionsbestimmung ist die Berechnung der
+\begriff(Korrelationsdimension) nach \autor(Grassberger) und \autor(Procaccia)
+\cite{grassberger-procaccia}. Die verallgemeinerten Dimensionen $D_q$ sind definiert durch
+\eqnl[gendim]{D_q = \frac{1}{q-1} \lim_{\eps\to 0} \frac{\log\left(\sum_i \Prob_i^q\right)}{\log(\eps)}}
+F"ur $q=2$ ergibt sich die sogenannte Korrelationsdimension $\corrdim$.
+\eqn{\corrdim = \lim_{\eps\to 0} \frac{\log\left(\sum_i \Prob_i^2\right)}{\log(\eps)}}
+Anstatt den Ausdruck $\sum_i \Prob_i^2$ nun f"ur verschiedene Werte von $\eps$ aus dem
+gen"aherten nat"urlichen Ma"s zu berechnen, bietet sich hier eine weiteaus effizientere
+Alternative. $\Prob_i$ ist die Wahrscheinlichkeit einen Attraktorpunkt in der $i$-ten Box der
+gew"ahlten Partitionierung zu finden. $\Prob_i^2$ ist somit die Wahrscheinlichkeit zwei beliebige Punkte
+gleichzeitig in der Box~$i$ anzutreffen. Die Summation "uber alle Boxen, d.h.\  die
+Wahrscheinlichkeit irgend zwei Punkte gleichzeitig in einer beliebigen Box anzutreffen,
+ist nun ann"ahernd gleich derjenigen, zwei Punkte in einer Entfernung, die kleiner
+als der Boxdurchmesser ist, anzutreffen. Diese kann wiederum gen"ahert werden durch das Verh"altnis
+aller Punktepaare mit einem Abstand kleiner als $\eps$ zu der Gesamtanzahl aller
+Punktepaare
+\eqnl[cintpredef]{\sum_i \Prob_i^2 = \frac{1}{N(N-1)} \, \# \left\{ (i,j) \, \vert \, i \neq j \land  \norm{\x_i-\x_j}\leq \eps \right\} } 
+Die rechte Seite von \eqnref{cintpredef} ist das sogenannte
+\begriff(Korrelationsintegral) $C(\eps)$. Ausgedr"uckt "uber die Heavysidefunktion $\Theta$ 
+erhalten wir f"ur das Korrelationsintegral
+\eqnl[cintdef]{C(\eps) = \frac{1}{N(N-1)}\sum_{i\neq j}\Theta(\eps-\norm{\x_i-\x_j})}
+und f"ur die Korrelationsdimension 
+\eqnl[cdimdef]{\corrdim = \lim_{\eps\to 0} \frac{\log(C(\eps))}{\log(\eps)}}
+Aufgrund der Unabh"angigkeit von $D_q$ von der speziellen Form der Partitionierung in
+\eqnref{gendim}, ist das Korrelationsintegral (im Grenzfall $\eps\to0$) unabh"angig von
+der Wahl der Norm. F"ur die numerische Berechnung des Korrelationsintegrals ist es daher
+aus Gr"unden der Geschwindigkeit sinnvoll, statt der euklidischen Norm $\norm{\cdot}_2$ die
+Maximumsnorm $\norm{\cdot}_\infty$ zu verwenden. Da die Definition des
+Korrelationsintegrals in \eqnref{cintdef} symmetrisch bez"uglich $i$ und $j$ ist, gen"ugt
+die Berechnung desselben f"ur $i<j$
+\eqnl[cintdef2]{C(\eps) = \frac{2}{N(N-1)}\sum_{i<j}\Theta(\eps-\norm{\x_i-\x_j}_\infty)}
+
+\subsubsection{Numerische Berechnung des Korrelationsintegrals}
+Die Berechnung des Korrelationsintegrals geschieht nun in den folgenden Schritten.
+\begin{enumerate}
+\item Der minimale und der maximale Abstand $\rmin$ und $\rmax$ zweier Punkte der
+Zeitreihe werden bestimmt. Unter Verwendung der Maximumsnorm kann f"ur den maximalen
+Abstand $\rmax=\max\limits_{i,j}{\lvert x_i-x_j \rvert}$ gew"ahlt werden bzw.\ f"ur den
+minimalen $\rmin=\min\limits_{i,j}{\lvert x_i-x_j \rvert}$. 
+\item Der Bereich $[\rmin,\rmax[$ wird in $m$ Intervalle $[r_l,r_{l+1}[$ mit
+$r_0=\rmin$ und $r_{m-1}=\rmax$ aufgeteilt. Die Aufteilung sollte logarithmisch (d.h.\
+$r_{l+1}/r_l=\rho=\const$) erfolgen, um dem Skalierungsverhalten des Korrelationsintegrals
+Rechnung zu tragen.
+\item Den Intervallen wird ein Feld $K$ zugeordnet, wobei dem Intervall $[r_l,r_{l+1}[$
+der Wert $K_l$ entspricht. Das Feld $K$ dient dazu, bei der sp"ateren Kalkulation die
+Anzahl der Punktepaare der Abstand in dem entsprechenden Intervall liegt aufzunehmen.
+\item F"ur alle $i<j$ wird der Abstand $r_{ij}=\norm{\x_i-\x_j}_\infty$
+berechnet. Dasjenige $K_l$ mit $r_l\leq r_{ij}\lt r_{l+1}$ wird um 1 erh"oht.
+
+Die Berechnung des Indizes $l$ aus dem Abstand $r_{ij}$ ist einer der zeitkritischen Teile 
+des Algorithmus. Der Index $l$ kann "uber $l=\lfloor log(r_{ij} / \rmax ) / log(\rho)
+\rfloor + m$ berechnet werden. Da die Berechnung des Logarithmus sehr langsam ist, wird
+hier folgenderma"sen verfahren. Statt des nat"urlichen Logarithmus wird der
+Zweierlogarithmus benutzt. W"ahlt man nun das Abstandsverh"altnis $\rho$, so da"s
+$\rho=2^{1/k}$ mit $k\in\N$ gilt, kann die obige Formel umgeschrieben werden zu $l=\lfloor
+log_2\left( (r_{ij} / \rmax )^k \right) \rfloor + m$. Die Funktion $\lfloor
+log_2(\cdot) \rfloor$ kann aufgrund der internen Zahlendarstellung von Computern sehr
+schnell berechnet werden.
+\item Aus den $K_l$ kann "uber $C(r_l)=\sum\limits_{m=0}^{l-1} K_m$ das Korrelationsintegral bestimmt
+werden. 
+\end{enumerate}
+Am effektivesten ist das Verfahren, wenn das Korrelationsintegral in einem Durchlauf f"ur verschiedene 
+Einbettungsdimensionen $d=1\dots d_\tmax$ bestimmt wird. In diesem Fall mu"s das
+eindimensionale Feld $K$ durch ein zweidimensionales ersetzt werden, dessen zweite
+Komponente die Einbettungsdimension spezifiziert. Schritt 4 ist folgenderma"sen
+abzu"andern, da"s zuerst der Abstand $r_{ij,1}=\abs{\x_{i,1}-\x_{j,1}}$ f"ur die
+Einbettungsdimension $d=1$ berechnet wird. Die folgenden Abst"ande folgen dann bei Verwendung
+der Maximumsnorm aus $r_{ij,d}=\max(l_{ij,d-1},\abs{\x_{i,d}-\x_{j,d}})$. Der Index $l$
+mu"s nur dann neu berechnet werden, wenn $r_{ij,d}\gt r_{ij,d-1}$ ist.
+
+\epsfigsingle{corrint/perfect/corrint700b}
+{Korrelationsintegral f"ur eine Zeitreihe ($N=7\times 10^5$)des R"osslerattraktor mit $\rho=2^{1/10}$,
+$m=102$ und $d=1\dots 8$ (von oben nach unten). Die Abst"ande sind einheitlich auf
+$\rmax=1$ skaliert worden. Aufgrund des Skalierungsverhaltens des
+Korrelationsintegrals erfolgt die Darstellung doppelt logarithmisch.} 
+{corrintperf}{-0.2cm}
+
+\psref{corrintperf} zeigt eine Berechnung des Korrelationsintegrals f"ur eine aus dem
+R"osslersystem \cite{Roessler76} gewonnenen Zeitreihe mit $7\times 10^5$ Punkten 
+f"ur Einbettungsdimensionen $d=1\dots 8$. In der Abbildung sind deutlich zwei Bereiche zu
+unterscheiden. F"ur $\log r>-1$ geht $\log C(r)$ gegen Null. Der Grund liegt einfach
+darin, da"s der Attraktor nur einen begrenzten Raumbereich aufspannt und f"ur hinreichend
+gro"ses $r$ alle Paare von Rekonstruktionspunkte  in der Summe von \eqnref{cintdef2}
+erfa"st sind. Dieser Bereich nennt sich auch \begriff(S"attigungsbereich) des
+Korrelationsintegrals, den Abstand ab dem S"attigung auftritt bezeichnen wir mit
+$\rsaett$. F"ur $\log r<-1$ zeigt das Korrelationsintegral das von
+\eqnref{gendim} erwartete Skalierungsverhalten $C(r)\propto r^\nu$, wobei die Konstante
+$\nu$ f"ur unterschiedliche Einbettungsdimensionen verschiedene Werte annimmt. Da der
+R"osslerattraktor die Korrelationsdimension $\corrdim\sim 2.07>2$ besitzt, skaliert das $C(r)$
+f"ur Einbettungsdimensionen $d\leq 2<\corrdim$ mit $r^d$, da in diesem Fall der gesamte Phasenraum
+aufgespannt wird. F"ur Einbettungsdimensionen $d>\corrdim$ skaliert das Korrelationsintegral
+mit $r^{\corrdim}$. Dieser Bereich, auf dessen Bestimmung bei der Korrelationsanalyse das
+Hauptaugenmerk liegt, hei"st \begriff(Skalierungsbereich)
+\footnote{F"ur die Dimensionsberechnung ben"otigen wir also nur $d>\corrdim$. Die Bedingung
+$d>2D_H$ (nach Takens Theorem) ist hier nicht notwendig zu erf"ullen, da es bei
+Dimensionsberechnungen nicht auf die Eineindeutigkeit von $\diffeo$ ankommt. Dieses Resultat geht
+auch hervor aus dem Projektionssatz f"ur fraktale Mengen \cite{Falconer93}.}.
+
+\subsubsection{Berechnung der Korrelationsdimension aus dem Korrelationsintegral}
+\paragraph{Ableitung des Korrelationsintegrals}
+F"ur die numereische Berechnung der Korrelationsdimension ist die Definition
+\eqnref{cdimdef} schlecht geeignet, da die Gleichheit nur im Grenzfall $r\to 0$ gilt. F"ur 
+endliche $r$ gilt wegen $C(r)=k r^{\corrdim}$
+\eqn{\mcorrdim(r)=\corrdim + \frac{\log k}{\log r}}
+Aufgrund des zweiten Summenden ist die Konvergenz gegen $\corrdim$ logarithmisch langsam.
+Besser geeignet ist die Berechnung von $\corrdim$ "uber die Ableitung, da sich hier der
+Propornionalit"atsfaktor herausk"urzt.
+\eqn{\mcorrdim(r)=\abl{\log C(r)}{\log r}=\frac{\abls{C(r)}{r}}{C(r)/r}}
+Numerisch bestimmt wird die Ableitung an einer Stelle $r_i$, indem durch $2k+1$
+Nachbarpunkte\footnote{D.h. die Punkte $(\log r_{i-k}, \log C(r_{i-k}),\dots,(\log r_i,
+\log C(r_i),\dots,(\log r_{i+k}, \log C(r_{i+k})$. } von $r_i$ eine Regressionsgerade
+gelegt und deren Steigung ermittelt wird. Einen Plot von $\mcorrdim(r)$ "uber $\log r$
+zeigt \psref{corrslpperf}.
+
+\epsfigsingle{corrint/perfect/corrslp700b}
+{Ableitung des Logarithmus des Korrelationsintegrals auf \psref{corrintperf}. In die
+Berechnung der Steigung wurden f"unf Nachbarpunkte (d.h. $k=2$) mit einbezogen. Der
+Skalierungsbereich liegt ungef"ahr zwischen $\log(\rmin)=-5.7$ und $\log(\rmax)=-3.3$.}
+{corrslpperf}{-0.2cm}
+Die Berechnung der Korrelationsdimension "uber die Ableitung hat jedoch einige
+Nachteile. Zum einen schwankt der Wert von $\mcorrdim(r)$ relativ stark f"ur
+unterschiedliche $r$. Zum anderen wird ein gro"ser Teil Informationen, die das
+Korrelationsintegral liefert \naja(verschwendet), da nur ein sehr begrenzter Teil f"ur
+Berechnung verwendet wird. \psref{corrslpperf} liefert trotzdem wichtige Informationen zur 
+Berechnung der Korrelationsdimension. Aus der Abbildung (auch \begriff(Slopekurve)
+genannt) kann gut abgelesen werden in welchem Bereich die Steigung des
+Korrelationsintegrals konstant bleibt. Wir k"onnen hier"uber die Grenzen des
+Skalierungsbereiches $\rsmin$ und $\rsmax$ bestimmen. 
+
+\paragraph{Sekantensteigung}
+Eine verl"a"slichere Sch"atzung der Korrelationsdimension erhalten wir, indem wir die
+Steigung "uber den gesamten Skalierungsbereich ermitteln. Als Grenzen des
+Skalierungsbereiches k"onnen beispielsweise die im vorigen Abschnitt gewonnenen Werte
+$\rsmin$ und $\rsmax$ genommen werden. F"ur die Korrelationsdimension ergibt sich dann
+\eqn{\mcorrdim=\frac{\log C(\rsmax)-\log C(\rsmin)}{\log \rsmax-\log(\rsmin)}}
+Die Ermittelung von $\rsmin$ und $\rsmax$ aus der Slopekurve geschieht im allgemeinen
+manuell. H"aufig ist dies auch sinnvoll, da die Daten zuerst mit dem Auge begutachtet
+werden sollten, bevor eine Aussage "uber die Korrelationsdimension einer Zeitreihe gemacht
+wird. 
+
+Die Steigung des Korrelationsintegrals im Bereich $[\rmin,\rmax[$ kann nat"urlich auch
+durch Bestimmung einer Regressionsgeraden berechnet werden. Die Steigung dieser Geraden
+ist
+\eqn{\mcorrdim = \frac{\sum\limits_i (\log C(r_i)-\overline{\log C(r)}(\log r_i
+-\overline{\log r_i}))}{\sum\limits_i(\log r_i-\overline{\log r})^2}}
+wobei $\overline{\log C(r)}$ und $\overline{\log r_i}$ die Mittelwerte von $\log C(r)$
+bzw.\  $\log r$ im betrachteten Intervall sind. Es mu"s jedoch angemerkt werden, da"s eine 
+der Vorraussetzungen f"ur die Durchf"uhrung einer linearen Regression hier nicht
+erf"ullt ist. Die Werte von $\log C(r)$ sind f"ur verschiedene Werte von $r$ nicht
+voneinander unabh"angig. Zudem hat die Absch"atzung des Fehlers bei einer solchen Methode
+kleinster Quadrate meist wenig mit dem wirklichen Fehler bei der Dimensionsberechnung zu
+tun. Wir werden sp"ater (im Abschnitt \korrektur(Takens estimator)) eine Methode
+entwickeln, die diese Nachteile nicht teilt.
+
+\paragraph{Korrelationskoeffizient}
+F"ur die Bestimmung der Korrelationsdimension vieler Zeitreihen ist jedoch ein Verfahren
+zur automatischen Bestimmung des Skalierungsbereiches angebracht. Verfahren dieser Art
+sind vielf"altig entwickelt worden, wir wollen jedoch nur eines, welches hier auch
+Anwendung gefunden hat, besprechen. Der Skalierungsbereich ist derjenige, in der die
+Auftragung $\log C(r)$ "uber $\log r$ gerade (d.h. mit konstanter Steigung $\mcorrdim$)
+verl"auft. Es ist also Aufgabe des Verfahrens aus dem $\log C(r)$-$\log r$-Graph den
+\naja(geradesten) Teil herauszufinden. 
+
+Daf"ur ist es notwendig ein Ma"s, daf"ur zu finden, wie \naja(gerade) der Graph in einem
+bestimmten Bereich verl"auft \cite{raidl}. Ein solches Ma"s ist der 
+\begriff(Korrelationskoeffizient)\footnote{Der (\begriff(Pearsonsche))
+\begriff(Korrelationskoeffizient) $r(X,Y)=\mathrm{Cov}(X,Y)/\sigma_X \sigma_Y$ beschreibt die G"ute 
+der linearen Vorhersagbarkeit der Zufallsvariable $Y$ durch die Zufallsvariable $X$. Er ist 
+eng gekoppelt mit dem Optimierungsproblem $Y$ m"oglichst gut (linear) aus $X$
+vorherzusagen, d.h.\  den Vorhersagefehler $E(Y-(a+bX))^2$ zu minimieren. Es gilt
+$\min(E(Y-(a+bX))^2) = \sigma_Y(1-r^2(X,Y))$.} 
+$r(X,Y)$, wobei $X$ und $Y$ zwei beliebige Zufallsvariablen sein m"ogen. Er wird $1$ 
+bzw.\  $-1$, wenn zwischen $X$ und $Y$ ein exakt positiver bzw.\  negativer Zusammenhang
+besteht. Bei schw"acheren Zusammenh"angen wird er betragsm"a"sig kleiner bzw.\  $0$, falls 
+gar keiner besteht. Betrachten wir nun $\log C(r)$ und $\log r$ in einem Intervall
+$I=[r_1,r_2[$ als Zufallsvariablen, so erhalten wir mit $L(I)=\abs{ r(\log r, \log
+C)\rvert_{I}}$ ein Ma"s f"ur die Linearit"at des Korrelationsintegrals in diesem
+Bereich.
+\eqn{L(I) = \left| \frac{\frac{1}{n-1} \sum\limits_{r\in I}\left( \log r - \overline{\log
+r}\right)\left( \log C(r) - \overline{\log C(r)} \right) } {\sqrt{\left[ \frac{1}{n-1}
+\sum\limits_{r\in I}\left( \log r - \overline{\log r}\right) \right] \left[ \frac{1}{n-1}
+\sum\limits_{r\in I}\left( \log C(r) - \overline{\log C(r)} \right) \right ]}} \right| } 
+Hierbei bezeichnen die Gr"o"sen $\overline{\log r}$ und $\overline{\log C(r)}$ jeweils in
+im Intervall $I$ gemittelten Gr"o"sen. Um den Skalierungsbereich zu finden wird nun $L(I)$ 
+f"ur alle m"oglichen Intervalle berechnet, und dasjenige, welches das maximale $L$
+liefert, als Skalierungsbereich benutzt. Hier sind jedoch zwei Einschr"ankungen zu
+beachten. Zum einen sollte eine Mindestl"ange f"ur die Intervalle vorgegeben
+sein. Ansonsten tendiert der Algorithmus dazu, sehr kleine Intervalle auszuw"ahlen. Zum
+anderen m"ussen Unter- und Obergrenzen f"ur $r$ vorgegeben werden, da im Bereich des
+Digitalisierungsrauschens und der S"attigung das Korrelationsintegral auch einen linearen
+Bereich (mit Steigung Null) besitzt. F"ur das Korrelationsintegral aus \psref{corrintperf} 
+liefert das Verfahren die Werte $\log r_1 = -5,7$ und $\log r_2 = -3,6$. Diese stimmen gut 
+mit denen "uberein, die man auch aus \psref{corrslpperf} absch"atzen w"urde.
+
+\paragraph{Takens' Sch"atzer}
+Die Berechnung der Korrelationsdimension "uber eine Regressionsgerade durch ein auf
+irgendeine Weise festgelegtes Intervall hat jedoch zwei Nachteile. Zum einen bleiben
+Informationen "uber den Verlauf von $C(r)$ unterhalb von $\rmin$ ungenutzt. Gerade kleine
+Werte von $r$ sollten jedoch nach \eqnref{cdimdef} Informationen "uber die
+Korrelationsdimension liefern. Zum anderen wird nicht ber"ucksichtigt, da"s
+aufeinanderfolgende Werte von $C(r)$ nicht voneinander unabh"angig sind. Einen Ausweg
+hieraus bietet der sogenannte \begriff(Takens' Sch"atzer) (Takens' estimator) \cite{Takens85a}. 
+
+Wir m"ussen hier einen wahrscheinlichkeitstheoretischen Ansatz f"ur das
+Korelationsintegral machen. Betrachten wir die Wahrscheinlichkeit $\Prob$, da"s zwei
+Attraktorpunkte $\x_i$ und $\x_j$ einen Abstand $\rij$ kleiner als $r$ haben, so erhalten wir
+\eqn{\Prob(\norm{\x_i-\x_j}<r)=\frac{\sum\limits_{i\neq j}\Theta(r-\norm{\x_i-\x_j})}{N(N-1)}=C(r)}
+Die betrachtete Wahrscheinlichkeit ist also genau gleich dem Korrelationsintegral $C(r)$.
+Da uns nur das Skalierungsverhalten unterhalb des S"attigungsbereiches interessiert,
+legen wir eine Obergrenze $\rmax<\rsaett$ f"ur $r$ fest. Alle Punktepaare mit Abstand
+$r\geq\rmax$ werden ignoriert und wir betrachten die dedingte Wahrscheinlichkeit $\tilde
+\Prob$, da"s zwei dieser Punktepaare einen Abstand kleiner $r$ haben m"ogen.
+\eqn{\tilde \Prob(\rij<r)=\Prob(\rij<r \vert \rij < \rmax) = \frac{C(r)}{C(\rmax)}   }
+Da $C(r)$ im Skalierungsbereich idealerweise wie $kr^\corrdim$ skaliert, verh"alt sich
+$\tilde \Prob(\rij<r)$ idealerweise wie $(r/\rmax)^\corrdim$.
+Wir k"onnen nun den (einzigen) freien Parameter absch"atzen "uber die aus der Statistik
+bekannte \begriff(Maximum-Likelyhood-Regel). Sie besagt, da"s der Parameter so
+abzusch"atzen sei, da"s die gemessene Verteilung in Bezug auf die theoretische Verteilung
+mit der gr"o"sten Wahrscheinlichkeit erzeugt worden sei.
+
+Diese Aussage ist folgenderma"sen zu verstehen. Die erzeugte Verteilung hat in Bezug auf
+die theoretische Verteilung eine bestimmte Wahrscheinlichkeit $L$, die vom Parameter
+$\corrdim$ abh"angt. Wir bestimmen $\corrdim$ nun so, da"s $L(\corrdim)$ ein Maximum
+annimmt. Welche Wahrscheinlichkeit hat nun die gemessene Verteilung? Zun"achst einmal
+ordnen wir die $\rij$ so an, da"s wir einen Folge $r_1,\dots,r_m$ erhalten. Die
+Wahrscheinlichkeit genau diese Folge zu messen, ist offensichtlich gleich
+\eqn{\Prob(r=r_1)\cdot \Prob(r=r_2)\cdot\dots\cdot \Prob(r=r_m)}
+Diese ist jedoch Null, da wir es mit einer kontinuierlichen Verteilung zu tun haben und
+somit die Einzelwahrscheinlichkeiten Null sind. Wir suchen daher die Wahrscheinlichkeit
+die Verteilung in den Intervallen $[r_i,r_i+\d r_i[$ gemessen zu haben, wobei die $\d r_i$ 
+beliebig sind -- die Intervalle sollten sich jedoch nicht "uberschneiden. Wir erhalten
+damit f"ur die gesuchte Wahrscheinlichkeit und damit f"ur die Maximum-Likelyhood-Funktion
+\eqn{L(\corrdim)=\prod_{i=1}^m \Prob(r_i\leq r < r_i + \d r_i)}
+Bei der theoretischen Verteilung $\Prob(r<\eps)=k\eps^\corrdim$ erhalten wir 
+$\Prob(\eps<r<\eps+\d\eps)=k\corrdim\eps^{\corrdim-1}\d\eps$ und somit
+\eqn{L(\corrdim)=\prod_{i=1}^m k \corrdim  r_i^{\corrdim-1}\d r_i}
+Um das Maximum der Funktion zu finden, logarithmieren wir die obige Gleichung und leiten
+nach $\corrdim$ ab
+\eqna{\abl{\log L(\corrdim)}{\corrdim}&=& \abl{}{\corrdim}\left( m\log\corrdim + (\corrdim-1)\sum_{i=1}^m\log r_i +
+\log k + \sum_{i=1}^m\d r_i\right)\nonumber\\
+&=& \frac{m}{\corrdim}+\sum_{i=1}^m\log r_i}
+Hier wird nun auch ersichtlich warum die spezielle Wahl der $\d r_i$ beliebig
+war. Nullsetzen der Gleichung ergibt nun den Sch"atzwert f"ur $\corrdim$
+\eqn{\corrdim=-\frac{m}{\sum_{i=1}^m \log r_i}=-\frac{1}{<\log r_i>} }
+Dies ist der sogenannte \begriff(Takens' Sch"atzer). Da das Korrelationsintegral, wie oben 
+gesehen eine Verteilung der der $r_i$, darstellt, kann der Erwartungswert $<\log r_i>$
+jetzt "uber $C(r)$ ausgedr"uckt werden. Die Wahrscheinlichkeit, bei der gemessenen
+Verteilung einen Wert zwischen $r$ und $r+\d r$ zu messen, betr"agt $\frac{\d (C(r)}{\d
+r}\frac{\d r}{C(\rmax)}$. Wir erhalten also f"ur ein gegebenes $\rmax$
+\eqn{\corrdim(\rmax) = \int\limits_0^\rmax \abl{C(r)}{r}\frac{\log r}{C(\rmax)}\d r }
+Da wir das Korrelationsintegral jedoch nur f"ur diskrete Werte $r_i$ bestimmen k"onnen,
+geht die obige Gleichung "uber in
+\eqn{\corrdim(r_n) = \sum\limits_{i=1}^{n-1} \frac{C(r_i+1)-C(r_i)}{C(r_n)}\log r_i }
+Ein Vergleich dieser Methode mit der im vorigen Abschnitt beschriebenen zeigt, da"s der
+Takens' Sch"atzer bei bekannten Systemen im allgemeinen bessere Werte liefert (s. \psref{corrdimcomp}).
+\inkorrektur(Fehlerabsch"atzung)
+
+\epsfigdouble{corrint/perfect/corrdim700b}{corrint/perfect/takdim700b}
+{
+Vergleich der Bestimmung der Korrelationsdimension $\corrdim$ in Abh"angigkeit von der
+Einbettungsdimension $\embed$ durch Regressionsgeraden (links) bzw.\   Takens'
+Sch"atzer (rechts). Die "uber Takens' Sch"atzer bestimmten Werte der Korrelationsdimension 
+$\corrdim$ stimmen deutlich besser mit den theoretischen Werten "uberein. 
+} 
+{corrdimcomp}{-0.2cm}
+\subsubsection{Fehler bei der Korrelationsanalyse}
+
+Das Korrelationsintegral in \psref{corrintperf} ist nahezu optimal. Der Skalierungsbereich 
+erstreckt sich "uber einige Gr"o"senordnungen ($\rmax/\rmin\simeq 54)$ und die Steigung innerhalb
+dieses Bereichs ist nahezu konstant (s. \psref{corrslpperf}). Der Grund liegt vor allem
+darin, da"s f"ur die Berechnung eine gro"se Anzahl Datenpunkte ($7\times10^5$) vorlag und
+mit nahezu rauschfreien Daten gearbeitet wurde. In experimentellen Situationen liegt
+beides meist nicht vor. Die Fehler die hieraus (und auch aus anderen Quellen) resultieren
+sollen im folgenden diskutiert werden.
+
+
+
+
+\paragraph{Endliche Datenmenge}
+Ein Faktor der die verl"a"sliche Bestimmung der Korrelationdimension wesentlich
+beeinflu"st ist die Menge der verf"ugbaren Daten. Das Korrelationsintegral hat einen
+Wertebereich von $2/N(N-1)$ bis $1$. Da $C(r)$ f"ur $r<\rmax$ mit $(r/\rmax)^\corrdim$ skaliert, tragen
+bei Abst"anden der Gr"o"senordnung $\rmax(2/N^2)^{1/\corrdim}$ nur noch wenige Punktepaare 
+zum Korrelationsintegral bei. Daraus resultieren in diesem Bereich starke statistische
+Schwankungen von $\mcorrdim(r)$. Aus diesem Verhalten leiteten \autor(Eckmann und Ruelle)
+\cite{eckmann-ruelle2} eine Gleichung f"ur die minimal erforderliche Datenmenge f"ur
+Dimensionsberechnungen ab. Bezeichnet man das Verh"altnis von gr"o"sten zu kleinsten
+Skalen mit $\rho$, so ergibt sich f"ur die minimale Datenmenge
+\eqnl[corrdimnminer]{N_\tmin=\sqrt{2\rho^\corrdim}}
+oder andererseits bei fester Datenmenge die maximal berenchenbare Dimension
+\eqnl[corrmaxdim]{D_{2,\tmax}=\frac{2\log N}{\log \rho}}
+Nun mu"s f"ur eine vern"unftige Absch"atzung der Dimension das Skalenverh"altnis $\rho$
+hinreichend gro"s sein. Eckmann und Ruelle geben hier ein minimales Verh"altnis von
+$\rho_\tmin=10$ an, so da"s man etwa bei $N=1000$ Datenpunkten maximal eine
+Korrelationsdimension $\corrdim\leq 6$ sinnvoll bestimmen kann. Diese Grenze scheint mir
+allerdings sehr hoch, da sich bei $N=1000$ schon die Dimensionen von Attraktoren mit
+$\corrdim\simeq 2$ nur sehr schlecht bestimmen lassen. Andererseits kann das Ergebnis gut
+als wirkliche obere Grenze f"ur die Dimensionsberechnung angesehen werden. 
+
+
+
+
+\paragraph{Kanten und endliche Ausdehnung des Attraktors}
+Wie wir bereits in \psref{corrintperf} gesehen haben, geht das Korrelationsintegral ab einem
+bestimmten Wert $\rsaett$ in einen S"attigungsbereich "uber. Dies ist eine Konsequenz der
+endlichen Ausdehnung des Attraktors. Effekte die aus dem S"attigungsverhalten resultieren, 
+sind schon auf L"angen\-skalen weit unterhalb der linearen Ausdehnung des Attraktors
+erkennbar. Sobald eine wesentliche Anzahl Punkte einen Abstand von weniger als $r$ vom
+\naja(Rand) des Attraktors hat, weicht das Skalierungsverhalten des Korrelationsintegrals
+stark vom theoretischen Verlauf ab.
+
+Der genaue Wert $r$ f"ur den das Skalierungsverhalten aufgebrochen wird, h"angt sehr von
+der Dimension und der Geometrie des Attraktors ab. 
+F"ur einen $m$-dimensionalen Hyperkubus der Kantenl"ange 1 kann das 
+Korrelationsintegral jedoch exakt berechnet\footnotemark\  werden.
+\eqnl[corrinthyper]{C(r)=(2r-r^2)^m}
+Unter der vereinfachenden Annahme, da"s sich der Attraktor wie ein Hyperkubus
+der Dimension $\corrdim$ verh"alt, kann die Korrelationsdimension entsprechend der
+\eqnref{corrinthyper} erneut abgesch"atzt werden. Die sich hieraus ergebenden Korrekturen 
+sind jedoch so gering (dritte Dezimalstelle hinter dem Komma), da"s sie hier nicht
+durchgef"uhrt wurden.
+\footnotetext{Wie bereits gezeigt wurde gilt f"ur das Korrelationsintegral
+$C(r)=\Prob(\rij<r)$. Bei einem homogenen Hyperkubus sind die einzelnen Komponenten des
+Abstandsvektors voneinander statistisch unabh"angig und es gilt bei Verwendung der
+Maximumsnorm $\Prob(\rij)=\Prob((\vec r_{ij,1} < r) \land\dots\land (\vec r_{ij,m} < r)) = \Prob_1(\vec
+r_{ij,1} < r)\cdot\dots\cdot \Prob_1(\vec r_{ij,m} < r)$. Da au"serdem die Verteilungen der
+einzelnen Komponenten gleich sind folgt $\Prob(\rij)=\Prob_1(\vec r_{ij,1} < r)^m$. F"ur die
+Verteilung $\Prob_1$ gilt nun $\Prob_1(\rij<r)=\int_0^1 \{\min(1,r'+r)-\max(0,r'-r)\}\d r'=
+2r-r^2$. Somit folgt die Behauptung.
+}
+
+Die Eigenschaft des Korrelationsintegrals ab einer bestimmten Obergrenze in S"attigung zu
+gehen wurde von \autor(Nerenberg und Essex) benutzt, um eine eine Untergrenze der
+ben"otigten Datenmenge zur Berechnung der Korrelationsdimension von Attraktoren der
+Dimension $\corrdim$ zu bestimmen \cite{nerenberg-essex}. Ihre Berechnung beruht darauf, da"s der Skalierungsbereich
+von unten durch die Menge der verf"ugbaren Daten beschr"ankt wird. Kennzeichnend hierf"ur
+ist der charakteristische Abstand n"achster Nachbarn $r_n$. Von oben ist der Skalierungsbereich
+beschr"ankt durch den durchschnittlichen Abstand der Punkte zum Rand des Attraktors
+$r_s$. Fallen beide zusammen, verschwindet der Skalierungsbereich und eine
+Dimensionsbestimmung ist nicht mehr m"oglich. Beide Werte werden nun wiederum f"ur einen
+homogenen Hyperkubus der Dimension $m$ und Kantenl"ange 1 berechnet
+\eqna{r_n &=& \frac{1}{2(m+1)}\nonumber\\
+r_s &=& N^{-1/m}}
+Gleichsetzen der beiden Grenzen $r_n$ und $r_s$ ergibt
+\eqnl[corrnminnea]{N_\tmin(m)=\{2(m+1)\}^m}
+Zur Berechnung der Dimension eines Attraktors der Korrelationsdimension $\corrdim$ sind nach
+dieser Absch"atzung $N_\tmin(\lceil \corrdim \rceil)$ n"otig\footnote{$\lceil x \rceil$
+bedeutet hier, die n"achste ganze Zahl, gr"o"ser odr gleich $x$.}. Zum Vergleich mit der
+weiter oben angegebenen Formel von \autor(Eckamann und Ruelle) setzen wir das Verh"altnis
+von $r_s$ zu $r_n$ gleich $\rho$. Damit erhalten wir
+\eqnl[corrnminneb]{N_\tmin(m,\rho)=\{2(m+1)\rho\}^m}
+Dies ergibt beispielsweise f"ur Attraktoren der Dimension 2 eine minimale Datenmenge von
+ca.\  4000 Punkten bzw.\  500000 Punkte f"ur die Dimension 3. Diese Absch"atzung deckt
+sich eher mit meinen Erfahrungen bei Dimensionsberechnungen. 
+
+
+
+
+
+\paragraph{Wei"ses und Digitalisierungsrauschen}
+Der Skalierungsbereich des Korrelationsintegrals ist nach unten, au"ser durch die Menge der 
+verf"ugbaren Daten, durch Rauschen bechr"ankt. Die Auswirkungen beider Arten von
+Rauschen -- wei"ses und Digitalisierungsrauschen -- m"ussen zun"achst getrennt behandlet
+werden. 
+
+Wir betrachten dem Signal "uberlagertes, wei"ses Rauschen der St"arke $\xi$. F"ur Abst"ande 
+$r>\xi$ spielt das Rauschen nur eine untergeordnete Rolle. Die Abst"ande zwischen den
+Attraktorpunkten werden nicht wesentlich beeinflu"st und das Korrelationsintegral skaliert 
+wie bei rauschfreien Daten. 
+Im Bereich $r<\xi$ wird das Signal jedoch vollst"andig vom Rauschen dominiert. Die
+Wahrscheinlichkeit in der Umgebung eines Attraktorpunktes einen weiteren Punkt zu finden
+verh"alt sich also wie bei einem reinen Rauschsignal. Da Rauschen jedoch immer den ganzen
+Phasenraum aufspannt, skaliert das Korrelationsintegral hier mit der Einbettungsdimension
+$d$, d.h.\  $C(r)\propto r^d$. Dieser Effekt ist dargestellt in \psref{corrnoise} links.
+
+Bei Digitalisierungsrauschen verh"alt sich die Sache etwas anders. Sei $\eps$ der
+Diskretisierungslevel. Dann ist jeder Me"swert und somit auch jeder Abstand zwischen
+Attraktorpunkten\footnotemark\  ein ganzzahliges Vielfaches von $\eps$. Das Korrelationsintegral
+verl"auft daher nicht kontinuierlich sondern in Spr"ungen bei jedem $r=n\eps$ ($n\in\N$)
+(s. \psref{corrnoise} rechts). 
+\footnotetext{Vorrausgesetzt der Abstand wird "uber die Maximums- oder die Absolutnorm
+bestimmt.} Zus"atzlich werden verschiedene Attraktorpunkte auf ein und denselben Punkt
+abgebildet, so da"s Punkte mit $\rij=0$ mit endlicher Wahrscheinlichkeit auftreten. Ein
+Algorithmus zur Berechnung der Korrelationsdimension mu"s mit diesen Punkten umgehen
+k"onnen.
+
+Ein von \autor(Theiler) hergeleitetes Modell ergibt f"ur das Skalierungsverhalten des
+Korrelationsintegrals eines $m$-dimensionalen Gitters ergibt $C(r)\propto(r+\eps/2)^m$. Er 
+schl"agt daher vor bei einer diskretisierten Zeitreihe $\log C(r)$ gegen $\log(r+\eps/2)$
+aufzutragen\footnotemark. Diese Korrektur hat, nach meiner Erfahrung, jedoch wenig
+Einflu"s auf tats"achliche Dimensionsbestimmungen, sondern dient mehr dazu Singularit"aten 
+bei der Berechnung von $\log r$ zu vermeiden.
+\footnotetext{Sei $r_\eps$ das n"achste Vielfache von $\eps$ kleiner als $r$. Dann wird
+$r$ mit 50 prozentiger Wahrscheinlichkeit auf $r_\eps$ bzw auf $r_\eps+\eps$ abgebildet. F"ur 
+das Korrelationsintegral der diskertisierten Daten $C'(r)$ folgt daraus
+$C'(r)=\{C(r_\eps)+C(r_\eps+\eps)\}/2$. N"aherung und ausnutzung des urspr"unglichen
+Skalierungsverhaltens f"uhrt auf den oben angegebenen Term.}
+
+Um Rasuchen zu vermindern k"onnen verschiedene Filtermethoden angewandt werden. Die
+einfachsten hiervon sind Tief- oder Bandpa"sfilter. Diese haben jedoch den Nachteil, da"s
+ihre Anwendung dem System einen Freiheitsgrad hinzuf"ugt und somit auch die gemessene
+Dimension erh"ohen k"onnen. Zudem ist im allgemeinen nicht direkt ersichtlich ab welcher
+Oberfrequenz gefiltert werden sollte. Das Abschneiden aller Frequenzen oberhalb einer
+bestimmten Grenzfrequenz birgt auch die Gefahr, da"s eventuell f"ur die Dynamik
+wesentliche Informationen verloren gehen.
+
+Das Verfahren, welches hier zum Einsatz kommt beruht auf der in Abschnitt \korrektur(SVD)
+beschriebenen Methode der Singular Value Decomposition. Hierbei verwenden wir allerding
+nur die erste Komponente der Rekonstruktion, welche "uber die
+Verz"ogerungskoordinatenabbildung dann wieder eingebettet wird (\begriff(Reembedding)).
+Das Ergebnis des Verfahrens sieht man in \psref{corrfilter}. Die oben erw"ahnten Nachteile 
+anderer Verfahren teilt diese Methode nicht, da sie sich automatisch dem System anpa"st
+und das Problem der Dimensionserh"ohung hier prinzipiell nicht auftreten kann.
+
+\epsfigdouble{corrint/errors/noise/corrint02b}{corrint/errors/discrete/corrint05b}
+{Links das Korrelationsintegral zu einer Zeitreihe des Lorentzsystems dem wei"ses
+Rauschen aufgepr""agt wurde. Die Varianz des Rauschsignals betr"agt 0,2 Prozent der Varianz des
+Originalsignals. Rechts wurde dasselbe Signal diskretisiert in Schritten von 0,5 Prozent
+der Varianz des Signals.
+}{corrnoise}{-0.2cm}
+
+\epsfigfour{corrint/errors/noise/svd/corrint10}{corrint/errors/noise/svd/corrint10sf}
+{corrint/errors/noise/svd/corrslp10}{corrint/errors/noise/svd/corrslp10sf}
+{Links das Korrelationsintegral und die Slopekurve des ungefilterten Signals aus
+\psref{corrnoise}. Rechts die entsprechenden Kurven f"ur das SVD-gefilterte
+Signal. Deutlich zu erkennen ist der gr"o"sere Skalierungsbereich im rechten Bild.
+}{corrfilter}{-0.2cm}
+
+\epsfigdouble{corrint/errors/discrete/corrint05b}{corrint/errors/discrete/corrint5bsf}
+{Noch deutlicher ist der Effekt der Filterung bei einem diskretisierten Signal.
+}{corrdiscrete}{-0.2cm}
+
+\paragraph{Gefilterte Zeitreihen}
+Wie im vorigen Abschnitt bereits erw"ahnt kann die Filterung von Zeitreihen "uber einfache 
+\begriff(Tief-) oder \begriff(Bandpassfilter) die Dimension des Systems erh"ohen \cite{badii-politi}. Wir wollen dazu einen
+einfachen Tiefpa"s erster Ordnung betrachten. Sei $x$ das Originalsignal und $z$ das
+gefilterte Signal. Dann kann die Zeitabh"angigkeit des gefilterten Signals durch die
+folgende Differentialgleichung beschrieben werden
+\eqnl[corrlowpass]{\dot z(t) = -\eta z(t) + x(t)}
+Hierbei ist $\eta$ die Grenzfrequenz des Filters. Offensichtlich wird die Zahl der
+Freiheitsgrade des Systems durch Anwendung dieses Filters um eins erh"oht. Da"s durch den
+Filter auch die Dimension des Systems erh"oht werden kann, zeigten \autor(Badii \etal)
+(1987). Die Gleichung f"ugt dem System einen neuen Lyapunov-Exponenten
+$\lambda_f=-\eta$ hinzu. Dies f"uhrt je nach Gr"o"se von $\lambda_f$ in Bezug auf die
+anderen Lyapunov-Exponenten des Systems zu einer Erh"ohung der Lyapunov-Dimension
+$D_L$. Unter Annahme der G"ultigkeit der  Kaplan-Yorke Vermutung $D_L=D_1$ f"uhrt dies
+auch zu einer Zunahme der Informationsdimension $D_1$. Da"s auch die weiteren
+verallgemeinerten Dimensionen erh"oht werden, kann nur vermutet werden, ist jedoch
+wahrscheinlich.
+
+Um dem entgegen zu wirken, ist von \autor(Chennaoui \etal) ein Verfahren entwickelt worden 
+um den unbekannten Filterparameter $\eta$ zu bestimmen \cite{chennaoui}. Durch Inversion der Gleichung
+\eqnref{corrlowpass} kann dann, mit bekanntem $\eta$, die originale Zeitreihe wieder
+extrahiert werden. Das Verfahren beruht jedoch auf der Berechnung der
+Informationsdimension und funktioniert auch nur f"ur Filter der oben beschriebenen
+Art. F"ur \begriff(akausale) Filter\footnote{Akausale Filter sind Filter, deren
+Sprungantwort $h(t)$ bereits f"ur $t<0$ ungleich Null ist. Der \begriff(ideale) Tiefpa"s
+ist ein Beispiel f"ur solch ein Filter. Akausale Filter sind zwar in Echtzeit nicht zu
+realisieren, ihrer Anwendung auf komplett vorliegende Zeitreihen steht jedoch nichts
+entgegen.} konnte \autor(Mitschke) (1989) allerdings zeigen, da"s dieses Problem nicht 
+auftaucht \cite{mitschke}.
+
+\paragraph{Autokorrelation}
+\label{corrdimtheiler}
+Aus deterministischen Systemen gewonnene Signale sind grunds"atzlich autokorreliert. Es
+existiert eine Autokorrelationszeit $\tau_\ac$, so da"s f"ur Zeiten $\tau<\tau_\ac$ sind
+$x(t)$ und $x(t+\tau)$ startk miteinander korreliert. Falls die Autokorrelationszeit gro"s 
+gegen sie Samplingzeit $\sample$ ist, kann im Korrelationsintegral eine anormale Stufe
+auftreten. Nach einem Vorschlag von \autor(Theiler) l"a"st sich vermeiden, indem das
+Korrelationsintegral nur "uber Punktepaare  gebildet wird, die zeitlich mindestens
+$K\sample>\tau_\ac$ auseinanderliegen. Das so korrigierte Korrelationsintegral lautet dann
+\eqnl[cintdefac]{C(\eps) = \frac{2}{(N-K+1)(N-K)}\sum_{i<=j-K}\Theta(\eps-\norm{\x_i-\x_j}_\infty)}
+F"ur $K=1$ geht dies wieder in die urspr"ungliche Form von \eqnref{cintdef2} "uber. Bei
+den hier untersuchten Zeitreihen trat dieser Effekt niemals deutlich auf. Da diese
+Korrektur jedoch die Anzahl, der in die Berechnung eingehenden Punktepaare, nicht
+wesentlich herabsetzt, wurde sie in allen Berechnungen des Korrelationsintegrals vorgenommen.
+
+\paragraph{Lakunarit"at}
+\korrektur(Broggi)
+Die fraktale Struktur einer Menge kann au"ser durch ihre Dimension auch durch die
+sogenannte \begriff(Lakunarit"at) (lat.\  lacuna = Loch, H"ohle), einem von
+\autor(B. Mandelbrot) \cite{Mandelbrot82} gepr"agten Begriff, charakterisiert werden. 
+Bei Fraktalen gleicher Dimension ist dasjenige mit der h"oheren Lakunarit"at st"arker
+texturiert und erscheint fraktal-"ahnlicher. Ein Beispiel f"ur zwei \begriff(Cantormengen)
+unterschiedlicher Lakunarit"at zeigt \psref{lacunarity}.
+%
+\epsfigdouble{corrint/errors/lacunarity/sevena}{corrint/errors/lacunarity/sevenb}
+{Die ersten f"unf Konstruktionschritte zweier Cantormengen. In jedem Schritt werden die
+Intervalle in sieben gleich gro"se Teilintervalle unterteilt von denen im linken jeweils
+das dritte, vierte und f"unfte und im rechten das zweite, vierte und sechste Teilintervall
+gestrichen wird. Die Kapazit"at der entstehenden fraktalen Mengen ist 
+gleich $(D^l_0=D^r_0=\ln4/\ln 7)$. Von beiden Fraktalen hat das linke jedoch eine h"ohere Lakunarit"at.
+}{lacunarity}{-0.2cm}
+
+Die Lakunarit"at eines Fraktals hat Auswirkungen auf die Dimensionsbestimmung. Sie bewirkt 
+eine Oszillation des Korrelationsintegrals, d.h.\  $C(r)$ ist nun proportional zu
+$k(r)r^\corrdim$, wobei $k(r)$ im allgemeinen periodisch in $\log r$ ist
+(s. \psref{corrintlac}). Der Einflu"s der  Lakunarit"at kann minimiert werden, wenn bei
+der Dimensionbestimmung "uber volle Perioden von $hk(r)$ gemittelt wird.
+Andererseits werden die Oszillationen im Grenzfall $r\to 0$
+ausged"ampft\cite{Grassberger88}.
+%
+\epsfigfour{corrint/errors/lacunarity/canacint}{corrint/errors/lacunarity/canbcint}
+{corrint/errors/lacunarity/canacslp}{corrint/errors/lacunarity/canbcslp}
+{Korrelationsintegrale und Steigungskurven f"ur die Cantormengen aus \psref{lacunarity}
+(Die linke Menge ist durch \gpmarkb, die rechte durch \gpmarkd{} gekennzeichnet.). Die
+Korrelationsdimension ergibt sich zu $\mcorrdim=0,710$ bzw.\  $\mcorrdim=0,718$, was sehr gut mit dem
+theoretischen Wert $\corrdim=\ln 4 /\ln 7\simeq 0,712$ "ubereinstimmt\footnotemark.
+}{corrintlac}{-0.2cm}
+\footnotetext{Da es sich hier
+um homogene Fraktale handelt gilt $D_q=\const$ also auch $\corrdim=D_0$.}.
+
+\comment{
+\epsfigsingle{bla}
+{Alle Gnuplot Symbole \gpmarka, \gpmarkb, \gpmarkc, \gpmarkd, \gpmarke, \gpmarkf, \gpmarkg, \gpmarkh
+}{gpsymbols}{-0.2cm}
+}
+
+

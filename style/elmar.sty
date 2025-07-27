@@ -1,0 +1,696 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \def\fileversion{v1.0}
+  \def\filedate{1997/09/10}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Identification
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{elmar}
+        [\filedate\space\fileversion Elmars own package]
+\typeout{Package: `elmar' \fileversion\space <\filedate>}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preliminary Declarations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\thema@font=\bf
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareOption{themabf}{\let\thema@font=\bf}
+\DeclareOption{themarm}{\let\thema@font=\rm}
+\DeclareOption{themait}{\let\thema@font=\it}
+
+%\DeclareOption{newint}{\AtEndOfPackage{\newint}}
+\DeclareOption{newint}{}
+\DeclareOption{nonewint}{}
+
+\DeclareOption{rmsect}{\renewcommand{\sectfont}{\rmfamily\bfseries}}
+\DeclareOption{normsect}{}
+
+
+\DeclareOption*{\PackageWarning{elmar}{Unkown option '\CurrentOption'}}
+\ProcessOptions
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Required packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\RequirePackage{amstex} %!!! never include this package, at least not the beta version
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{bbm}
+%\UseAMSsymbols
+%\RequirePackage{amssym.tex}
+%\loadmsam
+
+\RequirePackage{psyesno}
+
+
+%\RequirePackage{amsbsy}
+%\RequirePackage{amsmath}
+%\RequirePackage{amsopn}
+%\RequirePackage{amstext}
+\RequirePackage{theorem}
+\RequirePackage{graphicx}
+%\RequirePackage{psfrag}
+\RequirePackage{afterpage}
+%\RequirePackage{calc}
+%\RequirePackage{wasysym}
+
+\RequirePackage{figmath}
+%\DeclareMathVersion{psfigmath}
+%\RequirePackage{palatino}
+
+%\newcommand, \renewcommand, \providecommand, \CheckCommand
+%\PackageError, \PackageWarning, \PackageInfo
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  ALLGEMEINES
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Der pagestyle und die Pars
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{headings}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 2pt minus 1pt}
+
+%\long\def\@makefntext#1{\parindent 1em\noindent  \hb@xt@1.8em{\hss\@makefnmark}#1}
+%\AtBeginDocument{{\setlength{\footnotesep}{0.5ex plus0.2ex minus 0.2ex}}}
+%\long\def\@makefntext#1{\parindent 20em\noindent \hb@xt@0.5em{\hss\@makefnmark}#1}
+\long\def\@makefntext#1{\parindent 20em\noindent \hb@xt@0.0em{\hss\@makefnmark}#1}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Die Numerierung und das Inhaltsverzeichnis soll bis 
+% zu den Subsubsections (3) oder den Paragraphs (4)  gehen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Verschiedene allgemeines Befehle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Befehle f"ur W"orter die aus besonderem
+% Grund hervorgehoben werden sollen z.B. neue Begriffe oder Metaphern
+\def\begriff(#1){{\em #1}}
+\def\begriffno(#1){{#1}}
+\def\metapher(#1){{``#1''}}
+\def\autor(#1){{\sc #1}}
+\def\slang(#1){{``#1''}}
+\def\naja(#1){{``#1''}}
+
+\def\rem(#1){{\bf #1}}
+
+\newcommand\etal{{et al.}}
+
+% Befehl um Korrekturen an den Rand zu schreiben
+\def\inkorrektur(#1){{\bf[#1]}}
+\def\outkorrektur(#1){{\marginpar{\begin{flushleft}\bf #1\end{flushleft}}}}
+\def\korrektur(#1){\outkorrektur(#1)}
+
+
+\def\thema(#1){{\marginline{\thema@font #1}}}
+
+% Befehl um Abschnitte herauszukommentieren
+\long\def\comment#1{}
+\long\def\uncomment#1{#1}
+
+% Befehl um die Trennungen anzuzeigen
+\def\trenn(#1) {{\showhyphens{#1}#1\ }}
+
+% Befehl um bestimmte Dinge sowohl im Text als auch 
+% im mathematischen Modus benutzen zu k"onnen
+% ->in LaTeX2e gehts mit %\ensuremath
+\let\math=\ensuremath
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  MATHEMATIK
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Gleichungen (equations)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Gleichungen: Abk"urzungen f"ur die Umgebungen 
+\def\eqn#1{ \begin{equation} #1 \end{equation} }
+\def\eqnl[#1]#2{ \begin{equation} \label{#1} #2 \end{equation} }
+\def\eqna#1{ \begin{eqnarray} #1 \end{eqnarray} }
+\def\eqnal[#1]#2{ \begin{eqnarray} \label{#1} #2 \end{eqnarray} }
+
+% Referenzen auf Gleichungen
+\def\eqnref#1{{Gl.~\ref{#1}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatierungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Vektoren
+\renewcommand\vec[1]{{\mathbf{#1}}}
+
+
+%Mengen
+\newcommand{\set}[1]{{\mathbf{#1}}}
+%\newcommand{\set}[1]{{\mathrm{#1}}}
+%\newcommand{\set}[1]{{\mathcal{#1}}}
+
+%Matrizen
+%\newcommand{\mat}[1]{\mathbf{#1}}
+%\newcommand{\mat}[1]{\mathsf{#1}}
+\newcommand{\mat}[1]{\text{\sffamily\bfseries #1}}
+\newcommand{\tmat}[1]{{\mat{#1}^\Trs}}
+\newcommand{\imat}[1]{{\mat{#1}^\mathsf{-1}}}
+
+% Matrizen mit Griechischen Symbolen
+\newcommand{\gmat}[1]{{\boldsymbol #1}}
+\newcommand{\gtmat}[1]{{\gmat{#1}^\Trs}}
+\newcommand{\gimat}[1]{{\gmat{#1}^{-1}}}
+
+%Mathemthisches Symbol etwas erh"ohen
+\newcommand{\@mraise}[2]{{\raise #2ex\hbox{\math{#1}}}}
+\newcommand{\mraise}[2]{{\@mraise{#1}{#2}}}
+
+%Subscripts tieferstellen
+\newdimen\fdxvi
+\newdimen\fdxvii
+
+\newcommand{\newsub}[1]{
+\fdxvi=\fontdimen16\tensy
+\fdxvii=\fontdimen17\tensy
+\fontdimen16\tensy=3.0pt \fontdimen17=3.0pt
+{#1}
+\fontdimen16\tensy=\fdxvi
+\fotndimen17\tensy=\fdxvii
+}
+
+\renewcommand{\newsub}[1]{{#1}}
+
+\newcommand{\efrac}[2]{\tfrac{\displaystyle{#1}}{\displaystyle{#2}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ersetzungen f"ur verschiedene griechische Symbole
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Spacing einiger Operatoren umdefinieren
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\@mathopbase}[4] {#3\@mraise{#1}{#2}#4}
+\newcommand{\@mathopn}[1]{\@mathopbase{#1}{0.25}{\!\,}{\!\,}}
+\newcommand{\@mathopw}[1]{\@mathopbase{#1}{0.12}{\,}{\,\,}}
+
+\mathchardef\@supset="321B
+\mathchardef\@subset="321A
+\mathchardef\@supseteq="3213
+\mathchardef\@subseteq="3212
+
+
+\renewcommand{\subset}{\@mathopn{\@subset}}
+\renewcommand{\supset}{\@mathopn{\@supset}}
+\renewcommand{\subseteq}{\@mathopn{\@subseteq}}
+\renewcommand{\supseteq}{\@mathopn{\@supseteq}}
+
+\mathchardef\@leq="3214
+\mathchardef\@geq="3215
+\newcommand{\lt}{\@mathopw{<}}
+\newcommand{\gt}{\@mathopw{>}}
+\renewcommand{\geq}{\@mathopw{\@geq}}
+\renewcommand{\leq}{\@mathopw{\@leq}}
+
+\newcommand{\ltn}{\@mathopn{<}}
+\newcommand{\gtn}{\@mathopn{>}}
+\newcommand{\geqn}{\@mathopn{\@geq}}
+\newcommand{\leqn}{\@mathopn{\@leq}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abk"urzungen f"ur verschiedene Symbole
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Limes (rightarrow ist mir zu lang) schon in LaTeX definiert
+%\let\to=\rightarrow
+
+% Epsilon brauch ich sehr oft
+\let\eps=\epsilon 
+
+% Standardengen R,Q,N,C,Z
+\newcommand{\R}{\mathbbm{R}}
+\newcommand{\Q}{\mathbbm{Q}}
+\newcommand{\N}{\mathbbm{N}}
+\newcommand{\C}{\mathbbm{C}}
+\newcommand{\Z}{\mathbbm{Z}}
+
+% Spezielle Mengen A,V,U,M,B (oft gebraucht)
+\newcommand{\A}{\set{A}}
+\newcommand{\V}{\set{V}}
+\newcommand{\U}{\set{U}}
+\newcommand{\M}{\set{M}}
+\newcommand{\B}{\set{B}}
+
+% Die Vektoren x und y
+\newcommand{\x}{\vec{x}}
+\newcommand{\y}{\vec{y}}
+
+% Einheitsmatrix
+\newcommand{\unity}{{\mat E}}
+
+% Das `Transponiert`-Zeichen
+\newcommand{\Tr}{\mathrm{T}}
+\newcommand{\Trs}{\mathsf{T}}
+
+%min und max
+\newcommand{\tmin}{\mathrm{min}}
+\newcommand{\tmax}{\mathrm{max}}
+
+\newcommand{\rang}{{\mathop\mathrm{rang}}}
+
+%const 
+\newcommand{\const}{\mathrm{const.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zeitreihenanalyse-spezifisches
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\rij}{{r_{ij}}}
+\newcommand{\rmin}{{r_\tmin}}
+\newcommand{\rmax}{{r_\tmax}}
+\newcommand{\rsmin}{{r^{\mathrm{skal}}_\tmin}}
+\newcommand{\rsmax}{{r^{\mathrm{skal}}_\tmax}}
+\newcommand{\rsaett}{{r_\mathrm{s"att}}}
+\newcommand{\rnoise}{{r_\mathrm{noise}}}
+
+
+
+%Flu"s
+\newcommand{\flow}{{\boldsymbol\phi}}
+
+%Phasenraum
+\newcommand{\phase}{{\Gamma}}
+
+% Attraktor
+\newcommand{\attr}{\mathcal{A}}
+
+% Diffeomorphismus
+\newcommand{\diffeo}{{\Phi}}
+
+% Glatt
+\newcommand{\sm}{\mathcal{C}}
+
+% expression at : Exp|#1
+\newcommand{\at}[1]{{\mraise{\rvert}{-0.12}_{#1}}}
+
+% Grenzmenge
+\newcommand{\limit}{\mathcal{L}}
+\newcommand{\limitp}{{\limit^+}}
+\newcommand{\limitn}{{\limit^-}}
+
+% Subspace
+\newcommand{\subspace}{\mathcal{S}}
+
+% Die Korrelationsdimension
+\newcommand{\Cd} {\mathrm{D_2}}
+
+% Hausdorff-Ma"s
+%\newcommand{\hdm}{\mathcal{H}}
+\newcommand{\hdm}{\mu_H}
+\newcommand{\kpm}{\mu_K}
+
+% Zeiten: sample und delay-time
+\newcommand{\sample}{{t_s}}
+\newcommand{\delay}{{\tau}}
+
+% dimensionen
+\newcommand{\embed}{{d}}
+\newcommand{\minembed}{{d'}}
+\newcommand{\fracdim}{{D_0}}
+\newcommand{\mandim}{{m}}
+\newcommand{\corrdim} {\mathrm{D_2}}
+\newcommand{\mcorrdim} {\mathrm{\hat D_2}}
+
+%Wahrscheinlichkeit
+\newcommand{\Prob}{{\mathrm{P}}}
+
+\newcommand{\buzvol}[1]{{{\mathop \mathrm{Vol}\nolimits}_{#1}}}
+
+\newcommand{\ac}{{A}}
+
+\newcommand{\myitemparskip}{\setlength{\parskip}{0.4ex plus 0.2ex minus 0.2ex}}
+\newenvironment{myitemize}{\myitemparskip\begin{itemize}\myitemparskip}{\end{itemize}}
+
+
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {-3.25ex \@plus -1ex \@minus -.2ex}%
+                                    {1.0ex \@plus .2ex}%
+                                    {\normalfont\normalsize\sectfont}}
+
+\newcommand{\nullhyp}{{{\mathcal H}_0}}
+\newcommand{\process}{{{\mathcal F}}}
+
+% Information
+
+\newcommand{\bit}{{\mathop{\mathit{bit}}\nolimits}}
+\newcommand{\nat}{{\mathop{\mathit{nat}}\nolimits}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sonstige Befehle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\diag}{{\mathop \mathrm{diag}\nolimits}}
+
+% Absolutwert und Norm
+\newcommand{\abs}[1]{{\@mraise{\lvert}{0.25}#1\@mraise{\rvert}{0.25}}}
+\newcommand{\norm}[1]{{\@mraise{\lVert}{0.25}#1\@mraise{\rVert}{0.25}}}
+
+% Ableitungen
+\renewcommand{\d}{\mathrm{d}}
+
+%\def\abl#1#2{\frac{\d #1}{\d #2}}
+%\def\abls#1#2{{{\rm d}#1 / {\rm d} #2}}
+\def\abl#1#2{\frac{\d #1}{\d #2}}
+\def\abls#1#2{{\d#1}/{\d #2}}
+
+\def\pabl#1#2{\frac{\partial #1}{\partial #2}}
+\def\pabls#1#2{{\partial #1 / \partial #2}}
+
+% Ordnung z.B. O(n^2)
+\def\order#1{{\math{\mathcal{O}\left(#1\right) }}}
+
+% Folge z.B. \folge(x,1,n) -> x_1,...,x_n
+\def\folge(#1,#2,#3){{{#1}_{#2},\dots,{#1}_{#3}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Umgebungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Theorem
+\theoremstyle{break}
+\theoremheaderfont{\scshape}
+\newtheorem{theorem}{Theorem}[chapter]
+
+\newtheorem{corollar}{Korollar}[chapter]
+
+% Definition
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{plain}
+
+% Anmerkung
+\newtheorem{annotate}{Anmerkung}[theorem]
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  POSTSCRIPT - Unterst"utzung
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Allgemeines
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Ein neuer Counter f"ur figures, wird mit dem chapter zur"uckgesetzt
+
+\newcounter{psfignum}[chapter]
+
+
+% Die Ausgabe und Referenzierung des Counters
+
+\renewcommand{\thepsfignum}{{\arabic{chapter}.\arabic{psfignum}}}
+
+\newcommand{\psref}[1]{{Abb.~\ref{#1}}}
+\newcommand{\pspageref}[1]{{Abb.~\ref{#1} auf Seite~\pageref{#1}}}
+
+
+% Besondere Zeichen f"ur Captions
+\newcommand{\capplus}{$\scriptstyle \mathrm{(+)}$\ }
+\newcommand{\captimes}{$\scriptstyle \mathrm{(\times)}$\ }
+
+%\def\gpmarkstylea#1{\math{\scriptstyle\mathrm{(#1)}}}
+%\def\gpmarkstyleb#1{\math{\mathrm{(#1)}}}
+\def\gpmarkstylea#1{\mraise{\scriptstyle\mathrm{(#1)}}{0.2}}
+\def\gpmarkstyleb#1{\mraise{\mathrm{(#1)}}{0.2}}
+\def\gpmarka{\gpmarkstylea{+}}
+\def\gpmarkb{\gpmarkstylea{\times}}
+%\def\gpmarkc{\gpmarkstylea{\star}}
+\def\gpmarkc{\gpmarkstyleb{\mathsf{*}}}
+\def\gpmarkd{\gpmarkstylea{\square}}
+\def\gpmarke{\gpmarkstylea{\blacksquare}}
+\def\gpmarkf{\gpmarkstyleb{\circ}}
+\def\gpmarkg{\gpmarkstyleb{\bullet}}
+\def\gpmarkh{\gpmarkstylea{\vartriangle}}
+
+
+% afterpage
+
+\newcommand{\noafterpage}[1]{#1}
+
+
+% L"angendefinitionen f"ur die Breite der Figures
+
+\newlength{\pswidthsingle}
+\setlength{\pswidthsingle}{\textwidth}
+\addtolength{\pswidthsingle}{-50pt}
+
+\newlength{\pswidthonehalf}
+\setlength{\pswidthonehalf}{260pt}
+
+\newlength{\pswidthdouble}
+\setlength{\pswidthdouble}{200pt}
+
+\newlength{\pswidthtriple}
+\setlength{\pswidthtriple}{130pt}
+
+
+% Fontdefinitionen
+\ifnum 1=0
+ \newcommand{\figlabelfont}{\rmfamily\bfseries}
+ \newcommand{\figfont}{\rmfamily\itshape}
+ \newcommand{\figmathfont}[1]{{#1}}
+\else
+ \newcommand{\figlabelfont}{\sffamily\bfseries}
+ \newcommand{\figfont}{\sffamily\slshape}
+ \newcommand{\figmathfont}[1]{\mathsf{#1}}
+\fi
+
+% Math-Ausgabe bitte nicht mit $$ sondern mit \fm
+
+%\def\fm#1{$\figmathfont{#1}$}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Komplexere Makros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Die Caption
+
+\newcommand{\pscaption}[2]{{
+\begin{sloppypar}
+\protect\refstepcounter{psfignum}\protect\label{#2}
+{\figlabelfont Abb. \thepsfignum:\hspace{0.25em}}
+{
+        \mathversion{psfigmath}
+        {\figfont #1\normalfont}
+}
+\end{sloppypar}
+}}
+
+
+\def\psdonothing#1{}
+
+%\xdef\psfile#1{
+%\psfileyesno{#1}
+%}
+
+\def\writepstoaux#1{
+\immediate\write\@auxout{\string\psdonothing{./postscript/#1.eps}}
+}
+%\xdef\psfile#1{\comment{\@writefile{hallo}{gurke}}#1}
+
+
+
+% Gemeinsam f"ur alle figures
+
+\newcommand{\epsfigcommon}[4]{{
+        {
+                \begin{figure}[ht]
+                \begin{center}
+                #4
+                \end{center}
+                \vspace{#3}\pscaption{#1}{#2}
+                \end{figure}
+        }
+}}
+
+
+% Einzelne Figure
+
+\newcommand{\epsfigsingle}[4]{{
+\writepstoaux{#1}
+\epsfigcommon{#2}{#3}{#4} {
+      \resizebox{\pswidthsingle}{!}{\includegraphics[width=\pswidthsingle]{\psfile{./postscript/#1.eps}}}
+      } }}
+
+
+% Zwei Figures nebeneinander
+
+\newcommand\epsfigdouble[5]{{
+\writepstoaux{#1}
+\writepstoaux{#2}
+        \epsfigcommon{#3}{#4}{#5}
+        {
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#1.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#2.eps}}}
+        }
+}}
+
+% Drei Figures nebeneinander
+
+\newcommand\epsfigtriple[6]{{
+\writepstoaux{#1}
+\writepstoaux{#2}
+\writepstoaux{#3}
+        \epsfigcommon{#4}{#5}{#6}
+        {
+                \resizebox{\pswidthtriple}{!}{\includegraphics[width=\pswidthtriple]{\psfile{./postscript/#1.eps}}}
+                \resizebox{\pswidthtriple}{!}{\includegraphics[width=\pswidthtriple]{\psfile{./postscript/#2.eps}}}
+                \resizebox{\pswidthtriple}{!}{\includegraphics[width=\pswidthtriple]{\psfile{./postscript/#3.eps}}}
+        }
+}}
+
+\newcommand\epsfigtriplehigh[6]{{
+\writepstoaux{#1}
+\writepstoaux{#2}
+\writepstoaux{#3}
+        \epsfigcommon{#4}{#5}{#6}
+        {
+                \resizebox{\pswidthtriple}{\pswidthtriple}{\includegraphics[width=\pswidthtriple]{\psfile{./postscript/#1.eps}}}
+                \resizebox{\pswidthtriple}{\pswidthtriple}{\includegraphics[width=\pswidthtriple]{\psfile{./postscript/#2.eps}}}
+                \resizebox{\pswidthtriple}{\pswidthtriple}{\includegraphics[width=\pswidthtriple]{\psfile{./postscript/#3.eps}}}
+        }
+}}
+
+\newcommand\epsfigtripletop[6]{{
+\writepstoaux{#1}
+\writepstoaux{#2}
+\writepstoaux{#3}
+        \epsfigcommon{#4}{#5}{#6}
+        {
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#1.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#2.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#3.eps}}}
+        }
+}}
+
+\newcommand\epsfigtriplebot[6]{{
+\writepstoaux{#1}
+\writepstoaux{#2}
+\writepstoaux{#3}
+        \epsfigcommon{#4}{#5}{#6}
+        {
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#1.eps}}}
+                \hspace{1cm}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#2.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#3.eps}}}
+        }
+}}
+
+\newcommand\epsfigtriplebig[6]{{
+\writepstoaux{#1}
+\writepstoaux{#2}
+\writepstoaux{#3}
+        \epsfigcommon{#4}{#5}{#6}
+        {
+                \resizebox{\pswidthonehalf}{!}{\includegraphics[width=\pswidthonehalf]{\psfile{./postscript/#1.eps}}}
+                \resizebox{\pswidthonehalf}{!}{\includegraphics[width=\pswidthonehalf]{\psfile{./postscript/#2.eps}}}
+                \resizebox{\pswidthonehalf}{!}{\includegraphics[width=\pswidthonehalf]{\psfile{./postscript/#3.eps}}}
+        }
+}}
+
+% Zwei mal zwei Figures nebeneinander
+
+\newcommand\epsfigfour[7]{{
+\writepstoaux{#1}
+\writepstoaux{#2}
+\writepstoaux{#3}
+\writepstoaux{#4}
+        \epsfigcommon{#5}{#6}{#7}
+        {
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#1.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#2.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#3.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#4.eps}}}
+        }
+}}
+
+\newcommand\epsfigsix[9]{{
+\writepstoaux{#1}
+\writepstoaux{#2}
+\writepstoaux{#3}
+\writepstoaux{#4}
+\writepstoaux{#5}
+\writepstoaux{#6}
+        \epsfigcommon{#7}{#8}{#9}
+        {
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#1.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#2.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#3.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#4.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#5.eps}}}
+                \resizebox{\pswidthdouble}{!}{\includegraphics[width=\pswidthdouble]{\psfile{./postscript/#6.eps}}}
+        }
+}}
+
+
+
+
+
+
+
+
+
+

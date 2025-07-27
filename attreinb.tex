@@ -1,0 +1,412 @@
+\chapter{Rekonstruktion seltsamer Attraktoren}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dynamische Systeme
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Dynamische Systeme}
+\label{chapdynsystems}
+Das Konzept \begriff(seltsamer Attraktoren) hat in den letzten Jahren Bedeutung bei der
+Erkl"arung von Ph"anomenen aus den unterschiedlichsten Forschungsgebieten gefunden. Gemeinsam
+ist allen, da"s die untersuchten Systeme prinzipiell durch sogenannte
+\begriff(Evolutionsgleichungen)
+\eqn{\dot\x = \vec F(\x)}
+beschrieben werden k"onnen. Die Richtung $\dot\x$, in die sich der Zustand des Systems entwickelt, und damit
+auch die ganze zuk"unftige Entwicklung\footnote{Unter hinl"anglich allgemeinen Forderungen
+an das Vektorfeld $\vec F$, n"amlich der Lipschitz-Stetigkeit.}, ist damit determiniert durch
+den aktuellen Zustand $\x$. Man sagt auch, das Vektorfeld $\vec F$ erzeuge einen Flu"s
+$\flow$.
+\eqn{\x(t) = \flow^t(\x_0) }
+Der Flu"s beschreibt die zeitliche Entwicklung des Systems in Abh"angigkeit des
+Anfangszustandes $\x_0$.
+Die Bewegung findet in einem Raum statt, der als \begriff(Phasenraum) $\phase$
+bezeichnet wird. Jedem  Freiheitsgrad des Systems entspricht genau eine Koordinate des
+Phasenraums. Die Anzahl der Freiheitsgrade und damit die Dimension des Phasenraums ist in
+vielen F"allen endlich, kann jedoch bei ausgedehnten Systemen auch "uberabz"ahlbar
+unendlich werden\footnote{Die ist auch bei eindimensionalen Systemen der Fall, die durch
+sogenannte \begriff(Delay-Gleichungen) beschrieben werden, wie beispielsweise die
+Mackey-Glass-Gleichung. }.
+
+
+Bei nat"urlichen Systemen ist es die Regel, da"s Energie durch Prozesse wie Reibung
+verloren geht. Bei solchen \begriff(dissipativen Systemen) kann man die Beobachtung
+machen, da"s sich die Dynamik nach einer kurzen transienten Phase nur noch auf eine 
+niedrigdimensionale \begriff(Untermannigfaltigkeit) $\M\subset\phase$ des Phasenraums
+reduziert. Die Energiedissipation eines Systems ist gleichbedeutend mit einer Kontraktion
+von Phasenraumvolumina unter dem Flu"s $\flow$.
+\eqn{\abl{}{t}\flow^t(V)\lt 0}
+
+Dies kann auch "uber das erzeugende Vektorfeld $\vec F$ ausgedr"uckt werden. Die Divergenz
+des Vektorfeldes mu"s in den erreichbaren Teilen des Phasenraums negativ sein.
+\eqn{\mathop{\mathrm{div}}\vec F \lt 0}
+Hierf"ur ist es nicht notwendig, da"s die Phasenraumvolumina in alle Richtungen gestaucht
+werden. Es k"onnen auch bestimmte Richtungen expandiert werden, solange die Kontraktion in
+die anderen Richtungen "uberwiegt.
+
+Da die transiente Phase der Bewegung im allgemeinen recht schnell abklingt, interessiert
+man sich meist f"ur das \begriff(Langzeitverhalten) dieser Systeme. Man beschr"ankt sich bei
+der Untersuchung auf die \begriff(Grenzmengen)\footnote{Die positive Grenzmenge $\limit^+$
+eines Systems ist definiert als die Menge aller Punkte $\y$, f"ur die  
+Folgen $t_0\lt t_1\lt t_2\dots$ existieren, so da"s $\lim\limits_{i\to\infty}\flow^{t_i}(\x)=\y$
+f"ur mindestens ein $\x\in\phase$.} $\limit^+$, d.h. den Bereich des
+Phasenraums, in dem sich die Dynamik im Grenzfall unendlich langer Zeiten abspielt. 
+
+\subsection{Seltsame Attraktoren}
+Lange herrschte die Auffassung, da"s sich die einzig m"oglichen Grenzmengen aus
+\begriff(Punkt\-attraktoren), \begriff(Grenzzyklen) oder \begriff($k$-Tori)
+zusammensetzen. Diesen ist gemeinsam, da"s sie periodisch (in den ersten beiden F"allen)
+bzw.\ quasiperiodisch (im letzten Fall) sind. Sie besitzen ein diskretes \begriff(Fourierspektrum).
+Die Entstehung von Turbulenz wurde durch das hinzukommen immer neuer
+Fouriermoden verstanden. Das komplexe Verhalten turbulenter Systeme also als "Uberlagerung
+sehr vieler inkommensurabler Frequenzen betrachtet, und somit qualitativ nicht verschieden vom
+Verhalten einfacher Systeme. Bei der Untersuchung von Konvektionszellen stie"s
+\autor(Lorenz) 1963 \cite{Lorenz63} jedoch auf ein System, das keinerlei Periodizit"at
+und somit ein kontinuierliches Fourierspektrum aufwies (Siehe \psref{attrlor}). Diese 
+\begriff(deterministischen, nichtperiodischen Fl"usse) erhielten sp"ater von \autor(Ruelle)
+und \autor(Takens) \cite{Ruelle71a} den einpr"agsameren Namen \begriff(seltsame Attraktoren). 
+
+
+\epsfigdouble{attraktoren/lornew}{attraktoren/fournew}
+{Links eine typische Trajektorie des Lorenzsystems zu den 
+Standardparameterwerten $\sigma =10$, $r=28$, $b=8/3$. Rechts das Leistungsspektrum $P(\omega)$ der 
+$x$-Komponente.}{attrlor}{-0.2cm}
+
+Eine mathematisch exakte Definition seltsamer Attraktoren ist ein schwieriges
+Problem. Eine endg"ultige Fassung, auf die sich alle geeinigt h"atten, ist bis heute nicht
+gelungen. Die Schwierigkeit liegt darin, die Definition sowohl
+mathematisch exakt zu halten, als auch so umfassend, da"s alle wesentlichen Eigenschaften
+erfa"st werden. Ein grundlegenderes Problem ist jedoch, da"s selbst "uber die
+Eigenschaften seltsamer Attraktoren keine Einigkeit zwischen allen beteiligten Wissenschaftlern
+besteht. Wir wollen uns hier deshalb auf einige f"ur diese 
+Arbeit wichtige Eigenschaften beschr"anken. 
+\begin{itemize}
+
+\item Seltsame Attraktoren sind \begriff(durchmischend). 
+Ein Attraktor $\attr$  hei"st genau dann durchmischend, wenn es f"ur beliebige,
+bez"uglich $\attr$ offene\footnote{Eine Menge $\A$ hei"st 
+\begriff(offen bez"uglich $\M$), wenn es offene Mengen $\tilde\A$ gibt, so
+da"s $\A=\tilde\A\cap\M$. Der Begriff \naja(offen bez"uglich) stellt eine
+Verallgemeinerung der Vorstellung dar, da"s sich alle Punkte einer offenen Menge
+\naja(innerhalb) dieser befinden.}, nichtleere  Mengen $\set I,\set J\subset\,\attr$
+mindestens einen Punkt $\x\in\set I$ gibt, so da"s $\flow^t(\x)\in\set J$ f"ur mindestens
+ein $t>0$.   
+
+Eine wichtige Folgerung daraus ist, da"s fast alle Punkte
+des Attraktors unter dem Flu"s $\flow$ jedem anderen Attraktorpunkt beliebig nahe
+kommen. Diese Eigenschaft ist notwendig f"ur die Definition \begriff(ergodischer Ma"se)
+auf dem Attraktor. 
+
+\item Zwei zu einem gegebenen Zeitpunkt $t_0$ eng beieinander liegende Punkte auf dem Attraktor
+werden unter dem Flu"s $\flow$ mit der Zeit exponentiell voneinander getrennt. Man spricht von einer 
+\begriff(exponentiellen Separation) der Trajektorien oder auch \begriff(sensibler
+Abh"angigkeit von den Anfangsbedingungen). Dies findet Ausdruck in der Existenz positiver
+\begriff(Lyapunov-Exponenten).
+
+\item \begriff(Periodische Orbits) liegen dicht auf dem Attraktor. Aufgrund der
+exponentiellen Separation sind diese Orbits jedoch alle instabil. Der Attraktor ist
+darstellbar als "Uberdeckung seiner instabilen periodischen Orbits (IPOs). Diese Tatsache
+kann zur beschleunigten Bestimmung von Ma"szahlen wie Lyapunov-Exponenten und
+Dimensionen ausgenutzt werden. Es wird nicht die ganze zur Verf"ugung stehende Datenmenge
+zur Berechnung herangezogen, sondern nur "uber die IPOs gemittelt \cite{Pawelzik91,Pawelzik91a}.
+\end{itemize}
+Die aufgez"ahlten Eigenschaften sind nicht voneinander unabh"angig. Es konnte gezeigt
+werden \cite{Banks92}, da"s die exponentielle Separation der Trajektorien aus den beiden anderen
+Eigenschaften gefolgert werden kann. Da die Eigenschaften des Durchmischens als auch
+das Dichtliegen periodischer Orbits topologische Invarianten sind, folgt dies auch f"ur
+die exponentielle Separation der Trajektorien. Unter topologischen Abbildungen bleiben also die dynamischen 
+und geometrischen Eigenschaften seltsamer Attraktoren unber"uhrt.
+
+Oft werden seltsame Attraktoren auch "uber ihre \begriff(fraktale) Struktur
+definiert \cite{Peitgen92}. Diesem Ansatz soll hier nicht gefolgt werden, da er nur
+geometrische, jedoch keine dynamischen Aspekte des Attraktors beschreibt
+\cite{eckmann-ruelle}. Es existieren Attraktoren, die seltsam\footnote{Nach obiger
+Definition.} aber nicht fraktal sind (beispielsweise \begriff(Arnolds Katzenabbildung)
+\cite{Arnold68}). Demgegen"uber ist der \begriff(Feigenbaumattraktor) fraktal aber nicht
+seltsam. Die meisten Attraktoren (Lorenzattraktor, R"osslerattraktor \dots) sind jedoch
+sowohl seltsam als auch fraktal.
+
+
+\section{Rekonstruktionsverfahren}
+
+Die Theorie seltsamer Attraktoren kann oftmals gute Erkl"arungsans"atze f"ur das Ver\-st"andnis
+dynamischer Systeme liefern. So kann beispielsweise beim Lorenzsystem durch
+Variation des Parameters $R$\korrektur(nachschlagen) der "Ubergang einer Konvektionszelle
+von laminarem zu turbulentem Verhalten studiert werden. Die vielen N"aherungen, die f"ur
+dieses System gemacht werden, erlauben zwar keine direkten Voraussagen "uber reale 
+Konvektionszellen, die Dynamik kann jedoch prinzipiell verstanden werden.
+
+Anders liegt der Fall bei biologischen, medizinischen oder auch komplizierteren
+hydrodynamischen Systemen. Hier tauchen eine Reihe von Problemen auf.
+\begin{itemize}
+\item Die relevanten Phasenraumvariablen sind oft nicht bekannt. Gerade bei
+medizinischen und biologischen Systemen ist dies sehr oft der Fall.
+\item Die Anzahl der Freiheitsgrade ausgedehnter Systeme (z.B. meteorologischer oder
+hydrodynamischer) ist in der Regel abz"ahlbar oder gar "uberabz"ahlbar unendlich. 
+\item Selbst bei Kenntnis aller Phasenraumvariablen sind die f"ur die Dynamik zust"andigen
+Evolutionsgleichungen unbekannt.
+\end{itemize}
+Daten, die in experimentellen Situationen gewonnen werden, beschr"anken sich so meistens
+auf Me"sreihen einer oder weniger Gr"o"sen, von denen angenommen wird, da"s  sie die
+Dynamik des Systems charakterisieren. Stellt sich nun heraus, da"s die so gewonnene
+\begriff(Zeitreihe) einen nicht trivialen\footnote{Die Zeitreihe l"a"st sich nicht als
+"Uberlagerung verschiedener Frequenzen darstellen, d.h.\ sie hat kein diskretes
+Fourierspektrum.} zeitlichen Verlauf aufweist, ergeben sich daraus einige Fragen:
+\begin{itemize}
+\item Liegt der Zeitreihe ein deterministisches System zugrunde oder ist das erratische
+Verhalten eine Folge additiven Rauschens?
+\item L"a"st sich das System durch einen seltsamen Attraktor beschreiben? Wenn ja, wie
+k"onnen wir diesen aus den vorhandenen Daten rekonstruieren?
+\item Wie k"onnen f"ur den rekonstruierten Attraktor charakteristische Gr"o"sen wie
+fraktale Dimension oder Lyapunov-Exponenten bestimmt werden?
+\end{itemize}
+Wir wollen uns zuerst mit der zweiten Frage besch"aftigen, wobei wir im folgenden annehmen
+(zumindest als Arbeitshypothese), dem System l"age ein seltsamer Attraktor zugrunde.
+Die erste und dritte Frage werden wir in sp"ateren Abschnitten angehen.
+
+\subsection{Verz"ogerungskoordinaten (MOD)}
+
+Den ersten Ansatz zur L"osung des Problems der Attraktorrekonstruktion  lieferten
+\linebreak \autor(Packard \etal) 1980
+mit dem Konzept der \begriff(Verz"ogerungskoordinaten), teilweise auch kurz als
+MOD\footnote{Abk"urzung f"ur \begriff(Method of Delays).} bezeichnet \cite{packard80}. Um das Verfahren 
+zu veranschaulichen, verwenden wir ein System dessen Dynamik uns bereits bekannt ist. An
+diesem soll eine einzige Observable\footnote{D.h. eine beliebige, glatte Funktion
+$v:\phase\to\R$ der Phasenraumvariablen.} gemessen werden, die uns als Zeitreihe
+dient. Hieraus soll dann die Dynamik wieder rekonstruiert und mit der urspr"unglichen Dynamik
+verglichen werden.
+
+Als dynamisches System w"ahlen wir das R"osslersystem \cite{Roessler76}, das durch den folgenden Satz von
+Differentialgleichungen bestimmt ist
+\eqna{
+\dot x &=& -z-x \nonumber \\
+\dot y &=& x + a y \nonumber \\
+\dot z &=& b + z(x-c) 
+}
+Das System ist f"ur den Parametersatz $a=0.38$, $b=0.3$, $c=4.5$ chaotisch. Der Attraktor besitzt
+eine fraktale Struktur\footnote{Durch Analyse der Gleichungen \cite{Peitgen92} erkennt man
+hier sehr sch"on den Chaos erzeugenden \metapher(Streck-und-Falt)-Proze"s. Die Struktur
+entspricht lokal dem Produkt einer 2-dimensionalen Mannigfaltigkeit und einer Cantormenge.}.
+
+Aus den Differentialgleichungen erzeugen wir durch numerische
+Integration\footnote{Verwendet wird ein Runge-Kutta-Verfahren vierter Ordnung mit
+Schrittweite $\sample=0.009$. Nach einer Transienzzeit von $1000\sample$, nach der sich das
+System dem Attraktor hinreichend gen"ahert hat, wird der Orbit in
+diskreten Schritten $\sample$ aufgezeichnet.  Dargestellt sind die, durch Linien
+verbundenen, Orbitpunkte $\folge(\x,1,N)$ ($N=20.000$).} einen diskreten Orbit $\folge(\x,1,N)$. 
+Als Observable dient die $x$-Komponente der Punkte $v(\x)=x$.
+
+
+\epsfigdouble{rekonstruktion/roenew}{rekonstruktion/timenew}
+{Links der R"osslerattraktor aus einer numerischen
+Integration. Rechts das gemessene Signal $v_i=x(i\sample)$ zur Verdeutlichung des
+diskreten Charakters der Zeitreihe durch Punkte dargestellt.}{rekroe}{-0.2cm}
+
+Die Informationen "uber die Werte der Koordinaten $y$ und $z$ stehen uns nun nicht mehr zur
+Verf"u\-gung. Nach der Idee von \autor(Packard \etal) kann jedoch der Zustand 
+eines $n$-dimensio\-na\-len Systems zu einer gegebenen Zeit durch $n$ unabh"angige, sonst aber
+beliebige,  Koordinaten 
+spezifiziert werden \cite{packard80}. Der Zustand des R"osslersystems zu einer Zeit $t_i$ sollte
+also statt durch $(x_i,y_i,z_i)$ ebenso durch $(x_i,\dot x_i,\ddot x_i)$ oder $(x_i,x_{i+1},x_{i+2})$
+beschrieben werden k"onnen.
+
+Wir wollen nun anhand einer "Uberlegung von \autor(Theiler), die wir hier auf drei
+Koordinaten ausgedehnt haben, plausibel machen, da"s in den Verz"ogerungskoordinaten
+tats"achlich die gleiche Information steckt, wie in den originalen Phasenraumkoordinaten.
+Wenn die Zeit zwischen zwei Messungen $\sample$ klein ist, gilt 
+\eqnal[recidea1]{\dot x_i &\simeq& (x_{i+1} - x_i) / \sample \nonumber \\
+\ddot x_i &\simeq& (x_{i+2} - 2x_{i+1} + x_i) / \sample^2}
+Nun gilt jedoch f"ur die nullte bis zweite Zeitableitung
+\eqnal[recidea2]{ x_i &=& x_i \nonumber \\
+\dot x_i &=& f_1(x_i, y_i, z_i) \nonumber \\
+\ddot x_i &=& \pabl{f_1}{x} f_1(x_i,y_i,z_i) + \pabl{f_1}{y} f_2(x_i,y_i,z_i) +
+\pabl{f_1}{z} f_3(x_i,y_i,z_i) } 
+wobei wir die Koordinatenfunktionen mit $f_1,f_2,f_3$ bezeichnet haben. Unter -- im
+betrachteten Zusammenhang -- recht allgemeinen Bedingungen\footnote{Die
+Funktionaldeterminante der rechten Seite von \eqnref{recidea2} darf nicht verschwinden. Da
+in chaotischen Systemen, die Dynamik nicht separierbar ist, kann man diese Annahme hier
+(bis auf weiteres) akzeptieren.} an die $f_j$ l"a"st sich \eqnref{recidea2} wieder
+nach den Phasenraumvariablen $x_i$, $y_i$ und $z_i$ aufl"osen. Das hei"st jedoch mit
+\eqnref{recidea1}, da"s wir den kompletten Systemzustand $x_i,y_i,z_i$ aus den
+\begriff(verz"ogerten) Werten der Zeitreihe $x_{i},x_{i+1},x_{i+2}$
+\metapher(zur"uckholen) k"onnen. Man sagt, der Systemzustand sei in der Zeitreihe
+\metapher(konserviert).Diese  "Uberlegungen k"onnen auch auf h"oherdimensionale
+\begriff(Einbettungsr"aume) $\R^\embed$  erweitert werden. Au"serdem k"onnen ebenso
+gr"o"sere Zeitabst"ande $k\sample$ zwischen den Verz"ogerungskoordinaten genommen werden,
+so da"s wir als Rekonstruktionsvektoren die Folge $(x_{i},
+x_{i+k},\dots,\x_{i+(\embed-1)k})$ erhalten. Diese Abbildung aus dem Original- in 
+den Rekonstruktionsphasenraum bezeichnet man als Verz"ogerungskoordinatenabblidung $\diffeo_{k,d}$.
+
+Wir wollen sie nun bei dem oben erw"ahnten R"osslersystem anwenden.
+Da wir die Anzahl der Freiheitsgrade des R"osslersystems kennen, lassen wir es bei der uns
+bekannten und \naja(ausreichenden) Einbettungsdimension $\embed=3$. F"ur die Verz"ogerung\footnote{Um Mi"sverst"andnisse
+zu vermeiden, wird im folgenden die in Einheiten der \begriff(Samplingtime) $\sample$ gemessene 
+\begriff(Verz"ogerungszeit) $\delay=k\sample$ durchg"angig als \begriff(Verz"ogerung) $k$
+bezeichnet.} w"ahlen wir $k=30$. 
+
+%\afterpage
+{\epsfigsingle{rekonstruktion/recnew}
+{Rekonstruktion des R"osslerattraktors aus der Zeitreihe in \psref{rekroe} (rechts) mit 
+Verz"ogerung $k=30$.}{rekrek}{-0.5cm}}
+
+Die Rekonstruktion in \psref{rekrek} "ahnelt einer verzerrten Kopie des
+Originalattraktors in \psref{rekroe}. Insofern leistet die
+Verz"ogerungskoordinatenabbildung schon gute Dienste. Die rein optische "Ahnlichkeit
+reicht aber nicht aus. Mehrere Fragen bleiben offen
+\begin{myitemize}
+\item Sind die Dynamik des rekonstruierten und des Originalattraktors zueinander
+konjugiert? In anderen Worten, ist die Verz"ogerungskoordinatenabbildung $\diffeo_{k,d}$
+ein Diffeomorphismus?
+\item Bleiben Dimensionen und Lyapunov-Exponenten unter der Rekonstruktion durch 
+die Verz"ogerungskoordinatenabbildung invariant?
+\item Wie sind die Einbettungsparameter $d$ und $k$ zu w"ahlen, wenn das urspr"ungliche
+System nicht bekannt ist?
+\end{myitemize}
+Diese Fragen sollen in den n"achsten Abschnitten beantwortet werden.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Einbettungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Einbettungen}
+
+Bevor wir uns mit den Einbettungstheoremen besch"aftigen, soll erst einmal der Begriff der
+\begriff(Einbettung) gekl"art werden. Eine Einbettung ist erstmal ein
+\begriff(Hom"oomorphismus) $\diffeo$, d.h. eine bijektive, stetige Abbildung mit stetiger
+Umkehrfunktion. Hom"oomorphismen werden auch als \begriff(topologische) Abbildungen
+bezeichnet, da sie die topologischen Eigenschaften von Punktmengen invariant lassen.
+Unter topologischen Abbildungen werden keine Punkte kollabiert, d.h.\  es werden keine
+verschiedenen Originalpunkte auf den gleichen Bildpunkt abgebildet. Nun sollen bei einer
+Einbettung aber auch keine Tangentenrichtungen kollabiert werden, was beispielsweise f"ur die
+Bestimmung von Lyapunov-Exponenten wichtig ist. Wir fordern deshalb
+zus"atzlich die stetige Differenzierbarkeit von $\diffeo$ und $\diffeo^{-1}$,
+d.h.\ die Einbettung $\diffeo$ soll ein $\sm^1$-Diffeomorphismus sein.
+\comment{
+Da bei der Phasenraumrekonstruktion nicht nur die topologischen Eigenschaften des
+Attraktors erhalten bleiben sollen, sondern auch die Stetigkeit der ersten und zweiten
+Ableitung an Trajektorien (d.h. Richtung und Kr"ummung), fordern wir zus"atzlich die
+zweifache stetige Differenzierbarkeit, d.h. $\diffeo$ soll ein $\sm^2$-Diffeomorhismus sein.
+\inkorrektur(nicht ganz richtig, auf immersions eingehen)
+}
+
+Ein weiterer Begriff der im Rahmen der Einbettungstheoreme "ofters auftritt 
+ist \naja(generisch). Dieser Begriff beschreibt das Auftreten bestimmter Eigenschaften bei 
+Elementen aus einer Menge $\A$. 
+ \naja(Generisch) wird oft in der Weise interpretiert, da"s eine bestimmte Eigenschaft auf
+der Menge $\A$ mit der Wahrscheinlichkeit eins 
+auftr"ate. Der Begriff ist jedoch schw"acher und sagt nichts "uber diese
+Wahrscheinlichkeit aus. 
+
+Eine \label{generisch} Eigenschaft hei"st schon dann generisch auf $\set A$, wenn
+eine \begriff(residuale Teilmenge)\footnote{Eine Menge $\set R\subset\set A$ hei"st
+\begriff(residuale) Teilmenge von $\set A$, wenn $\set R$ abz"ahlbarer Durchschnitt
+offener, dichter Teilmengen von $\set A$ ist. Residuale Mengen sind selbst wieder dicht, jedoch nicht notwendig offen. }
+ $\set R$ von $\set A$ existiert, so
+da"s alle Elemente von $\set R$ diese Eigenschaft aufweisen \cite{Liebert91}.
+Zu jedem Element aus $\set A$ findet man also in
+jeder endlichen, beliebig kleinen Umgebung ein Element aus $\set R$, da"s diese
+Eigenschaft aufweist. Dies sagt jedoch nichts "uber die
+Wahrscheinlichkeit ein Element dieser Menge zuf"allig zu treffen. Es existieren Beispiele
+f"ur diese Wahrscheinlichkeit sogar Null wird. So ist beispielsweise
+die Menge $\Omega_{\text{stab}}$ der Parameterwerte $\omega\in[0,2\pi]$, f"ur die die Abbildung 
+\eqn{g_{\omega,k}=x+\omega+k\sin(x) \nonumber}
+stabile Orbits besitzt, eine residuale Teilmenge von $[0,2\pi]$. F"ur $k\to0$ verschwindet
+jedoch das Lebesgue-Ma"s von $\Omega_{\text{stab}}$, die Wahrscheinlichkeit einen Punkt
+dieser Menge zu treffen geht  gegen Null \cite{sauer91}.
+
+Um auszudr"ucken, eine Eigenschaft treffe mit Wahrscheinlichkeit eins auf die Elemente
+einer Menge $\set A$ zu, sagen wir, die Eigenschaft sei \begriff(pr"avalent) auf $\set
+A$. Da der Begriff der Pr"avalenz auch f"ur sehr allgemeine R"aume sinnvoll sein soll,
+kann er nicht "uber das Lebesgue-Ma"s definiert werden\footnote{Die in endlich dimensionalen R"aumen
+g"angige Definiton "uber das verschwindende Lebesgue-Ma"s der Komplement"armenge ist hier
+nicht anwendbar, da wir es i.allg. mit unendlich dimensionalen Funktionenr"aumen zu tun
+haben.}. Auf die genaue Definition soll hier jedoch verzichtet werden \cite{sauer91}.
+
+\paragraph{Einbettungstheoreme}
+Nach dieser kurzen Einleitung 
+ wollen wir uns nun mit dem Problem besch"aftigen, unter welchen Vorraussetzungen die
+Verz"ogerungskoordinatenabbildung $\diffeo_{k,d}$ eine Einbettung in obigem Sinne ist. Den 
+ersten Ansatz zur Beantwortung dieser Frage lieferte \autor(Takens) 1980 \cite{takens80}.
+Sein erstes Theorem soll hier vollst"andig zitiert werden
+
+\begin{theorem}[Takens' Theorem 1]
+Sei $\M$ eine kompakte Mannigfaltigkeit der Dimension $\mandim$. F"ur Paare $(\flow,v)$,
+wobei  \linebreak[4] $\flow:\M\to\M$ ein  glatter Diffeomorhismus und $v:\M\to\R$ eine glatte Funktion
+ist, ist es eine generische Eigenschaft, da"s die 
+Abbildung $\diffeo_{(\flow,v)} : \M \to\R^{2\mandim+1}$, definiert durch 
+\eqn{\diffeo_{(\flow,v)}(\x) = (v(\x),v(\flow^1(\x)), \dots, v(\flow^{2\mandim}(\x)))}
+eine Einbettung ist; \metapher(Glatt) bedeutet hier mindestens $\sm^2$.
+Hierbei werden zus"atzlich folgende Vorraussetzungen an den Flu"s $\flow$ gestellt:
+\begin{myitemize}
+\item Wenn $\x$ periodischer Punkt der Periode $k\le 2\mandim+1$ ist, sind alle Eigenwerte
+von $\d\flow^k\at{\x}$ paarweise verschieden und verschieden von 1.
+\item F"ur verschiedene Fixpunkte $\x^*$ von $\flow$, sind auch die $v(\x^*)$
+verschieden\footnote{Der Satz gilt entsprechend f"ur durch $\sm^2$-Vektorfelder erzeugte Fl"usse,
+wobei sich die beiden Vorraussetzungen leicht auf das Vektorfeld "ubertragen lassen.}.
+\end{myitemize}
+\end{theorem}
+
+Um dieses Theorem anwenden zu k"onnen, m"ussen wir es auf unsere Situation
+"ubertragen. Der glatte Diffeomorphismus $\flow$ stellt den (uns unbekannten) Flu"s des
+betrachteten dynamischen Systems dar, w"ahrend $v$ unsere Observable ist. Die Abbildung
+$\diffeo_{(\flow,v)}$ entspricht unseres Verz"ogerungskoordinatenabbildung
+$\diffeo_{k,\embed}$ mit dem Unterschied, da"s hier aus dem Originalphasenraum und nicht aus
+der von der Obervablen gebildeten Zeitreihe abgebildet wird.
+
+Von den Vorraussetzungen des Systems ist die zweite unmittelbar einzusehen, da ansonsten
+verschiedene Fixpunkte von $\flow$ auf den gleichen Punkt abgebildet w"urden. Die erste
+ist dagegen komplizierter und nur im Rahmen des recht beschwerlichen Beweises dieses
+Theorems zu verstehen. Es reicht hier festzuhalten, da"s beide unter generischen
+Bedingungen erf"ullt sind. 
+
+Das Theorem versichert uns also, da"s f"ur generische Fl"usse $\flow$ und
+Me"sfunktionen $v$, die Verz"ogerungskoordinatenabbildung $\diffeo_{(\flow,v)}$ eine
+Einbettung ist. Da im Experiment nur in diskreten Zeitschritten $\sample$ gemessen werden
+kann, steht uns jedoch nicht, wie vorrausgesetzt, eine kontinuierliche Funktion $v(t)$,
+sondern nur die diskrete Me"sreihe $v_i=v(i\sample)$ zur Verf"ugung. Wir m"ochten nun
+wissen, ob auch die Grenzmenge der diskreten Folge konjugiert zu der des Originalsystems
+ist. Dies beantwortet uns eine Korollar zu Takens' viertem Theorem.
+\begin{corollar}[Korollar 5 zu Takens' Theorem 4]
+Sei $\M$ eine kompakte Mannigfaltigkeit der Dimension $\mandim$. Wir betrachten Viertupel,
+bestehend aus einem Vektorfeld $\vec F$, einer Funktion $v$, einem Punkt $\x$ und einer
+positiven reellen Zahl $\delay$. F"ur generische $(\vec F, v, \x, \delay)$ ist die
+positive Grenzmenge $\limitp(\x)$ \naja(diffeomorph) zu der Grenzmenge der folgenden
+Sequenz im $\R^{2m+1}$
+\eqn{ \left\{ \left( v(\flow^{i\delay}(\x)),v(\flow^{(i+1)\delay}(\x)), \dots
+,v(\flow^{(i+2m)\delay}(\x))    \right) \right\}^\infty_{i=0} }
+\naja(Diffeomorph) hei"st hier: es gibt eine glatte Einbettung von $\M$ nach $\R^{2m+1}$,
+die $\limitp(\x)$ bijektiv auf die Grenzmenge dieser Punktfolge abbildet.
+\end{corollar}
+
+Wir k"onnen nun schlie"sen, da"s unter generischen Bedingungen an die Verz"ogerung $k$ und unsere
+Me"sfunktion $v$, die Verz"ogerungskoordinatenabbildung $\diffeo_{k,\embed}$ eine Einbettung
+des Attraktors liefert, solange nur $\embed\geq2m+1$ ist. 
+
+F"ur den Experimentator ist diese Aussage jedoch nicht ausreichend, da nach den Ausf"uh\-rungen von
+Seite \pageref{generisch}, Generizit"at nichts "uber die Wahrscheinlichkeit, da"s wir hier wirklich eine Einbettung
+vorliegen haben, aussagt. Wir m"ochten wissen, da"s die Verz"ogerungskoordinatenabbildung  mit
+Wahrscheinlichkeit eins, eine Einbettung ist. 
+
+
+Entsprechende Aussagen finden sich bei \autor(Sauer), \autor(Yorke) und \autor(Casdagli)
+``Embedology'' (1991). Wo bei Takens Einbettungen von glatten Mannigfaltigkeiten der
+Dimension $\mandim$ betrachtet werden, beziehen sich \autor(Sauer \etal) auf kompakte Mengen der
+Kapazit"at $\fracdim$ (siehe Kapitel \ref{chapcapacity}). Au"serdem wird \begriff(generisch)
+durch \begriff(pr"avalent) ersetzt.
+
+\comment{
+\begin{theorem}[Sauers Theorem 2.5 -- Fractal Delay Embedding Prevalence Theorem]
+Sei $\flow$ ein Flu"s auf einer offenen Teilmenge $\set U$ des $\R^k$ und sei $\set A$
+eine kompakte Teilmenge von $\set U$ der Kapazit"at $d$ (siehe Kapitel
+\ref{chapcapacity}). Sei $n>2d$ ganzzahlig und $t>0$. $\set A$ enthalte h"ochstens
+eine endliche Anzahl Fixpunkte, keine Orbits periodischen Punkte der Periode $t$ 
+oder $2t$, und h"ochstens endlich viele periodische Punkte der Periode $3t,4t,\dots,nt$,
+und die Linearisierungen der periodischen Orbits haben verschiedene Eigenwerte. Dann gilt
+f"ur fast alle glatten Funktionen $v:\set U\to\R$, da"s 
+\end{theorem}
+}
+
+

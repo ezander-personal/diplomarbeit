@@ -1,0 +1,119 @@
+\documentclass[twoside,a4paper,11pt]{scrreprt}
+%headsepline,footsepline
+\def\frontmatter{}
+\def\mainmatter{}
+\def\backmatter{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\manuscript{0}
+\def\alles{1}
+\def\manusscriptfile{manuscript1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%hier wird deutsch gesprochen
+\usepackage{german}
+
+%zum einbinden von PostScript-Grafiken
+\usepackage{graphicx}
+\usepackage{psfrag}
+
+%bindet die AMS-fonts ein um Symbole f"ur reelle und complexe Zahlen
+%zur Verf"ugung zu haben
+\usepackage{amsfonts}
+
+%definiert \layout Befehl: coole Sache um Seitenlayout zu "uberpr"ufen
+\usepackage{layout}
+
+%definiert befehl (\newtheroem) um theorem-umgebungen zu erstellen
+\usepackage{theorem}
+
+%einige packages die ich vielleicht noch brauchen werde
+%indentfirst, fancyheadings, float, subfigure, psfig
+
+%allgemeines zeug und trennungen
+\usepackage{trennungen}
+\usepackage[themabf,newint,normsect]{elmar}
+
+
+
+\begin{document}
+
+\frontmatter
+
+\titlepage
+\subject{Dilpomarbeit angefertigt am Institut f"ur Theoretische Physik
+I\\Wilhelm-Klemm-Str.\  9}
+\title{Quantitative Charakterisierung der Atmungsdynamik Fr"uhgeborener mittels Methoden
+der Zeitreihenanalyse}
+\author{Vorgelegt von \\ Elmar Zander}
+\date{10. August 2002}
+
+\maketitle
+
+%Inhaltsverzeichnis
+\ifnum\alles>0
+\tableofcontents
+\fi
+
+
+%Manuskript
+\ifnum\manuscript>0
+\typeout{>>> nur Manuscript <<<}
+%\addchap{Manuscript}
+\input{\manusscriptfile.tex}
+\fi
+
+%der Rest von dat janze
+\ifnum\alles>0
+\typeout{>>> das ganze Programm <<<}
+
+% Einleitung zu Sinn und Zweck der ganzen "Ubung
+\input{einleitung.tex}
+
+
+\mainmatter
+
+\input{theorie}
+
+\input{experimentell.tex}
+
+
+% Anh"ange
+\begin{appendix}
+%\chapter{Algorithmen}
+%\chapter{Einbettungstheoreme}
+\end{appendix}
+
+
+\comment{\nocite{*}}
+\fi
+
+\backmatter
+
+% Literaturverzeichnis
+\newpage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+%\selectlanguage{english}
+\bibliography{bib/tsa}
+%\bibliographystyle{myalpha}
+%\bibliographystyle{plain}
+\bibliographystyle{./bst/mysiam}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

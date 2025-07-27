@@ -1,0 +1,18 @@
+#!/bin/bash
+
+progname=`basename $0`
+
+if test -e .number* ; then
+	case $progname in
+		"number1" )
+			num=`ls .number*| cut -c 8-11` ;;
+		"number2" )
+			num=$((1+`ls .number*| cut -c 8-11`)) ;;
+		* )
+			num=0
+	esac
+else
+	num=0
+fi
+
+echo $num

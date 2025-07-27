@@ -1,0 +1,473 @@
+
+\subsubsection{Verfahren zur Wahl der Einbettungsparameter}
+
+In den Einbettungstheoremen im vorigen Abschnitt wurde implizit vorrausgesetzt, da"s wir
+unendliche, rauschfreie Zeitreihen zur Verf"ugung haben. Dies ist jedoch bei Daten aus
+realen Experimenten niemals der Fall. F"ur verrauschte, endliche Zeitreihen ist eine
+vern"unftige Wahl der Verz"ogerungszeit $\delay$, die in den Einbettungstheoremen (bis auf
+wenige Ausnahmen) beliebig sein kann, wesentlich. Au"serdem ist die Dimension des
+einzubettenden Attraktors unbekannt und somit auch die Anzahl der ben"otigten
+Verz"ogerungskoordinaten. Die folgenden Abschnitte werden sich mit diesen Punkten
+besch"aftigen.
+
+
+\paragraph{Die Einbettungsdimension}
+
+Nach Takens' Einbettungstheorem ist f"ur Einbettungsdimensionen\footnote{Mit
+  Einbettungsdimension ist hier und im folgenden die Dimension unseres
+  Rekonstruktionsphasenraumes gemeint, gleichg"ultig ob es sich bei der Abbildung in
+  diesen Raum um eine Einbettung handelt oder nicht.} $\embed$ gr"o"ser als $2\fracdim$,
+wobei $\fracdim$ die Kapazit"at des Attraktors ist, sichergestellt, da"s die
+Verz"ogerunsgkoordinatenabbildung eine Einbettung ist. Nun ist bei experimentellen
+Zeitreihen die Kapazit"at nicht a priori bekannt. Wir m"u"sten die Zeitreihe erst
+einbetten, um die Kapazit"at bestimmen zu k"onnen.
+
+Es stellt sich au"serdem die Frage, ob nicht schon kleinere Einbettungsdimensionen
+$\embed\lt 2\fracdim$ Einbettungen liefern. Wie wir am Beispiel des R"osslerattraktors
+gesehen haben, reicht hier eine Einbettungsdimension von $\embed=3$, w"ahrend Takens'
+Theorem eine Einbettungsdimension von $\embed=5$ erfordert. Die Bedingung
+$\embed>2\fracdim$ ist nur notwendig, um absolut sicher zu gehen, da"s die Abbildung eine
+Einbettung ist.
+
+Um zu einer gegebenen Zeitreihe die optimale Einbettungsdimension zu bestimmen sind eine
+ganze Reihe von Verfahren entwickelt worden. Ein paar von diesen wollen wir im folgenden
+vorstellen.
+\begin{myitemize}
+\item \rem(Falsche n"achste Nachbarn:) Diese Methode beruht darauf, da"s unter
+  Einbettungen, die Nachbarschaftsbeziehungen zwischen benachbarten Punkten nicht
+  ver\-"an\-dert werden \cite{Kennel92}. Wenn zwei Punkte im Originalphasenraum benachbart
+  sind, so sind sie es auch in der Einbettung. Wenn nun $\embed$ eine ausreichende
+  Einbettungsdimension ist, gilt dies auch f"ur $\embed+1$. Zwei Punkte die im $\R^\embed$
+  benachbart sind, sollten also auch im $\R^{\embed+1}$ benachbart sein. Sind sie es
+  nicht, kann die Abbildung in den $\R^\embed$ keine Einbettung gewesen sein.
+  
+  Man bestimmt nun zu einer Einbettungsdimension $\embed$ zu jedem Punkt $\x$ die
+  \begriff(n"achsten Nachbarn), die innerhalb einer Umgebung $\eps$ von $\x$ liegen. Die
+  Nachbarpunkte, die beim "Ubergang zur Einbettungsdimension $\embed+1$ aus der
+  $\eps$-Umgebung von $\x$ \metapher(entweichen), werden als \begriff(falsche n"achste
+  Nachbarn) bezeichnet. F"ur ausreichende Einbettungsdimensionen sollte das Verh"altnis
+  zwischen falschen und \metapher(echten) n"achsten Nachbarn sehr klein werden und wir
+  k"onnen $\embed$ als Einbettungsdimsension annehmen.
+  
+\item \rem(Attraktorvolumen:) Bei diesem Verfahren wird als erstes ein Ma"s f"ur das
+  \metapher(Volumen) des rekonstruierten Attraktors definiert. $\buzvol{k,\embed}$ ist das
+  mittlere von je $\embed+1$ Attraktorpunkten aufgespannte Volumen zur Verz"ogerung $k$ .
+  Das Volumen, das von den $\embed+1$ Attraktorpunkten $\folge(\x,0,\embed)$ aufgespannt
+  wird, betr"agt $\abs{\det\left(\x_1-\x_0,\dots,\x_\embed-\x_0\right)}$. Da die Anzahl
+  der Kombinationen von $d+1$ Punkten, exponentiell mit der Einbettungsdimension steigt,
+  wird das mittlere Volumen durch eine gro"se $(>10^4)$ Zahl von Kombinationen
+  abgesch"atzt. Falls es durch die Rekonstruktion zu "Uberschneidungen von Trajektorien
+  kommt, schrumpft das aufgespannte Volumen. Wenn nun beim "Ubergang zu einer h"oheren
+  Einbettungsdimension diese "Uberschneidung nicht mehr auftritt, "au"sert sich dies in
+  einem Sprung des Volumenma"ses. In einer Auftragung von $\buzvol{k,\embed}$ kann man so
+  die notwendige Einbettungsdimension ablesen \cite{Buzug90a} \cite{Buzug94}.
+  \comment{\item \rem(Waberproduktanalyse:) \cite{Liebert89}\cite{Liebert91}}
+\item \rem(Singular Value Decomposition:) Bei der \begriff(Singular Value Decomposition)
+  wird zuerst eine Einbettung in einen hochdimensionalen Rekonstruktionsraum $\R^\embed$
+  vorgenommen \cite{broomhead-king}. F"ur niedrigdimensionale Dynamiken wird sich diese
+  jedoch nur in einem Unterraum $\subspace$ der Dimension $\minembed$ abspielen. Dieser
+  Unterraum wird nun ermittelt und der Attraktor hieraus in den $\R^\minembed$ projiziert.
+  Das Verfahren wird ausf"uhrlicher in Kapitel \ref{chapsvd} diskutiert.
+\end{myitemize}
+Die Reihe der Verfahren lie"se sich nahezu unendlich fortsetzen. Ein gute "Ubersicht
+findet sich bei \autor(Buzug) \cite{Buzug94}. Wir wollen nun eins der noch nicht
+aufgef"uhrten Verfahren genauer betrachten, da es sich u.a.\ gut dazu eignet,
+Schwierigkeiten und Probleme bei der Analyse experimenteller, chaotischer Systeme zu
+demonstrieren.
+
+Bei diesem von \autor(Packard \etal) \cite{packard80} entwickelten Verfahren stellen wir
+uns den Attraktor eingebettet in eine $\mandim$-dimensionale Mannigfaltigkeiten $\M$ vor.
+Diese Mannigfaltigkeit sei wiederum eingebettet in den euklidischen Vektorraum
+$\R^\embed$.  Schnitte von $\M$ mit $(\embed-1)$-di\-men\-sio\-nalen Hyperfl"achen
+erzeugen nun im allgemeinen $(\mandim-1)$-dimensionale Mannigfaltigkeiten\footnote{Dies
+  ist nur dann nicht der Fall, wenn der Schnitt leer ist oder die Hyperfl"ache tangential
+  zu der Mannigfaltigkeit liegt.  Das erste werden wir im folgenden durch die Wahl der
+  Hyperfl"achen ausschlie"sen. Letzteres ist generisch nicht der Fall.}.  Wenn wir die
+Mannigfaltigkeit nun mit $\mandim$ paarweise orthogonalen Hyperfl"achen schneiden, wird
+die Schnittmenge auf einen Punkt reduziert. Dies offeriert eine M"oglichkeit die Dimension
+der Mannigfaltig $\M$, in der der Attraktor $\attr\subset\M$ liegt, zu bestimmen.
+
+Als Schnittfl"achen betrachten wir die zu den Koordinatenachsen orthogonalen Teil\-r"aume
+des $\R^\embed$. Die Tatsache, da"s ein Punkt innerhalb der Schnittmenge von $\mandim'$
+dieser Teil\-r"aume mit der Mannigfaltigkeit $\M$ liegt, bringt uns Kenntnis "uber
+$\mandim'$ seiner Koordinaten. Genau $\embed-\mandim'$ der Koordinaten sind unbestimmt,
+wobei von diesen allerdings nur $\mandim-\mandim'$ Koordinaten unabh"angig sind, da die
+Mannigfaltigkeit ja $\mandim$-dimensional ist. Wenn wir also $\mandim$ Schnitte
+betrachten, sind dadurch alle Koordinaten eines Punktes aus $\M$ festgelegt.
+
+Diese Tatsache kann nun durch \begriff(bedingte Wahrscheinlichkeiten) ausgedr"uckt werden.
+Wir legen $\mandim'$ Koordinaten $x^0_1,\dots,x^0_{\mandim'}$ fest. Die
+Rekonstruktionspunkte, deren erste $\mandim'$ Koordinaten gleich den $x^0_i$ sind, bilden
+die Schnittmenge des Attraktors mit den durch $\mathcal{S}_i=\left\{ \x \vert
+  x_i=x^0_i\right\}$ gegebenen Hyperfl"achen. Die Wahrscheinlichkeit, da"s ein Punkt aus
+dieser Schnittmenge als $(\mandim'+1)$.\ Komponente den Wert $x$ aufweist, bezeichnen wir
+mit $\Prob_{\mandim'}(x)=\Prob(x\vert x_1=x^0_1,\dots,x_{\mandim'}=x^0_{\mandim'})$. Mit
+den anf"anglichen "Uberlegungen, da"s die genauen Koordinaten erst durch $\mandim$
+Schnitte festgelegt sind, l"a"st sich nun schlie"sen, da"s die Verteilung von
+$\Prob_{\mandim'}(x)$ f"ur $\mandim'<\mandim$ ausgedehnt, f"ur $\mandim'=\mandim$ dagegen
+singul"ar werden mu"s.
+
+F"ur die Berechnung der Verteilungen m"ussen wir aufgrund der endlichen Datenmenge (und
+auch der endlichen Genauigkeit) von der exakten Gleichheit der Koordinaten abgehen und
+Wahrscheinlichkeitsverteilungen $\Prob(i\vert i^0_1,\dots,i^0_{\mandim'})$ betrachten.
+Hierbei ist der Wertebereich von $x$ in Intervalle $I_i=[x_i,x_{i+1}[$
+aufgeteilt\footnote{Da wir hier Verz"ogerungskoordinaten betrachten, ist der Wertebereich
+  f"ur alle Koordinaten gleich und es macht Sinn die Intervalle f"ur alle Koordinaten
+  gleich zu w"ahlen.}.\@ $\Prob(i\vert i^0_1,\dots,i^0_{\mandim'})$ ist die
+Wahrscheinlichkeit, da"s die $\mandim'+1.$ Koordinate im Intervall $I_i$ liegt, unter der
+Bedingung, da"s die ersten $\mandim'$ Koordinaten in den Intervallen
+$I_{i^0_1},\dots,I_{i^0_{\mandim'}}$ liegen.
+
+Das Ergebnis einer solchen Berechnung ist in \psref{pakdim} am Beispiel des
+R"osslerattraktors dargestellt. Die Anzahl der Intervalle (bins) betr"agt $200$, die
+Vergleichskoordinaten wurden zu $x^0_1=0.0$ und $x^0_2=5.0$ (entspricht $i^0_1=124,
+i^0_2=196$) gew"ahlt. F"ur die Verz"ogerungszeit $\delay=32\sample$ (\psref{pakdim} oben)
+sieht man deutlich, da"s die Verteilung f"ur $\mandim'=2$ sehr scharf wird. Dies steht im
+Einklang mit der lokalen Struktur des R"osslerattraktors, n"amlich einer Cantormenge
+zweidimensionaler Schichten. Die Tatsache, da"s $\Prob$ auch neben dem Maximalwert nicht
+verschwindet, ist einerseits bedingt durch die endliche Rechengenauigkeit als auch durch
+die \emph{eben nicht} exakt zweidimensionale Struktur des R"osslerattraktors.
+
+In \psref{pakdim} (unten) sind die Wahrscheinlichkeitsverteilungen f"ur
+$\delay=35\sample$, sonst aber gleiche Parameter dargestellt. Man erkennt deutlich ein
+Problem dieses Verfahrens. F"ur geringf"ugig\footnote{Das diese Abweichung in Bezug auf
+  die Bestimmbarkeit optimaler Verz"ogerungszeiten wirklich \begriff(geringf"ugig) ist,
+  wird sich in Kapitel \ref{chapdelay} zeigen.} andere Verz"ogerungszeiten wird die
+Verteilung $\Prob(i\vert i_1,i_2)$ nicht mehr singul"ar, sondern zeigt mehrere Maxima. Wir
+m"u"sten f"ur diese Verz"ogerungszeit schlie"sen, da"s der Attraktor mindestens
+dreidimensional ist.
+
+\noafterpage{
+  \epsfigfour{packdim/packdim1}{packdim/packdim2}{packdim/packdimb1}{packdim/packdimb2} {
+    Bedingte Wahrscheinlichkeitsverteilungen f"ur den R"osslerattraktor aus \psref{rekroe}
+    mit $x^0_1=0.0$ und $x^0_2=5.0$. Die Verz"ogerungszeit wurde oben zu
+    $\delay=32\sample$ und unten zu $\delay=35\sample$ gew"ahlt. Die Aufl"osung betr"agt
+    $0,5$ Prozent der linearen Ausdehnung des R"osslerattraktors. Deutlich zu erkennen ist
+    die empfindliche Abh"angigkeit des Ergebnisses vom Parameter $\delay$.
+    }{pakdim}{-0.2cm} }
+
+Diese Tatsache w"are nicht so interessant, wenn die abweichenden Resultate bei
+unterschiedlichen Parametern nicht ein f"ur viele Verfahren der Zeitreihenanalyse
+auftretendes Ph"anomen w"are. Es stellen sich hier mehrere Fragen.
+\begin{myitemize}
+\item Inwiefern ist dieses Ergebnis nur ein Artefakt unserer speziellen Parameterwahl? In
+  dem hier betrachteten Fall taucht f"ur die meisten $\delay$ eine breite Verteilung auf.
+  Ist nun eher dem Ergebnis f"ur das spezielle $\delay$, welches $\mandim=2$ impliziert,
+  oder den Ergebnissen f"ur andere Verz"ogerungszeiten, welche eher $\mandim>2$ nahelegen,
+  zu trauen? In diesem Fall ist dies durch unsere Systemkenntnis nat"urlich leicht zu
+  entscheiden, aber wie sieht es bei unbekannten Systemen aus ?
+\item Damit aussagekr"aftige Verteilungen erzeugt werden k"onnen, m"ussen in der
+  betrachteten Schnittmenge eine \naja(ausreichende) Zahl von Rekonstruktionspunkten
+  liegen. Diese Zahl nimmt jedoch mit $(\Delta x)^{\mandim'}$ ab. Wir m"ussen also
+  entweder mit einer geringeren Genauigkeit $(\Delta x)$ arbeiten, was h"aufig nicht
+  akzeptabel ist, oder die Datenmenge entsprechend erh"ohen. Dies ist jedoch bei
+  experimentellen -- insbesondere bei biologischen oder medizinischen -- Systemen oft
+  nicht m"oglich.
+\end{myitemize}
+
+Das erste Problem der Parameterwahl wird in abgewandelter Form noch "ofter auftreten. Das
+zweite -- die exponentielle Zunahme der erforderlichen Datenmenge -- wird genauer
+behandelt in Abschnitt \ref{chapcorrdim}.
+
+\paragraph{Die Verz"ogerungszeit}
+\label{chapdelay}
+
+Nach Takens' Theoremen ist die Wahl der Verz"ogerungszeit bis auf wenige, in der Regel
+erf"ullte Ausnahmen beliebig. Bei endlichen, eventuell verrauschten Daten ist die Wahl
+einer \naja(guten) Verz"ogerungszeit entscheidend f"ur eine erfolgreiche
+Phasenraumrekonstruktion. In \psref{rekzeit} sind drei verschiedene Rekonstruktionen des
+R"osslerattraktors aus der Zeitreihe aus \psref{rekroe} zu den Verz"ogerungszeiten
+$\delay=3\sample$, $30\sample$ und $200\sample$ abgebildet.
+
+\epsfigtriple{zeit/rectslow}{zeit/rectsmed}{zeit/rectshigh} {Rekonstruktion des
+  R"osslerattraktors zu verschiedenen Verz"ogerungszeiten $\delay=3\sample, 30\sample,
+  200\sample$ (von links nach rechts). Man erkennt deutlich, da"s sich f"ur kleine
+  $\delay$ der Attraktor auf die Raumdiagonale konzentriert, w"ahrend f"ur gro"se $\delay$
+  "Uberfaltung des Attraktors eintritt. Die Rekonstruktionen wurden hier in den $\R^2$
+  projiziert.  }{rekzeit}{-0.2cm}
+
+Da f"ur kleine Verz"ogerungen $k=\delay/\sample$ die Koordinaten ann"ahernd gleich werden
+$x_i\simeq x_{i+k}\simeq x_{i+2k}$, konzentrieren sich die Rekonstruktionspunkte in der
+linken Abbildung auf die Hauptdiagonale des $\R^3$. F"ur einen Dimensionsalgorithmus, der
+nur mit endlicher Genauigkeit arbeiten kann, w"are dies kaum zu unterscheiden, von einer
+eindimensionalen Struktur. In der rechten Abbildung ist die Verz"ogerungszeit dagegen sehr
+hoch gew"ahlt.  Der Attraktor scheint wesentlich komplizierter als der des
+Originalsystems. Bei rauschfreien Daten mag das noch unwesentlich sein. Bei Vorhandensein
+von dynamischem Rauschen werden die Koordinaten der rekonstruierten Punkte jedoch mit
+steigendem $\delay$ zunehmend unkorreliert -- der Attraktor spannt den ganzen Phasenraum
+auf. Aufgrund dieser Problemem ben"otigen wir also Verfahren, um vern"unftige
+Verz"ogerungszeiten bestimmen zu k"onnen.
+
+Bevor ich mit der Diskussion verschiedener Verfahren zur Bestimmung der Verz"ogerungszeit
+beginne, m"ochte ich erst ich erst eine pers"onliche Bemerkung zu all diesen Methoden
+machen. Es wird immer wieder geschrieben, dieses oder jenes Verfahren erbr"achte
+\slang(bessere) Resultate (d.h. \slang(optimalere) Verz"ogerungszeiten) als irgendein
+anderes. Teilweise sind sogar Ma"szahlen entwickelt worden, die die \slang(Optimalit"at)
+verschiedener Verz"ogerungszeiten beweisen sollen. Da diese Kriterien immer auf dem Modell
+beruhen, da"s der Autor von einer guten Verz"ogerungszeit hat, wird dadurch nat"urlich
+immer die "Uberlegenheit des gerade vorgestellten Verfahrens bewiesen.
+
+Meiner Meinung nach gibt es \slang(die) optimale Verz"ogerungszeit nicht. Welcher Wert
+optimal ist, h"angt davon ab, was mit der Zeitreihe geschehen soll. Sollen m"oglichst gut
+aufgespannte Poincar\'e-Plots erstellt werden? Sollen die Lyapunov-Exponenten des Systems
+berechnet werden? Soll die Kapazit"at oder die Korrelationsdimension bestimmt werden? Die
+vorgestellten Verfahren liefern in der Regel einen guten Ausgangspunkt f"ur verschiedene
+weitergehende Berechnungen. Der Wert der endg"ultig gew"ahlt wird, ist dann aber meistens
+eine Sache von \metapher(trial-and-error)\footnote{Bei der Berechnung der
+  Korrelationsdimension bietet es sich zum Beispiel an, erst einen Wert f"ur $\delay$
+  "uber das Verfahren der \begriff(marginalen Redundanz) zu bestimmen und dann aus Tests
+  mit benachbarten Verz"ogerungszeiten diejenigen, die den gr"o"sten Skalierungsbereich
+  liefert, zu w"ahlen.}.
+
+\subparagraph{Nulldurchgang der Autokorrelationsfunktion.} Ausgangspunkt f"ur die
+Entwicklung der Verz"ogerungskoordinatenabbildung war die Idee, da"s die Dynamik des
+Systems durch beliebige, \emph{unabh"angige} Koordinaten dargestellt werden kann. Es w"are
+daher sinnvoll, die Verz"ogerung so zu w"ahlen, da"s die Koordinaten m"oglichst
+unabh"angig werden. In der Signaltheorie wird die \begriff(lineare Unabh"angigkeit) zweier
+Signale $X$ und $Y$ "uber deren \begriff(Kreuzkorrelation) $C(X,Y)$ beschrieben.
+\eqnl[crosskorr]{C(X,Y)=\lim_{T\to\infty}\frac{1}{2T}\int_{-T}^{+T} (x(t)-\bar
+  x)(y(t)-\bar y) \mathrm{dt} } Hierbei sind $x(t)$ und $y(t)$ die Werte der Signale zur
+Zeit $t$ und $\bar x$ und $\bar y$ die Mittelwerte der Signale \footnotemark. Die
+Kreuzkorrelation wird maximal, wenn die Signale proportional zueinander sind, und Null,
+wenn sie linear unabh"angig sind. Bei der Verz"ogerungskoordinatenabbildung ist das Signal
+$Y$ nun genau das um die Zeit $\delay$ verschobene Signal $X$ d.h.\ $y(t)=x(t+\delay)$.
+Die rechte Seite von \eqnref{crosskorr} geht damit "uber in die Definition der
+Autokorrelationsfunktion $\ac$: \footnotetext{Teilweise wird die Kreuzkorrelation noch
+  "uber den Kehrwert der Standardabweichungen von $X$ und $Y$ auf eins normiert. Dies ist
+  f"ur die weiteren Ausf"uhrungen jedoch ohne Belang.}
+\eqnl[autokorr1]{\ac(X,\delay)=\lim_{T\to\infty}\frac{1}{2T}\int_{-T}^{+T} (x(t)-\bar
+  x)(x(t+\delay)-\bar x) \mathrm{dt} } F"ur diskrete, endliche Zeitreihen
+$\{x_i\}_{i=1\dots N}\,$der L"ange $N$, erhalten wir
+\eqnl[autokorr2]{\ac(k)=\frac{1}{N-k}\sum_{i_1}^{N-k} (x_i-\bar x)(x_{i+k}-\bar x)} mit
+\eqnl[acmean]{\bar x = \frac{1}{N}\sum_{i=1}^N x_i} Die aufeinanderfolgenden Koordinaten
+werden maximal unabh"angig, wenn die Verz"ogerung $k=k_\ac$ so gew"ahlt wird, da"s
+$\ac(k_\ac)=0$ wird. Da wir eine "Uberfaltung des Attraktors vermeiden wollen, w"ahlen wir
+den ersten Nulldurchgang\footnote{Da die durch \eqnref{autokorr2} definierte
+  Autokorrelationsfunktion als Definitionsbereich die nat"urlichen Zahlen $\N$ hat,
+  bestimmt man ein $k$, so da"s $\ac(k)>=0$ und $\ac(k+1)<0$ ist. $\ac$ wird im Intervall
+  $[k,k+1[$ linear approximiert und der Nulldurchgang $k'$ der approximierten Funktion
+  bestimmt. Als Nulldurchgang von $\ac$ wird dann dasjenige $k_\ac$ benutzt, das n"aher an
+  $k'$ liegt.}  der Autokorrelationsfunktion als Verz"ogerung $k_\ac$. \comment{Zur
+  Unterscheidung von beliebigen bzw.\ durch andere Verfahren gew"ahlte Verz"ogerungen
+  benutzen wir f"ur diese die Bezeichnung $k_A$ und f"ur die Verz"ogerungszeit $\delay_A$}
+
+Die Implementierung des entsprechenden Algorithmus nach \eqnref{autokorr2} und
+\eqnref{acmean} ist direkt durch Bildung der jeweiligen Summen durchf"uhrbar. Die Laufzeit
+betr"agt $\order{N^2}$. Dies l"a"st sich jedoch beschleunigen durch Anwendung des
+\begriff(Wiener-Khintchine-Theorems). Demnach ist die Autokorrelationsfunktion eines
+Signals $X$ die Fouriertransformierte des Leistungsspektrums $P_X(\omega)$. Wir ben"otigen
+also nur zwei Fouriertransformationen deren Laufzeit, bei Verwendung der Fast Fourier
+Transformation (FFT), jeweils nur $\order{N\log N}$ betr"agt.  Algorithmen zur Berechnung
+der FFT finden sich in nahezu jeder Mathematikbibliothek \cite{numerical-recipes}, so da"s
+hier nicht n"aher darauf eingegangen werden braucht. Beispiele f"ur die
+Autokorrelationsfunktion und die zur jeweiligen Verz"ogerung $k_\ac$ rekonstruierten
+Attraktoren sind in \psref{acfigs} dargestellt.  \noafterpage{
+  \epsfigfour{autocorr/roeac}{autocorr/lorac}{autocorr/roerec2}{autocorr/lorrec2} {
+    Autokorrelationsfunktion $\ac(k)$ (oben) und die zum Nulldurchgang von $\ac(k_A)$
+    rekonstruierten Attraktoren (unten) f"ur das R"ossler- (links, $\delay_\ac=1.29$) und
+    das Lorenzsystem (rechts, $\delay_\ac=2.50$). Die Rekonstruktion des Lorenzattraktors
+    sehr stark "uberfaltet.  }{acfigs}{-0.2cm} }
+
+F"ur den R"osslerattraktor gelingt die Rekonstruktion mit der so gew"ahlten
+Verz"ogerungszeit ganz passabel. Der Attraktor zwar wirkt leicht "uberfaltet, die Messung
+von Dimensionen o."a.\ ist hier aber trotzdem gut m"oglich. Beim Lorenzattraktor ist die
+Verz"ogerungszeit erkennbar zu gro"s. Der Attraktor ist stark "uberfaltet und spannt fast
+den gesamten Phasenraum auf. Dimensionsalgorithmen werden hier schwerlich auf vern"unftige
+Werte konvergieren. Der Grund f"ur die zu hohe Verz"ogerung liegt in der Struktur des
+Lorenzattraktors begr"undet. Die Orbits \naja(kreisen) meist mehrere Uml"aufe um einen der
+instabilen Fixpunkte des Systems. W"ahrend dieser Zeit sind die Koordinaten jedoch linear
+stark korreliert, da in dem einen Fl"ugel $x$ konstant positiv und in dem anderen konstant
+negativ ist. Die hier bestimmte Verz"ogerungszeit entspricht also ungef"ahr der mittleren
+Aufenthaltszeit des Systems auf einem der Fl"ugel.
+
+Aufgrund dieser Schw"achen gibt es Ans"atze, statt des Nulldurchgangs das erste lokale
+Minimum oder den Abfall auf $1/e$ der Autokorrelationsfunktion zu betrachten. Diese
+Ans"atze bringen zwar zum Teil bessere Ergebnisse, sind jedoch theoretisch nicht zu
+begr"unden. Wir wollen sie hier deshalb beiseite lassen und ein allgemeineres Verfahren
+besprechen.
+
+\subparagraph{Redundanzanalyse.}  Wie wir gesehen haben stellt die lineare
+Un\-ab\-h"an\-gig\-keit zweier Koordinaten nicht das optimale Kriterium f"ur eine gute
+Verz"ogerungszeit dar. Die Probleme resultieren haupts"achlich daraus, da"s wir es mit
+\emph{nichtlinearen} Systemen zu tun haben. Wir suchen eine allgemeinere Unabh"angigkeit
+der Koordinaten.
+
+
+\comment{Sei $X$ eine beliebige Zufallsvariable und $\Prob_X(i)$ die Wahrscheinlichkeit
+  bei einer Messung von $X$ einen Wert im Intervall $[x_i,x_{i+1}[$ zu erhalten. Dann
+  betr"agt die mittlere Information einer Messung von $X$}
+
+Um die \begriff(allgemeine) Unabh"angigkeit zweier Koordinaten zu untersuchen,
+m"ussen\korrektur(naja) wir uns Begriffen der Informationstheorie, insbesondere dem
+\begriff(Shannonschen Informationsma"s), zuwenden. Die Messung einer Observablen $X$ habe
+$n$ verschiedene Ausg"ange $x_i$, die mit den Wahrscheinlichkeiten $\Prob_X(i)$ auftreten.
+Dann liefert eine Messung der Observablen $X$ im Mittel die
+\begriff(Information)\footnote{In der Informationstheorie wird statt des nat"urlichen
+  Logarithmus der Zweierlogarithmus benutzt. Die sich ergebende Einheit der Information
+  ist $1\,\bit$. Wir benutzen hier, wie in der Physik "ublich, den nat"urlichen
+  Logarithmus. Die Einheit in der hier die Information gemessen wird ist das sogenannte
+  $\nat$ (von engl. natural). Beide Ma"se sind linear "uber $1\,\nat =\log_2
+  e\,\bit\,$miteinander verkn"upft.}  \eqn{H(X)=-\sum_i \Prob_X(i) \ln \Prob_X(i)} Die
+mittlere Information ist maximal, wenn alle Ausg"ange der Messung gleich wahrscheinlich
+sind $\Prob_X(1)=\dots=\Prob_X(n)$. Sie wird umso kleiner, je st"arker die
+Wahrscheinlichkeiten auf wenige Ausg"ange konzentriert sind.
+
+Werden am betrachteten System zwei Messungen $X$ und $Y$ durchgef"uhrt, so betr"agt die
+mittlere Information der kombinierten Messung \eqn{H(X,Y)=-\sum_{i,j} \Prob_{XY}(i,j) \ln
+  \Prob_{XY}(i,j)} wobei $\Prob_{XY}(i,j)$ die Verbundwahrscheinlichkeit ist, da"s bei der
+Messung von $X$ der Wert $x_i$ und bei der Messung von $Y$ der Wert $y_j$ festgestellt
+wird\footnote{Die Verbundwahrscheinlichkeit $\Prob_{XY}(i,j)$ ist zu unterscheiden von der
+  bedingten Wahrscheinlichkeit $\Prob_{Y|X}(i,j)$, die angibt mit welcher
+  Wahrscheinlichkeit an $Y$ der Wert $y_j$ gemessen wird, \emph{wenn} die Messung von $X$
+  den Wert $x_i$ ergab. Beide Wahrscheinlichkeiten sind verkn"upft "uber
+  $\Prob_{XY}(i,j)=\Prob_{Y|X}(i,j)\Prob_X(i)$. Die Herleitung der nachfolgenden
+  Ergebnisse gelingt genauso, ist jedoch ein wenig schwerf"alliger.}.  Die Information,
+die die zus"atzliche Messung von $Y$ liefert, ist daher i.allg.\ kleiner als $H(Y)$,
+n"amlich \eqn{H(Y|X)=H(X,Y)-H(X)} Hierbei bezeichnet $H(Y|X)$ die mittlere Information der
+Messung von $Y$ bei Kenntnis des Me"sergebnisses von $X$. Diese zus"atzliche Information
+wird genau dann gleich $H(Y)$ wenn $X$ und $Y$ unabh"angige Me"sgr"o"sen sind. In diesem
+Fall gilt f"ur die Verbundwahrscheinlichkeiten $\Prob_{XY}(i,j)=\Prob_X(i)\Prob_Y(j)$ und
+wir erhalten
+\eqna{ H(X,Y)&=&-\sum_{i,j}\Prob_X(i) \Prob_Y(j) \{\ln \Prob_X(i)+\ln \Prob_Y(j)\} \nonumber \\
+  &=& -\sum_i \Prob_X(i) \ln \Prob_X(i) - \sum_j \Prob_Y(j) \ln \Prob_Y(j) \nonumber \\
+  &=& H(X)+H(Y)} somit $H(Y|X)=H(Y)$. In dem Fall, da"s zwischen $X$ und $Y$ ein direkter
+funktionaler Zusammenhang besteht, liefert die Messung von $Y$ gar keine zus"atzliche
+Information $H(Y|X)=0$.
+
+Wir definieren nun die \begriff(Redundanz) der kombinierten Messung $X,Y$. Redundanz
+bedeutet im allgemeinen die Menge an "uberfl"ussiger Information -- in diesem Fall die
+Information, die sowohl in der Messung von $X$ als auch in der von $Y$ enthalten ist.
+\eqnl[genredundancy]{R(X,Y)=H(X)+H(Y)-H(X,Y)} Die Redundanz $R$ wird genau dann minimal,
+wenn die Me"sgr"o"sen maximal unabh"angig voneinander sind. Die Redundanz wird auch
+manchmal als \begriff(Transinformation) (engl.\ Mutual Information) bezeichnet. Dies
+Bezeichnung r"uhrt daher, da"s die Information $R(X,Y)$ von $X$ nach $Y$ \slang("ubergeht)
+oder \slang(flie"st). Die Transinformation kann in diesem Kontext zur Beschreibung von
+Informationsfl"ussen in ausgehnten System verwendet werden\cite{Pawelzik91}.  In h"oheren
+Dimensionen ergeben sich jedoch Unterschiede zwischen der Redundanz und Transinformation
+\cite{Prichard95}.
+
+
+
+Die Observablen $X$ und $Y$ m"ussen nicht notwendig verschiedene Me"sgr"o"sen darstellen.
+Sie k"onnen auch die zeitversetzte Messung \emph{einer} Gr"o"se bedeuten.  Dies bringt uns
+auf das Verfahren zur Bestimmung der Verz"ogerungszeit.  Wir definieren die zweite
+Observable $Y$ als den zu einer Zeit $t+\delay$ gemessenen Wert von $X$, w"ahrend $X$ zur
+Zeit $t$ gemessen wird. Damit geht \eqnref{genredundancy} "uber in
+\eqnal[redundancy2]{R(X,\delay)&=&2H(X)-H(X,X_\delay) \nonumber \\
+  &=& -2 \sum_i \Prob_X(i) \ln \Prob_x(i) + \sum_{i,j} \Prob_{x,\delay}(i,j) \log
+  \Prob_{x,\delay}(i,j) } wobei $\Prob_{x,\delay}(i,j)$ die Wahrscheinlichkeit ist, da"s
+eine Messung an $X$ zu einer beliebigen Zeit $t$ den Wert $x_i$ und zur Zeit $t+\delay$
+den Wert $x_j$ liefert\comment{Genauer haben wir es hier mit der bedingten
+  Wahrscheinlichkeit $\Prob(x_j=x(t+\delay)|x_i=x(t))$ zu tun.}.  Da wir nach
+Unabh"angigkeit der Verz"ogerungskoordinaten gefragt haben, m"ussen wir also nur den Wert
+von $\delay$ bestimmen, f"ur den $R(X,\delay)$ minimal wird. Wie wir schon in den
+Betrachtungen zur Autokorrelationsfunktion festgestellt haben, nimmt die Korrelation
+zeitlich versetzter Messungen exponentiell ab. Die Redundanz $R(X,\delay)$ strebt also
+gegen Null f"ur $\delay\to\infty$, erreicht ihr Minimum also f"ur sehr gro"se $\delay$. Da
+wir nun sowohl an kleinen Verz"ogerungszeiten als auch an minimaler Redundanz interessiert
+sind, w"ahlen wir als Verz"ogerung das erste lokale Minimum von $R$.
+\epsfigtriple{redundancy/density1}{redundancy/density2}{redundancy/density3} {Die
+  Verbundwahrscheinlichkeiten $\Prob_{X,\delay}(i,j)$ f"ur $\delay=0.162,0.234,0.585$. Die
+  Verz"ogerungszeiten entsprechen dem ersten lokalen Minimum, dem ersten lokalen Maximum
+  sowie dem zweiten lokalen Minimum der Redundanz $R(X,\delay)$. Man erkennt, da"s im
+  mittleren Bild die Verteilung der Wahrscheinlichkeiten stark auf die R"ander
+  konzentriert ist. Im rechten Bild ist die Verteilung sehr flach, l"a"st jedoch kaum noch
+  Struktur erkennen.  }{reddensities}{-0.2cm}
+
+Die Berechnung von $R(X,\delay)$ erfordert die Berechnung der Wahrscheinlichkeiten
+$\Prob_X(i)$ und der Verbundwahrscheinlichkeiten $\Prob_{x,\delay}(i,j)$. Diese Berechnung
+ist nicht ganz trivial. Da wir zum einen kontinuierliche Me"swerte und zum anderen eine
+begrenzte Anzahl Me"spunkte haben, m"ussen wir den Me"sraum geeignet partitionieren und
+das Wahrscheinlichkeitsma"s dieser Partitionen bestimmen\footnote{Bei diskreten Me"swerten
+  w"are verst"andlicherweise keine Partitionierung notwendig. Bei unendlich vielen
+  kontinuierlichen Me"swerten k"onnte man dagegen die integrale Form von
+  \eqnref{redundancy2} verwenden. Hierbei gehen die Summen in Integrale und die
+  Wahrscheinlichkeiten in die entsprechenden Dichten "uber. Ein Problem der integralen
+  Form ist allerdings, da"s sie gegen Koordinatentransformationen nicht invariant ist.}.
+Als Partitionen w"ahlen wir Intervalle $I^1_i=[\xi_i,\xi_{i+1}[$ bzw. Produkte von
+Intervallen $I^2_{i,j}=[\xi_i,\xi_{i+1}[\times[\xi_j,\xi_{j+1}[$. Die Wahrscheinlichkeit
+$\Prob_X(i)$ ist dann gleich dem Anteil der Punkte $N_i$, der in das Intervall $I^1_i$
+f"allt, d.h.\ $\Prob_X(i)=N_i/N$. F"ur die Verbundwahrscheinlichkeiten gilt entsprechend
+$\Prob_{x,\delay}(i,j)=N_{ij}/N$.
+
+Offen ist noch wie die Grenzen der Intervalle $I^1_i$ gew"ahlt werden sollen. Es
+existieren dazu verschiedene Ans"atze.
+\begin{itemize}
+\item Der erste benutzt einfach "aquidistante Grenzen $x_i$. Die L"ange der Intervalle
+  wird auf einen bestimmten Teil der Varianz\footnote{Die Spannweite der Me"swerte w"are
+    hier ein schlechtes Ma"s, da bei experimentellen Systemen "ofters \slang(Ausrei"ser)
+    vorkommen, die die Spannweite start verbreitern, sonst aber nicht viel beitragen.} der
+  Me"swerte festgelegt. In den hier benutzten Beispielen wird die Intervall"ange auf
+  $1/50$ der Varianz der Daten eingestellt.
+\item Eine weitere Methode arbeitet mit Intervallen $I^1_i$, die so festgelegt werden,
+  da"s die Wahrscheinlichkeiten $\Prob_X(i)$ f"ur alle Intervalle nahezu gleich sind.
+  Hierzu wird die Zeitreihe $x_i$ der Gr"o"se nach sortiert. Die sortierte Reihe werde mit
+  $x_{(i)}$ bezeichnet.  Offensichtlich haben Intervalle $[x_{(i)},x_{(i+k)}[$ die
+  Wahrscheinlichkeit $\Prob_X(x_{(i)}\leq x<x_{(i+k)})=k/N$. Da die Wahrscheinlichkeiten
+  f"ur alle Intervalle gleich sein sollen, legen wir f"ur die Intervallgrenzen
+  $\xi_i=x_{(\lfloor\frac{N}{n}(i-1)\rfloor+1)}$ fest, wobei $n$ die Anzahl der Intervalle
+  ist.
+\item Ein von \autor(Fraser) und \autor(Swinney) vorgeschlagenes Verfahren bestimmt die
+  Intervalle so, da"s die Verbundwahrscheinlichkeiten $\Prob_{X,\delay}(i,j)$ f"ur alle
+  $(i,j)$ ann"ahernd gleich werden \cite{fraser-swinney}. Gestartet wird mit einer
+  Partitionierung, die aus einem einzigen Element
+  $[\xi^0_1,\xi^0_2[\times[\xi^0_1,\xi^0_2[$ besteht. Dieses Element wird nun so in vier
+  rechteckige Elemente zerlegt, da"s in jedem Element gleich viele Paare $(x_i,x_j)$ zu
+  liegen kommen. Mit den durch diese Zerlegung enstandenen Elementen $\{
+  [\xi^1_k,\xi^1_{k+1} [ \times [\xi^1_l, \xi^1_{l+1} [ \, \vert 1 \leq k , l \leq 4\}$
+  wird nun in derselben Weise weiter verfahren. Nach $m$ Schritten erh"alt man so eine
+  Partitionierung des Phasenraumes mit $4^m$ gleich wahrscheinlichen Elementen
+  $\{[\xi^m_k,\xi^m_{k+1}[\times[\xi^m_l,\xi^m_{l+1}[\,\vert 1\leq k,l \leq 2^{m+1}\}$.
+  Das Verfahren ist jedoch recht aufwendig und bringt meiner Einsch"atzung nach keine
+  wesentlich besseren Ergebnisse.
+\item \autor(K. Pawelzik) entwickelte ein Verfahren, um die Redundanz aus
+  verallgemeinerten Korrelationsintegralen (s. Abschnitt \ref{chapcorrdim}) zu bestimmen.
+  Es gilt $R(X,\delay,\eps)=2C_1(1,0,\eps)-C_1(2,\delay,\eps)$, wobei $C_q(d,\delay,\eps)$
+  das verallgemeinerte Korrelationsintegral zur Einbettungsdimension $d$,
+  Verz"ogerungszeit $\delay$ und $\eps$ ist.
+\end{itemize}
+
+
+Die Ergebnisse f"ur die Messung der Verz"ogerungszeit $\delay_R$ "uber das erste lokale
+Minimum der Redundanz zeigt \psref{redresult}. W"ahrend sich das Ergebnis beim
+R"osslerattraktor nicht wesentlich ge"andert hat, ist das Resultat beim Lorenzattraktor
+deutlich besser als bei der Rekonstruktion mit $\delay_\ac$. Die Verz"ogerungszeiten sind
+bei beiden Systemen kleiner geworden: beim R"osslersystem von $1.29$ auf $1.16$, beim
+Lorenzsystem sogar von $2.50$ auf $0.162$.  Dies war auch zu erwarten, da lineare
+Unabh"angigkeit immer auch generelle Unabh"angigkeit impliziert und daher die "uber die
+Redundanzanalyse bestimmten Verz"ogerungszeiten $\delay_R$ immer kleiner oder gleich den
+"uber den Nulldurchgang der Autokorrelationsfunktion bestimmten $\delay_\ac$ liegen
+m"ussen.
+
+
+\noafterpage{
+  \epsfigfour{redundancy/roemut}{redundancy/lormut}{redundancy/roerec2}{redundancy/lorrec2}
+  {Redundanz $\R(k)$ (oben) und die zum ersten lokalen Minimum von $\R(k_R)$
+    rekonstruierten Attraktoren (unten) f"ur das R"ossler- (links, $\delay_R=1.16$) und
+    das Lorenzsystem (rechts, $\delay_R=0.162$).  }{redresult}{-0.2cm} } \noafterpage{
+  \epsfigdouble{autocorr/roecmp}{autocorr/lorcmp} {Vergleich der Autokorrelationsfunktion
+    $\ac(\delay)$ mit der Redundanz $R(\delay)$. Die Verz"ogerungszeiten sind f"ur die
+    Redundanz kleiner als die f"ur die Autkorrelationsfunktion.  }{acfigs3}{-0.2cm} }
+
+
+
+
+
+\comment{
+
+\subsubsection{Datenanforderungen}
+
+\paragraph{Datenmenge}
+
+\paragraph{Verrauschte Zeitreihen}
+
+}
+
+\newpage
+
+
+
+
+
+
+
