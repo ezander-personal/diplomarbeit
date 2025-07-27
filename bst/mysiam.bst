@@ -143,7 +143,7 @@ FUNCTION {emphasize}
 FUNCTION {scapify}
 { duplicate$ empty$
     { pop$ "" }
-    { "{\sc " swap$ * "}" * }
+    { "{\normalfont \scshape " swap$ * "}" * }
   if$
 }
 
@@ -380,7 +380,7 @@ FUNCTION {format.pages}
 }
 
 FUNCTION {format.vol.year}
-{ " {\bf " volume field.or.null * "}" *
+{ " {\normalfont \bfseries " volume field.or.null * "}" *
   year empty$
     { "empty year in " cite$ * warning$ }
     { " (" year * ")" * * }
