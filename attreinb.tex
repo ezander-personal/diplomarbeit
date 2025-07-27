@@ -8,30 +8,31 @@
 
 \section{Seltsame Attraktoren}
 \label{chapdynsystems}
-Das Konzept seltsamer Attraktoren hat in den letzten beiden Jahrzehnten eine
-st"andig wachsende Bedeutung bei der
-Erkl"arung von Ph"anomenen aus den unterschiedlichsten Forschungsgebieten gefunden. Gemeinsam
-ist allen diesen Ph"anomenen, da"s die untersuchten Systeme prinzipiell durch sogenannte
-\begriff(Evolutionsgleichungen)
+
+Das Konzept seltsamer Attraktoren hat in den letzten beiden Jahrzehnten eine st"andig
+wachsende Bedeutung bei der Erkl"arung von Ph"anomenen aus den unterschiedlichsten
+Forschungsgebieten gefunden. Gemeinsam ist vielen dieser Ph"anomene, da"s die untersuchten
+Systeme prinzipiell durch gew"ohnliche Differentialgleichungen der Form
 \eqnl[evolut]{\dot\x = \vec F(\x)}
-beschrieben werden k"onnen. Die Geschwindigkeit $\dot\x$, mit der sich der Zustand des Systems entwickelt, und damit
-auch die ganze zuk"unftige Entwicklung\footnote{Unter hinl"anglich allgemeinen Forderungen
-an das Vektorfeld $\vec F$, n"amlich der Lipschitz-Stetigkeit.}, ist determiniert durch
-den aktuellen Zustand $\x$. Man sagt auch, das Vektorfeld $\vec F$ erzeuge einen Flu"s
-$\flow^t$:
+beschrieben werden k"onnen. Die Geschwindigkeit $\dot\x$, mit der sich der Zustand des
+Systems entwickelt, und damit auch die ganze zuk"unftige Entwicklung\footnote{Unter
+  hinl"anglich allgemeinen Forderungen an das Vektorfeld $\vec F$, n"amlich der
+  Lipschitz-Stetigkeit.}, ist determiniert durch den aktuellen Zustand $\x$. Man sagt
+auch, das Vektorfeld $\vec F$ erzeuge einen Flu"s $\flow^t$:
 \eqn{\x(t) = \flow^t(\x_0) .}
 Der Flu"s beschreibt die zeitliche Entwicklung des Systems in Abh"angigkeit vom
-Anfangszustand $\x_0$.
-Die Bewegung findet in einem Raum statt, der als \begriff(Phasenraum) $\phase$
-bezeichnet wird. Jedem  Freiheitsgrad des Systems entspricht genau eine Koordinate des
-Phasenraumes. Die Anzahl der Freiheitsgrade und damit die Dimension des Phasenraumes ist in
-vielen F"allen endlich, kann jedoch bei ausgedehnten Systemen\footnote{Gemeint sind hier
-  beispielsweise hydrodynamische Systeme deren, 
-  Zustand durch Dichte- und Temperaturfelder beschrieben wird.} auch "uberabz"ahlbar
-unendlich werden\footnote{Dies ist auch bei eindimensionalen Systemen der Fall, die durch
-sogenannte \begriff(Delay-Gleichungen) beschrieben werden, wie beispielsweise die
-Mackey-Glass-Gleichung. }.
-
+Anfangszustand $\x_0$.  Die Bewegung findet in einem Raum statt, der als
+\begriff(Phasenraum) $\phase$ bezeichnet wird. Jedem Freiheitsgrad des Systems entspricht
+im allgemeinen eine Koordinate des Phasenraumes\footnote{Bei Hamilton-Systemen wird die
+  Anzahl der Freiheitsgrade $f$ als die Anzahl der konjugierten Orte und Impulse
+  definiert. In diesem Fall ist die Dimension des Phasenraumes gleich $2f$.}. Die Anzahl
+der Freiheitsgrade und damit die Dimension des Phasenraumes ist in vielen F"allen endlich,
+kann jedoch bei \naja(ausgedehnten) Systemen\footnote{Gemeint sind hier beispielsweise
+  hydrodynamische Systeme deren, Zustand durch Dichte- , Temperatur- und
+  Geschwindigkeitsfelder beschrieben wird. Die hier auftretenden partiellen
+  Differentialgleichungen k"onnen oftmals durch eine Modenentwicklung (z.B. nach
+  \autor(Ritz-Galerkin)) auf eine \eqnref{evolut} entsprechende Form gebracht werden.}
+auch abz"ahlbar oder "uberabz"ahlbar unendlich werden.
 
 Bei realen Systemen ist es die Regel, da"s Energie durch Prozesse wie Reibung
 verlorengeht. Bei solchen \begriff(dissipativen Systemen) kann man die Beobachtung
@@ -40,7 +41,6 @@ niedrigdimensionale Untermannigfaltigkeit $\M\subset\phase$ des Phasenraumes
 reduziert. Die Energiedissipation eines Systems ist gleichbedeutend mit einer Kontraktion
 des Phasenraumvolumens $V$ beliebiger Teilmengen $\set B\subset\phase$ unter dem Flu"s $\flow^t$:
 \eqn{\abl{}{t}V(\flow^t(\set B))\lt 0.}
-
 Dies kann auch "uber das erzeugende Vektorfeld $\vec F$ ausgedr"uckt werden. Die Divergenz
 des Vektorfeldes mu"s in den erreichbaren Teilen des Phasenraumes negativ sein:
 \eqn{\mathop{\mathrm{div}}\vec F \lt 0.}
@@ -61,7 +61,7 @@ Lange herrschte die Auffassung, da"s sich die einzig m"oglichen Grenzmengen aus
 Punkt\-attraktoren, Grenzzyklen oder attraktiven $k$-Tori ($k\geq2$) zusammensetzen.
 Diesen ist gemeinsam, da"s sie periodisch (in den ersten beiden F"allen) bzw.\ periodisch
 oder quasiperiodisch (im letzten Fall) sind. Sie besitzen ein diskretes
-\begriff(Fourier-Spektrum).  Die Entstehung von Turbulenz wurde verstanden durch
+Fourier-Spektrum.  Die Entstehung von Turbulenz wurde verstanden durch
 sukzessive Generation immer neuer Fourier-Moden.  Das komplexe Verhalten turbulenter
 Systeme w"urde also als "Uberlagerung sehr vieler inkommensurabler Frequenzen betrachtet
 und w"are somit qualitativ nicht verschieden vom Verhalten einfacher Systeme. Bei der
@@ -102,7 +102,7 @@ Arbeit wichtige Eigenschaften beschr"anken:
 
 Eine wichtige Folgerung daraus ist, da"s fast alle Punkte
 des Attraktors unter dem Flu"s $\flow^t$ jedem anderen Attraktorpunkt beliebig nahe
-kommen. Diese Eigenschaft ist notwendig f"ur die Definition \begriff(ergodischer Ma"se)
+kommen. Diese Eigenschaft ist notwendig f"ur die Definition ergodischer Ma"se
 auf dem Attraktor. 
 
 \item Zwei zu einem gegebenen Zeitpunkt $t_0$ eng beieinander liegende Punkte auf dem Attraktor
@@ -131,7 +131,7 @@ dies somit abenfalls f"ur die exponentielle Separation der Trajektorien. Unter
 topologischen Abbildungen bleiben also die dynamischen und geometrischen Eigenschaften
 seltsamer Attraktoren unber"uhrt.
 
-Oft werden seltsame Attraktoren auch "uber ihre \begriff(fraktale) Struktur definiert
+Oft werden seltsame Attraktoren auch "uber ihre fraktale Struktur definiert
 \cite{Peitgen92}. Diesem Ansatz soll hier nicht gefolgt werden, da er nur geometrische,
 jedoch keine dynamischen Aspekte des Attraktors beschreibt. Es existieren Attraktoren, die
 seltsam (nach obiger Definition), aber nicht fraktal sind (beispielsweise der
@@ -178,7 +178,7 @@ Evolutionsgleichungen unbekannt.
 Daten, die in experimentellen Situationen gewonnen werden, beschr"anken sich so meistens
 auf Me"sreihen einer oder weniger Gr"o"sen, von denen angenommen wird, da"s  sie die
 Dynamik des Systems charakterisieren. Stellt sich nun heraus, da"s die so gewonnene
-\begriff(Zeitreihe) einen nicht trivialen\footnote{\begriff(Trivial) bedeutet in diesem
+Zeitreihe einen nicht trivialen\footnote{\begriff(Trivial) bedeutet in diesem
   Zusammenhang, da"s sich die Zeitreihe nicht als "Uberlagerung weniger Frequenzen
   darstellen l"a"st, d.h.\  sie hat kein diskretes
 Fourier-Spektrum.} zeitlichen Verlauf aufweist, ergeben sich daraus einige Fragen:
@@ -463,31 +463,31 @@ Aufgrund des oben beschriebenen Mankos von Takens' Theorem bewiesen \autor(Sauer
 \autor(Yorke) und \autor(Casdagli) ein erweitertes Einbettungstheorem \cite{Sauer91}, das
 sogenannte \begriff(Fractal Delay Embedding Prevalence Theorem). Wir geben hier die (etwas 
 verst"andlichere) Version aus ``Coping with chaos'' \cite{Ott94} wieder:
-\comment{
-\begin{theorem}
-  Ein kontinuierliches dynamisches System besitze eine kompakte, invariante glatte
-  Mannigfaltigkeit $\M$ der Kapazit"at $\fracdim$, und sei $n>2\fracdim$. Sei $\delay$ die
-  Verz"ogerungszeit.  $\set A$ enthalte h"ochstens eine endliche Anzahl Fixpunkte, keine
-  periodischen Orbits der Periode $\delay$ oder $2\delay$, und h"ochstens endlich viele
-  periodische Orbits der Periode $3\delay,4\delay,\dots,n\delay$, und die Jakobimatrizen der
-  Wiederkehrabbildungen dieser periodischen Orbits haben verschiedene Eigenwerte.  Dann
-  gilt f"ur fast alle glatten Me"sfunktionen $v:\set U\to\R$, da"s die
-  Verz"ogerungskoordinatenabbildung $\diffeo(v,\flow,\delay):\set U\to\R^n$
-  (siehe~\eqnref{takmod}) eine Einbettung ist.
-\end{theorem}
-}
 
 \begin{theorem}
-  Sei $\flow$ ein Flu"s auf einer offenen Teilmenge $\set U$ des $\R^k$ und sei $\set A$
+  Ein kontinuierliches dynamisches System (gegeben durch ein Vektorfeld $\vec F$) besitze
+  eine kompakte, invariante glatte Mannigfaltigkeit $\M$ der Kapazit"at $\fracdim$. 
+  Sei $\embed>2\fracdim$ ganzzahlig und $\delay>0$ die Verz"ogerungszeit.  $\set M$ enthalte h"ochstens
+  eine endliche Anzahl Fixpunkte, keine periodischen Orbits der Periode $\delay$ oder
+  $2\delay$, und h"ochstens endlich viele periodische Orbits der Periode
+  $3\delay,4\delay,\dots,\embed\delay$, und die Jakobimatrizen der Wiederkehrabbildungen dieser
+  periodischen Orbits haben verschiedene Eigenwerte.  Dann gilt f"ur fast alle glatten
+  Me"sfunktionen $v:\set M\to\R$, da"s die Verz"ogerungskoordinatenabbildung
+  $\diffeo_{(\vec F,v,\delay)}:\set M\to\R^\embed$ (siehe~\eqnref{takmod}) eine Einbettung ist.
+\end{theorem}
+
+
+\begin{theorem}
+  Sei $\flow^t$ ein (durch ein Vektorfeld $\vec F$ erzeugter) Flu"s auf einer offenen Teilmenge $\set U$ des $\R^k$ und sei $\set A$
   eine kompakte Teilmenge von $\set U$ der Kapazit"at $\fracdim$ \comment{(siehe Abschnitt
-    \ref{chapcapacity})}. Sei $d>2\fracdim$ ganzzahlig und $\delay>0$. $\set A$ enthalte
+    \ref{chapcapacity})}. Sei $\embed>2\fracdim$ ganzzahlig und $\delay>0$. $\set A$ enthalte
   h"ochstens eine endliche Anzahl Fixpunkte, keine periodischen Orbits der Periode
   $\delay$ oder $2\delay$, und h"ochstens endlich viele periodische Orbits der Periode
-  $3\delay,4\delay,\dots,d\delay$, und die Jakobimatrizen der Wiederkehrabbildungen der
+  $3\delay,4\delay,\dots,\embed\delay$, und die Jakobimatrizen der Wiederkehrabbildungen der
   periodischen Orbits haben paarweise verschiedene Eigenwerte. Dann
   gilt f"ur fast alle glatten Me"sfunktionen $v:\set U\to\R$, da"s die
-  Verz"ogerungskoordinatenabbildung $\diffeo(\vec F,\flow,\delay):\set U\to\R^d$
-  (siehe~\eqnref{takmod}) eine Einbettung ist.
+  Verz"ogerungskoordinatenabbildung $\diffeo_{(\vec F,v,\delay)}:\set U\to\R^\embed$
+  (siehe~\eqnref{takmod}): \comment{ eine Einbettung von $\set A$ liefert.}
 \begin{myitemize}
 \item eineindeutig auf $\set A$ ist.
 \item auf jeder kompakten Teilmenge $\set C$ einer in $\set A$ enthaltenen 

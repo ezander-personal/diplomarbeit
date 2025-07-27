@@ -10,40 +10,43 @@ eingepr"agtes additives Rauschen vermindert werden.
 %Grundidee
 Die Grundidee ist folgende. Wir betten den Attraktor in einen hochdimensionalen Raum
 $\R^\embed$ der Dimension $\embed$ ein. Dann spannt der so rekonstruierte Attraktor
-$\attr$ in der Regel nur einen $\minembed$-dimensio\-nalen Unterraum
+in der Regel nur einen $\minembed$-dimensio\-nalen Unterraum
 $\subspace=\mathop{\mathrm{span}}(\folge(\x,1,N))$  des
-$\R^\embed$ auf, wobei die Dimension dieses Unterraumes im allgemeinen sehr viel niedriger
-als die des Einbettungsraumes ist.  Dieser Unterraum $\subspace$ wird nun bestimmt und der
-Attraktor $\attr$ hieraus in den niedrigdimensionalen $\R^\minembed$ projiziert.
+$\R^\embed$ auf\footnote{$N$ ist die Anzahl der Rekonstruktionsvektoren,
+  und h"angt mit der Anzahl der Me"spunkte $\tilde N$ "uber $N=\tilde N-d+1$ zusammen. Im allgemeinen
+  gilt: $d\ll N$.}, wobei die Dimension dieses Unterraumes im allgemeinen niedriger
+als die des Einbettungsraumes ist: $d'<d$.  Dieser Unterraum $\subspace$ wird nun bestimmt und der
+Attraktor hieraus in den niedrigdimensionalen $\R^\minembed$ projiziert.
 
 %Neue Basis finden
-Hauptbestandteil des Verfahrens ist es, eine neue, orthonormale Basis $\folge(\vec
+Hauptbestandteil des Verfahrens ist es, eine neue orthonormale Basis $\folge(\vec
 c,1,\embed)$ des Einbettungsraumes $\R^\embed$ zu bestimmen. Diese soll so bestimmt sein,
 da"s die ersten $\minembed$ Vektoren der Basis den Unterraum $\subspace$ aufspannen m"ogen:
 \eqn{\subspace = \mathop{\mathrm{span}}(\folge(\vec c,1,\minembed)).} 
 Da $\subspace$ nach
 Voraussetzung auch von den Rekonstruktionsvektoren $\folge(\x,1,N)$ aufgespannt wird,
 lassen sich die $\vec c_i\mraise{\rvert}{-0.2}_{i=1\dots\minembed}$ offensichtlich als
-Linearkombination der $\x_j$ darstellen:
-\eqnl[svdkomp]{\vec c_i = \sum_{k=1}^N \frac{1}{\sigma_i\sqrt N} s_{ik} \x_k.} 
-Hierbei ist
+Linearkombination der $\x_k$ darstellen:
+\eqnl[svdkomp]{\vec c_i = \sum_{k=1}^N \frac{1}{\sigma_i\sqrt N} s_{ki} \x_k.} 
+Wegen $d'\ll N$ ist die Darstellung allerdings nicht eindeutig. Die $s_{ki}$ bilden 
+eine $\minembed\times N$ Matrix
 \eqn{\mat S = 
   \left( \begin{array}{ccc}
-    s_{11} & \dots & s_{\minembed 1} \\
+    s_{11} & \dots & s_{1\minembed} \\
     \vdots & \ddots & \vdots \\
-    s_{1N} & \dots & s_{\minembed N} \\
-  \end{array} \right)
+    s_{N1} & \dots & s_{N\minembed} \\
+  \end{array} \right),
 }
-eine $\minembed\times N$ Matrix, deren Spaltenvektoren 
-durch $\vec s_i = (s_{i1},\dots,s_{iN})^\Tr$ gegeben sind.
-Da die $\vec c_i$ linear unabh"angig sind, gilt dies auch f"ur die
+deren Spaltenvektoren 
+durch $\vec s_i = (s_{1i},\dots,s_{Ni})^\Tr$ gegeben sind.
+Da die $\vec c_i$ linear unabh"angig sein sollen, gilt dies auch f"ur die
 $\vec s_i$\footnote{Sonst h"atte die Matrix $\mat S$ den
-  Rang $\rang(\mat S)<\minembed$ und die $\vec c_i$ k"onnten nach \eqnref{svdkomp} nicht mehr
+  Rang $\rang(\mat S)<\minembed$, und die $\vec c_i$ k"onnten nach \eqnref{svdkomp} nicht
   linear unabh"angig sein.}. Wir nehmen weiterhin an, da"s die letzteren orthogonalisiert
 sind. Durch den Faktor $1/\sigma_i\sqrt N$ wird erreicht, da"s der Betrag der $\vec c_i$
 {\em und} der  $\vec s_i$ auf eins normiert werden kann. Der Faktor $1/\sqrt N$ macht die $\sigma_i$
 unabh"angig von der Anzahl $N$ der Rekonstruktionsvektoren, wie sp"ater einzusehen sein wird.  
-Wir definieren nun die \begriff(Trajektorienmatrix) $\mat X$ durch\footnote{In
+Wir definieren nun die als \begriff(Trajektorienmatrix) bezeichnete $d\times N$-Matrix $\mat X$ durch\footnote{In
   \cite{Broomhead-king} wird die Trajektorienmatrix durch $\mat X = N^{-1/2}(\x_1, \dots,
   \x_N)^\Tr$ definiert. Die hier getroffene Definition l"a"st die Ergebnisse unver"andert,
   f"uhrt jedoch zu einfacheren Gleichungen.}:
@@ -53,21 +56,27 @@ Wir definieren nun die \begriff(Trajektorienmatrix) $\mat X$ durch\footnote{In
 
 %Strukturmatrix
 \comment{Multiplizieren wir die linke und rechte Seite von \eqnref{svdbase} mit ihrer jeweiligen
-Transponierten, so erhalten wir} Daraus folgt unter Ausnutzung der Orthonormalit"at der $\vec c_i$:
-\eqnl[svdbla1]{\sigma_i \sigma_j \delta_{ij} = \vec s_i^\Tr \tmat X \mat X s_j.}
-Die $N\times N$ Matrix $\gmat \Theta = \tmat X \mat X$, aufgrund ihres Aufbaus auch
-\begriff(Strukturmatrix) genannt, ist reell und symmetrisch. Ihre
+Transponierten, so erhalten wir} Daraus folgt unter Ausnutzung der vorausgesetzten Orthonormalit"at der $\vec c_i$:
+\eqnl[svdbla1]{\sigma_i \sigma_j \delta_{ij} = \vec s_i^\Tr \tmat X \mat X \vec s_j.}
+Die $N\times N$ Matrix $\gmat \Theta = \tmat X \mat X$, \comment{aufgrund ihres Aufbaus} auch
+als \begriff(Strukturmatrix) bezeichnet, ist reell und symmetrisch. Ihre
 Eigenvektoren bilden also eine vollst"andige, orthonormale Basis des $\R^N$. 
-Eine L"osung der obigen Gleichung erh"alt man, indem man f"ur $\vec s_i$ 
+Eine L"osung der vorstehenden Gleichung erh"alt man, indem man f"ur $\vec s_i$ 
 den $i$ten Eigenvektor von $\gmat \Theta$ sowie f"ur $\sigma_i$ die Wurzel des entsprechenden Eigenwerts w"ahlt:
 \eqnl[svdeigen1]{\gmat \Theta \vec s_i = \sigma_i^2 \vec s_i.}
 Dies best"atigt man leicht durch Einsetzen in \eqnref{svdbla1} und Ausnutzung der Orthogonalit"at der
-Eigenvektoren symmetrischer Matrizen\footnote{Dies ist i.allg.\  nicht die einzige L"osung 
+Eigenvektoren symmetrischer Matrizen. Von den $N$ L"osungen von \eqnref{svdeigen1}
+besitzen nur $\minembed$ von null verschiedene Eigenwerte, da der Rang von $\mat X$
+und somit auch der Rang von $\gmat\Theta$ gleich $\minembed$ ist. \comment{Nur diese L"osungen
+sind f"ur die Bestimmung der $\vec c_i\mraise{\rvert}{-0.2}_{i=1\dots\minembed}$ nach
+\eqnref{svdbase} zu gebrauchen.}
+
+\comment{Dies ist i.allg.\  nicht die einzige L"osung 
   von \eqnref{svdbla1}. Zur Bestimmung des Unterraumes $\subspace$ reicht jedoch die
-  Kenntnis {\em einer} L"osung. }. 
+  Kenntnis {\em einer} L"osung. }
 
 %Kovarianzmatrix
-Die Bestimmung des Unterraumes $\subspace$ erfordert also die
+Die Bestimmung des Unterraumes $\subspace$ "uber \eqnref{svdeigen1} erfordert die
 Diagonalisierung der Strukturmatrix $\gmat \Theta$. Da $\gmat \Theta$
 eine $N\times N$-Matrix ist, wird dies f"ur gro"se $N$ jedoch
 sehr rechenaufwendig. Die Diagonalisierung einer $N\times N$-Matrix ben"otigt \order{N^3}
@@ -88,7 +97,7 @@ weniger Rechenaufwand als \eqnref{svdeigen1} gel"ost werden.
 
 %Bedeutung der Eigenwerte
 Der vom Attraktor aufgespannte Unterraum $\subspace$ ist durch die Eigenvektoren $\vec
-c_i$ gegeben, deren zugeh"orige Eigenwerte $\sigma_i$ nicht verschwinden. Um die genaue
+c_i$ gegeben, deren zugeh"orige Eigenwerte $\sigma_i^2$ nicht verschwinden. Um die genaue
 Bedeutung der $\sigma_i$ m"ussen wir uns nun Gedanken machen.
 
 
@@ -98,7 +107,7 @@ dem Unterraum $\subspace$ projiziert werden, habe die Orthonormalbasis $\vec
 e'_i\mraise{\rvert}{-0.2}_{i=1\dots\minembed}$. Die nach $\R^\minembed$ projizierten
 Rekonstruktionsvektoren  seien mit $\x'_i$ bezeichnet. Da $\subspace$ die Basis $\vec
 c_i\mraise{\rvert}{-0.2}_{i=1\dots\minembed}$ besitzt, ist die Projektion aus $\subspace$ in
-den $\R^\minembed$ somit eine orthogonale Abbildung, gegeben durch:
+den $\R^\minembed$ somit eine orthogonale Abbildung, gegeben durch
 \eqnl[svdrecvec]{\vec x'_i = \sum_{j=1}^{\minembed} (\vec x_i \cdot \vec c_j) \vec e'_j .} 
 
 \comment{
@@ -144,7 +153,7 @@ Aus der Definition der Kovarianzmatrix folgt:
 \Xi$ bei gro"sen Datenmengen $N$}
 Die $x_i$ ersetzen wir nun durch die Summe aus deterministischer Komponente $\bar x_i$ und 
 Rauschkomponente $\xi_i$. Da die Rauschterme $\xi_i$ untereinander unkorreliert sind, 
-ergibt die Summation "uber $\xi_i\xi_{i+k}$ bei gro"sen Datenmengen $N$ Null. Da die $\xi_i$ und die $x_i$ auch
+ergibt die Summation "uber $\xi_i\xi_{i+k}$ bei gro"sen Datenmengen $N$ null. Da die $\xi_i$ und die $x_i$ auch
 unkorreliert sind, ergibt die Summation "uber $\xi_i x_{i+k}$ ebenfalls 0. Wir erhalten 
 so f"ur die Elemente von $\gmat\Xi$:
 \eqn{\gmat \Xi_{kl} = \frac{1}{N}\left( \underbrace{\sumin x_{i+k} x_{i+l}}_{= \overline{\gmat \Xi}_{kl}} + 
