@@ -18,6 +18,7 @@ jobs:
       with:
         packages: texlive-latex-base texlive-fonts-extra texlive-lang-german texlive-font-utils
         version: 1.0
+        execute_install_scripts: true
               
 #    - name: Install dependencies
 #      run: echo sudo apt-get install texlive-latex-base texlive-fonts-extra texlive-lang-german texlive-font-utils
