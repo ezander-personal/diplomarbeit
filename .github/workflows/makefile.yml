@@ -13,9 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
+    
+    - uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: texlive-latex-base texlive-fonts-extra texlive-lang-german texlive-font-utils
+        version: 1.0
+              
     - name: Install dependencies
-      run: sudo apt-get install texlive-latex-base texlive-fonts-extra texlive-lang-german texlive-font-utils
+      run: echo sudo apt-get install texlive-latex-base texlive-fonts-extra texlive-lang-german texlive-font-utils
 
     - name: Make PDF and PS output
       run: make
