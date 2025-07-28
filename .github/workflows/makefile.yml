@@ -1,0 +1,26 @@
+name: Build LaTeX document
+on: [push]
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+        
+      - name: Compile LaTeX document
+        uses: xu-cheng/texlive-action@v3
+        with:
+          texlive_version: 2024
+          run: |
+            make
+            mv gliederung.pdf diplomarbeit_ezander_tsa_1998.pdf
+          
+          
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v4
+        with:
+          name: diplomarbeit_ezander
+          path: diplomarbeit_ezander_tsa_1998.pdf
+
