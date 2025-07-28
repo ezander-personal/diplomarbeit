@@ -11,7 +11,9 @@ jobs:
         
       - name: Compile LaTeX document
         uses: xu-cheng/texlive-action@v3
-        run: make
+        with:
+          texlive-version: 2024
+          run: make
           
           
       - name: Upload PDF file
