@@ -17,7 +17,7 @@ jobs:
     - uses: awalsh128/cache-apt-pkgs-action@latest
       with:
         packages: texlive-latex-base texlive-fonts-extra texlive-lang-german texlive-font-utils
-        version: 1.0
+        version: 1.1
         execute_install_scripts: true
               
 #    - name: Install dependencies
