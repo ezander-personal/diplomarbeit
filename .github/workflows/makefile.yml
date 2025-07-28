@@ -1,34 +1,22 @@
-name: Makefile CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+name: Build LaTeX document
+on: [push]
 
 jobs:
-  build:
-
+  build_latex:
     runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
     
-    - uses: awalsh128/cache-apt-pkgs-action@latest
-      with:
-        packages: texlive-latex-base texlive-fonts-extra texlive-lang-german texlive-font-utils
-        version: 1.1
-        execute_install_scripts: true
-              
-#    - name: Install dependencies
-#      run: echo sudo apt-get install texlive-latex-base texlive-fonts-extra texlive-lang-german texlive-font-utils
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+        
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: gliederung.tex
+          
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF
+          path: gliederung.pdf
 
-    - name: Make PDF and PS output
-      run: make
-
-    - name: Archive outputs
-      uses: actions/upload-artifact@v4
-      with:
-        path: |
-          ./gliederung.pdf
-          ./gliederung.ps
