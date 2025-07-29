@@ -2,7 +2,6 @@
 #include "Ma.h"
 
 #include "ExtFile.h"
-#include <stream.h>
 
 int main( int argc, char** argv)
 {
