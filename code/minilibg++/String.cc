@@ -33,7 +33,7 @@ Foundation, 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 void String::error(const char* msg) const
 {
-  (*lib_error_handler)("String", msg);
+  // (*lib_error_handler)("String", msg);
 }
 
 String::operator const char*() const
@@ -128,8 +128,8 @@ inline static StrRep* Snew(int newsiz)
   unsigned int allocsiz = MINStrRep_SIZE;
   while (allocsiz < siz) allocsiz <<= 1;
   allocsiz -= MALLOC_MIN_OVERHEAD;
-  if (allocsiz >= MAXStrRep_SIZE)
-    (*lib_error_handler)("String", "Requested length out of range");
+  // if (allocsiz >= MAXStrRep_SIZE)
+  //   error("String", "Requested length out of range");
     
   StrRep* rep = new (operator new (allocsiz)) StrRep;
   rep->sz = allocsiz - sizeof(StrRep);

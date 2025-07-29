@@ -218,7 +218,7 @@ int readFileColsInc(  const char* filename, int minCol, ... )
     }
   while( TRUE );
   
- va_end( ap );
+ va_end( argptr );
 
  return readFileCols( filename, cols, x );
 }
@@ -243,7 +243,7 @@ int readFileColsNum( const char* filename, ... )
     }
   while( TRUE );
   
- va_end( ap );
+ va_end( argptr );
 
  return readFileCols( filename, cols, x );
 }

@@ -7,6 +7,7 @@ add_subdirectory(nr)
 add_subdirectory(minilibg++)
 add_subdirectory(util)
 add_subdirectory(alg)
+add_subdirectory(clm)
 
 #add_executable(code)
 add_custom_target(foo)

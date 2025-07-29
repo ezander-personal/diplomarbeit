@@ -3,6 +3,8 @@ add_library(util STATIC)
 target_link_libraries(util minilibg++ nr)
 
 target_sources(util PRIVATE
+        ExtFile.cc
+        ExtFile.h
         ExtGetOpt.cc
         ExtGetOpt.h
         Functions.cc
@@ -20,3 +22,5 @@ target_sources(util PRIVATE
 )
 
 target_include_directories(util PUBLIC ".")
+
+target_compile_definitions(util PRIVATE "-DUTILITY")

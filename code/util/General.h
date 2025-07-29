@@ -29,6 +29,8 @@ typedef String string;
 
 
 #ifdef INTERFACE
+#include <iostream.h>
+#include <fstream.h>
 #include <Gpfile.h>
 #include <ExtGetOpt.h>
 #endif

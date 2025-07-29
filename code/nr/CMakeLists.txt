@@ -10,6 +10,7 @@ target_sources(nr PRIVATE
         src/gcf.cc
         src/gser.cc
         src/ludcmp.cc
+        src/nr.cc
         src/nrutil.cc
         src/realft.cc
         src/tqli.cc
