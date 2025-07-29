@@ -287,16 +287,23 @@ void svdrec( const String& ifilename, const string& _vfilename, const String& of
 
   gpi.NewFile();
 
-  for( int x=1; x<=dimension; x++ )
-    for( int y=x+1; y<=dimension; y++ )
-      {
+  if( dimension>1 ){
+    for( int x=1; x<=dimension; x++ )
+      for( int y=x+1; y<=dimension; y++ ) {
 	gpi.Title( "SVD reconstruction" ).xTitle( "x"+toString(x) ).yTitle( "x"+toString(y) );
 	gpi.setPlotStyle( lines ? LINES : POINTS );
 	gpi.pause();
 	gpi.using1( x+1 ).using2( y+1 );
 	gpi.AppendToFile();
       }
-
+  } else {
+	gpi.Title( "SVD-filtered timeseries" ).xTitle( "t").yTitle( "x" );
+	gpi.setPlotStyle( LINES );
+	gpi.pause();
+	gpi.using1( 1 ).using2( 2 );
+	gpi.AppendToFile();
+    
+  }
 }
 
 

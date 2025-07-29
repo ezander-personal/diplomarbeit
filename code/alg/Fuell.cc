@@ -33,7 +33,6 @@ void fuell( const String& ifilename, const String& ofilename, int maxDim, int mi
 
   dMatrix fuellMat( minDim, maxDim, 1, maxTau );
   
-
   for( int dim=minDim; dim<=maxDim; dim++ )
     {
       dMatrix mat(1,dim,1,dim );

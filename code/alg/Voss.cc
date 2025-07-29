@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 
-void voss( const String& ifilename, const String& ofilename )
+void voss( const String& ifilename, const String& ofilename, boolean useheartbeat )
 {
   FILE* fp = fopen( (const char*)ifilename, "r" );
   if( !fp ) return;
@@ -14,6 +14,9 @@ void voss( const String& ifilename, const String& ofilename )
   
   int channels = 2;
   int channel = 0;
+  if( useheartbeat )
+  	channel = 1;
+  	
   double sf = 100.0; // sampling frequency
   
   

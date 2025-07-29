@@ -65,7 +65,6 @@ tar:
 	tar rf $(TARFILE)  util/*.h util/*.cc util/Makefile 
 	tar rf $(TARFILE)  nr/include/*.h nr/src/*.c nr/src/*.cc nr/Makefile
 	tar rf $(TARFILE)  others/*.cc others/Makefile
-	tar rf $(TARFILE)  ../bin/signi
 	gzip -f -c $(TARFILE) > $(GZFILE)
 	@mv .number$(NUM1) .number$(NUM2)
 

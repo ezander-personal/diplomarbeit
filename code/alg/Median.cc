@@ -49,7 +49,8 @@ void median( const string& ifilename, const string& ofilename, int order, int pa
   int rows = getFileRows( ifilename );
   dVector x(rows), t(rows), re(rows), im(rows), phi(rows);
   
-  if( readFileColsInc( ifilename, 0, t(), x(), re(), im(), phi(), NULL ) ) exit( 1 );
+  // if( readFileColsInc( ifilename, 0, t(), x(), re(), im(), phi(), NULL ) ) exit( 1 );
+  if( readFileColsInc( ifilename, 0, t(), x(), NULL ) ) exit( 1 );
   
   
   for( int p=0; p<passes; p++ )

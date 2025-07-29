@@ -7,7 +7,7 @@
 #include <String.h>
 #include "General.h"
 
-void voss( const String& ifilename, const String& ofilename );
+void voss( const String& ifilename, const String& ofilename, boolean useheartbeat );
 
 #endif
 
