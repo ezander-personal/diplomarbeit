@@ -6,7 +6,7 @@ else
 ifeq (../../.tsa_dir,$(wildcard ../../.tsa_dir))
 include ../../.tsa_dir
 else
-WORK=$(HOME)/work/cxx
+WORK=$(shell pwd)
 endif
 endif
 
@@ -52,31 +52,13 @@ LLIBDIRS= -L$(WORK)/lib
 LOADLIBES= $(NLIBDIRS) $(LLIBDIRS) $(LLIBS) $(NLIBS)
 
 # compiler flags 
-CFLAGS= -m486 -O2 -ffast-math
-CXXFLAGS= -m486 -ffast-math -O2 -pipe -Wall -Wcast-qual -fno-strength-reduce -fomit-frame-pointer -Wstrict-prototypes -Wformat $(DBXFLAGS)
-#CXXFLAGS= -m486 -ffast-math -pipe -Wall -Wcast-qual $(DBXFLAGS)
+CFLAGS= -O2
+CXXFLAGS= -O2 -pipe -Wall -Wcast-qual -fno-strength-reduce -fomit-frame-pointer -Wstrict-prototypes -Wformat $(DBXFLAGS)
+#CXXFLAGS= -pipe -Wall -Wcast-qual $(DBXFLAGS)
 CPPFLAGS=$(NINCLUDES) $(LINCLUDES)
 LDFLAGS=
 
 # debug flags
 DBXFLAGS= -ggdb
 #DBXFLAGS=
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

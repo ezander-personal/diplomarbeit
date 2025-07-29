@@ -1,12 +1,16 @@
 #include <malloc.h>
-#include <stream.h>
+#include <iostream>
 
 #include "nrutil.h"
 
+#include <cstdlib>
 
-void nrerror(char error_text[] )
+using std::cerr;
+using std::endl;
+
+void nrerror(const char error_text[] )
 {
-  cerr << "Numerical Recipes run-time error..." << endl;
+  std::cerr << "Numerical Recipes run-time error..." << endl;
   cerr << error_text << endl;
   cerr << "...now exitings to system..." << endl;
   

@@ -1,7 +1,7 @@
 template <class T>
 void alloc_matrix( T**& x, int nrl, int nrh, int ncl, int nch )
 {
-  x = new (T*)[nrh-nrl+1];
+  x = new T*[nrh-nrl+1];
   if( !x ) nrerror("allocation failure 1 in alloc_matrix()");
   x -= nrl;
   
