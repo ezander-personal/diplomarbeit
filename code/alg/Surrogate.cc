@@ -74,7 +74,7 @@ void surrogate( const String& ifilename, const String& ofilename, char type, boo
   
   // we need rows to be a multiple of two for fourier-transform
   int maxrows=1;
-  while( 2*maxrows<rows )
+  while( 2*maxrows<=rows )
     maxrows*=2;
 
   rows = maxrows;
@@ -180,17 +180,23 @@ void surrogate( const String& ifilename, const String& ofilename, char type, boo
 
   gpInfo gpi( ofilename );
   gpi.using1( 1 ). using2( 2 );
-  gpi.Title( "surrogates" ).xTitle( "t" ).yTitle("x");
   gpi.setPlotStyle( LINES ).pause();
   gpi.NewFile();
+
+  gpi.Title( "original" ).xTitle( "t" ).yTitle("x");
+  gpi.dataFile( ifilename );
+  gpi.AppendToFile();
+
+  gpi.Title( "surrogates" ).xTitle( "t" ).yTitle("x");
   if( number>1 )
-    for( int j=0; j<number; j++)
-      {
-	gpi.dataFile( ofilename+toString(j+1) );
-	gpi.AppendToFile();
-      }
-  else
+    for( int j=0; j<number; j++) {
+      gpi.dataFile( ofilename+toString(j+1) );
+      gpi.AppendToFile();
+    }
+  else {
+    gpi.dataFile( ofilename );
     gpi.AppendToFile();
+  }
 
 }
 

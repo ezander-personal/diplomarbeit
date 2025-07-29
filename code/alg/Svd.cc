@@ -86,7 +86,7 @@ void vectorOut( double* v, int n )
 }
 
  
-void svd( const String& ifilename, const String& ofilename, int window  )
+void svd( const String& ifilename, const String& ofilename, int window, boolean nosort )
 {
   cout.precision( 10 );
   int rows = getFileRows( ifilename );
@@ -166,18 +166,20 @@ void svd( const String& ifilename, const String& ofilename, int window  )
   }
 
   // sort
-  for( int i=0; i<window; i++ ){
-    boolean changed=FALSE;
-    for( int j=0; j<window-i-1; j++ ){
-      if( d[j]>d[j+1] ){
-	double d2=d[j]; d[j]=d[j+1]; d[j+1]=d2;
-	double* x2=x[j+1]; x[j+1]=x[j+2]; x[j+2]=x2;
-	changed=TRUE;
-      }
-    }
-    if( !changed ) break;
-  }
-
+  if( !nosort ){
+		for( int i=0; i<window; i++ ){
+			boolean changed=FALSE;
+			for( int j=0; j<window-i-1; j++ ){
+				if( d[j]>d[j+1] ){
+					double d2=d[j]; d[j]=d[j+1]; d[j+1]=d2;
+					double* x2=x[j+1]; x[j+1]=x[j+2]; x[j+2]=x2;
+					changed=TRUE;
+      	}
+    	}
+    	if( !changed ) break;
+  	}
+	}
+	
   //trace ist schlecht für vergleichbarkeit besser auf ersten wert normieren
   tr=d[window-1];
 

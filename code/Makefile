@@ -59,7 +59,7 @@ depend:
 
 tar:
 	tar cf $(TARFILE)
-	tar rf $(TARFILE)  Makefile Makefile.inc ToDo .number$(NUM1) .tsa_dir_dem
+	tar rf $(TARFILE)  Makefile Makefile.inc ToDo number* .number$(NUM1) .tsa_dir_dem
 	tar rf $(TARFILE)  alg/*.cc alg/*.h alg/Makefile 
 	tar rf $(TARFILE)  clm/*.cc clm/Makefile 
 	tar rf $(TARFILE)  util/*.h util/*.cc util/Makefile 

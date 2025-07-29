@@ -22,7 +22,8 @@ void noise1( const String& ifilename, const String& ofilename, int type, double 
 
 
   ACG rng( (long)time(NULL) ); // ( seed, size);
-  Normal normDist( 0, level*xDev/100.0, &rng );
+  double nl=level*xDev/100.0;
+  Normal normDist( 0, nl*nl, &rng );
 
   for( int i=0; i<rows; i++)
     x[i] += normDist();
