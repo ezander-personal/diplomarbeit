@@ -128,6 +128,8 @@ void gpInfo::writeGpScaleRange( ofstream& gpout )
   if( options & SET_X_RANGE ) gpout << "set xrange [" << xrange[0] << ":" << xrange[1] << "]" << endl;
   if( options & SET_Y_RANGE ) gpout << "set yrange [" << yrange[0] << ":" << yrange[1] << "]" << endl;
   if( options & SET_Z_RANGE ) gpout << "set zrange [" << zrange[0] << ":" << zrange[1] << "]" << endl;
+  
+  gpout << "set grid" << endl;
 }
 
 void gpInfo::writeGpParametric( ofstream& gpout )
@@ -159,7 +161,7 @@ void gpInfo::writeGpPlottingStuff( ofstream& gpout )
     for( int x2=axis[1]; x2<=axis[4]; x2++ )
       for( int x3=axis[2]; x3<=axis[5]; x3++ )
 	{
-	  for( int style=ERRORBARS; style<=LINESPOINTS; style<<=1 )
+	  for( int style=ERRORBARS; style<=IMPULSES; style<<=1 )
 	    {
 	      if( !(_plotStyle & style) ) continue;
 	      
@@ -170,6 +172,7 @@ void gpInfo::writeGpPlottingStuff( ofstream& gpout )
 		case LINES: styleName = "l "; break;
 		case POINTS: styleName = "p "; break;
 		case LINESPOINTS: styleName = "linesp "; break;
+		case IMPULSES: styleName = "i "; break;
 		default: ASSERT( FALSE ); break;
 		}
 	     
@@ -224,9 +227,9 @@ int ViewGpFile( const char* filename, boolean smallPoints )
   filename_gp += ".gp";
 
   if( smallPoints )
-    return execlp( "gnuplot", "gnuplot", "-pointsize",  "0.01", (const char*)filename_gp, NULL );
+    return execlp( "gnuplot", "gnuplot", "-pointsize",  "0.01", "-geometry", "1024x768+0+0", (const char*)filename_gp, NULL );
   else
-    return execlp( "gnuplot", "gnuplot", (const char*)filename_gp, NULL );
+    return execlp( "gnuplot", "gnuplot", "-geometry", "1024x768+0+0", (const char*)filename_gp, NULL );
     
 }
 

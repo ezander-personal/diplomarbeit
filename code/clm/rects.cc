@@ -15,8 +15,8 @@ int main( int argc, char** argv)
   getopt.descr( "reconstructs an attractor-portrait using delay-coordinates" );
   getopt.value( 'i', &ifilename, "filename", NULL, TRUE );
   getopt.value( 'o', &ofilename, "filename", NULL, TRUE );
-  getopt.value( 't', &lag, "lag_time", NULL, TRUE );
-  getopt.value( 'd', &dimension, "dimension", NULL, TRUE );
+  getopt.value( 't', &lag, "lag_time", "lag time between delay coordinates", TRUE );
+  getopt.value( 'd', &dimension, "dimension", "embedding dimension", TRUE );
   getopt.option( 'l', &lines, "", "connect with lines (only for output)" );
   getopt.option( 'v', &view, "", "view output" );
   

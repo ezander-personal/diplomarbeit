@@ -6,7 +6,7 @@
 
 #include <String.h>
 
-void corrslp( const String& ifilename, const string& ofilename, double slope, double minRadius, boolean units );
+void corrslp( const String& ifilename, const string& ofilename, double slope, double minRadius, double maxRadius, boolean units, boolean nolog, double radius);
 
 #endif
 

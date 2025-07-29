@@ -3,18 +3,10 @@
 #include "General.h"
 #include "nr.h"
 
-void takdim( const String& ifilename, const String& ofilename
-, double epsilon )
+void takdim( const String& ifilename, const String& ofilename, double epsilon )
 {
-  // perliminary
-  double begin, end;
-  boolean units=TRUE;
-
   int rows = getFileRows( ifilename );
   int cols = getFileCols( ifilename );
-
-  boolean calcBegin = (begin==-1);
-  boolean calcEnd = (end==-1);
 
   int maxDim = cols-1;
 
@@ -27,27 +19,34 @@ void takdim( const String& ifilename, const String& ofilename
 
   ofstream fout( ofilename, ios::out | ios::trunc );
 
-  int _end, _begin;
-  if( !units )
-    {
-      _end = (int)end; _begin=(int)begin;
-    }
-  else
-    {
-      _begin=0; _end=rows-1;
-      for( int i=0; i<rows; i++ )
+  int _begin=0, _end=0;
+  for( int i=0; i<rows; i++ ) {
+    if( r[i]<epsilon ) 
+      _end=i;
+    else
+      break;
+  }
+
+  for( int d=1; d<=maxDim; d++ ) {
+      double sum_ln_r = 0.0;
+
+      double CE=exp(C[d][_end]);
+
+      for( int i=_begin; i<_end; i++ )
 	{
-	  if( fabs( r[i]-begin ) < fabs( r[_begin]-begin ) ) _begin=i;
-	  if( fabs( r[i]-end ) < fabs( r[_end]-end ) ) _end=i;
+	  double ln_r = r[i+1]-r[_end];
+	  double ln_C1 = C[d][i];
+	  double ln_C2 = C[d][i+1];
+	  double C1=exp(ln_C1);
+	  double C2=exp(ln_C2);
+	  double p=(C2-C1)/CE;
+	  
+	  sum_ln_r += ln_r * p;
 	}
-    }
 
-  for( int d=1; d<=maxDim; d++ )
-    {
-
-      double m,n,err_m=0, err_n=0;
-      fout << d << tab << m << tab << err_m << endl; 
-    }
+    
+    fout << d << tab << -1.0/sum_ln_r <<  endl; 
+  }
   
   fout.close();
 
@@ -55,9 +54,9 @@ void takdim( const String& ifilename, const String& ofilename
   gpInfo gpi( ofilename );
   gpi.Title( "correlation-dimension" ).xTitle( "d" ).yTitle( "D2" );
   
-  gpi.setPlotStyle( ERRORBARS | LINES ).pause();
+  gpi.setPlotStyle( LINESPOINTS ).pause();
   
-  gpi.using1( 1 ).using2( 2 ).using3( 3 );
+  gpi.using1( 1 ).using2( 2 );
   
   gpi.NewFile();
   gpi.AppendToFile();

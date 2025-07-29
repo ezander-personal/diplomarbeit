@@ -9,6 +9,7 @@
 
 #include <ACG.h>
 #include <Normal.h>
+#include <Uniform.h>
 
 #define a (params[0])
 #define b (params[1])
@@ -24,13 +25,16 @@ static double lorenzDef[]   = { 10.0, 28.0, 2.667 };
 static double henonDef[]    = { 1.4, 0.3 };
 static double torusDef[]    = { 1.0, 4.0, 15.379, 1.0 };
 static double noiseDef[]    = { 0.0, 1.0, 0.9 }; // mean, variance, A(1)<1
-
+static double cantor7aDef[] = {7,0,1,5,6};
+static double cantor7bDef[] = {7,0,2,4,6};
 
 vector vecRoesslerDefParams( 3, roesslerDef );
 vector vecLorenzDefParams( 3, lorenzDef );
 vector vecHenonDefParams( 2, henonDef );
 vector vecTorusDefParams( 4, torusDef );
 vector vecNoiseDefParams( 3, noiseDef );
+vector vecCantor7aDefParams( 5, cantor7aDef );
+vector vecCantor7bDefParams( 5, cantor7bDef );
 
 
 void Roessler( const vector& x, vector& dxdt, const vector& params )
@@ -67,6 +71,8 @@ void Henon( const vector& x, vector& x2, const vector& params )
   x2[1] =b*x[0];
 }
 
+
+
 void Torus( const vector& t, vector& x, const vector& params )
 {
   double u=t[0];
@@ -79,6 +85,7 @@ void Torus( const vector& t, vector& x, const vector& params )
 
 static ACG rng( (long)time(NULL) ); // ( seed, size);
 static Normal normDist( 0, 1, &rng );
+static Uniform uniDist( 1, 5, &rng );
 static noise_init=FALSE;
 
 void Noise( const vector& x, vector& x2, const vector& params )
@@ -101,6 +108,18 @@ void Test( const vector& x, vector& dxdt, const vector& /* params */ )
   dxdt[0] = -x[0];
 }
 
+void Cantor( const vector& x, vector& x2, const vector& params )
+{
+  double y=x[0];
+  
+  int n=int(uniDist());
+
+  y=(y+params[n])/params[0];
+
+  x2[0] = y;
+  x2[1] = 1;
+}
+
 #undef a
 #undef b
 #undef c
@@ -116,6 +135,8 @@ int GetType( const char* name )
   if( !strcasecmp( name, "HEN" )  || !strcasecmp( name,  "HENON" ) )   return HENON;
   if( !strcasecmp( name, "TOR" )  || !strcasecmp( name,  "TORUS" ) )   return TORUS;
   if( !strcasecmp( name, "NOI" )  || !strcasecmp( name,  "NOISE" ) )   return NOISE;
+  if( !strcasecmp( name, "CANA" )  || !strcasecmp( name,  "CANTORA" ) )   return CANTORA;
+  if( !strcasecmp( name, "CANB" )  || !strcasecmp( name,  "CANTORB" ) )   return CANTORB;
 
   return -1;
 }
@@ -130,6 +151,8 @@ const char* GetName( int n )
     case HENON: return "Henon";
     case TORUS: return "Torus";
     case NOISE: return "Noise";
+    case CANTORA: return "CantorA";
+    case CANTORB: return "CantorB";
     default:
       ASSERT( FALSE );
       return NULL;
@@ -145,6 +168,8 @@ int GetDimension( int n )
     case TORUS:
       return 3;
     case HENON:
+    case CANTORA:
+    case CANTORB:
       return 2;
     case NOISE:
       return 1;
@@ -161,6 +186,8 @@ int IsParametric( int n )
     case ROESSLER:
     case LORENZ:
     case HENON:
+    case CANTORA:
+    case CANTORB:
     case NOISE:
       return FALSE;
     case TORUS:
@@ -181,6 +208,8 @@ int IsContinous( int n )
     case TORUS:
       return TRUE;
     case HENON:
+    case CANTORA:
+    case CANTORB:
     case NOISE:
       return FALSE;
     default:
@@ -198,6 +227,8 @@ int IsDiscrete( int n )
     case TORUS:
     case NOISE:
       return FALSE;
+    case CANTORA:
+    case CANTORB:
     case HENON:
       return TRUE;
     default:
@@ -217,6 +248,8 @@ double GetDefStep( int n )
       return 0.009;
     case TORUS:
       return 0.01;
+    case CANTORA:
+    case CANTORB:
     case NOISE:
     case HENON:
       return 1;
@@ -249,6 +282,14 @@ boolean initFunctionAndParams( int type, vectorFunction &f, vector& vecParams )
     case NOISE:
       f=Noise;
       vecParams = vecNoiseDefParams;
+      return TRUE;
+    case CANTORA:
+      f=Cantor;
+      vecParams = vecCantor7aDefParams;
+      return TRUE;
+    case CANTORB:
+      f=Cantor;
+      vecParams = vecCantor7bDefParams;
       return TRUE;
     }
   return FALSE;

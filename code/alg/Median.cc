@@ -66,7 +66,7 @@ void median( const string& ifilename, const string& ofilename, int order, int pa
   
   gpInfo gpi( ofilename );
   gpi.using1( 1 ). using2( 2 );
-  gpi.Title( "fourier spectrum" ).xTitle( "w" ).yTitle( "log P(w)" );
+  gpi.Title( "fourier spectrum" ).xTitle( "w" ).yTitle( "ln P(w)" );
   gpi.setXRange().xRange( 0.0, t[rows-1] );
   gpi.setPlotStyle( LINES ).pause();
   gpi.NewFile();

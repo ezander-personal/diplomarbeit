@@ -6,7 +6,7 @@
 
 #include <String.h>
 
-void corrdim( const String& ifilename, const String& ofilename, double begin, double end, boolean units );
+void corrdim( const String& ifilename, const String& ofilename, double begin, double end, boolean units, double scaleExp, double radius, int minDiff );
 
 #endif
 

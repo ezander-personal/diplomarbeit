@@ -9,8 +9,8 @@ MYSUBDIRS=util alg clm
 
 
 
-NUM1:=$(shell ls .number* | cut -c 8-11)
-NUM2:=$(shell { echo -n 1+; ls .number* | cut -c 8-11 } | bc)
+NUM1:=$(shell number1)
+NUM2:=$(shell number2)
 TARFILE:=src.tar
 GZFILE:=src$(NUM2).tgz
 

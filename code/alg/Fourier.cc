@@ -58,7 +58,7 @@ void fourier( const String& ifilename, const String& ofilename, int n  )
 
   gpInfo gpi( ofilename );
   gpi.using1( 1 ). using2( 2 );
-  gpi.Title( "fourier spectrum" ).xTitle( "w" ).yTitle( "log P(w)" );
+  gpi.Title( "fourier spectrum" ).xTitle( "w" ).yTitle( "ln P(w)" );
   gpi.setXRange().xRange( 0.0, n*f0/2.0 );
   gpi.setPlotStyle( LINES ).pause();
   gpi.NewFile();

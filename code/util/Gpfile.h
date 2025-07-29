@@ -11,10 +11,11 @@
 #define LOGSCALE_Y 2
 
 
-#define ERRORBARS   1
-#define LINES       2
-#define POINTS      4
-#define LINESPOINTS 8
+#define ERRORBARS    1
+#define LINES        2
+#define POINTS       4
+#define LINESPOINTS  8
+#define IMPULSES    16
 
 #define LATEX_OUTPUT 1
 #define PS_OUTPUT    2

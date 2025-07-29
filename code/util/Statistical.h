@@ -26,9 +26,9 @@ void autoCorr( const double* x, int n, double* corr, int tauMin, int tauMax,
 	       boolean correction=FALSE );
 
 
-void linReg( double* x, double* y, int start, int stop, double& m, double& n,  
+void linReg( const double* x, const double* y, int start, int stop, double& m, double& n,  
 	     boolean logX=FALSE, boolean logY = FALSE );
-void linReg( double* x, double* y, int start, int stop, double& m, double& n,  
+void linReg( const double* x, const double* y, int start, int stop, double& m, double& n,  
 	     double& err_m, double& err_n, boolean logX=FALSE, boolean logY = FALSE );
 
 
@@ -42,6 +42,7 @@ inline void getMinMax( const dVector& x, double& min, double& max ){getMinMax( x
 
 
 double correlationCoefficient( const double* x, const double* y, int count );
+double correlationCoefficient2( const double* x, const double* y, int count, double rangeExp );
 double difference( const double* x, const double* y, int count );
 
 #endif // __STATISTICAL_H__

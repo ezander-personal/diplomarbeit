@@ -1,32 +1,28 @@
 #include "General.h"
-#include "Noise.h"
+#include "Stat.h"
 
 int main( int argc, char** argv)
 {
   String  ifilename;
   String  ofilename;
-  double  level = 5.0;
-  int     type = 0;
+  double  resolution=1.0;
   boolean view = FALSE;
 
 
   ExtGetOpt getopt( argc, argv );
-  getopt.descr( "add noise to time-series");
+  getopt.descr( "make stationarity test from input file");
   getopt.value( 'i', &ifilename, "filename", NULL, TRUE );
   getopt.value( 'o', &ofilename, "filename", NULL, TRUE );
-  getopt.value( 'l', &level, "level", "noise level in percent [5%]" );
-  getopt.value( 't', &type, "t", "type of noise to add [0]# if 0 add noise else newly create 1/f noise length t" );
+  getopt.value( 'r', &resolution, "resolution", "resolution for histogram in percent [1]" );
   getopt.option( 'v', &view, "", "view output" );
   
   if( getopt.evaluate() ) return 1;
 
+  stat( ifilename, ofilename, resolution );
 
-  noise( ifilename, ofilename, type , level );
-
-	getopt.writeInfo( ofilename );
+  getopt.writeInfo( ofilename );
   
   if( view ) ViewGpFile( ofilename, FALSE );
-
 
   return 0;
 }

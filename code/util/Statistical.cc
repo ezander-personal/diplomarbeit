@@ -65,7 +65,7 @@ void autoCorr( const double* x, int n, double* corr, int tauMin, int tauMax, boo
     }
 }
 
-void linReg( double* x, double* y, int start, int stop, double& m, double& n,  boolean logX=FALSE, boolean logY = FALSE )
+void linReg( const double* x, const double* y, int start, int stop, double& m, double& n,  boolean logX=FALSE, boolean logY = FALSE )
 {
   double sx=0.0, sy=0.0, sxy=0.0, sxx=0.0, syy=0.0;
 
@@ -93,7 +93,7 @@ void linReg( double* x, double* y, int start, int stop, double& m, double& n,  b
 }
 
 
-void linReg( double* x, double* y, int start, int stop, double& m, double& n,  double& err_m, double& err_n, boolean logX=FALSE, boolean logY = FALSE )
+void linReg( const double* x, const double* y, int start, int stop, double& m, double& n,  double& err_m, double& err_n, boolean logX=FALSE, boolean logY = FALSE )
 {
   logX=logY; logY=logX;
   // double chi2, q;
@@ -183,18 +183,57 @@ double correlationCoefficient( const double* px, const double* py, int count )
     {
       double x=*px++, y=*py++;
 
-      // cerr << i << tab << x << tab << y << endl;
       sig_x  += (x-meanX)*(x-meanX);
       sig_y  += (y-meanY)*(y-meanY);
       sig_xy += (x-meanX)*(y-meanY);
     }
-  /*
-  ASSERT( sig_x != 0.0 );
-  ASSERT( sig_y != 0.0 );
-  */
+
   if( sig_x == 0.0 || sig_y == 0 ) return HUGE_VAL;
+  
   return sig_xy / sqrt( sig_x * sig_y );
 }
+
+double correlationCoefficient2( const double* px, const double* py, int count, double rangeExp )
+{
+
+  double m=0.0, n=0.0;
+  linReg( px, py, 0, count, m, n );
+
+  double err=0.0;
+  for( int i=0; i<count; i++ )
+    {
+      double diff=(py[i]-(m*px[i]+n));
+      err += diff*diff;
+    }
+  err = sqrt(err)/sqrt(1+m*m);
+
+  return -err * pow(double(count),-rangeExp);
+}
+
+
+double correlationCoefficient2b( const double* px, const double* py, int count, double rangeExp )
+{
+  ASSERT( count > 0 );
+
+  double meanX = mean( px, count );
+  double meanY = mean( py, count );
+  
+  double sig_x=0.0, sig_y=0.0, sig_xy=0.0;
+  
+  for( int i=0; i<count; i++ )
+    {
+      double x=*px++, y=*py++;
+
+      sig_x  += (x-meanX)*(x-meanX);
+      sig_y  += (y-meanY)*(y-meanY);
+      sig_xy += (x-meanX)*(y-meanY);
+    }
+
+  if( sig_x == 0.0 || sig_y == 0 ) return HUGE_VAL;
+
+  return -(1-sig_xy / sqrt( sig_x * sig_y )) * pow(double(count),-rangeExp);
+}
+
 
 double difference( const double* px, const double* py, int count )
 {

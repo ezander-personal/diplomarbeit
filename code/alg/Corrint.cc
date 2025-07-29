@@ -1,8 +1,30 @@
 #include <math.h>
+#include <signal.h>
 
 #include "General.h"
 #include "Statistical.h"
 #include "nr.h"
+
+
+//
+// signal handler for showing state of calculation
+//
+const int show_state_signal = SIGUSR1;
+int show_state_signaled = false;
+
+void state_sig_handler( int n )
+{
+   if( n==show_state_signal )
+        show_state_signaled=true;
+}
+
+void set_handlers()
+{
+   signal(show_state_signal, state_sig_handler);
+   show_state_signaled=false;
+}
+
+
 
 
 inline double intexp( double d, int n )
@@ -28,6 +50,8 @@ inline double intexp( double d, int n )
 
 void corrint( const String& ifilename,  const String& ofilename, int maxDim, int lagTime, int refDist, int ignore, int points, int q, int expansionFac, int binScales, boolean constWindow, boolean euclidianNorm )
 {
+  set_handlers();
+  
   // read time series
   int rows = getFileRows( ifilename );
   double min, max, maxAbstInv;
@@ -75,11 +99,10 @@ void corrint( const String& ifilename,  const String& ofilename, int maxDim, int
     }
   
   
-  
   // allocate memory for N_eps
   int m=expansionFac*binScales;
 
-  iMatrix nEps( 1, maxDim, 0, m );
+  vMatrix nEps( 1, maxDim, 0, m );
   dMatrix ndEps( 1, maxDim, 0, m );
 
   nEps.clear(); ndEps.clear();
@@ -87,15 +110,17 @@ void corrint( const String& ifilename,  const String& ofilename, int maxDim, int
   dVector abstVec( 1, maxDim );
   int N=rows-(maxDim-1)*lagTime-1;
     
-  
   for( int i=0; i<N; i++ )
     {
       if( points!=-1 && i > points ) break;
       
-      cerr << i+1 << "/" << N << car;
-
       for( int j=i+ignore+1; j<N-1; j+=refDist )
 	{
+	  if( show_state_signaled ) {
+	    cerr << i+1 << "/" << N << endl;
+	    set_handlers();
+	  }
+
 	  double dx;
 
 	  for( int dim=1, add=0; dim<=maxDim; dim++, add+=lagTime )
@@ -135,11 +160,10 @@ void corrint( const String& ifilename,  const String& ofilename, int maxDim, int
 	}
     }
   
-
   // sum up nEps
   for( int d=1; d<=maxDim; d++ )
     {
-      int n=0;
+      verylong n=0;
       for( int i=0; i<=m; i++ )
 	{
 	  n += nEps[ d ][ i ];
@@ -149,7 +173,6 @@ void corrint( const String& ifilename,  const String& ofilename, int maxDim, int
 	  ndEps[ d ][ i ] = nEps[ d ][ i ] = n;
 	}
     }
-
 
   // write all the stuff to disk
   ofstream fout( ofilename, ios::out | ios::trunc );
@@ -165,17 +188,19 @@ void corrint( const String& ifilename,  const String& ofilename, int maxDim, int
       fout << endl;
     }
   fout.close();  
-  
+
+
   // write gnuplot file
   gpInfo gpi( ofilename );
 
-  gpi.Title( "correlation integral" ).xTitle( "log r" ).yTitle( "log C(r)" );
+  gpi.Title( "correlation integral" ).xTitle( "ln r" ).yTitle( "ln C(r)" );
   gpi.setPlotStyle( LINESPOINTS );
   gpi.pause();
   gpi.using1( 1 ).using2( 2, maxDim+1 );
 
   gpi.NewFile();
   gpi.AppendToFile();
+
 }
 
 

@@ -1,4 +1,3 @@
-
 #include "General.h"
 #include "Corrint.h"
 
@@ -22,10 +21,10 @@ int main( int argc, char** argv)
 
 
   ExtGetOpt getopt( argc, argv );
-  getopt.descr( "computes the correlation integral from the specified time-series" );
+  getopt.descr( "computes the correlation integral from the specified time-series#the status of the computation can be queried by sending SIGUSR1 (10) to the process" );
   getopt.value( 'i', &ifilename, "filename", NULL, TRUE );
   getopt.value( 'o', &ofilename, "filename", NULL, TRUE );
-  getopt.value( 't', &lagTime, "lagtime", NULL, TRUE );
+  getopt.value( 't', &lagTime, "lagtime", "the time lag between delay coordinates", TRUE );
   getopt.value( 'd', &maxDim, "maxdim", "maximum embedding dimension #when maxdim is zero all columns are used#lagtime may be anything in this case", TRUE );
   getopt.value( 'r', &refDist, "dist", "(temporal) distance of points in the second sum" );
   getopt.value( 'l', &ignore, "ignore", "points to ignore because of temporal correlation" );

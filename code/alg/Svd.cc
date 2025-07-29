@@ -160,7 +160,26 @@ void svd( const String& ifilename, const String& ofilename, int window  )
   // write output
 
   double tr=0.0;
-  for( int i=0; i<=window; i++) tr+=d[window-i];
+  for( int i=1; i<=window; i++){
+      d[window-i]=fabs(d[window-i]);
+      tr+=d[window-i];
+  }
+
+  // sort
+  for( int i=0; i<window; i++ ){
+    boolean changed=FALSE;
+    for( int j=0; j<window-i-1; j++ ){
+      if( d[j]>d[j+1] ){
+	double d2=d[j]; d[j]=d[j+1]; d[j+1]=d2;
+	double* x2=x[j+1]; x[j+1]=x[j+2]; x[j+2]=x2;
+	changed=TRUE;
+      }
+    }
+    if( !changed ) break;
+  }
+
+  //trace ist schlecht für vergleichbarkeit besser auf ersten wert normieren
+  tr=d[window-1];
 
   ofstream foutw( ofilename+".w", ios::out | ios::trunc );
   for( int i=1; i<=window; i++ ) foutw << i << tab << d[window-i] << tab << log( fabs(d[window-i])/tr) << tab << double(i)/double(window) << endl;
@@ -191,7 +210,7 @@ void svd( const String& ifilename, const String& ofilename, int window  )
 
 
   gpi.dataFile( ofilename+".w" );
-  gpi.Title( "singular values" ).xTitle( "i" ).yTitle( "log( s_i/S )" );
+  gpi.Title( "singular values" ).xTitle( "i" ).yTitle( "ln( s_i/s_1 )" );
   gpi.setPlotStyle( LINESPOINTS );
   gpi.pause();
   gpi.setXRange().xRange( 0, window+1 );

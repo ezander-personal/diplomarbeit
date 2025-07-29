@@ -21,6 +21,7 @@ void create( const String& filename, int points, int dimension, double delay, in
   if( delay==-1) delay=GetDefStep( type );
   dimension = GetDimension( type );
   
+  
   if( IsParametric( type ) )
     {
       vector vecT( 1 );

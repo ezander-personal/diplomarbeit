@@ -22,9 +22,9 @@ int main( int argc, char** argv)
 
   takdim( ifilename, ofilename, epsilon );
 
-	getopt.writeInfo( ofilename );
+  getopt.writeInfo( ofilename );
 
-  if( view ) ViewGpFile( ofilename, TRUE );
+  if( view ) ViewGpFile( ofilename, FALSE );
 
 
   return 0;

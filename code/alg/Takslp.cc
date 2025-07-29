@@ -20,44 +20,28 @@ void takslp( const String& ifilename, const string& ofilename, int minimum )
   readFileCol( ifilename, 0, r(), cols );
   readFileCols( ifilename, cols, C() );
 
-  // calc the slopes
-  for( int d=1; d<=maxDim; d++ )
-    {
+  for( int d=1; d<=maxDim; d++ ) {
+    
+    for( int _end=minimum; _end<points; _end++ ) {
       double sum_ln_r = 0.0;
-
-      // cout << endl << endl << "---------------------------------------" << endl;
-      // cout << "dimension: " << d << endl;
-
-      for( int i=0; i<points; i++ )
+      double CE=exp(C[d][_end]);
+      
+      for( int i=0; i<_end; i++ )
 	{
-	  DC[d][i] = 0.0;
-	  double lnC1 = C[d][i];
-	  double lnC0 = (i==0 ? exp(-100) : C[d][i-1] );
-	  double C1 = exp( lnC1 );
-	  double C0 = (i==0 ? 0.0 : exp( lnC0 ) );
-
-	  sum_ln_r += r[i] * ( C1 - C0 );
-	  if( sum_ln_r )
-	    DC[d][i] = -1.0/(sum_ln_r / C1 - r[i]);
-	  else
-	    DC[d][i] = 0.0;
+	  double ln_r = r[i+1]-r[_end];
+	  double ln_C1 = C[d][i];
+	  double ln_C2 = C[d][i+1];
+	  double C1=exp(ln_C1);
+	  double C2=exp(ln_C2);
+	  double p=(C2-C1)/CE;
 	  
-	  /*	  
-		  cout << r[i] << tab << C[d][i] << tab << exp(C[d][i]) << tab
-		  << exp(C[d][i]) - exp(C[d][i-1]) << tab << sum_ln_r  << tab 
-		  << sum_ln_r / exp( C[d][i]) << tab << (sum_ln_r / exp( C[d][i]) - r[i]) << endl;
-		  */
-	  /*
-	  cout << setprecision( 10 ) 
-	       << lnC1 << tab 
-	       << lnC0 << tab 
-	       << lnC1-lnC0 << tab 
-	       << C1 << tab 
-	       << C0 << tab 
-	       << C1 - C0 << endl;
-	       */
+	  sum_ln_r += ln_r * p;
 	}
+      DC[d][_end]=(sum_ln_r ? -1.0/sum_ln_r : 0 );
     }
+    
+    // fout << d << tab << -1.0/sum_ln_r <<  endl; 
+  }
 
 
   // write output
@@ -76,7 +60,7 @@ void takslp( const String& ifilename, const string& ofilename, int minimum )
   // write gnuplot file
   gpInfo gpi( ofilename );
 
-  gpi.Title( "correlation dimension (takens)" ).xTitle( "log r" ).yTitle( "d{ln C(r)} / d{ ln r}" );
+  gpi.Title( "correlation dimension (takens)" ).xTitle( "ln r" ).yTitle( "D_2" );
   gpi.setPlotStyle( LINESPOINTS );
   gpi.pause();
   gpi.using1( 1 ).using2( 2, maxDim+1 );

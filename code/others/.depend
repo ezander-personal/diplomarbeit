@@ -1,5 +1,0 @@
-lower.o: lower.cc
-psm.o: psm.cc
-testfloat.o: testfloat.cc
-uplow.o: uplow.cc
-upper.o: upper.cc

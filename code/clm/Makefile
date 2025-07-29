@@ -25,6 +25,7 @@ all: .depend $(PROGRAMS) install
 
 install:
 	@$(CP) $(PROGRAMS) $(BINDIR)
+	@(strip $(BINDIR)* 2> /dev/null; echo "" )
 
 clean: 
 	$(RM) $(PROGRAMS) *.o
