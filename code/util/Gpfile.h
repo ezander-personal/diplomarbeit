@@ -25,7 +25,7 @@
 #define PLOT3D      32
 #define PAUSE       64
 
-class ofstream;
+#include <iostream.h>
 
 class gpInfo
 {

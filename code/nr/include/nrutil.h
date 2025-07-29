@@ -19,7 +19,7 @@ void free_imatrix(int** m,int nrl,int nrh,int ncl,int nch);
 void free_submatrix(float** b,int nrl,int nrh,int ncl,int nch);
 void free_convert_matrix(float** b,int nrl,int nrh,int ncl,int nch);
 
-void nrerror( char error_text[] );
+void nrerror( const char* error_text );
 
 typedef long long int verylong;
 

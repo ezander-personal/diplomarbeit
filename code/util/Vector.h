@@ -4,7 +4,7 @@
 #ifndef __VECTOR_H__
 #define __VECTOR_H__
 
-class ostream;
+#include <iostream.h>
 
 class vector
 {

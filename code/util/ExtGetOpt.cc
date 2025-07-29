@@ -1,6 +1,9 @@
-#include <GetOpt.h>
+// #include <GetOpt.h>
 #include <signal.h>
 #include <fstream.h>
+#include <stdlib.h>
+#include <string.h>
+#include <GetOpt.h>
 
 #include "General.h"
 #include "ExtGetOpt.h"
@@ -73,7 +76,7 @@ optionEntry::optionEntry( char _optchar, char* var, const char* _optName, const 
   arrayCount = 0;
 }
 
-optionEntry::optionEntry( char _optchar, int* var, const char* _optName, const char* _optExp, boolean _always, boolean isBool=FALSE )
+optionEntry::optionEntry( char _optchar, int* var, const char* _optName, const char* _optExp, boolean _always, boolean isBool )
 {
   optchar = _optchar; always=_always; ok = !_always;
   if( isBool )
@@ -188,7 +191,7 @@ void ExtGetOpt::displaySyntax()
       syntax += '-';
       syntax += act->optchar;
 
-      if( act->optName.length() ) syntax += ' ' + act->optName;
+      if( act->optName.length() ) syntax += " " + act->optName;
       
       if( !act->always ) syntax += ']';
 
@@ -296,14 +299,14 @@ void ExtGetOpt::value( char optchar, char* var, const char* optName, const char*
   optText+=':';
 }
 
-void ExtGetOpt::values( char optchar, int count, int* var, const char* optName, const char* optExp, boolean always=FALSE )
+void ExtGetOpt::values( char optchar, int count, int* var, const char* optName, const char* optExp, boolean always )
 {
   insertEntry( new optionEntry( optchar, count, var, optName, optExp, always ) );
   optText+=optchar;
   optText+=':';
 }
 
-void ExtGetOpt::values( char optchar, int count, double* var, const char* optName, const char* optExp, boolean always=FALSE )
+void ExtGetOpt::values( char optchar, int count, double* var, const char* optName, const char* optExp, boolean always )
 {
   insertEntry( new optionEntry( optchar, count, var, optName, optExp, always ) );
   optText+=optchar;

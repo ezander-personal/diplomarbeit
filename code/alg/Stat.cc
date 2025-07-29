@@ -28,7 +28,7 @@ void stat( const String& ifilename, const String& ofilename, double resolution )
   double min, max;
   getMinMax( x, min, max );
   
-  qsort( x(), rows, sizeof(double), compareDoubles );
+  qsort( x(), rows, sizeof(double), (__compar_fn_t)compareDoubles );
   
   ofstream fout( ofilename, ios::out | ios::trunc );
   

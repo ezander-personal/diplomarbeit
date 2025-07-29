@@ -52,9 +52,9 @@ void evl( const String& ifilename, int column, int compare, boolean shortDisp )
   comparison_fn_t cmp_fn=NULL;
   switch( compare )
     {
-    case COMPARE_TYPE: cmp_fn = CompareT; break;
-    case COMPARE_POS: cmp_fn = CompareP; break;
-    case COMPARE_VALUE: cmp_fn = CompareV; break;
+    case COMPARE_TYPE: cmp_fn = (comparison_fn_t)CompareT; break;
+    case COMPARE_POS: cmp_fn = (comparison_fn_t)CompareP; break;
+    case COMPARE_VALUE: cmp_fn = (comparison_fn_t)CompareV; break;
     default: ASSERT( FALSE );
     }
 

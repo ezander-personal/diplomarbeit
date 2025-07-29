@@ -65,7 +65,7 @@ void autoCorr( const double* x, int n, double* corr, int tauMin, int tauMax, boo
     }
 }
 
-void linReg( const double* x, const double* y, int start, int stop, double& m, double& n,  boolean logX=FALSE, boolean logY = FALSE )
+void linReg( const double* x, const double* y, int start, int stop, double& m, double& n,  boolean logX, boolean logY)
 {
   double sx=0.0, sy=0.0, sxy=0.0, sxx=0.0, syy=0.0;
 
@@ -93,7 +93,7 @@ void linReg( const double* x, const double* y, int start, int stop, double& m, d
 }
 
 
-void linReg( const double* x, const double* y, int start, int stop, double& m, double& n,  double& err_m, double& err_n, boolean logX=FALSE, boolean logY = FALSE )
+void linReg( const double* x, const double* y, int start, int stop, double& m, double& n,  double& err_m, double& err_n, boolean logX, boolean logY )
 {
   logX=logY; logY=logX;
   // double chi2, q;

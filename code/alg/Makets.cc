@@ -23,7 +23,7 @@ void makets( const String& ifilename, const String& ofilename, int axis, int nDi
   int maxCount = int( (rows-1) / nDiff )+1;
   if( (points < maxCount) && (points>1) ) maxCount = points;
 
-  int maxRows = (maxCount*nDiff <? rows );
+  int maxRows = std::max(maxCount*nDiff, rows );
 
 
   dVector t( rows), x( rows );

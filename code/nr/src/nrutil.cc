@@ -8,9 +8,9 @@
 using std::cerr;
 using std::endl;
 
-void nrerror(const char error_text[] )
+void nrerror(const char* error_text )
 {
-  std::cerr << "Numerical Recipes run-time error..." << endl;
+  cerr << "Numerical Recipes run-time error..." << endl;
   cerr << error_text << endl;
   cerr << "...now exitings to system..." << endl;
   

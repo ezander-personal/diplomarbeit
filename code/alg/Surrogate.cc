@@ -7,6 +7,7 @@
 #include "nr.h"
 
 #include "General.h"
+#define PI M_PI
 
 
 /*

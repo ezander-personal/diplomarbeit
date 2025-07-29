@@ -1,5 +1,5 @@
 #include <math.h>
-
+#define PI M_PI
 
 #include "General.h"
 
@@ -61,7 +61,7 @@ void filter( double *vector, int laenge, double ogf, double ugf, double sf, int 
 	 }
        
        if( k!=alf )
-	 hk=1.0 / PI * (sin( (alf-k)*onf) -sin( (alf-k)*unf) ) / (alf-k); // Voﬂschulte
+	 hk=1.0 / PI * (sin( (alf-k)*onf) -sin( (alf-k)*unf) ) / (alf-k); // Vo√üschulte
        else
 	 hk = 1.0 / PI * (onf-unf);
 

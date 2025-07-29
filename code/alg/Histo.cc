@@ -89,7 +89,7 @@ void histoRandom( const String& ifilename, const String& ofilename, double resol
       double min, max;
       getMinMax( x, min, max );
 
-      qsort( x(), rows, sizeof(double), compareDoubles );
+      qsort( x(), rows, sizeof(double), (__compar_fn_t)compareDoubles );
       for( int i=0; i<rows; i++ ) t[i]=double(i)/double(rows);
 
       int n=(int)(rows*resolution/100.0);

@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <memory.h>
 
 #include "General.h"
 
@@ -13,7 +14,7 @@ int compare_double( const double* a, const double* b )
 
 inline void sort( double* x, int length )
 {
-  qsort( x, length, sizeof( double ), compare_double );
+  qsort( x, length, sizeof( double ), (__compar_fn_t)compare_double );
 }
 
 void medianFilter( double *vector, int length, int order )

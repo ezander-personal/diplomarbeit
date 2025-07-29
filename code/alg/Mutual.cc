@@ -1,5 +1,6 @@
 #include <math.h>
 #include <stdlib.h>
+#include <memory.h>
 #include "General.h"
 
 #include "Statistical.h"
@@ -13,7 +14,7 @@ double calcInfo( const int* x, int count )
   int y[count];
   memcpy( y, x, count * sizeof(int) );
 
-  qsort( y, count, sizeof(int), cmp_i );
+  qsort( y, count, sizeof(int), (__compar_fn_t)cmp_i );
 
   double info=0.0, p=0.0, inv=1.0/float(count);
   double gp=0;

@@ -12,41 +12,41 @@ double operator*( const vector& vec1, const vector& vec2 )
   return d;
 }
 
-vector operator*( const vector& vec, double d ) return v( vec.size )
+vector operator*( const vector& vec, double d )
 {
-  // vector v( vec.size );
+  vector v( vec.size );
   for( int i=0; i<vec.size; i++ ) v.x[i]=vec.x[i]*d;
   return v;
 }
 
-vector operator*( double d, const vector& vec ) return v( vec.size )
+vector operator*( double d, const vector& vec )
 {
-  // vector v( vec.size );
+  vector v( vec.size );
   for( int i=0; i<vec.size; i++ ) v.x[i]=vec.x[i]*d;
   return v;
 }
 
 
-vector operator/( const vector& vec, double d ) return v( vec.size )
+vector operator/( const vector& vec, double d )
 {
   ASSERT( d!=0 );
-  // vector v( vec.size );
+  vector v( vec.size );
   for( int i=0; i<vec.size; i++ ) v.x[i]=vec.x[i]/d;
   return v;
 }
 
-vector operator+( const vector& vec1, const vector& vec2 ) return v(vec1.size );
+vector operator+( const vector& vec1, const vector& vec2 )
 {
   ASSERT( vec1.size == vec2.size );
-  // vector v( vec1.size );
+  vector v( vec1.size );
   for( int i=0; i<v.size; i++ ) v.x[i]=vec1.x[i]+vec2.x[i];
   return v;
 }
 
-vector operator-( const vector& vec1, const vector& vec2 ) return v(vec1.size)
+vector operator-( const vector& vec1, const vector& vec2 )
 {
   ASSERT( vec1.size == vec2.size );
-  // vector v( vec1.size );
+  vector v( vec1.size );
   for( int i=0; i<v.size; i++ ) v.x[i]=vec1.x[i]-vec2.x[i];
   return v;
 }

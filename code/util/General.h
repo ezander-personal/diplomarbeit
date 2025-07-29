@@ -2,8 +2,8 @@
 #define __GENERAL_H__
 
 #include <assert.h>
+#include <stdlib.h>
 #include <String.h>
-
 
 
 typedef int boolean;
@@ -34,7 +34,7 @@ typedef String string;
 #endif
 
 #ifdef ALGORITHM
-#include <stream.h>
+#include <iostream.h>
 #include <fstream.h>
 #include <Gpfile.h>
 #include <ExtFile.h>
@@ -60,15 +60,3 @@ double maxRound( double min, double range, double add );
 void minmaxRound( double& min, double& max, double add );
 
 #endif // __GENERAL_H__
-
-
-
-
-
-
-
-
-
-
-
-

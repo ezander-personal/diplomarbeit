@@ -86,7 +86,7 @@ void Torus( const vector& t, vector& x, const vector& params )
 static ACG rng( (long)time(NULL) ); // ( seed, size);
 static Normal normDist( 0, 1, &rng );
 static Uniform uniDist( 1, 5, &rng );
-static noise_init=FALSE;
+static boolean noise_init=FALSE;
 
 void Noise( const vector& x, vector& x2, const vector& params )
 {
