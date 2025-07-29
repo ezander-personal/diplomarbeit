@@ -1,0 +1,7 @@
+ExtFile.o: ExtFile.cc General.h ExtFile.h
+ExtGetOpt.o: ExtGetOpt.cc General.h ExtGetOpt.h
+Functions.o: Functions.cc General.h Vector.h Functions.h
+General.o: General.cc General.h
+Gpfile.o: Gpfile.cc General.h Gpfile.h
+Runge.o: Runge.cc General.h Vector.h Functions.h
+Vector.o: Vector.cc Vector.h General.h
