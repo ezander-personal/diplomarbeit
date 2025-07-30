@@ -11,13 +11,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-	  sudo apt-get -y update
-	  sudo apt-get -y upgrade
-	  sudo apt-get -y install cmake g++
+          sudo apt-get -y update
+          sudo apt-get -y upgrade
+          sudo apt-get -y install cmake g++
 	  
       - name: Compile LaTeX document
         run: |
           mkdir build
-	  cmake -S code -B build
-	  cd build
-	  make
+          cmake -S code -B build
+          cd build
+          make
