@@ -1,0 +1,18 @@
+name: Build executables from C++ sources
+on: [push]
+
+jobs:
+  build_cpp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+
+      - name: Compile C++ sources
+        uses: threeal/cmake-action@v2.1.0
+        with:
+          source-dir: code
+          build-dir: build
+#          generator: Ninja
+#          cxx-compiler: clang++
