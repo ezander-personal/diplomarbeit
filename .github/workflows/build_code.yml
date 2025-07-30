@@ -9,15 +9,10 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get -y update
-          sudo apt-get -y upgrade
-          sudo apt-get -y install cmake g++
-
       - name: Compile C++ sources
-        run: |
-          mkdir build
-          cmake -S code -B build
-          cd build
-          make
+        uses: threeal/cmake-action@v2.1.0
+        with:
+          source-dir: code
+          build-dir: build
+#          generator: Ninja
+#          cxx-compiler: clang++
