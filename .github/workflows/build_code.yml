@@ -14,5 +14,15 @@ jobs:
         with:
           source-dir: code
           build-dir: build
-#          generator: Ninja
-#          cxx-compiler: clang++
+
+      - name: Install executables
+        run: |
+          cd build
+          make; make install
+
+      - name: Upload libs and executables
+        uses: actions/upload-artifact@v4
+        with:
+          name: diplomarbeit_exec_ezander
+          path: /home/runner/.local/tsa/
+          if-no-files-found: error
