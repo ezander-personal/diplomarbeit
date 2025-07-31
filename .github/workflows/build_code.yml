@@ -24,4 +24,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: diplomarbeit_exec_ezander
-          path: .local/tsa
+          path: $HOME/.local/tsa
