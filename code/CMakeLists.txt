@@ -7,7 +7,13 @@ add_subdirectory(nr)
 add_subdirectory(minilibg++)
 add_subdirectory(util)
 add_subdirectory(alg)
-add_subdirectory(clm)
 
-#add_executable(code)
-add_custom_target(foo)
+set(TSCOMMANDS)
+add_subdirectory(clm)
+message(STATUS "TSCOMMANDS = ${TSCOMMANDS}")
+
+set(CMAKE_INSTALL_PREFIX "$ENV{HOME}/.local" CACHE PATH "Install path prefix" FORCE)
+install(TARGETS nr minilibg++ util alg ${TSCOMMANDS}
+        ARCHIVE DESTINATION tsa/lib
+        LIBRARY DESTINATION tsa/lib
+        RUNTIME DESTINATION tsa/bin)
