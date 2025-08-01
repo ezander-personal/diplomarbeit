@@ -14,7 +14,7 @@ for file in "$@"; do
   echo -e "\t$creator $(echo $args)\n" >> $makefile
 done
 
-echo ".PHONY: all clean"
+echo ".PHONY: all clean" >> $makefile
 echo -e "all: " "${targets[@]}" >> $makefile
 
 declare -a cleanup
