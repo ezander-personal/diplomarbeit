@@ -1,0 +1,17 @@
+#! /bin/bash
+
+
+for file in "$@"; do
+  epsfile="${file%.gp}.eps"
+  cat "$file" |
+    grep -v "^set title" |
+    grep -v "^pause " |
+    sed "s/terminal x11/terminal postscript eps enhanced monochrome/" |
+    sed "s/set output.*/set output \"$epsfile\"/" |
+    sed "s/l 1$/l lt 1/" |
+    sed "s/p 1$/p pt 1/" |
+    cat > "${file}.temp"
+
+  gnuplot "${file}.temp"
+  rm "${file}.temp"
+done

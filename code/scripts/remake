@@ -1,0 +1,25 @@
+#! /bin/bash
+
+makefile="Makefile"
+echo -e "default: all\n" > $makefile
+
+declare -a targets
+for file in "$@"; do
+  infile=$(egrep "^i:" $file | cut -f 2-)
+  outfile=$(egrep "^o:" $file | cut -f 2-)
+  creator=$(egrep "^# Creator:" $file | cut -f 2-)
+  args="$(cat $file | grep -v "^#" | sed 's/^\(.\):\?[[:space:]]*/-\1 /')"
+  targets+=("$outfile")
+  echo "$outfile: $infile" >> $makefile
+  echo -e "\t$creator $(echo $args)\n" >> $makefile
+done
+
+echo ".PHONY: all clean"
+echo -e "all: " "${targets[@]}" >> $makefile
+
+declare -a cleanup
+for file in "${targets[@]}"; do
+  cleanup+=("$file" "$file.gp" "$file.eps")
+done
+
+echo -e "clean:\n\trm -f " "${cleanup[@]}" "\n" >> $makefile
