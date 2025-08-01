@@ -9,8 +9,12 @@ for file in "$@"; do
   outfile=$(egrep "^o:" $file | cut -f 2-)
   creator=$(egrep "^# Creator:" $file | cut -f 2-)
   args="$(cat $file | grep -v "^#" | sed 's/^\(.\):\?[[:space:]]*/-\1 /')"
+  if [[ -z $creator ]]; then
+    echo "Warning: no creator given for '$file'!!"
+    continue
+  fi
   targets+=("$outfile")
-  echo "$outfile: $infile" >> $makefile
+  echo "$outfile: $infile $file \$(shell which $creator)" >> $makefile
   echo -e "\t$creator $(echo $args)\n" >> $makefile
 done
 
@@ -22,4 +26,4 @@ for file in "${targets[@]}"; do
   cleanup+=("$file" "$file.gp" "$file.eps")
 done
 
-echo -e "clean:\n\trm -f " "${cleanup[@]}" "\n" >> $makefile
+echo -e "clean:\n\trm -f " "${cleanup[@]}" "Makefile \n" >> $makefile
