@@ -9,6 +9,8 @@ for file in "$@"; do
     sed "s/terminal x11/terminal postscript eps enhanced monochrome/" |
     sed "s/set output.*/set output \"$epsfile\"/" |
     sed "s/l 1$/l lt 1/" |
+    sed "s/l pt 1$/l lt 1/" |
+    sed "s/e 1$/e/" |
     sed "s/linesp 1/linesp lt 1/" |
     sed "s/p 1$/p pt 1/" |
     cat > "${file}.temp"

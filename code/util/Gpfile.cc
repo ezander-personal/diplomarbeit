@@ -107,7 +107,10 @@ void gpInfo::writeGpTerminal(ofstream& gpout)
 
   else gpout << "set terminal x11" << endl;
 
-  gpout << "set output \"" << outputfile << "\"" << endl;
+  if (outputfile.empty())
+    gpout << "set output" << endl;
+  else
+    gpout << "set output \"" << outputfile << "\"" << endl;
 }
 
 void gpInfo::writeGpScaleRange(ofstream& gpout)
@@ -191,7 +194,6 @@ void gpInfo::writeGpPlottingStuff(ofstream& gpout)
           {
             if (datafilename[i] == "") break;
             if (i) gpout << ", ";
-            // gpout << "\"" << datafilename[i] << '"' << use << " not w " << styleName << plotColor + i;
             gpout << "\"" << datafilename[i] << '"' << use << " not w " << styleName;
           }
 
@@ -230,7 +232,7 @@ int gpInfo::AppendToFile()
   gpout.close();
 
 #ifdef EPSHACK
-  ViewGpFile(datafilename[0], FALSE);
+  ViewGpFile(gpfilename, FALSE);
 #endif
 
   return TRUE;
@@ -239,8 +241,12 @@ int gpInfo::AppendToFile()
 
 int ViewGpFile(const char* filename, boolean smallPoints)
 {
+  if (getenv("DONTVIEWGP"))
+    exit(0);
+
   string filename_gp = filename;
-  filename_gp += ".gp";
+  if (!filename_gp.contains(".gp"))
+    filename_gp += ".gp";
 
   if (smallPoints)
     return execlp("gnuplot", "gnuplot", "-pointsize", "0.01", "-geometry", "1024x768+0+0", (const char*)filename_gp,
