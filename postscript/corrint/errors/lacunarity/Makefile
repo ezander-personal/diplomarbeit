@@ -1,4 +1,4 @@
-all: bla sevena sevenb sixa sixb three
+all: bla sevena sevenb sixa sixb three sevena.eps sevenb.eps
 
 bla: bla.cc
 
@@ -16,3 +16,9 @@ sixb: bla
 
 three: bla
 	./bla 4 101 > three
+
+sevena.eps: sevena sevena.gp
+	gp2eps sevena.gp
+
+sevenb.eps: sevenb sevenb.gp
+	gp2eps sevenb.gp

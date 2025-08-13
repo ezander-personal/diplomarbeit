@@ -1,3 +1,5 @@
+set terminal x11
+set output
 set border 1
 set xtics nomirror   
 set format y ""
