@@ -139,7 +139,6 @@ void corrdim( const String& ifilename, const String& ofilename, double begin, do
       if( _begin < minBegin ) _begin = minBegin;
       if( _end < minBegin + MIN_BEGIN_END_DIFF ) _end = minBegin + MIN_BEGIN_END_DIFF;
       if( _end >= rows ) _end = rows-1;
-      cerr << "hurps" << tab << _begin << tab << r[_begin] << tab  << _end << tab << r[_end] << endl;
       linReg( r(), C[d], _begin, _end, m, n, err_m, err_n, FALSE, FALSE );
       double m2=(C[d][_begin]-C[d][_end])/(r[_begin]-r[_end]);
       double rm1 = (r[_begin]+r[_end])/2;
@@ -148,8 +147,7 @@ void corrdim( const String& ifilename, const String& ofilename, double begin, do
       double m4=m/(1-exp(rm2)/2 );
       double eps=0.001/2.0;
       double m5=(C[d][_begin]-C[d][_end])/(log(exp(r[_begin])+eps)-log(exp(r[_end])+eps));
-      cerr << "Slope: " << m << tab << m2 << tab << m3 << tab << m4 << tab << m5 << endl;
-	
+
       fout << d << tab << m << tab << err_m << tab << r[_begin] << tab << r[_end] << endl; 
     }
   
