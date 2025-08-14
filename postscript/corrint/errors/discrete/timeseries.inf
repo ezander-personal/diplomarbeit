@@ -1,4 +1,4 @@
-i:	roessler
+i:	../../perfect/roessler
 o:	timeseries
 x:	-1
 n:	1
@@ -6,4 +6,4 @@ p:	-1
 t:	0.01
 r
 # Creator:	makets
-# CPUTime:	0.234686
+# CPUTime:	0.250833

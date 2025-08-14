@@ -22,3 +22,7 @@ sevena.eps: sevena sevena.gp
 
 sevenb.eps: sevenb sevenb.gp
 	gp2eps sevenb.gp
+
+clean:
+	rm -f bla sevena sevenb sixa sixb three sevena.eps sevenb.eps
+
