@@ -1,0 +1,19 @@
+#! /bin/bash
+
+export PATH=$HOME/.local/tsa/bin/:$PATH
+
+declare -a dirs
+dirs=(
+  attraktoren
+  autocorr
+  corrint/perfect
+  corrint/errors/discrete
+  corrint/errors/lacunarity
+)
+
+for dir in "${dirs[@]}"; do
+  echo -e "DIR: $dir\n=============================================================="
+  (cd $dir; prepdir)
+  #(cd $dir; make clean)
+  echo ""
+done

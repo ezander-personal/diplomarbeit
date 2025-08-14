@@ -8,13 +8,15 @@ for file in "$@"; do
     grep -v "^pause " |
     sed "s/terminal x11/terminal postscript eps enhanced monochrome/" |
     sed "s/set output.*/set output \"$epsfile\"/" |
-    sed -E "s/l ([0-9]+)/l lt \1/g" |
-    sed -E "s/p ([0-9]+)/p pt \1/g" |
-    sed -E "s/linesp ([0-9]+)/linesp lt \1/g" |
-    sed -E "s/e ([0-9]+)/e/g" |
-    sed -E "s/l pt ([0-9]+)/l lt \1/g" |
+    sed -E "s/\bl ([0-9]+)/l lt \1/g" |
+    sed -E "s/\bp ([0-9]+)/p pt \1/g" |
+    sed -E "s/\blinesp ([0-9]+)/linesp lt \1/g" |
+    sed -E "s/\be ([0-9]+)/e/g" |
+    sed -E "s/\bl pt ([0-9]+)/l lt \1/g" |
     cat > "${file}.temp"
 
   gnuplot "${file}.temp"
-  rm "${file}.temp"
+  if [ "$?" = "0" ]; then
+    rm "${file}.temp"
+  fi
 done
