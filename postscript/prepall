@@ -10,6 +10,7 @@ dirs=(
   corrint/errors/discrete
   corrint/errors/lacunarity
   corrint/errors/lacunarity/cantor
+  corrint/errors/noise
 )
 
 for dir in "${dirs[@]}"; do
