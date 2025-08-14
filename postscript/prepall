@@ -9,6 +9,7 @@ dirs=(
   corrint/perfect
   corrint/errors/discrete
   corrint/errors/lacunarity
+  corrint/errors/lacunarity/cantor
 )
 
 for dir in "${dirs[@]}"; do

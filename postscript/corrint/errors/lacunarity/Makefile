@@ -1,21 +1,21 @@
-all: bla sevena sevenb sixa sixb three sevena.eps sevenb.eps
+all: mkcantor sevena sevenb sixa sixb three sevena.eps sevenb.eps
 
-bla: bla.cc
+mkcantor: mkcantor.cc
 
-sevena: bla
-	./bla 4 1100011 > sevena
+sevena: mkcantor
+	./mkcantor 4 1100011 > sevena
 
-sevenb: bla
-	./bla 4 1010101 > sevenb
+sevenb: mkcantor
+	./mkcantor 4 1010101 > sevenb
 
-sixa: bla
-	./bla 4 110011 > sixa
+sixa: mkcantor
+	./mkcantor 4 110011 > sixa
 
-sixb: bla
-	./bla 4 101101 > sixb
+sixb: mkcantor
+	./mkcantor 4 101101 > sixb
 
-three: bla
-	./bla 4 101 > three
+three: mkcantor
+	./mkcantor 4 101 > three
 
 sevena.eps: sevena sevena.gp
 	gp2eps sevena.gp
@@ -24,5 +24,5 @@ sevenb.eps: sevenb sevenb.gp
 	gp2eps sevenb.gp
 
 clean:
-	rm -f bla sevena sevenb sixa sixb three sevena.eps sevenb.eps
+	rm -f mkcantor sevena sevenb sixa sixb three sevena.eps sevenb.eps
 

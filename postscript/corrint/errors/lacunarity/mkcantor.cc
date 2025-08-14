@@ -6,17 +6,15 @@ using namespace std;
 
 const char tab='\t';
 
-void bla(double l, double start, double end )
-{
-	
-}
-
 int main(int argc, char* argv[] )
 {
 	
 	if( argc!=3 )
 	{
-		cout << "usage: bla num 1001010..." << endl;
+		cout << "usage: mkcantor max_level 1001010..." << endl;
+		cout << "       Creates a series of subsets of [0,1] approaching the Cantor set with max_level+1 levels." << endl;
+		cout << "       E.g. 101 would lead to the sets 1, 101, 101000101, etc, i.e. each 1 is replaced by 101" << endl;
+		cout << "       and each 0 by 000, and the size of each interval is divided by 3 on each level." << endl;
 		exit(1);
 	}
 	
