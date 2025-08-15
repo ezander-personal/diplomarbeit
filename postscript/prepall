@@ -11,6 +11,8 @@ dirs=(
   corrint/errors/lacunarity
   corrint/errors/lacunarity/cantor
   corrint/errors/noise
+  corrint/errors/noise/svd/low
+  corrint/errors/noise/svd/high
 )
 
 for dir in "${dirs[@]}"; do
