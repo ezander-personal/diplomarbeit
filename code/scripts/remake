@@ -22,24 +22,32 @@ declare -a targets
 for file in "$@"; do
   infile=$(egrep "^i:" $file | cut -f 2-)
   outfile=$(egrep "^o:" $file | cut -f 2-)
+  svdfile=$(egrep "^s:" $file | cut -f 2-)
   creator=$(egrep "^# Creator:" $file | cut -f 2-)
   args="$(cat $file | grep -v "^#" | sed 's/^\(.\):\?[[:space:]]*/-\1 /')"
   if [[ -z $creator ]]; then
     echo "Warning: no creator given for '$file'!!"
     continue
   fi
-  targets+=("$outfile")
-  echo "$outfile: $infile $file \$(shell which $creator)" >> $makefile
+  if [[ "$creator" == "svd" ]]; then
+    target="${outfile}.v ${outfile}.w"
+  else
+    target="$outfile"
+  fi
+  cleanup+=("$target" "$outfile.gp" "$outfile.eps")
+
+  targets+=("$target")
+  deps="$infile"
+  #deps="$deps $file"
+  if [[ "$creator" == "svdrec" ]]; then
+    deps="$deps ${svdfile}.v ${svdfile}.w"
+  fi
+  echo "$target: $deps \$(shell which $creator)" >> $makefile
   echo -e "\tDONTVIEWGP=1 $creator $(echo $args)\n" >> $makefile
 done
 
 echo ".PHONY: inf_all inf_clean" >> $makefile
 echo -e "inf_all: " "${targets[@]}" >> $makefile
-
-for file in "${targets[@]}"; do
-  cleanup+=("$file" "$file.gp" "$file.eps")
-done
-
 
 if grep -q "^clean:" $makefile; then
   echo -e "inf_clean:\n\trm -f " "${cleanup[@]}" "\n" >> $makefile
