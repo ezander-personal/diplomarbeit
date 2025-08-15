@@ -30,7 +30,7 @@ for file in "$@"; do
   fi
   targets+=("$outfile")
   echo "$outfile: $infile $file \$(shell which $creator)" >> $makefile
-  echo -e "\t$creator $(echo $args)\n" >> $makefile
+  echo -e "\tDONTVIEWGP=1 $creator $(echo $args)\n" >> $makefile
 done
 
 echo ".PHONY: inf_all inf_clean" >> $makefile

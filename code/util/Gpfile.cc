@@ -249,7 +249,8 @@ int ViewGpFile(const char* filename, boolean smallPoints)
     filename_gp += ".gp";
 
   if (smallPoints)
-    return execlp("gnuplot", "gnuplot", "-pointsize", "0.01", "-geometry", "1024x768+0+0", (const char*)filename_gp,
+    // Note: pointsize needs to be set before in the "set terminal " command in the gp file
+    return execlp("gnuplot", "gnuplot", "-geometry", "1024x768+0+0", (const char*)filename_gp,
                   NULL);
   else
     return execlp("gnuplot", "gnuplot", "-geometry", "1024x768+0+0", (const char*)filename_gp, NULL);

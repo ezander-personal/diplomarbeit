@@ -2,8 +2,6 @@
 
 shopt -s nullglob
 
-export DONTVIEWGP=1
-
 remake *.inf
 
 make $1
