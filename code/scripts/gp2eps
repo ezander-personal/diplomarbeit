@@ -6,7 +6,7 @@ for file in "$@"; do
   cat "$file" |
     grep -v "^set title" |
     grep -v "^pause " |
-    sed "s/terminal x11/terminal postscript eps enhanced monochrome/" |
+    sed "s/terminal x11/terminal postscript eps enhanced monochrome \"Helvetica,20\"/" |
     sed "s/set output.*/set output \"$epsfile\"/" |
     sed -E "s/\bl ([0-9]+)/l lt \1/g" |
     sed -E "s/\bp ([0-9]+)/p pt \1/g" |

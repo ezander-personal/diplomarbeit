@@ -28,6 +28,11 @@ int main( int argc, char** argv )
 
 
   type = GetType( type_name );
+  if (type==-1)
+  {
+    cerr << "Error: type not found: " << type_name << endl;
+    exit( 1 );
+  }
 
 
   create( filename, points, dimension, delay, type, nDiff );
