@@ -22,7 +22,7 @@ dirs=(
   rekonstruktion
   zeit
   svd
-  
+  svd/noise
 )
 
 for dir in "${dirs[@]}"; do
