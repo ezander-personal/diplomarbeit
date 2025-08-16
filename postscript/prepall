@@ -20,6 +20,7 @@ dirs=(
   redundancy
   recurrence
   rekonstruktion
+  zeit
 )
 
 for dir in "${dirs[@]}"; do
