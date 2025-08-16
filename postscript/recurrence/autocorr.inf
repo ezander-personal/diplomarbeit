@@ -1,0 +1,7 @@
+i:	timeseries
+o:	autocorr
+t:	16384
+c
+v
+# Creator:	autocorr
+# CPUTime:	0.206892
