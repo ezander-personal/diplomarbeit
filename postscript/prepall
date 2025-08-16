@@ -23,6 +23,7 @@ dirs=(
   zeit
   svd
   svd/noise
+  svd/simple
 )
 
 for dir in "${dirs[@]}"; do
