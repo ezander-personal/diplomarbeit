@@ -1,0 +1,6 @@
+i:	timeseries
+o:	fourier
+n:	16384
+v
+# Creator:	fourier
+# CPUTime:	3.46

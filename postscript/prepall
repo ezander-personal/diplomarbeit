@@ -17,6 +17,7 @@ dirs=(
   noise
   packdim/3e5
   packdim/3e6
+  redundancy
 
 )
 
