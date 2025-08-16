@@ -14,6 +14,7 @@ dirs=(
   corrint/errors/noise/svd/low
   corrint/errors/noise/svd/high
   density
+  noise
 )
 
 for dir in "${dirs[@]}"; do
