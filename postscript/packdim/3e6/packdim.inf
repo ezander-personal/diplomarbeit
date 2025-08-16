@@ -1,0 +1,10 @@
+i:	timeseries
+o:	packdim
+t:	32
+d:	4
+b:	300
+1:	0
+2:	5
+v
+# Creator:	packdim
+# CPUTime:	16.61
