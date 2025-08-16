@@ -19,6 +19,7 @@ dirs=(
   packdim/3e6
   redundancy
   recurrence
+  rekonstruktion
 )
 
 for dir in "${dirs[@]}"; do
