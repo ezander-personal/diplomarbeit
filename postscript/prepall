@@ -21,6 +21,8 @@ dirs=(
   recurrence
   rekonstruktion
   zeit
+  svd
+  
 )
 
 for dir in "${dirs[@]}"; do
