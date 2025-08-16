@@ -18,12 +18,17 @@ dirs=(
   packdim/3e5
   packdim/3e6
   redundancy
-
+  recurrence
 )
 
 for dir in "${dirs[@]}"; do
+  SECONDS=0
+
   echo -e "DIR: $dir\n=============================================================="
   (cd $dir; prepdir)
   #(cd $dir; make clean)
+
+  duration=$SECONDS
+  echo "Time elapsed: $((duration / 60)) minutes and $((duration % 60)) seconds"
   echo ""
 done
