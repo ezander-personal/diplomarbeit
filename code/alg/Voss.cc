@@ -7,7 +7,11 @@
 void voss( const String& ifilename, const String& ofilename, boolean useheartbeat )
 {
   FILE* fp = fopen( (const char*)ifilename, "r" );
-  if( !fp ) return;
+  if( !fp )
+  {
+  	cerr << "Error opening file " << ifilename << endl;
+	  exit(1);
+  }
 
   long start, dauer;
   fscanf( fp,"%ld\n %ld\n", &start, &dauer );

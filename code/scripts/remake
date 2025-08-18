@@ -31,6 +31,9 @@ for file in "$@"; do
   fi
   if [[ "$creator" == "svd" ]]; then
     target="${outfile}.v ${outfile}.w"
+  elif [[ "$creator" == "cuts" ]]; then
+    # this is somewhat bad (does not work for n>5, and spawns superfluous builds, but who cares currently...)
+    target="${outfile}1 ${outfile}2 ${outfile}3 ${outfile}4 ${outfile}5"
   else
     target="$outfile"
   fi
@@ -38,7 +41,7 @@ for file in "$@"; do
 
   targets+=("$target")
   deps="$infile"
-  #deps="$deps $file"
+  deps="$deps $file"
   if [[ "$creator" == "svdrec" ]]; then
     deps="$deps ${svdfile}.v ${svdfile}.w"
   fi
