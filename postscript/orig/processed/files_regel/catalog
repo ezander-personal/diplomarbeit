@@ -1,0 +1,6 @@
+ts_apn1a.16	r	75253	reg w 3 apns 
+ts_dm002.131	r	55752	v reg 1 burst
+ts_dm006.111	r	56252	reg
+ts_dm006.21	m	50002	v irreg
+ts_dm006.23	r	36751	bit irreg
+ts_dm015.51	r	64003	reg
