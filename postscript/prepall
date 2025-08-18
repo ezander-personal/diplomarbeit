@@ -25,6 +25,13 @@ dirs=(
   svd/noise
   svd/simple
 )
+dirs=(
+  orig/herz
+  orig/processed/all
+  orig/processed/files_regel
+  orig/processed/files_period
+)
+
 
 for dir in "${dirs[@]}"; do
   SECONDS=0
