@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in ../orig/*.gp; do 
+	j=`basename $i .gp`
+	k="tsvd`echo $j|cut -d"s" -f2-`"
+	svd -i ../orig/$j -o tmp -w 7 -n
+	svdrec -i ../orig/$j -s tmp -o $k -d 1
+done
+
