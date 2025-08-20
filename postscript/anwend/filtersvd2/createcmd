@@ -2,8 +2,9 @@
 
 for i in ../orig/*.gp; do 
 	j=`basename $i .gp`
+	s="svd`echo $j|cut -d"s" -f2-`"
 	k="tsvd`echo $j|cut -d"s" -f2-`"
-	svd -i ../orig/$j -o tmp -w 7 -n
-	svdrec -i ../orig/$j -s tmp -o $k -d 1
+	svd -i ../orig/$j -o $s -w 7 -n
+	svdrec -i ../orig/$j -s $s -o $k -d 1
 done
 
