@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for i in ../tsnorm/ts*.gp; do
+    j=`basename $i .gp`
+    k=`echo $j|cut -d s -f 2-`
+    echo $j
+    fourier -i ../tsnorm/$j  -o fr$k
+done

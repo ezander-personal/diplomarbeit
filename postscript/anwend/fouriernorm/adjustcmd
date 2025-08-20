@@ -1,4 +1,5 @@
 #!/bin/bash
+
 for i in *.gp; do
-    adjustgp $i -x 0:14 -y 0:8
+    adjustgp $i -y 0:8 -x 0:8
 done
