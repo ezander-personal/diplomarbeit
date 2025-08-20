@@ -180,7 +180,7 @@ void svd( const String& ifilename, const String& ofilename, int window, boolean 
   	}
 	}
 	
-  //trace ist schlecht für vergleichbarkeit besser auf ersten wert normieren
+  //trace ist schlecht fÃ¼r vergleichbarkeit besser auf ersten wert normieren
   tr=d[window-1];
 
   ofstream foutw( ofilename+".w", ios::out | ios::trunc );
