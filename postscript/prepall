@@ -38,6 +38,7 @@ dirs+=(
   anwend/fouriernorm
   anwend/histo
   anwend/histo2
+  anwend/rects
 )
 
 
