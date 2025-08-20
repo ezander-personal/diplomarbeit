@@ -25,11 +25,15 @@ dirs=(
   svd/noise
   svd/simple
 )
-dirs=(
+dirs+=(
   orig/herz
   orig/processed/all
   orig/processed/files_regel
   orig/processed/files_period
+  orig/processed/split
+  anwend/orig
+  anwend/filtersvd2
+  anwend/fourier
 )
 
 
