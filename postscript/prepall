@@ -32,6 +32,7 @@ dirs+=(
   orig/processed/files_period
   orig/processed/split
   anwend/orig
+  anwend/filtersvd
   anwend/filtersvd2
   anwend/fourier
   anwend/tsnorm
