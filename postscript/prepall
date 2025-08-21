@@ -47,6 +47,8 @@ dirs+=(
   anwend/recurr
   anwend/redund
   anwend/showts
+  anwend/tsr3
+
 )
 
 
