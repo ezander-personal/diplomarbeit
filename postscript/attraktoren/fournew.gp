@@ -10,5 +10,5 @@ set noparametric
 set border 1+2
 set xtics nomirror
 set ytics nomirror
-p "fourier" u 1:2 not w l 1
+p "fourier" u 1:2 not w l lt 1
 pause -1 "Hit Return to continue..."

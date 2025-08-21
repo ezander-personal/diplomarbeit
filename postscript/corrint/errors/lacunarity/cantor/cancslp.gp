@@ -7,8 +7,8 @@ set nologscale
 set autoscale
 set noparametric
 set grid
-p "canacslp" u 1:2 not w linesp 2,\
-"canbcslp" u 1:2 not w linesp 4
+p "canacslp" u 1:2 not w linesp lt 2,\
+"canbcslp" u 1:2 not w linesp lt 4
 
 
 pause -1 "Hit Return to continue..."

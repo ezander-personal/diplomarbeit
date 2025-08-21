@@ -6,6 +6,6 @@ set output
 set nologscale
 set autoscale
 set noparametric
-p "histoa" u 1:2 not w l 1 ,\
-"histob" u 1:2 not w l 2
+p "histoa" u 1:2 not w l lt 1 ,\
+"histob" u 1:2 not w l lt 2
 pause -1 "Hit Return to continue..."

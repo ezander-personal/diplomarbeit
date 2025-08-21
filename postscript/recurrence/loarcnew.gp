@@ -9,5 +9,5 @@ set noparametric
 set xzeroaxis 
 set ytics ("0" 0)
 set xrange [0:10]
-p "lorac" u 1:2 not w l 1
+p "lorac" u 1:2 not w l lt 1
 pause -1 "Hit Return to continue..."

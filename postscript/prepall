@@ -30,6 +30,7 @@ dirs=(
   surrogate/lorenz/noise50
   surrogate/ornstein/1
   surrogate/ornstein/2
+  surrogate/typcon
 )
 dirs+=(
   orig/herz

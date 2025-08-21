@@ -8,5 +8,5 @@ set autoscale
 set grid
 set noparametric
 set yrange [1:2.2]
-p "corrdim700" u 1:2 not w linesp 1
+p "corrdim700" u 1:2 not w linesp lt 1
 pause -1 "Hit Return to continue..."

@@ -7,5 +7,5 @@ set nologscale
 set autoscale
 set grid
 set noparametric
-p "histo2" u 1:2 not w p 1
+p "histo2" u 1:2 not w p pt 1
 pause -1 "Hit Return to continue..."

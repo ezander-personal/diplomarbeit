@@ -13,5 +13,5 @@ set xtics nomirror
 set ytics nomirror
 set ytics 0.0001
 
-p "packdimb" u 1:3 not w l 1
+p "packdimb" u 1:3 not w l lt 1
 pause -1 "Hit Return to continue..."

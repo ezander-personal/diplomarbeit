@@ -29,5 +29,5 @@ set nolabel
 
 set size 1,1.3
 
-sp "lorenz" ev 1::::10000 u 2:3:4 not w l 1
+sp "lorenz" ev 1::::10000 u 2:3:4 not w l lt 1
 pause -1 "Hit Return to continue..."

@@ -32,6 +32,6 @@ set format y ""
 #set size 1.3
 
 
-sp "roerec" ev 2 u 2:3:4 not w p 1
+sp "roerec" ev 2 u 2:3:4 not w p pt 1
 pause -1 "Hit Return to continue..."
 

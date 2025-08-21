@@ -11,5 +11,5 @@ set format x ""
 set format y ""
 set xlabel "x_i"
 set ylabel "x_{i+{k_A}}"
-p "roerec2" u 2:3 not w p 1
+p "roerec2" u 2:3 not w p pt 1
 pause -1 "Hit Return to continue..."

@@ -15,5 +15,5 @@ set format z ""
 set pointsize 0.01
 set size 1,1.3
 
-p "rectshigh" ev 4 u 2:3 not w p 1
+p "rectshigh" ev 4 u 2:3 not w p pt 1
 pause -1 "Hit Return to continue..."
