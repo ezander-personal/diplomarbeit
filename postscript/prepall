@@ -34,6 +34,7 @@ dirs+=(
   anwend/orig
   anwend/filtersvd
   anwend/filtersvd2
+  anwend/filterma
   anwend/fourier
   anwend/tsnorm
   anwend/fouriernorm
