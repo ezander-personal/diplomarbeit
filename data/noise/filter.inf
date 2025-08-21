@@ -1,0 +1,9 @@
+i:	noise2
+o:	filter
+l:	0
+u:	0.05
+r:	50
+w:	hamming
+v
+# Creator:	filter
+# CPUTime:	0.02095

@@ -1,0 +1,27 @@
+#maxima der slopes alles f"ur b
+1	-11.299
+2	-9.288
+3	-7.347
+4	-5.407
+5	-3.466
+6	-1.525
+
+#abst"ande
+2.011
+1.941
+1.94
+1.941
+1.941
+
+#exponent e^1.941 ungef"ahr 7
+6.9657
+
+#estimated dimension D2
+0.710+-0.003
+
+#calculated dimension D0 (=D2 da homegeneous fractal)
+0.712
+
+#Abweichung in prozent
+0.28
+

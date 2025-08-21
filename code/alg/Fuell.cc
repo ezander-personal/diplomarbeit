@@ -7,11 +7,11 @@
 
 #include "nr.h"
 
-  // für verschiedene Einbettungsdimensionen d und eine jeweils konstante Menge
-  // Verzögerungszeiten t aus (t1, t2, ... tn ) wird jeweils n mal folgendes 
+  // fÃ¼r verschiedene Einbettungsdimensionen d und eine jeweils konstante Menge
+  // VerzÃ¶gerungszeiten t aus (t1, t2, ... tn ) wird jeweils n mal folgendes
   // gemacht
   //
-  //   aus der Zeitreihe werden d Vektoren v1..vd zufällig ausgewählt und das Volumen
+  //   aus der Zeitreihe werden d Vektoren v1..vd zufÃ¤llig ausgewÃ¤hlt und das Volumen
   //   das dieses Paralellepipeds aus det(v1,...,vd) bestimmt
   //   diese Volumina werden aufsummiert
   //

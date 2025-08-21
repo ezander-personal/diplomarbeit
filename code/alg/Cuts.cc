@@ -32,11 +32,15 @@ void cuts( const String& ifilename, const String& ofilename, int length, int dif
 
 
   gpInfo gpi( ofilename );
-  gpi.using1( 1 ). using2( 2 );
-  gpi.Title( "time series" ).xTitle( "t" );
-  gpi.setPlotStyle( LINES ).pause();
   gpi.NewFile();
-  gpi.AppendToFile();
+  for ( int i = 1; i<count; ++i)
+  {
+    gpi.dataFile(ofilename + toString( i ));
+    gpi.using1( 1 ). using2( 2 );
+    gpi.Title( "time series" ).xTitle( "t" );
+    gpi.setPlotStyle( LINES ).pause();
+    gpi.AppendToFile();
+  }
 }
 
 

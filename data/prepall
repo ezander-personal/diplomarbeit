@@ -1,0 +1,72 @@
+#! /bin/bash
+
+export PATH=$HOME/.local/tsa/bin/:$PATH
+
+declare -a dirs
+dirs=(
+  attraktoren
+  autocorr
+  corrint/perfect
+  corrint/errors/discrete
+  corrint/errors/lacunarity
+  corrint/errors/lacunarity/cantor
+  corrint/errors/noise
+  corrint/errors/noise/svd/low
+  corrint/errors/noise/svd/high
+  density
+  noise
+  packdim/3e5
+  packdim/3e6
+  redundancy
+  recurrence
+  rekonstruktion
+  zeit
+  svd
+  svd/noise
+  svd/simple
+  surrogate/lorenz
+  surrogate/lorenz/noise0
+  surrogate/lorenz/noise10
+  surrogate/lorenz/noise50
+  surrogate/ornstein/1
+  surrogate/ornstein/2
+  surrogate/typcon
+)
+dirs+=(
+  orig/herz
+  orig/processed/all
+  orig/processed/files_regel
+  orig/processed/files_period
+  orig/processed/split
+  anwend/orig
+  anwend/filtersvd
+  anwend/filtersvd2
+  anwend/filterma
+  anwend/fourier
+  anwend/tsnorm
+  anwend/fouriernorm
+  anwend/histo
+  anwend/histo2
+  anwend/rects
+  anwend/rectsma
+  anwend/rectssvd
+  anwend/rectssvd2
+  anwend/recurr
+  anwend/redund
+  anwend/showts
+  anwend/tsr3
+
+)
+
+
+for dir in "${dirs[@]}"; do
+  SECONDS=0
+
+  echo -e "DIR: $dir\n=============================================================="
+  (cd $dir; prepdir)
+  #(cd $dir; make clean)
+
+  duration=$SECONDS
+  echo "Time elapsed: $((duration / 60)) minutes and $((duration % 60)) seconds"
+  echo ""
+done

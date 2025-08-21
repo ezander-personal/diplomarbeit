@@ -5,7 +5,7 @@ int main( int argc, char** argv)
 {
   String ifilename;
   String ofilename;
-  boolean useheartbeat;
+  boolean useheartbeat = FALSE;
   boolean view = FALSE;
 
   ExtGetOpt getopt( argc, argv );

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in *.gp; do
+    adjustgp $i -y 0:8 -x 0:8
+done

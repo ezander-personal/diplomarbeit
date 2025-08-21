@@ -1,0 +1,14 @@
+#! /bin/bash
+
+shopt -s nullglob
+
+remake *.inf
+
+make $1
+
+for file in *.mod; do
+  base="${file%.mod}"
+  cp -a "$file" "$base"
+done
+
+gp2eps *.gp

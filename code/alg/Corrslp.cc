@@ -80,7 +80,7 @@ void corrslp( const String& ifilename, const string& ofilename, double slope, do
   // write gnuplot file
   gpInfo gpi( ofilename );
 
-  gpi.Title( "correlation dimension" ).xTitle( "ln r" ).yTitle( "d{ln C(r)} / d{ ln r}" );
+  gpi.Title( "correlation dimension" ).xTitle( "ln r" ).yTitle( "D_2" );
   gpi.setPlotStyle( LINESPOINTS );
   gpi.pause();
   gpi.using1( 1 ).using2( 2, maxDim+1 );

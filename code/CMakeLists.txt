@@ -17,3 +17,9 @@ install(TARGETS nr minilibg++ util alg ${TSCOMMANDS}
         ARCHIVE DESTINATION tsa/lib
         LIBRARY DESTINATION tsa/lib
         RUNTIME DESTINATION tsa/bin)
+
+file(GLOB SCRIPT_FILES scripts/*)
+
+foreach(script ${SCRIPT_FILES})
+    install(PROGRAMS ${script} DESTINATION tsa/bin)
+endforeach()

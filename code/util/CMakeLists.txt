@@ -24,3 +24,5 @@ target_sources(util PRIVATE
 target_include_directories(util PUBLIC ".")
 
 target_compile_definitions(util PRIVATE "-DUTILITY")
+# target_compile_definitions(util PRIVATE "-DEPSHACK")
+

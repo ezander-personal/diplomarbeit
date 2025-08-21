@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in ../filtersvd2/*.gp; do
+    j=`basename $i .gp`
+    k="rctsf`echo $j|cut -dd -f2-`"
+    rects -i ../filtersvd2/$j -o $k -t 8 -d 2
+done

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <GetOpt.h>
+#include <utime.h>
 
 #include "General.h"
 #include "ExtGetOpt.h"
@@ -435,7 +436,8 @@ void ExtGetOpt::writeInfo( const String& filename )
       return;
     }
 
-  ofstream fout( filename+".inf", ios::out | ios::trunc );
+  const String inffile = filename + ".inf";
+  ofstream fout( inffile, ios::out | ios::trunc );
 
   optionEntry* entry = firstEntry;
 
@@ -469,6 +471,15 @@ void ExtGetOpt::writeInfo( const String& filename )
 
   fout << "# Creator:" << tab << argv[0] << endl;
   fout << "# CPUTime:" << tab << ((double)(end-start))/CLOCKS_PER_SEC << endl;
+
+  time_t t = time(0) - (end-start)/CLOCKS_PER_SEC;
+  struct utimbuf new_times;
+  new_times.actime = t;
+  new_times.modtime = t;
+
+  if (utime(inffile, &new_times) != 0) {
+    cerr << "Warning: cannot set mod time for inf file: " << inffile << endl;
+  }
 }
 
 

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if !(test -e corrint ) ; then
+	corrint -i timeseries -o corrint -d 5 -e 10 -b 10 -t 4 &
+fi
+
+for i in surro? surro?? ; do
+	num=`echo $i|cut -c6-`;
+	if !(test -e surcint$num ) ; then
+		corrint -i $i -o surcint$num -d 5 -e 10 -b 10 -t 4 &
+	fi
+done
