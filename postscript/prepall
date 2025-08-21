@@ -44,6 +44,8 @@ dirs+=(
   anwend/rectsma
   anwend/rectssvd
   anwend/rectssvd2
+  anwend/recurr
+  anwend/redund
 )
 
 
