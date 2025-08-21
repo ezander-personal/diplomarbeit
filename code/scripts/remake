@@ -32,8 +32,10 @@ for file in "$@"; do
   if [[ "$creator" == "svd" ]]; then
     target="${outfile}.v ${outfile}.w"
   elif [[ "$creator" == "cuts" ]]; then
-    # this is somewhat bad (does not work for n>5, and spawns superfluous builds, but who cares currently...)
-    target="${outfile}1 ${outfile}2 ${outfile}3 ${outfile}4 ${outfile}5"
+    target=$(seq -f "${outfile}%1.0f" -s ' ' 1 10)
+  elif [[ "$creator" == "surrogate" ]]; then
+    num_surr=$(egrep "^n:" $file | cut -f 2-)
+    target=$(seq -f "${outfile}%1.0f" -s ' ' 1 $num_surr)
   else
     target="$outfile"
   fi
@@ -45,7 +47,7 @@ for file in "$@"; do
   if [[ "$creator" == "svdrec" ]]; then
     deps="$deps ${svdfile}.v ${svdfile}.w"
   fi
-  echo "$target: $deps \$(shell which $creator)" >> $makefile
+  echo "$target&: $deps \$(shell which $creator)" >> $makefile
   echo -e "\tDONTVIEWGP=1 $creator $(echo $args)\n" >> $makefile
 done
 
