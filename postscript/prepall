@@ -24,6 +24,12 @@ dirs=(
   svd
   svd/noise
   svd/simple
+  surrogate/lorenz
+  surrogate/lorenz/noise0
+  surrogate/lorenz/noise10
+  surrogate/lorenz/noise50
+  surrogate/ornstein/1
+  surrogate/ornstein/2
 )
 dirs+=(
   orig/herz
