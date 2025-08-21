@@ -1,0 +1,20 @@
+#!/bin/sh
+
+for i in noise* ; do
+	cd $i
+	# ../makesurro
+	cd ..
+done
+
+for i in noise* ; do
+	cd $i
+	#nice -20 ../calccorrint &
+	cd ..
+done
+
+for i in noise* ; do
+	cd $i
+	nice -20 ../calctakdim &
+	cd ..
+done
+

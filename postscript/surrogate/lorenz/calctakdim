@@ -1,0 +1,8 @@
+#!/bin/sh
+
+takdim -i corrint -o takdim -e -2.5 
+
+for i in surro? surro?? ; do
+	num=`echo $i|cut -c6-`;
+	takdim -i surcint$num -o surtdim$num -e -2.5
+done
