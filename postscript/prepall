@@ -41,6 +41,9 @@ dirs+=(
   anwend/histo
   anwend/histo2
   anwend/rects
+  anwend/rectsma
+  anwend/rectssvd
+  anwend/rectssvd2
 )
 
 
