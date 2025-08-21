@@ -1,0 +1,16 @@
+#! /bin/bash
+
+eps=$1
+
+for i in ci_*.gp ; do
+	j=`basename $i .gp | cut -c3-`
+	takdim -i ci$j -o td$j -e $eps
+done
+
+rm signi
+
+for i in 1 2 3 4 5 6 7 8 ; do
+	signitab $i td_r_3 td_surro
+	signitab $i td_r_3 td_surro >> signi
+done
+
