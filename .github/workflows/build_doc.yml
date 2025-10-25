@@ -30,6 +30,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: doc
+          publish_dir: doc/diplomarbeit_ezander_tsa_1998.pdf
           destination_dir: docs
           
