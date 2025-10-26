@@ -26,12 +26,11 @@ jobs:
           name: diplomarbeit_ezander
           path: doc/diplomarbeit_ezander_tsa_1998.pdf
 
-      - name: Deploy PDF to GitHub Pages
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: docs
-          destination_dir: docs
-          
+          tag_name: latest
+          name: Latest PDF
+          files: doc/diplomarbeit_ezander_tsa_1998.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
