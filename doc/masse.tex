@@ -2,106 +2,106 @@
 %\section{Quantitative Charakterisierung seltsamer Attraktoren}
 \section{Fraktale Dimensionen}
 \label{chapfracdim}
-Bei der Untersuchung chaotischer Systems ist es wichtig, ein Ma"s f"ur die Komplexit"at der
-Dynamik zu haben. Ein solches Komplexit"atsma"s ist z.B. durch die fraktale Dimension des
-Attraktors gegeben. W"ahrend integrable Systeme stets Attraktoren mit ganzzahliger
-Dimension (oder gar keine Attraktoren) besitzen, ist dies f"ur chaotische Systeme in der Regel nicht mehr der Fall.
+Bei der Untersuchung chaotischer Systems ist es wichtig, ein Maß für die Komplexität der
+Dynamik zu haben. Ein solches Komplexitätsmaß ist z.B. durch die fraktale Dimension des
+Attraktors gegeben. Während integrable Systeme stets Attraktoren mit ganzzahliger
+Dimension (oder gar keine Attraktoren) besitzen, ist dies für chaotische Systeme in der Regel nicht mehr der Fall.
 Versucht man beispielsweise die Struktur des H\'enon-Attraktors zu beschreiben, so stellt
-man fest, da"s er in gewissem Sinne \naja(mehr) ist als eine Kurve, jedoch \naja(weniger)
-als eine Fl"ache. Seine Dimension liegt zwischen eins und zwei.  Im folgenden sollen
-verschiedene Definitionen f"ur die Dimension solcher fraktalen Objekte sowie Verfahren zur
+man fest, daß er in gewissem Sinne \naja(mehr) ist als eine Kurve, jedoch \naja(weniger)
+als eine Fläche. Seine Dimension liegt zwischen eins und zwei.  Im folgenden sollen
+verschiedene Definitionen für die Dimension solcher fraktalen Objekte sowie Verfahren zur
 Berechnung derselben beschrieben werden.  Das Hauptaugenmerk liegt hierbei auf der
 \begriff(numerischen) Berechenbarkeit der Dimension.
 
 \subsection{Die Hausdorff-Dimension}
-Von den verschiedenen Dimensionsbegriffen soll als erster der grundlegendste, n"amlich der
-der \begriff(Hausdorff-Dimension) eingef"uhrt werden. Die Definition kann "uber die
-folgenden "Uberlegungen veranschaulicht werden. Wenn ein geometrisches Objekt,
-beispielsweise eine Fl"ache, mit einem Ma"s niedrigerer Dimensionalit"at, z.B. durch
-Geradenst"ucke, ausgemessen wird, ergibt sich ein unendlicher Wert bez"uglich dieses
-Ma"ses, da wir unendlich viele Geradenst"ucke brauchen um die Fl"ache zu "uberdecken. Wird
-dagegen mit einem Ma"s h"oherer Dimension gemessen, z.B. indem die Fl"ache durch W"urfel
-ausgemessen wird, erh"alt man den Wert null, da eine Fl"ache kein Volumen besitzt. Nur wenn mit
-einem Ma"s der gleichen Dimension gemessen wird, resultiert ein endlicher
+Von den verschiedenen Dimensionsbegriffen soll als erster der grundlegendste, nämlich der
+der \begriff(Hausdorff-Dimension) eingeführt werden. Die Definition kann über die
+folgenden Überlegungen veranschaulicht werden. Wenn ein geometrisches Objekt,
+beispielsweise eine Fläche, mit einem Maß niedrigerer Dimensionalität, z.B. durch
+Geradenstücke, ausgemessen wird, ergibt sich ein unendlicher Wert bezüglich dieses
+Maßes, da wir unendlich viele Geradenstücke brauchen um die Fläche zu überdecken. Wird
+dagegen mit einem Maß höherer Dimension gemessen, z.B. indem die Fläche durch Würfel
+ausgemessen wird, erhält man den Wert null, da eine Fläche kein Volumen besitzt. Nur wenn mit
+einem Maß der gleichen Dimension gemessen wird, resultiert ein endlicher
 Wert\footnote{Vorausgesetzt, die Menge ist kompakt. Dies ist im weiteren nicht wesentlich,
-  da es nur darauf ankommt, da"s eine Sprungstelle von unendlich auf null existiert.}. Aus
+  da es nur darauf ankommt, daß eine Sprungstelle von unendlich auf null existiert.}. Aus
 diesem Sprungverhalten kann auf die Dimension des Objekts geschlossen werden.
 
-Nun m"ussen die oben benutzten Begriffe mathematisch genauer spezifiziert werden. 
-Sei $\B$ eine beliebige nichtleere Teilmenge des $\R^n$, deren Dimension wir messen m"ochten. Um das
-$d$-dimensionale Ma"s  der Menge zu bestimmen, "uberdecken wir sie mit Teilmengen 
+Nun müssen die oben benutzten Begriffe mathematisch genauer spezifiziert werden. 
+Sei $\B$ eine beliebige nichtleere Teilmenge des $\R^n$, deren Dimension wir messen möchten. Um das
+$d$-dimensionale Maß  der Menge zu bestimmen, überdecken wir sie mit Teilmengen 
 $\set C_{r,i}$ des $\R^n$, deren Durchmesser $\norm{\set C_{r,i}}$ kleiner als eine obere
-Schranke $r$ sein soll. Eine solche "Uberdeckung bezeichnen wir mit $\mathcal
+Schranke $r$ sein soll. Eine solche Überdeckung bezeichnen wir mit $\mathcal
 C_r$. Wir definieren nun:
 \eqnl[hausdorffmass1]{\hdm(\B,d,r) = \inf_{\mathcal C_r} \sum_{\set C_{r,i} \in \mathcal C_r}\norm{\set C_{r,i}}^d .}
-Auf diese Weise betrachten wir alle m"oglichen "Uberdeckungen von $\B$ durch Mengen,
-deren Durchmesser h"ochstens $r$ ist, und \naja(versuchen), die Summe der $d$-ten Potenzen der
+Auf diese Weise betrachten wir alle möglichen Überdeckungen von $\B$ durch Mengen,
+deren Durchmesser höchstens $r$ ist, und \naja(versuchen), die Summe der $d$-ten Potenzen der
 Durchmesser zu minimieren. Wenn $r$ kleiner wird, reduziert sich die Anzahl der
-m"oglichen "Uberdeckungen, und $\hdm(\B,d,r)$ strebt einem Grenzwert entgegen:
+möglichen Überdeckungen, und $\hdm(\B,d,r)$ strebt einem Grenzwert entgegen:
 \eqnl[hausdorffmass2]{\hdm(\B,d) = \lim_{r\to 0}\hdm(\B,d,r) .}
-Der Grenzwert $\hdm(\B,d)$ existiert f"ur alle $\B$ und $d$ und hei"st das
-$d$-dimensionale \begriff(Haus\-dorff-Ma"s) der Menge $\B$. F"ur ganzzahlige $d$ entspricht
-es, bis auf einen konstanten Faktor, dem $d$-dimensionalen Lebesgue-Ma"s der Menge
+Der Grenzwert $\hdm(\B,d)$ existiert für alle $\B$ und $d$ und heißt das
+$d$-dimensionale \begriff(Haus\-dorff-Maß) der Menge $\B$. Für ganzzahlige $d$ entspricht
+es, bis auf einen konstanten Faktor, dem $d$-dimensionalen Lebesgue-Maß der Menge
 $\B$. Nach dem oben Gesagten sollte nun eine Sprungstelle $D_H$ existieren:
 \eqnl[hausdorffmass3]{\hdm(\B,d) = \left\{ \begin{array}{ll}
                                           \infty, & d<D_H\\
                                           0,      & d>D_H
                                           \end{array}\right.  .}
 Diese Sprungstelle existiert immer\footnote{Dies folgt aus den Skalierungseigenschaften von $\hdm(\B,d,r)$. Es gilt
-$\hdm(\B,t,r)\leq r^{t-d}\hdm(\B,d,r)$. L"a"st man $r$ gegen 0 laufen, kann
+$\hdm(\B,t,r)\leq r^{t-d}\hdm(\B,d,r)$. Läßt man $r$ gegen 0 laufen, kann
 mit \eqnref{hausdorffmass2} die Existenz der Sprungstelle gefolgert werden. }.
-Das Hausdorff-Ma"s $\hdm(\B,d)$ kann f"ur
+Das Hausdorff-Maß $\hdm(\B,d)$ kann für
 $d=D_H$ einen unendlichen oder einen endlichen positiven Wert  annehmen. Wir definieren als
 \begriff(Hausdorff-Dimension) der Menge $\B$:
 \eqnl[hausdorffdim]{D_H(\B) = \inf\{d\vert \hdm(\B,d)=0 \} .}
 
 
 Die Hausdorff-Dimension ist die mathematisch am \naja(saubersten) definierte Dimension. Ihr
-Anwendungsbereich liegt vor allem in der Theorie. F"ur die Verwendung in
-Computeralgorithmen ist sie dagegen schlecht geeignet. Dies liegt haupts"achlich an
-der Einbeziehung beliebiger "Uberdeckungen, was mit Computermethoden nicht zu realisieren
-ist. F"ur numerische Berechnungen ist es sinnvoller, die Menge der m"oglichen
-"Uberdeckungen einzuschr"anken. Eine dieser Einschr"ankungen f"uhrt uns auf den Begriff
-der Kapazit"at.
+Anwendungsbereich liegt vor allem in der Theorie. Für die Verwendung in
+Computeralgorithmen ist sie dagegen schlecht geeignet. Dies liegt hauptsächlich an
+der Einbeziehung beliebiger Überdeckungen, was mit Computermethoden nicht zu realisieren
+ist. Für numerische Berechnungen ist es sinnvoller, die Menge der möglichen
+Überdeckungen einzuschränken. Eine dieser Einschränkungen führt uns auf den Begriff
+der Kapazität.
 
 
 
-\subsection{Die Kapazit"at}
+\subsection{Die Kapazität}
 \label{chapcapacity}
-Bei der \begriff(Kapazit"at) wird die Klasse der
-$r$-"Uberdeckungen von $\B$ beschr"ankt auf "Uberdeckungen $\mathcal C^K_r$, die als Teilmengen nur
-$n$-dimensionale W"urfel mit Durchmesser $r$ enthalten. Der Summand in
-\eqnref{hausdorffmass1} ist nun konstant gleich $r^d$. Das auf die "Uberdeckungen $\mathcal C^K_r$
-beschr"ankte Ma"s $\kpm$ ist also nur abh"angig von der Anzahl der Mengen, die zur "Uberdeckung
-von $\B$ minimal gebraucht werden. Bezeichnen wir diese Anzahl mit $N(r)$, so gilt f"ur das
-Ma"s $\kpm$:
+Bei der \begriff(Kapazität) wird die Klasse der
+$r$-Überdeckungen von $\B$ beschränkt auf Überdeckungen $\mathcal C^K_r$, die als Teilmengen nur
+$n$-dimensionale Würfel mit Durchmesser $r$ enthalten. Der Summand in
+\eqnref{hausdorffmass1} ist nun konstant gleich $r^d$. Das auf die Überdeckungen $\mathcal C^K_r$
+beschränkte Maß $\kpm$ ist also nur abhängig von der Anzahl der Mengen, die zur Überdeckung
+von $\B$ minimal gebraucht werden. Bezeichnen wir diese Anzahl mit $N(r)$, so gilt für das
+Maß $\kpm$:
 \eqn{\kpm(\B,d,r)=N(r)r^d.}
-Auch dieses Ma"s hat eine Sprungstelle bei einem bestimmten $d=D_K$. Diese l"a"st sich 
+Auch dieses Maß hat eine Sprungstelle bei einem bestimmten $d=D_K$. Diese läßt sich 
 jedoch weit einfacher ermitteln als bei der Hausdorff-Dimension in
-\eqnref{hausdorffdim}. Offensichtlich kann $\kpm(\B,d,r)$ f"ur $r\to0$ nur dann einen
+\eqnref{hausdorffdim}. Offensichtlich kann $\kpm(\B,d,r)$ für $r\to0$ nur dann einen
 endlichen Wert annehmen, wenn $N(r)$ mit $(1/r)^d$ skaliert. Daher definieren wir:
 \eqnl[capacity]{D_K(\B) = \lim_{r\to0} \frac{\log N(r)}{\log(1/r)} .}
-Dies ist die Kapazit"at der Menge $\B$. Da die Bestimmung der Kapazit"at nach
-\eqnref{capacity} nur darauf beruht, da"s die \naja(K"astchen), die zur "Uberdeckung der
-Menge $\B$ ben"otigt werden, gez"ahlt werden, spricht man auch von der
-\begriff(Boxcounting-Dimension). F"ur typische Attraktoren
-wird erwartet, da"s Kapazit"at und Hausdorff-Dimension "ubereinstimmen
-\cite{Farmer-ott-yorke}. Es k"onnen jedoch Mengen konstruiert werden, f"ur die das nicht der 
+Dies ist die Kapazität der Menge $\B$. Da die Bestimmung der Kapazität nach
+\eqnref{capacity} nur darauf beruht, daß die \naja(Kästchen), die zur Überdeckung der
+Menge $\B$ benötigt werden, gezählt werden, spricht man auch von der
+\begriff(Boxcounting-Dimension). Für typische Attraktoren
+wird erwartet, daß Kapazität und Hausdorff-Dimension übereinstimmen
+\cite{Farmer-ott-yorke}. Es können jedoch Mengen konstruiert werden, für die das nicht der 
 Fall ist.\footnote{Beispielsweise hat die Menge $\B=\{1/i\vert i\in\N\}$ die 
-Hausdorff-Dimension $D_H=0$ und die Kapazit"at $D_K=1/2$ \cite{Leven89}. Dies ist im "ubrigen einer der
-Schwachpunkte der Kapazit"at, da"s sie abz"ahlbaren Mengen endliche Dimension zuordnen kann.}
+Hausdorff-Dimension $D_H=0$ und die Kapazität $D_K=1/2$ \cite{Leven89}. Dies ist im übrigen einer der
+Schwachpunkte der Kapazität, daß sie abzählbaren Mengen endliche Dimension zuordnen kann.}
 
-K"astchenz"ahlalgorithmen sind auf Computern sehr einfach zu implementieren. Der
-Phasenraum $\R^\embed$ braucht nur in K"astchen der Kantenl"ange $r$ eingeteilt werden.
-Dies geschieht auf dem Computer, indem ein \begriff(Array) $F$ mit $(L/r)^\embed$ Eintr"agen
+Kästchenzählalgorithmen sind auf Computern sehr einfach zu implementieren. Der
+Phasenraum $\R^\embed$ braucht nur in Kästchen der Kantenlänge $r$ eingeteilt werden.
+Dies geschieht auf dem Computer, indem ein \begriff(Array) $F$ mit $(L/r)^\embed$ Einträgen
 angelegt wird, wobei $L$ die lineare Ausdehnung des Attraktors ist\footnote{Ein Array ist
   eine indizierte Menge von Variablen, wobei die Menge der Indizes beim Dimensionieren des
   Arrays vorher festgelegt wird. Der entsprechende deutsche Fachbegriff \naja(Feld) wird
   hier nicht verwendet, um Verwechslungen mit der physikalischen Bedeutung des Wortes
-  auszuschlie"sen.}. Jedem dieser Eintr"age wird nun genau ein K"astchen des Phasenraumes
-zugeordnet. F"ur jeden Rekonstruktionspunkt wird der Eintrag $i$ ermittelt und $F(i)$ um
-eins erh"oht. Die Anzahl der Eintr"age, f"ur die $F(i)\neq 0$ ist, entspricht (ungef"ahr) der
-Anzahl $N(r)$. Hieraus kann dann "uber \eqnref{capacity} die Kapazit"at abgesch"atzt
+  auszuschließen.}. Jedem dieser Einträge wird nun genau ein Kästchen des Phasenraumes
+zugeordnet. Für jeden Rekonstruktionspunkt wird der Eintrag $i$ ermittelt und $F(i)$ um
+eins erhöht. Die Anzahl der Einträge, für die $F(i)\neq 0$ ist, entspricht (ungefähr) der
+Anzahl $N(r)$. Hieraus kann dann über \eqnref{capacity} die Kapazität abgeschätzt
 werden. Dieses direkte Verfahren ist jedoch sehr speicher- und zeitaufwendig, da sowohl
 Speicherbedarf als auch Rechendauer mit der Ordnung \order{(L/r)^\embed} anwachsen.
 
@@ -109,102 +109,102 @@ Speicherbedarf als auch Rechendauer mit der Ordnung \order{(L/r)^\embed} anwachs
 
 Ein wesentlich schnelleres und speicherschonenderes Verfahren soll im folgenden
 vorgestellt werden \cite{Junglas}.
-\comment{Das Verfahren, da"s sich aus der Definition der Kapazit"at f"ur eine computergest"utzte
+\comment{Das Verfahren, daß sich aus der Definition der Kapazität für eine computergestützte
 Berechnung ableitet, ist sehr einfach und erfolgt  in folgenden Schritten \cite{Junglas}:}
 \begin{itemize}
 \item Jeder Punkt $\x$ der Menge\footnote{Da jede auf einem
-Computer darstellbare Menge abz"ahlbar sein mu"s, gehen wir hier wie auch im folgenden bei 
-rechnerischen Verfahren von abz"ahlbaren Mengen aus.} $\B\,\subset\,\R^\embed$ wird auf einen
+Computer darstellbare Menge abzählbar sein muß, gehen wir hier wie auch im folgenden bei 
+rechnerischen Verfahren von abzählbaren Mengen aus.} $\B\,\subset\,\R^\embed$ wird auf einen
 Punkt $\y\in\Z^\embed$ des sogenannten \begriff(Indexraumes)  abgebildet. Hierzu wird jede
 der Komponenten von $\x$ durch $r$ geteilt und der gebrochene Teil abgeschnitten,
 d.h.\  $y_i=\lfloor x_i/r \rfloor$. Durch diese Abbildung wird jedem Element $\x$ der
-Menge das $\x$ enthaltende K"astchen mit den Indizes $y_1,\dots,y_\embed$ zugeordnet.
+Menge das $\x$ enthaltende Kästchen mit den Indizes $y_1,\dots,y_\embed$ zugeordnet.
 \item Die Menge der $\y_i$ wird nun geordnet. Dazu ist es notwendig, eine Ordnungsrelation
 auf $\Z^\embed$ zu definieren, wobei hier jede Relation, die den 
-mathematischen Anforderungen an eine Ordnungsrelation entspricht, gen"ugt. 
+mathematischen Anforderungen an eine Ordnungsrelation entspricht, genügt. 
 Wir definieren: $\y_i$
-ist genau dann kleiner als $\y_j$, wenn ein $k\in\{1,\dots,\embed\}$ existiert, so da"s
-$\y_{i,m}=\y_{j,m}$ f"ur alle $m<k$ und $\y_{i,m}<\y_{j,m}$ f"ur $m=k$ gilt. 
+ist genau dann kleiner als $\y_j$, wenn ein $k\in\{1,\dots,\embed\}$ existiert, so daß
+$\y_{i,m}=\y_{j,m}$ für alle $m<k$ und $\y_{i,m}<\y_{j,m}$ für $m=k$ gilt. 
 \item Nach der Konstruktion im ersten Schritt ist $N(r)$ identisch mit der Anzahl
-verschiedener $\y_i$, da dies genau der Anzahl von $\B$ belegter K"astchen
-entspricht. Durch die Sortierung in Schritt zwei kann diese Anzahl sehr schnell abgez"ahlt 
-werden. Division von $\log N(r)$ durch $\log(1/r)$ liefert eine Absch"atzung f"ur $D_0$.
+verschiedener $\y_i$, da dies genau der Anzahl von $\B$ belegter Kästchen
+entspricht. Durch die Sortierung in Schritt zwei kann diese Anzahl sehr schnell abgezählt 
+werden. Division von $\log N(r)$ durch $\log(1/r)$ liefert eine Abschätzung für $D_0$.
 \end{itemize}
 Der zeitaufwendigste Teil ist die Sortierung der Punkte mit \order{\embed N\log N} Schritten,
-w"ahrend der erste und dritte Teil des Verfahrens nur \order{\embed N} Schritte ben"otigen. 
-Die Berechnungszeit w"achst also, im Gegensatz zu manchen gegenteiligen Behauptungen,
-nur linear mit $\embed$ und nicht exponentiell. Demgegen"uber w"achst jedoch die
-ben"otigte Datenmenge $N$, wie wir in sp"ateren Abschnitten sehen werden, exponentiell
-"uberexponentiell mit $D_K$. Dies ist jedoch ein gemeinsames Charakteristikum
+während der erste und dritte Teil des Verfahrens nur \order{\embed N} Schritte benötigen. 
+Die Berechnungszeit wächst also, im Gegensatz zu manchen gegenteiligen Behauptungen,
+nur linear mit $\embed$ und nicht exponentiell. Demgegenüber wächst jedoch die
+benötigte Datenmenge $N$, wie wir in späteren Abschnitten sehen werden, exponentiell
+überexponentiell mit $D_K$. Dies ist jedoch ein gemeinsames Charakteristikum
 aller Dimensionsberechnungen.
 
-Bei der Berechnung der Kapazit"at stellt sich allerdings ein anderes Problem. Aufgrund der
-endlichen Datenmenge werden manche K"astchen nicht mitgez"ahlt, obwohl sie f"ur
-$N\to\infty$ auch von Trajektorien besucht werden. Dies f"uhrt zu relativ gro"sen Fehlern 
+Bei der Berechnung der Kapazität stellt sich allerdings ein anderes Problem. Aufgrund der
+endlichen Datenmenge werden manche Kästchen nicht mitgezählt, obwohl sie für
+$N\to\infty$ auch von Trajektorien besucht werden. Dies führt zu relativ großen Fehlern 
 bei der Anwendung dieses Verfahrens. 
 
-Auf der anderen Seite wird die Tatsache, da"s manche K"astchen sehr oft besucht werden,
-ignoriert.  Bei der Kapazit"at werden K"astchen entweder gez"ahlt oder nicht. Besser w"are 
-es -- gerade bei endlichen Datenmengen --, den Beitrag der einzelnen K"astchen entsprechend
-ihrer Wahrscheinlichkeit zu gewichten. Dies f"uhrt zu den sogenannten
+Auf der anderen Seite wird die Tatsache, daß manche Kästchen sehr oft besucht werden,
+ignoriert.  Bei der Kapazität werden Kästchen entweder gezählt oder nicht. Besser wäre 
+es -- gerade bei endlichen Datenmengen --, den Beitrag der einzelnen Kästchen entsprechend
+ihrer Wahrscheinlichkeit zu gewichten. Dies führt zu den sogenannten
 \begriff(probabilistischen) Dimensionen, der Informations- und der Korrelationsdimension,
 sowie den verallgemeinerten Dimensionen.
 
 
 
 \subsection{Informationsdimension}
-Die \begriff(Informationsdimension) w"ahlt einen v"ollig anderen Zugang zum Begriff der Dimension
+Die \begriff(Informationsdimension) wählt einen völlig anderen Zugang zum Begriff der Dimension
 als die beiden vorangegangenen Dimensionen. Um einen Punkt in einem $n$-dimensionalen Raum festzulegen,
-werden genau $n$ reelle Zahlen ben"otigt. Anstatt anzugeben, wieviele reelle Zahlen
-hierzu ben"otigt werden, kann auch die Menge an Information angegeben
-werden, die ben"otigt wird, um die Position des Punktes mit einer Genauigkeit $r$
-festzulegen. Diese Information betr"agt $I(r)=-n\ln(r)$, wobei wir hier wieder die
-\naja(physikalischere) Einheit der Information in $\nat s$ gew"ahlt haben. Ist nun bekannt, da"s
+werden genau $n$ reelle Zahlen benötigt. Anstatt anzugeben, wieviele reelle Zahlen
+hierzu benötigt werden, kann auch die Menge an Information angegeben
+werden, die benötigt wird, um die Position des Punktes mit einer Genauigkeit $r$
+festzulegen. Diese Information beträgt $I(r)=-n\ln(r)$, wobei wir hier wieder die
+\naja(physikalischere) Einheit der Information in $\nat s$ gewählt haben. Ist nun bekannt, daß
 sich der Punkt in einer $D_I$-dimensionalen Teilmenge $\B$ des $\R^n$ befindet, so reduziert 
 sich die notwendige Information auf $I(r)=-D_I\ln(r)$. Andererseits liefert die 
-Informationstheorie einen Ausdruck f"ur die mittlere Information, die die Messung eines
-Punktes aus $\B$ ergibt. "Uberdecken wir die Menge mit K"astchen der Kantenl"ange $r$ und sei $\Prob_i$ 
-das Wahrscheinlichkeitsma"s des $i$-ten K"astchens, dann gilt f"ur die mittlere
-Information, die bei der Bestimmung, in welchem K"astchen der Punkt liegt, gewonnen wird $\bar I(r)=-\sum_i
-\Prob_i\ln \Prob_i$. F"ur 
-$r\to 0$ k"onnen wir beide Ausdr"ucke gleichsetzen und nach $D_I$ aufl"osen:
+Informationstheorie einen Ausdruck für die mittlere Information, die die Messung eines
+Punktes aus $\B$ ergibt. Überdecken wir die Menge mit Kästchen der Kantenlänge $r$ und sei $\Prob_i$ 
+das Wahrscheinlichkeitsmaß des $i$-ten Kästchens, dann gilt für die mittlere
+Information, die bei der Bestimmung, in welchem Kästchen der Punkt liegt, gewonnen wird $\bar I(r)=-\sum_i
+\Prob_i\ln \Prob_i$. Für 
+$r\to 0$ können wir beide Ausdrücke gleichsetzen und nach $D_I$ auflösen:
 \eqnl[informationdim]{D_I(\B)=\lim_{r\to 0}\frac{\sum_i \Prob_i\ln \Prob_i}{\ln r} .}
 Dies ist die Informationsdimension der Menge $\set B$. 
 
-Die Informationsdimension hat in letzter Zeit gegen"uber der noch zu besprechenden
-Korrelationsdimension wieder vermehrt Anwendung gefunden. Dies liegt daran, da"s sie durch
-die Einf"uhrung sogenannter \begriff(N"achste-Nachbarn-Algorithmen) gut berechenbar
+Die Informationsdimension hat in letzter Zeit gegenüber der noch zu besprechenden
+Korrelationsdimension wieder vermehrt Anwendung gefunden. Dies liegt daran, daß sie durch
+die Einführung sogenannter \begriff(Nächste-Nachbarn-Algorithmen) gut berechenbar
 wurde\cite{Badii85}. 
 Sei $N$ die Anzahl der Rekonstruktionsvektoren und  $N/k$ die Anzahl der auf dem
-rekonstruierten Attraktor m"oglichst gleichverteilten Referenzpunkte $\x_i$.
-Dann gilt im Grenz"ubergang $k\to1$:
+rekonstruierten Attraktor möglichst gleichverteilten Referenzpunkte $\x_i$.
+Dann gilt im Grenzübergang $k\to1$:
 \eqn{D_I=-\frac{\log N}{\frac{k}{N}\sum_{i=1}^{N/k}\log \delta_i(k)} ,}
 wobei $\delta_i(k)$ der Abstand eines Referenzpunktes $\x_i$ zu seinem
-$k$-ten n"achsten Nachbarn ist.
-Hinsichtlich der Vorteile dieser Methode gegen"uber den weiter unten betrachteten Korrelationsintegralen sei auf
+$k$-ten nächsten Nachbarn ist.
+Hinsichtlich der Vorteile dieser Methode gegenüber den weiter unten betrachteten Korrelationsintegralen sei auf
 \cite{Liebert91} verwiesen.
 
 
 
-Bevor wir im n"achsten Abschnitt auf die Korrelationsdimension eingehen, sollen hier
-vorher kurz die generalisierten Dimensionen $D_q$ eingef"uhrt werden. Diese sind definiert
+Bevor wir im nächsten Abschnitt auf die Korrelationsdimension eingehen, sollen hier
+vorher kurz die generalisierten Dimensionen $D_q$ eingeführt werden. Diese sind definiert
 durch:
 \eqnl[gendim]{D_q = \frac1{q-1}\lim_{r\to0}\frac{\log\sum_i\Prob_i^q}{\log r}}
 mit $q\in\R_0^+$.
-\autor(Hentschel) und \autor(Procaccia) zeigten \cite{Hentschel-procaccia}, da"s
-f"ur $q\to0$ bzw.\ $q\to1$ die generalisierte Dimension $D_q$ in die Kapazit"at $D_K$
-bzw.\  in die Informationsdimension $D_I$ "ubergeht:
+\autor(Hentschel) und \autor(Procaccia) zeigten \cite{Hentschel-procaccia}, daß
+für $q\to0$ bzw.\ $q\to1$ die generalisierte Dimension $D_q$ in die Kapazität $D_K$
+bzw.\  in die Informationsdimension $D_I$ übergeht:
 \eqn{D_K=\lim_{q\to0}D_q   , \qquad  D_I=\lim_{q\to1}D_q .} 
-Weiterhin konnten sie zeigen, da"s $D_q\leq D_{q'}$ f"ur $q>q'$, wobei das
+Weiterhin konnten sie zeigen, daß $D_q\leq D_{q'}$ für $q>q'$, wobei das
 Gleichheitszeichen genau dann gilt, wenn es sich bei dem betrachteten Objekt um ein
-homogenes Fraktal\footnote{Eine Eigenschaft fraktaler Mengen $\set A$ ist, da"s Zerlegungen $\{\set A_i\}$
+homogenes Fraktal\footnote{Eine Eigenschaft fraktaler Mengen $\set A$ ist, daß Zerlegungen $\{\set A_i\}$
   mit $\bigcup_i \set A_i = \set A$ und $\bigwedge_{i\neq j} \set A_i \cap \set A_j =
-  \emptyset$ existieren, so da"s die $\set A_i$ verkleinerte (und 
+  \emptyset$ existieren, so daß die $\set A_i$ verkleinerte (und 
   eventuell gedrehte) Kopien von $\A$ sind (d.h. es existieren affine lineare
   Transformationen von $\set A$ nach $\set A_i$).  Sei $s_i=\norm{\set A_i}/\norm{\set A}$
-  der Verkleinerungsma"sstab der Menge $\set A_i$ bez"uglich $\set A$. Die Menge $\set A$ ist ein homogenes Fraktal,
-  wenn f"ur alle $i$ gilt: $\Prob(\set A_i)/\Prob(\set A) = s_i^{D_K}$, wobei $\Prob$ ein
-  auf der Menge $\set A$ erkl"artes Wahrscheinlichkeitsma"s ist. }
+  der Verkleinerungsmaßstab der Menge $\set A_i$ bezüglich $\set A$. Die Menge $\set A$ ist ein homogenes Fraktal,
+  wenn für alle $i$ gilt: $\Prob(\set A_i)/\Prob(\set A) = s_i^{D_K}$, wobei $\Prob$ ein
+  auf der Menge $\set A$ erklärtes Wahrscheinlichkeitsmaß ist. }
 handelt. Die Folge der $D_q$ ist also monoton fallend mit $D_0\geq
 D_q\geq D_\infty$. 
 

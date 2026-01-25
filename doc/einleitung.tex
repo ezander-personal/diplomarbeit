@@ -1,71 +1,71 @@
 \addchap{Einleitung}
 
-Komplexes Verhalten tritt in nahezu allen Bereichen der Natur in Erscheinung. W"ahrend die
-Physik diesen Ph"anomenen fr"uher relativ ratlos gegen"uberstand, konnten in den letzten
-Jahren durch die Erkenntnisse der Chaostheorie auf diesem Gebiet gro"se Fortschritte
+Komplexes Verhalten tritt in nahezu allen Bereichen der Natur in Erscheinung. Während die
+Physik diesen Phänomenen früher relativ ratlos gegenüberstand, konnten in den letzten
+Jahren durch die Erkenntnisse der Chaostheorie auf diesem Gebiet große Fortschritte
 erzielt werden. Die Theorie nichtlinearer dynamischer Systeme leistete hier Wesentliches,
-indem sie die oftmals auftretenden komplexen Dynamiken mathematisch-physikalisch erfa"sbar
+indem sie die oftmals auftretenden komplexen Dynamiken mathematisch-physikalisch erfaßbar
 und charakterisierbar machte.  Hierbei ist besonders das Konzept \begriff(seltsamer Attraktoren)
 hervorzuheben.  Seltsame Attraktoren bilden die Menge der im Langzeitverhalten
 erreichbaren Phasenraumpunkte dissipativer chaotischer Systeme und besitzen im allgemeinen
 eine sehr verwickelte fraktale Struktur. Damit einher geht ein Verlust der Langzeitvorhersage
-durch die Eigenschaft dieser Systeme, kleine St"orungen exponentiell zu verst"arken.  Die
-Erkenntnis, da"s solche Strukturen auch bei deterministischen Systemen mit wenigen
-Freiheitsgraden auftreten k"onnen, hat in vielen Gebieten der Naturwissenschaften, auch
-au"serhalb der Physik, die Frage aufgeworfen, ob die beobachteten Verhaltensweisen und
-Strukturen durch diese Konzepte zu erkl"aren seien. (Kapitel~1.1.)
+durch die Eigenschaft dieser Systeme, kleine Störungen exponentiell zu verstärken.  Die
+Erkenntnis, daß solche Strukturen auch bei deterministischen Systemen mit wenigen
+Freiheitsgraden auftreten können, hat in vielen Gebieten der Naturwissenschaften, auch
+außerhalb der Physik, die Frage aufgeworfen, ob die beobachteten Verhaltensweisen und
+Strukturen durch diese Konzepte zu erklären seien. (Kapitel~1.1.)
 
 
-In den empirischen Naturwissenschaften liegen h"aufig nur unzureichende Daten "uber den
+In den empirischen Naturwissenschaften liegen häufig nur unzureichende Daten über den
 genauen Zustand des beobachteten Systems vor, oftmals in Form \begriff(skalarer
-Zeitreihen) einer gemessenen Zustandsvariable.  Eine entscheidende Voraussetzung f"ur die
+Zeitreihen) einer gemessenen Zustandsvariable.  Eine entscheidende Voraussetzung für die
 Charakterisierung dieser Zeitreihen mittels der Methoden der nichtlinearen Dynamik ist
-die M"oglichkeit, aus diesen wieder Attraktoren rekonstruieren zu k"onnen.  Dies geschieht
-"uber das Konzept der sogenannten \begriff(Verz"ogerungskoordinaten), welches durch eine
+die Möglichkeit, aus diesen wieder Attraktoren rekonstruieren zu können.  Dies geschieht
+über das Konzept der sogenannten \begriff(Verzögerungskoordinaten), welches durch eine
 mathematische Theorie abgesichert werden konnte. Die Voraussetzungen der mathematischen
-Theorie sind in der experimentellen Praxis jedoch nicht erf"ullbar. Neben der st"andigen
-Anwesenheit von Rauschen ist vor allem die zeitliche Begrenztheit der zur Verf"ugung
-stehenden Zeitreihen ein Problem. Aufgrund dieser Einschr"ankungen ist eine gute Wahl der
-Einbettungsparameter vonn"oten.  Desweiteren m"ussen M"oglichkeiten zur Verminderung des
+Theorie sind in der experimentellen Praxis jedoch nicht erfüllbar. Neben der ständigen
+Anwesenheit von Rauschen ist vor allem die zeitliche Begrenztheit der zur Verfügung
+stehenden Zeitreihen ein Problem. Aufgrund dieser Einschränkungen ist eine gute Wahl der
+Einbettungsparameter vonnöten.  Desweiteren müssen Möglichkeiten zur Verminderung des
 Rauschens gefunden werden. (Kapitel~1.2.)
 
-F"ur die Charakterisierung seltsamer Attraktoren steht eine Vielzahl verschiedener Ma"szahlen zur
-Verf"ugung. Die drei am h"aufigsten herangezogenen sind die fraktale Dimension, die
+Für die Charakterisierung seltsamer Attraktoren steht eine Vielzahl verschiedener Maßzahlen zur
+Verfügung. Die drei am häufigsten herangezogenen sind die fraktale Dimension, die
 Kolmogorov-Entropie und der Lyapunov-Exponent. Diese beschreiben respektive die Anzahl
 der effektiven Freiheitsgrade, die Rate der Informationsproduktion sowie die exponentielle
-Separation der Trajektorien des Systems. Da die Komplexit"at eines Systems meistens mit
+Separation der Trajektorien des Systems. Da die Komplexität eines Systems meistens mit
 der Anzahl seiner Freiheitsgrade korreliert ist, wendet sich diese Arbeit besonders den
 verschiedenen Begriffen fraktaler Dimension zu.  Im Bereich der nichtlinearen
 Zeitreihenanalyse wird zumeist die Korrelationsdimension verwendet, die durch ihre schnelle
 und stabile Berechenbarkeit durch den Grassberger-Procaccia-Algorithmus wesentliche
-Bedeutung erlangt hat. Probleme stellen sich hierbei haupts"achlich durch die endliche
-Datenmenge, wei"ses und Digitalisierungsrauschen und sogenannte Randeffekte.  (Kapitel~1.3.)
+Bedeutung erlangt hat. Probleme stellen sich hierbei hauptsächlich durch die endliche
+Datenmenge, weißes und Digitalisierungsrauschen und sogenannte Randeffekte.  (Kapitel~1.3.)
 
-Damit die Verwendung der beschriebenen Methoden "uberhaupt einen Sinn macht, ist es
-notwendig zu wissen, da"s der beobachteten Zeitreihe ein deterministisches System zugrunde
-liegt.  Zur L"osung des Problems existieren eine Vielzahl von Vorschl"agen, von denen hier
+Damit die Verwendung der beschriebenen Methoden überhaupt einen Sinn macht, ist es
+notwendig zu wissen, daß der beobachteten Zeitreihe ein deterministisches System zugrunde
+liegt.  Zur Lösung des Problems existieren eine Vielzahl von Vorschlägen, von denen hier
 der Methode der Surrogatdaten auf der Basis statistischer Hypothesentests der Vorzug gegeben
 wird.  Diese bieten ein breites Fundament, um Fragen nach der Struktur und
-zugrunde liegendem Determinismus experimenteller Zeitreihen beantworten zu k"onnen. Durch
-die Verf"ugbarkeit hoher Rechenleistungen in modernen Computern lassen sich eine Vielzahl
+zugrunde liegendem Determinismus experimenteller Zeitreihen beantworten zu können. Durch
+die Verfügbarkeit hoher Rechenleistungen in modernen Computern lassen sich eine Vielzahl
 verschiedener Hypothesen durch Vergleich der Originalzeitreihen mit sogenannten
 Surrogatdaten testen. (Kapitel~1.4.)
 
 Die Ergebnisse dieser Arbeit sollen auf das konkrete Beispiel der Atmungsdynamik
-Fr"uhgeborener angewandt werden. Das Ziel
-hierbei ist es zu kl"aren, ob die vorgestellten Methoden aus der Zeitreihenanalyse bei der
-Untersuchung dieser Problematik von Nutzen sein k"onnen.
+Frühgeborener angewandt werden. Das Ziel
+hierbei ist es zu klären, ob die vorgestellten Methoden aus der Zeitreihenanalyse bei der
+Untersuchung dieser Problematik von Nutzen sein können.
 Konkret geht es hierbei um folgende Fragen:
 \begin{itemize}
 \item Ist die den verschiedenen Atmungstypen zugrunde liegende Dynamik durch ein
   deterministisches System beschreibbar ?
-\item K"onnen f"ur die verschiedenen Atmungstypen, regelm"a"siges und periodisches Atmen, die
+\item Können für die verschiedenen Atmungstypen, regelmäßiges und periodisches Atmen, die
   fraktale Dimension berechnet und  die Existenz eines seltsamen Attraktors belegt werden ?
-\item Lassen sich signifikante "Anderungen der Dimension vor dem Auftreten von
-  Atemstillst"an\-den (Apnoen) feststellen ?
+\item Lassen sich signifikante Änderungen der Dimension vor dem Auftreten von
+  Atemstillstän\-den (Apnoen) feststellen ?
 \end{itemize}
-Eine Bejahung dieser Fragen k"onnte zu einer m"oglichen Fr"uherkennung von
-Atemstillst"anden f"uhren, was f"ur die Fr"uhgeborenenmedizin von gr"o"stem Nutzen w"are.
+Eine Bejahung dieser Fragen könnte zu einer möglichen Früherkennung von
+Atemstillständen führen, was für die Frühgeborenenmedizin von größtem Nutzen wäre.
 (Kapitel~2)
 
 
