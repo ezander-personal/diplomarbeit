@@ -12,10 +12,10 @@ arbeit: clean pdf ps
 #
 
 pdf:
-	TEXINPUTS=".//:" ./latexmk.pl -pdf gliederung
+	TEXINPUTS=".//:" latexmk -pdf gliederung
 
 ps:
-	TEXINPUTS=".//:" ./latexmk.pl gliederung
+	TEXINPUTS=".//:" latexmk gliederung
 
 clean:
-	./latexmk.pl -C gliederung
+	latexmk -C gliederung
