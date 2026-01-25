@@ -21,14 +21,14 @@
 % Preliminary Declarations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\let\thema@font=\bf
+\let\thema@font=\bfseries
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Options
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareOption{themabf}{\let\thema@font=\bf}
-\DeclareOption{themarm}{\let\thema@font=\rm}
-\DeclareOption{themait}{\let\thema@font=\it}
+\DeclareOption{themabf}{\let\thema@font=\bfseries}
+\DeclareOption{themarm}{\let\thema@font=\rmfamily}
+\DeclareOption{themait}{\let\thema@font=\itshape}
 
 %\DeclareOption{newint}{\AtEndOfPackage{\newint}}
 \DeclareOption{newint}{}
@@ -113,7 +113,7 @@
 % Verschiedene allgemeines Befehle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Befehle f"ur W"orter die aus besonderem
+% Befehle für Wörter die aus besonderem
 % Grund hervorgehoben werden sollen z.B. neue Begriffe oder Metaphern
 \def\begriff(#1){{\em #1}}
 \def\begriffno(#1){{#1}}
@@ -146,7 +146,7 @@
 \def\trenn(#1) {{\showhyphens{#1}#1\ }}
 
 % Befehl um bestimmte Dinge sowohl im Text als auch 
-% im mathematischen Modus benutzen zu k"onnen
+% im mathematischen Modus benutzen zu können
 % ->in LaTeX2e gehts mit %\ensuremath
 \let\math=\ensuremath
 
@@ -167,7 +167,7 @@
 % Gleichungen (equations)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Gleichungen: Abk"urzungen f"ur die Umgebungen 
+% Gleichungen: Abkürzungen für die Umgebungen 
 \def\eqn#1{ \begin{equation} #1 \end{equation} }
 \def\eqnl[#1]#2{ \begin{equation} \label{#1} #2 \end{equation} }
 \def\eqna#1{ \begin{eqnarray} #1 \end{eqnarray} }
@@ -204,7 +204,7 @@
 \newcommand{\gtmat}[1]{{\gmat{#1}^\Trs}}
 \newcommand{\gimat}[1]{{\gmat{#1}^{-1}}}
 
-%Mathemthisches Symbol etwas erh"ohen
+%Mathemthisches Symbol etwas erhöhen
 \newcommand{\@mraise}[2]{{\raise #2ex\hbox{\math{#1}}}}
 \newcommand{\mraise}[2]{{\@mraise{#1}{#2}}}
 
@@ -218,7 +218,7 @@
 \fontdimen16\tensy=3.0pt \fontdimen17=3.0pt
 {#1}
 \fontdimen16\tensy=\fdxvi
-\fotndimen17\tensy=\fdxvii
+\fontdimen17\tensy=\fdxvii
 }
 
 \renewcommand{\newsub}[1]{{#1}}
@@ -226,7 +226,7 @@
 \newcommand{\efrac}[2]{\tfrac{\displaystyle{#1}}{\displaystyle{#2}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Ersetzungen f"ur verschiedene griechische Symbole
+% Ersetzungen für verschiedene griechische Symbole
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\phi}{\varphi}
@@ -266,7 +266,7 @@
 \newcommand{\leqn}{\@mathopn{\@leq}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Abk"urzungen f"ur verschiedene Symbole
+% Abkürzungen für verschiedene Symbole
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Limes (rightarrow ist mir zu lang) schon in LaTeX definiert
@@ -320,12 +320,12 @@
 %\newcommand{\rsmax}{{r^{\mathit{skal}}_\tmax}}
 \newcommand{\rsmin}{{r_\tmin}}
 \newcommand{\rsmax}{{r_\tmax}}
-\newcommand{\rsaett}{{r_\mathit{s"att}}}
+\newcommand{\rsaett}{{r_\mathit{sätt}}}
 \newcommand{\rnoise}{{r_\mathit{noise}}}
 
 
 
-%Flu"s
+%Fluß
 \newcommand{\flow}{{\boldsymbol\phi}}
 
 %Phasenraum
@@ -352,7 +352,7 @@
 \newcommand{\subspace}{\mathcal{S}}
 
 
-% Hausdorff-Ma"s
+% Hausdorff-Maß
 %\newcommand{\hdm}{\mathcal{H}}
 \newcommand{\hdm}{\mu_H}
 \newcommand{\kpm}{\mu_K}
@@ -459,7 +459,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%%  POSTSCRIPT - Unterst"utzung
+%%  POSTSCRIPT - Unterstützung
 %% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -469,7 +469,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% Ein neuer Counter f"ur figures, wird mit dem chapter zur"uckgesetzt
+% Ein neuer Counter für figures, wird mit dem chapter zurückgesetzt
 
 \newcounter{psfignum}[chapter]
 
@@ -482,7 +482,7 @@
 \newcommand{\pspageref}[1]{{Abb.~\ref{#1} auf Seite~\pageref{#1}}}
 
 
-% Besondere Zeichen f"ur Captions
+% Besondere Zeichen für Captions
 \newcommand{\capplus}{$\scriptstyle \mathrm{(+)}$\ }
 \newcommand{\captimes}{$\scriptstyle \mathrm{(\times)}$\ }
 
@@ -506,7 +506,7 @@
 \newcommand{\noafterpage}[1]{#1}
 
 
-% L"angendefinitionen f"ur die Breite der Figures
+% Längendefinitionen für die Breite der Figures
 
 \newlength{\pswidthsingle}
 \setlength{\pswidthsingle}{\textwidth}
@@ -566,7 +566,7 @@
 \immediate\write\@auxout{\string\psdonothing{./postscript/#1.eps}}
 }
 
-% Gemeinsam f"ur alle figures
+% Gemeinsam für alle figures
 
 \newcommand{\epsfigcommon}[4]{{
 %\def\epsfigcommon#1#2#3#4{{
