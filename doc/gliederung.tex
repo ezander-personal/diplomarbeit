@@ -1,5 +1,10 @@
 \documentclass[a4paper,12pt]{scrreprt}
 
+% Verhindert Großschreibung in Kolumnentiteln (erhält ß statt SS)
+\makeatletter
+\let\MakeMarkcase\@firstofone
+\makeatother
+
 % Zeichenkodierung und Schriften
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
