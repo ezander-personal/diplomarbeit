@@ -1,0 +1,5 @@
+\usepackage{ifluatex}
+\ifluatex
+  \PackageError{fail_if_luatex}{Please don't compile with luatex. It gets the German sz wrong.}{Please use pdflatex.}
+\fi
+

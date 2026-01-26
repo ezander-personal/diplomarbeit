@@ -1,13 +1,12 @@
 \documentclass[a4paper,12pt]{scrreprt}
 
 % Verhindert Großschreibung in Kolumnentiteln (erhält ß statt SS)
-\makeatletter
-\let\MakeMarkcase\@firstofone
-\makeatother
+\usepackage{fail_if_luatex}
 
 % Zeichenkodierung und Schriften
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 
 % Deutsche Layouts und Trenntabellen
 \usepackage[german]{babel}

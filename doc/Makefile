@@ -4,7 +4,9 @@
 # normal targets section
 #
 
-arbeit: clean pdf ps
+default: pdf
+
+clear_first: clean pdf
 
 
 #
@@ -13,9 +15,6 @@ arbeit: clean pdf ps
 
 pdf:
 	TEXINPUTS=".//:" latexmk -pdf gliederung
-
-ps:
-	TEXINPUTS=".//:" latexmk gliederung
 
 clean:
 	latexmk -C gliederung
