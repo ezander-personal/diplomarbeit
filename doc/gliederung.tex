@@ -1,31 +1,32 @@
 \documentclass[a4paper,12pt]{scrreprt}
 
-% Befehle, die in Standard, aber nicht in den KOMA classes zur Verf"ugung stehen
-\def\frontmatter{}
-\def\mainmatter{}
-\def\backmatter{}
+% Verhindert Großschreibung in Kolumnentiteln (erhält ß statt SS)
+\usepackage{fail_if_luatex}
+
+% Zeichenkodierung und Schriften
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 
 % Deutsche Layouts und Trenntabellen
 \usepackage[german]{babel}
 
-% Zum einbinden von PostScript-Grafiken
+% Befehle fuer Dokumentstruktur (in scrreprt nicht vorhanden, daher leer definiert)
+\def\frontmatter{}
+\def\mainmatter{}
+\def\backmatter{}
+
+% Zum Einbinden von PostScript-Grafiken
 \usepackage{graphicx}
 \usepackage{psfrag}
 
-% Bindet die AMS-fonts ein um Symbole f"ur reelle und complexe Zahlen
-% zur Verf"ugung zu haben
-\usepackage{amsfonts}
-
-% Definiert \layout Befehl: coole Sache um Seitenlayout zu "uberpr"ufen
+% Definiert \layout Befehl zur Ueberpruefung des Seitenlayouts
 \usepackage{layout}
 
-% Definiert befehl (\newtheroem) um theorem-umgebungen zu erstellen
+% Definiert \newtheorem Befehl fuer Theorem-Umgebungen
 \usepackage{theorem}
 
-% Einige packages die ich vielleicht noch brauchen werde
-% indentfirst, fancyheadings, float, subfigure, psfig
-
-% Allgemeines zeug und trennungen
+% Allgemeines und Trennungen (amsfonts wird in elmar.sty geladen)
 \usepackage{trennungen}
 \usepackage[themabf,newint,normsect]{elmar}
 
@@ -70,7 +71,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Anh"ange
+%% Anhänge
 
 \backmatter
 
@@ -86,9 +87,9 @@
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 %\selectlanguage{english}
 \bibliography{bib/tsa}
-%\bibliographystyle{./bst/myalpha}
+%\bibliographystyle{bst/myalpha}
 %\bibliographystyle{plain}
-\bibliographystyle{./bst/mysiam}
+\bibliographystyle{bst/mysiam}
 
 \input{unterschrift.tex}
 

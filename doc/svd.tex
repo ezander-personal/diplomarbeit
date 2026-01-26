@@ -2,10 +2,10 @@
 \label{chapsvd}
 Eine weitere Methode der Attraktorrekonstruktion stammt von \autor(Broomhead) und
 \autor(King) \cite{Broomhead-king}. Diese sogenannte \begriff(Singular Value
-Decomposition) (SVD) hat gegen"uber der Ver\-z"ogerungskoordinateneinbettung haupts"achlich
-zwei Vorteile. Zum einen mu"s die Einbettungsdimension nicht vorher festgelegt oder "uber
+Decomposition) (SVD) hat gegenüber der Ver\-zögerungskoordinateneinbettung hauptsächlich
+zwei Vorteile. Zum einen muß die Einbettungsdimension nicht vorher festgelegt oder über
 andere Verfahren ermittelt werden. Zum anderen kann durch die SVD ein dem Signal
-eingepr"agtes additives Rauschen vermindert werden.
+eingeprägtes additives Rauschen vermindert werden.
 
 %Grundidee
 \comment{Die Grundidee ist folgende. Wir betten den Attraktor in einen hochdimensionalen Raum
@@ -13,26 +13,26 @@ $\R^\embed$ der Dimension $\embed$ ein. Dann spannt der so rekonstruierte Attrak
 in der Regel nur einen $\minembed$-dimensio\-nalen Unterraum
 $\subspace=\mathop{\mathrm{span}}(\folge(\x,1,N))$  des
 $\R^\embed$ auf\footnote{$N$ ist die Anzahl der Rekonstruktionsvektoren,
-  und h"angt mit der Anzahl der Me"spunkte $\tilde N$ "uber $N=\tilde N-d+1$ zusammen. Im allgemeinen
+  und hängt mit der Anzahl der Meßpunkte $\tilde N$ über $N=\tilde N-d+1$ zusammen. Im allgemeinen
   gilt: $d\ll N$.}, wobei die Dimension dieses Unterraumes im allgemeinen niedriger
 als die des Einbettungsraumes ist: $d'<d$.  Dieser Unterraum $\subspace$ wird nun bestimmt und der
 Attraktor hieraus in den niedrigdimensionalen $\R^\minembed$ projiziert.
 }
 
 Die Grundidee ist folgende: Der Attraktor wird in einen euklidischen Vektorraum
-$\R^\embed$ eingebettet, dessen Dimension $d$ so hoch gew"ahlt wird, da"s man mit gro"ser
-Sicherheit davon ausgehen kann, da"s das Einbettungstheorem 2 erf"ullt ist. Erwartet man
-beispielsweise, da"s der Attraktor eine Kapazit"at $D_0\leq5$ hat, k"onnte man f"ur $d$
-irgendeinen Wert gr"o"ser oder gleich 10 (z.B. $d=20$) w"ahlen. Durch die
-Verz"ogerungskoordinatenabbildung erh"alt man aus der Zeitreihe, die aus den $\tilde N$
-Me"swerten $\folge(x,1,\tilde N)$ bestehen m"oge, die $N=\tilde N-d+1$
+$\R^\embed$ eingebettet, dessen Dimension $d$ so hoch gewählt wird, daß man mit großer
+Sicherheit davon ausgehen kann, daß das Einbettungstheorem 2 erfüllt ist. Erwartet man
+beispielsweise, daß der Attraktor eine Kapazität $D_0\leq5$ hat, könnte man für $d$
+irgendeinen Wert größer oder gleich 10 (z.B. $d=20$) wählen. Durch die
+Verzögerungskoordinatenabbildung erhält man aus der Zeitreihe, die aus den $\tilde N$
+Meßwerten $\folge(x,1,\tilde N)$ bestehen möge, die $N=\tilde N-d+1$
 Rekonstruktionsvektoren $\vec x_k = (\folge(x,k,k+d-1))^\Tr$.  Der so rekonstruierte
 Attraktor spannt einen Unterraum $\subspace=\mathop{\mathrm{span}}(\folge(\x,1,N))$ des
 $\R^\embed$ auf, dessen Dimension $\minembed=\mathop{\mathrm{dim}}\subspace$ kleiner oder
 gleich $\embed$ ist. Man bestimmt eine Basis des Unterraumes $\subspace$, und kann nun
 (durch Kenntnis dieser Basis) den in $\subspace$ liegenden Attraktor in den euklidischen
-Vektorraum $\R^\minembed$ einbetten. Hierdurch verringert sich die Anzahl der f"ur die
-Angabe eines Attraktorpunktes n"otigen Komponenten von $\embed$ auf $\minembed$.  Der
+Vektorraum $\R^\minembed$ einbetten. Hierdurch verringert sich die Anzahl der für die
+Angabe eines Attraktorpunktes nötigen Komponenten von $\embed$ auf $\minembed$.  Der
 $\R^\minembed$ ist nach Konstruktion der Einbettungsraum mit der minimal ausreichenden
 Einbettungsdimension.
 
@@ -40,7 +40,7 @@ Einbettungsdimension.
 %Neue Basis finden
 Hauptbestandteil des Verfahrens ist es, eine neue Orthonormalbasis $\folge(\vec
 c,1,\embed)$ des Einbettungsraumes $\R^\embed$ zu bestimmen. Diese soll so beschaffen sein,
-da"s die ersten $\minembed$ Vektoren der Basis den Unterraum $\subspace$ aufspannen:
+daß die ersten $\minembed$ Vektoren der Basis den Unterraum $\subspace$ aufspannen:
 \eqn{\subspace = \mathop{\mathrm{span}}(\folge(\vec c,1,\minembed)).} 
 Da $\subspace$ nach Voraussetzung auch von den Rekonstruktionsvektoren $\folge(\x,1,N)$
 aufgespannt wird, lassen sich die $\vec c_i\forall(i,1,\minembed)$ offensichtlich als
@@ -49,13 +49,13 @@ Linearkombination der $\x_k$ darstellen:
 wobei die Darstellung wegen $\minembed\ll N$ allerdings nicht eindeutig ist.  Die $s_{ik}$
 bilden eine $\minembed\times N$-Matrix, deren Zeilenvektoren durch
 $\vec s_i^\Tr = (s_{i1},\dots,s_{iN})$ gegeben sind (die $\vec s_i$ sind also $N$-komponentige Spaltenvektoren).  Da die $\vec c_i\forall(i,1,\minembed)$
-nach Voraussetzung orthonormal (und somit auch linear unabh"angig) sind, mu"s die
+nach Voraussetzung orthonormal (und somit auch linear unabhängig) sind, muß die
 $s_{ik}$-Matrix mindestens 
-  den Rang $\minembed$ haben; die $\vec s_i$ m"ussen daher auch
-linear unabh"angig sein.  Wir nehmen weiterhin an, da"s die letzteren orthogonalisiert
-sind. Durch den Faktor $1/\sigma_i\sqrt N$ wird erreicht, da"s der Betrag der $\vec c_i$
+  den Rang $\minembed$ haben; die $\vec s_i$ müssen daher auch
+linear unabhängig sein.  Wir nehmen weiterhin an, daß die letzteren orthogonalisiert
+sind. Durch den Faktor $1/\sigma_i\sqrt N$ wird erreicht, daß der Betrag der $\vec c_i$
 {\em und} der $\vec s_i$ auf eins normiert werden kann. Der Faktor $1/\sqrt N$ macht die
-$\sigma_i$ unabh"angig von der Anzahl $N$ der Rekonstruktionsvektoren, wie sp"ater
+$\sigma_i$ unabhängig von der Anzahl $N$ der Rekonstruktionsvektoren, wie später
 einzusehen sein wird.  Wir definieren nun die als \begriff(Trajektorienmatrix) bezeichnete
 $N\times \embed$-Matrix $\mat X$ durch:
 \eqnl[svdtrdef]{\mat X = N^{-1/2}(\x_1, \dots, \x_N)^\Tr.}
@@ -63,66 +63,66 @@ $N\times \embed$-Matrix $\mat X$ durch:
 \eqnl[svdbase]{\sigma_i \vec c_i = \tmat X \vec s_i.}
 
 %Strukturmatrix
-Daraus folgt unter Ausnutzung der vorausgesetzten Orthonormalit"at der $\vec c_i$:
+Daraus folgt unter Ausnutzung der vorausgesetzten Orthonormalität der $\vec c_i$:
 \eqnl[svdbla1]{\sigma_i \sigma_j \delta_{ij} = \vec s_i^\Tr \mat X \tmat X \vec s_j.}
 Die $N\times N$ Matrix $\gmat \Theta = \mat X \tmat X$, \comment{aufgrund ihres Aufbaus} auch
 als \begriff(Strukturmatrix) bezeichnet, ist reell und symmetrisch. Ihre
-Eigenvektoren bilden also eine vollst"andige, orthonormale Basis des $\R^N$. 
-Eine L"osung der vorstehenden Gleichung erh"alt man, indem man f"ur $\vec s_i$ 
-den $i$ten Eigenvektor von $\gmat \Theta$ sowie f"ur $\sigma_i$ die Wurzel des entsprechenden Eigenwerts w"ahlt:
+Eigenvektoren bilden also eine vollständige, orthonormale Basis des $\R^N$. 
+Eine Lösung der vorstehenden Gleichung erhält man, indem man für $\vec s_i$ 
+den $i$ten Eigenvektor von $\gmat \Theta$ sowie für $\sigma_i$ die Wurzel des entsprechenden Eigenwerts wählt:
 \eqnl[svdeigen1]{\gmat \Theta \vec s_i = \sigma_i^2 \vec s_i.}
-Dies best"atigt man leicht durch Einsetzen in \eqnref{svdbla1} und Ausnutzung der Orthogonalit"at der
-Eigenvektoren symmetrischer Matrizen. Von den $N$ L"osungen von \eqnref{svdeigen1}
+Dies bestätigt man leicht durch Einsetzen in \eqnref{svdbla1} und Ausnutzung der Orthogonalität der
+Eigenvektoren symmetrischer Matrizen. Von den $N$ Lösungen von \eqnref{svdeigen1}
 besitzen nur $\minembed$ von null verschiedene Eigenwerte, da der Rang von $\mat X$
-und somit auch der Rang von $\gmat\Theta$ gleich $\minembed$ ist. \comment{Nur diese L"osungen
-sind f"ur die Bestimmung der $\vec c_i\mraise{\rvert}{-0.2}_{i=1\dots\minembed}$ nach
+und somit auch der Rang von $\gmat\Theta$ gleich $\minembed$ ist. \comment{Nur diese Lösungen
+sind für die Bestimmung der $\vec c_i\mraise{\rvert}{-0.2}_{i=1\dots\minembed}$ nach
 \eqnref{svdbase} zu gebrauchen.}
 
-\comment{Dies ist im allgemeinen  nicht die einzige L"osung 
+\comment{Dies ist im allgemeinen  nicht die einzige Lösung 
   von \eqnref{svdbla1}. Zur Bestimmung des Unterraumes $\subspace$ reicht jedoch die
-  Kenntnis {\em einer} L"osung. }
+  Kenntnis {\em einer} Lösung. }
 
 %Kovarianzmatrix
-Die Bestimmung des Unterraumes $\subspace$ "uber \eqnref{svdeigen1} erfordert die
+Die Bestimmung des Unterraumes $\subspace$ über \eqnref{svdeigen1} erfordert die
 Diagonalisierung der Strukturmatrix $\gmat \Theta$. Da $\gmat \Theta$ eine $N\times
-N$-Matrix ist, wird dies f"ur gro"se $N$ sehr rechenaufwendig. Die Diagonalisierung einer
-$N\times N$-Matrix ben"otigt \order{N^3} Schritte.  Da von den $N$ Eigenwerten
+N$-Matrix ist, wird dies für große $N$ sehr rechenaufwendig. Die Diagonalisierung einer
+$N\times N$-Matrix benötigt \order{N^3} Schritte.  Da von den $N$ Eigenwerten
 $\sigma_i^2$ jedoch nur $\minembed$ nicht verschwinden, lohnt es sich nach einem
 schnelleren Weg zu suchen.  Multiplizieren wir \eqnref{svdbase} von links mit der
 \begriff(Kovarianzmatrix) $\gmat \Xi = \tmat X \mat X$, so erhalten wir mit
 \eqnref{svdeigen1}:
 \eqna{\gmat \Xi\sigma_i \vec c_i &=& \tmat X \mat X \tmat X \vec s_i \nonumber\\
 &=& \tmat X \sigma_i^2 \vec s_i .}
-F"ur $\sigma_i\neq 0$ ergibt sich dann mit \eqnref{svdbase}:
+Für $\sigma_i\neq 0$ ergibt sich dann mit \eqnref{svdbase}:
 \eqnl[svdeigen2]{\gmat \Xi \vec c_i = \sigma_i^2 \vec c_i .}
 Die neue Basis $\vec c_i$ erhalten wir  
 also einfacher durch Diagonalisierung der Kovarianzmatrix $\gmat \Xi$. Da $\gmat \Xi$ eine
 $\embed\times\embed$-Matrix und $\embed\ll N$ ist, kann \eqnref{svdeigen2} mit sehr viel
-weniger Rechenaufwand als \eqnref{svdeigen1} gel"ost werden.
+weniger Rechenaufwand als \eqnref{svdeigen1} gelöst werden.
 
 %Bedeutung der Eigenwerte
 Der vom Attraktor aufgespannte Unterraum $\subspace$ ist durch die Eigenvektoren $\vec
-c_i$ gegeben, deren zugeh"orige Eigenwerte $\sigma_i^2$ nicht verschwinden. Um die genaue
-Bedeutung der $\sigma_i$ zu erhellen, m"ussen wir erst die Struktur des neuen
+c_i$ gegeben, deren zugehörige Eigenwerte $\sigma_i^2$ nicht verschwinden. Um die genaue
+Bedeutung der $\sigma_i$ zu erhellen, müssen wir erst die Struktur des neuen
 Einbettungsraumes $\R^\minembed$ analysieren. Dieser Raum, in den die
 Rekonstruktionsvektoren aus dem Unterraum $\subspace$ abgebildet werden, habe die
 Orthonormalbasis $\vec e'_j\mraise{\rvert}{-0.2}_{j=1\dots\minembed}$.  Die in den 
 $\R^\minembed$ eingebetteten Rekonstruktionsvektoren seien mit $\x'_i$ bezeichnet. Damit
 die Abbildung von $\subspace$ nach $\R^\minembed$ orthogonal ist, soll die Projektion eines Rekonstruktionsvektors $\vec x'_i$
-auf einen Basisvektor $\vec e'_j$ genauso gro"s sein, wie die Projektion von $\x_i$ auf
+auf einen Basisvektor $\vec e'_j$ genauso groß sein, wie die Projektion von $\x_i$ auf
 $\vec c_j$.
 \eqnl[svdrecvec]{\vec x'_i = \sum_{j=1}^{\minembed} (\vec x_i \cdot \vec c_j) \vec e'_j .} 
 
 \comment{
-Um die Bedeutung der Eigenwerte zu erhellen, m"ussen wir erst die Struktur des neuen
+Um die Bedeutung der Eigenwerte zu erhellen, müssen wir erst die Struktur des neuen
 Phasenraumes analysieren. Die Basis des Rekonstruktionsraumes wird gebildet durch die
 Eigenvektoren der Kovarianzmatrix $\vec c_i$. Die Darstellung der Rekonstruktionsvektoren
-$\vec x'_i$ bez"uglich dieser neuen Basis erhalten wir "uber:
+$\vec x'_i$ bezüglich dieser neuen Basis erhalten wir über:
 \eqnl[svdrecvecbla]{\vec x'_i = \sum_{j=1}^{\minembed} (\vec x_i \cdot \vec c_j) \vec e'_j .} 
 }
 
 Die mittlere Ausdehnung $\delta'_k$ des rekonstruierten Attraktors in Richtung eines Basisvektors
-$\vec e'_k$ betr"agt
+$\vec e'_k$ beträgt
 \eqna{ \delta'_k &=& \left( \frac1N \sum_{i=1}^N (\x'_i \cdot \vec e'_k)^2 \right)^{1/2} \nonumber\\
 &=&  \left( \frac1N \sum_{i=1}^N (\x_i \cdot \vec c_k)^2 \right)^{1/2} .}
 Mit der  \eqnref{svdtrdef} folgt daraus:
@@ -138,13 +138,13 @@ in etwa vorstellen als ein $\minembed$-Ellipsoid dessen Halbachsen durch die Eig
 $\sigma_k$ der Kovarianzmatrix gegeben sind.
 
 %Rauschen
-Bevor wir auf die Anwendung des Verfahrens kommen, m"ussen wir uns mit dem Einflu"s von
-Rauschen auf die Singular Value Decomposition besch"aftigen, da selbst in ``rauschfreien''
+Bevor wir auf die Anwendung des Verfahrens kommen, müssen wir uns mit dem Einfluß von
+Rauschen auf die Singular Value Decomposition beschäftigen, da selbst in ``rauschfreien''
 Systemen aufgrund endlicher Speicher- und Rechengenauigkeit Rauschen erzeugt wird. 
-Wir betrachten eine Zeitreihe mit additivem, gau"sverteiltem Rauschen $x_i = \bar x_i +
+Wir betrachten eine Zeitreihe mit additivem, gaußverteiltem Rauschen $x_i = \bar x_i +
 \xi_i$. 
-Ein "Uberstrich symbolisiert hier die deterministische Komponente. 
-Wir m"ussen nun den Einflu"s des Rauschens auf die Kovarianzmatrix betrachten. 
+Ein Überstrich symbolisiert hier die deterministische Komponente. 
+Wir müssen nun den Einfluß des Rauschens auf die Kovarianzmatrix betrachten. 
 Aus der Definition der Kovarianzmatrix folgt:
 \def\sumin{{\sum\limits_{i=1}^N}}
 \eqnl[svdkovdef]{\gmat \Xi = \frac{1}{N}\left( \begin{array}{cccc}
@@ -152,13 +152,13 @@ Aus der Definition der Kovarianzmatrix folgt:
  \vdots         & \vdots             & \ddots & \vdots \\
  \sumin x_{i+\embed-1} x_i & \sumin x_{i+\embed-1} x_{i+1}& \dots & \sumin x_{i+\embed-1} x_{i+\embed-1}  
 \end{array} \right) .}
-\comment{Da die Rauschterme $\xi_i$ unkorreliert sind, ergibt sich f"ur die Elemente von $\gmat
-\Xi$ bei gro"sen Datenmengen $N$}
+\comment{Da die Rauschterme $\xi_i$ unkorreliert sind, ergibt sich für die Elemente von $\gmat
+\Xi$ bei großen Datenmengen $N$}
 Die $x_i$ ersetzen wir nun durch die Summe aus deterministischer Komponente $\bar x_i$ und 
 Rauschkomponente $\xi_i$. Da die Rauschterme $\xi_i$ untereinander unkorreliert sind, 
-ergibt die Summation "uber $\xi_i\xi_{i+k}$ f"ur $k\neq0$ bei gro"sen Datenmengen $N$ null. Da die $\xi_i$ und die $x_i$ auch
-unkorreliert sind, verschwindet die Summation "uber $\xi_i x_{i+k}$ ebenfalls. Wir erhalten 
-so f"ur die Elemente von $\gmat\Xi$:
+ergibt die Summation über $\xi_i\xi_{i+k}$ für $k\neq0$ bei großen Datenmengen $N$ null. Da die $\xi_i$ und die $x_i$ auch
+unkorreliert sind, verschwindet die Summation über $\xi_i x_{i+k}$ ebenfalls. Wir erhalten 
+so für die Elemente von $\gmat\Xi$:
 \eqn{\gmat \Xi_{kl} = \frac{1}{N}\left( \underbrace{\sumin x_{i+k} x_{i+l}}_{= \overline{\gmat \Xi}_{kl}} + 
 \underbrace{\sumin x_{i+k} \xi_{i+l}}_{\approx 0} + 
 \underbrace{\sumin \xi_{i+k} x_{i+l}}_{\approx 0} + 
@@ -166,47 +166,47 @@ so f"ur die Elemente von $\gmat\Xi$:
 und somit:
 \eqn{\gmat \Xi = \overline{\gmat \Xi}\; + <\!\xi^2\!>\unity_\embed .}
 Die Eigenwerte der Kovarianzmatrix $\sigma_i^2$ werden also einheitlich um $<\!\xi^2\!>$
-erh"oht. 
-Die Wirkung additiven Rauschens besteht darin, die L"ange der Hauptachsen des oben beschriebenen
-Ellipsoids gleichm"a"sig um den Betrag $\xi_0 = \sqrt{<\!\xi^2\!>}$ zu vergr"o"sern. Auch die Richtungen,
-f"ur die ohne Rauschen $\sigma_i=0$ galt, werden nun von Trajektorien besucht. Es wird
+erhöht. 
+Die Wirkung additiven Rauschens besteht darin, die Länge der Hauptachsen des oben beschriebenen
+Ellipsoids gleichmäßig um den Betrag $\xi_0 = \sqrt{<\!\xi^2\!>}$ zu vergrößern. Auch die Richtungen,
+für die ohne Rauschen $\sigma_i=0$ galt, werden nun von Trajektorien besucht. Es wird
 somit der ganze $\embed$-dimensionale Phasenraum aufgespannt: $\subspace=\R^\embed$.
 
 In Richtung der Achsen mit $\sigma_i\approx \xi_0$ wird die Dynamik allerdings
-vollst"andig durch die Rauschterme dominiert. 
-F"ur eine gute Rekonstruktion des Attraktors wird also nur der Teilraum
-$\subspace=\mathop{\mathrm{span}}\{\vec c_1,\dots,\vec c_{\minembed}\}$ benutzt, f"ur den
-die entsprechenden Eigenwerte gr"o"ser als die St"arke des Rauschens ist.
+vollständig durch die Rauschterme dominiert. 
+Für eine gute Rekonstruktion des Attraktors wird also nur der Teilraum
+$\subspace=\mathop{\mathrm{span}}\{\vec c_1,\dots,\vec c_{\minembed}\}$ benutzt, für den
+die entsprechenden Eigenwerte größer als die Stärke des Rauschens ist.
 
-Wir k"onnen nun das Verfahren zusammenfassen.
+Wir können nun das Verfahren zusammenfassen.
 \begin{enumerate}
 \item Aus der Zeitreihe wird zu gegebenem $\embed$ die Kovarianzmatrix $\gmat \Xi$
   berechnet.  Aufgrund der Symmetrie dieser Matrix reicht es
-  aus, nur die rechte obere H"alfte der Matrix inklusive der Diagonalen zu berechnen. Zus"atzlich ergibt sich
+  aus, nur die rechte obere Hälfte der Matrix inklusive der Diagonalen zu berechnen. Zusätzlich ergibt sich
   \eqnref{svdkovdef} die Beziehung
   $\gmat\Xi_{i+1,j+1}=\gmat\Xi_{ij}+\frac{1}{N}(x_{N+i}x_{N+j}-x_ix_j)$. Hierdurch kann
-  die Anzahl der ben"otigten Multiplikationen und Additionen betr"achtlich gesenkt werden.
+  die Anzahl der benötigten Multiplikationen und Additionen beträchtlich gesenkt werden.
 \item Die Kovarianzmatrix wird diagonalisiert, und die erhaltenen Eigenwerte sowie
-  Eigenvektoren werden nach absteigender Gr"o"se der Eigenwerte sortiert.  Hierf"ur stehen
-  fertige Algorithmen in vielen Mathematikbibliotheken zur Verf"ugung (siehe z.B.~ \cite{Numerical-recipes}).
-\item Die Gr"o"se des "uberlagerten Rauschens $\xi_0$ wird abgesch"atzt.  F"ur diese
-  Absch"atzung existiert kein allgemeing"ultiges Verfahren;  sie erfolgt nach den
-  besonderen Gegebenheiten und der Herkunft der Zeitreihe.  Hinweise auf die Gr"o"se von
-  $\xi_0$ sind gegeben durch die interne Rechengenauigkeit und die Me"sgenauigkeit bei der
+  Eigenvektoren werden nach absteigender Größe der Eigenwerte sortiert.  Hierfür stehen
+  fertige Algorithmen in vielen Mathematikbibliotheken zur Verfügung (siehe z.B.~ \cite{Numerical-recipes}).
+\item Die Größe des überlagerten Rauschens $\xi_0$ wird abgeschätzt.  Für diese
+  Abschätzung existiert kein allgemeingültiges Verfahren;  sie erfolgt nach den
+  besonderen Gegebenheiten und der Herkunft der Zeitreihe.  Hinweise auf die Größe von
+  $\xi_0$ sind gegeben durch die interne Rechengenauigkeit und die Meßgenauigkeit bei der
   Aufnahme der Zeitreihe (z.B. Digitalisierungsrauschen).
   
-  Liegen hier"uber keine oder ungen"ugende Angaben vor, so kann $\xi_0$ auch anders
-  abgesch"atzt werden.  $\sigma_i$ strebt f"ur gro"se $i$ im allgemeinen gegen einen Grenzwert
-  $\sigma_\tmin$, der durch das Rauschen bestimmt ist (siehe \psref{svdvalnoise}). F"ur
+  Liegen hierüber keine oder ungenügende Angaben vor, so kann $\xi_0$ auch anders
+  abgeschätzt werden.  $\sigma_i$ strebt für große $i$ im allgemeinen gegen einen Grenzwert
+  $\sigma_\tmin$, der durch das Rauschen bestimmt ist (siehe \psref{svdvalnoise}). Für
   $\xi_0$ wird dann dieser Grenzwert benutzt.
-\item Die Rekonstruktionsvektoren k"onnen nun gem"a"s \eqnref{svdrecvec} berechnet werden.
+\item Die Rekonstruktionsvektoren können nun gemäß \eqnref{svdrecvec} berechnet werden.
   Statt alle $\minembed$ Komponenten zu verwenden, kann alternativ auch nur die
-  erste (nun gefilterte) Komponente $\x_i\cdot\vec c_1$ "uber die
-  Verz"ogerungskoordinatenabbildung wieder eingebettet werden.  Auf diese Weise dient die
-  SVD nur einer adaptiven Rauschfilterung, und herk"ommliche Zeitreihenanalyseverfahren
-  k"onnen wieder angewandt werden.  Ein weitere M"oglichkeit liegt darin, die ersten
-  $n\leq\minembed$ f"ur eine multivariante Verz"ogerungskoordinatenabbildung zu benutzen
-  \cite{Fraedrich-wang}.  Darauf soll in diesem Rahmen jedoch nicht n"aher eingegangen
+  erste (nun gefilterte) Komponente $\x_i\cdot\vec c_1$ über die
+  Verzögerungskoordinatenabbildung wieder eingebettet werden.  Auf diese Weise dient die
+  SVD nur einer adaptiven Rauschfilterung, und herkömmliche Zeitreihenanalyseverfahren
+  können wieder angewandt werden.  Ein weitere Möglichkeit liegt darin, die ersten
+  $n\leq\minembed$ für eine multivariante Verzögerungskoordinatenabbildung zu benutzen
+  \cite{Fraedrich-wang}.  Darauf soll in diesem Rahmen jedoch nicht näher eingegangen
   werden.
 \end{enumerate}
 
@@ -217,34 +217,34 @@ eine Zeitreihe gebildet.  Nach Berechnung der Kovarianzmatrix zu $\embed=7$ wurd
 Eigenwerte und Eigenvektoren ermittelt.  Die Ergebnisse der Rechnungen zeigen
 \psref{svdval} und \psref{svdvec}.
 \epsfigsingle{svd/simple/lorsvdval}
-{Logarithmus der Eigenwerte $\sigma_i$ der Kovarianzmatrix $\gmat \Xi$ f"ur den
+{Logarithmus der Eigenwerte $\sigma_i$ der Kovarianzmatrix $\gmat \Xi$ für den
 Lorenz-Attraktor mit der Einbettungsdimension $\embed=7$.
 }
 {svdval}{-0.2cm}
 \epsfigtripletop{svd/simple/lorsvdvec1}{svd/simple/lorsvdvec2}{svd/simple/lorsvdvec3}
-{Die ersten drei Eigenvektoren der Kovarianzmatrix f"ur den Lorenz-Attraktor
-($\embed=7$). F"ur jeden Eigenvektor $\vec c_j$ ist die $k$-te Komponente
-$\vec c_{j,k}$ "uber den Index $k$ aufgetragen.}
+{Die ersten drei Eigenvektoren der Kovarianzmatrix für den Lorenz-Attraktor
+($\embed=7$). Für jeden Eigenvektor $\vec c_j$ ist die $k$-te Komponente
+$\vec c_{j,k}$ über den Index $k$ aufgetragen.}
 {svdvec}{-0.2cm}
 
-In \psref{svdval} ist deutlich zu sehen, da"s ab $i\geq 4$ die Eigenwerte $\sigma_i$ auf
-einem nahezu konstanten Wert bleiben. Dies liegt daran, da"s ab $i=4$ die Eigenwerte nur
-noch durch Rauschen dominiert werden. Dieses ist allerdings nicht k"unstlich addiert
+In \psref{svdval} ist deutlich zu sehen, daß ab $i\geq 4$ die Eigenwerte $\sigma_i$ auf
+einem nahezu konstanten Wert bleiben. Dies liegt daran, daß ab $i=4$ die Eigenwerte nur
+noch durch Rauschen dominiert werden. Dieses ist allerdings nicht künstlich addiert
 worden, sondern bedingt durch die Genauigkeit, mit der die Werte der Zeitreihe
 zwischengespeichert wurden\footnote{Die Werte wurden mit einer Genauigkeit von 6 Stellen
-zwischengespeichert, so da"s $\xi_0\simeq 10^{-6}$ und $\ln(\xi_0)\simeq -13,8$ ist.}. 
-Der Rauschpegel kann durch $\xi_0\simeq e^{-14}\sigma_1$ abgesch"atzt werden.
-Da nur die ersten drei Eigenwerte deutlich "uber $\xi_0$ liegen, sind auch nur die
+zwischengespeichert, so daß $\xi_0\simeq 10^{-6}$ und $\ln(\xi_0)\simeq -13,8$ ist.}. 
+Der Rauschpegel kann durch $\xi_0\simeq e^{-14}\sigma_1$ abgeschätzt werden.
+Da nur die ersten drei Eigenwerte deutlich über $\xi_0$ liegen, sind auch nur die
 ersten drei Eigenvektoren von $\gmat\Xi$ in \psref{svdvec}
 dargestellt. 
 
-F"ur die Berechnung der Rekonstruktionsvektoren $\x'_i$ im $\R^\minembed$ mu"s eine
-Skalarmultiplikation der $\x_i$ mit den $\vec c_j$ durchgef"uhrt werden. Die $\x_i$
+Für die Berechnung der Rekonstruktionsvektoren $\x'_i$ im $\R^\minembed$ muß eine
+Skalarmultiplikation der $\x_i$ mit den $\vec c_j$ durchgeführt werden. Die $\x_i$
 bestehen nach Konstruktion aus aufeinanderfolgenden Werten der Zeitreihe. Es kann nun
-gezeigt werden, da"s die skalare Multiplikation mit $\vec c_1$ ungef"ahr einer Mittelung dieser 
+gezeigt werden, daß die skalare Multiplikation mit $\vec c_1$ ungefähr einer Mittelung dieser 
 Werte entspricht. Die skalare Multiplikation mit $\vec c_j$ entspricht i.a.\ einer gemittelten 
 $(j-1)$-ten Ableitung. Um dies plausibel zu machen, sollen der Mittelwert und die 
-numerischen Ableitungen f"ur $\embed=3$ explizit aufgef"uhrt werden:
+numerischen Ableitungen für $\embed=3$ explizit aufgeführt werden:
 \def\myvec(#1,#2,#3){\left( \begin{array}{c}#1\\#2\\#3\end{array}\right)}
 \def\myvectr(#1,#2,#3){(#1,#2,#3)^\Tr}
 \def\mysample{\sample}
@@ -257,67 +257,67 @@ numerischen Ableitungen f"ur $\embed=3$ explizit aufgef"uhrt werden:
 \end{array} .
 }
 Die Vektoren, die mit $\myvectr(x_{i-1},x_{i},x_{i-1})$ skalar multipliziert
-werden, sind den $\vec c_j$ strukturell "ahnlich; auch f"ur $\embed>3$ wiesen die
-entsprechenden Vektoren stets diese Form auf. Daraus wird ersichtlich, da"s die Komponente
+werden, sind den $\vec c_j$ strukturell ähnlich; auch für $\embed>3$ wiesen die
+entsprechenden Vektoren stets diese Form auf. Daraus wird ersichtlich, daß die Komponente
 $\x_i\cdot\vec c_j$ in etwa der zeitlichen Ableitung $\abls{^{(j-1)}x_{i+\lfloor d/2 \rfloor}}{t^{(j-1)}}$ 
 entspricht.
-Auf die hieraus folgenden Konsequenzen werden wir  jedoch sp"ater
+Auf die hieraus folgenden Konsequenzen werden wir  jedoch später
 genauer eingehen.
 
 Wir wollen nun die Singular Value Decomposition bei Vorhandensein additiven Rauschens
 untersuchen. 
-Als Beispiel m"oge hier wieder eine Zeitreihe des Lorenz-Attraktors dienen. 
-Zu dieses wurde Gau"ssches Rauschen in verschiedener St"arke addiert (Angaben in 
+Als Beispiel möge hier wieder eine Zeitreihe des Lorenz-Attraktors dienen. 
+Zu dieses wurde Gaußsches Rauschen in verschiedener Stärke addiert (Angaben in 
 Prozent der Varianz von $x$). 
-F"ur die so entstandenen verrauschten Zeitreihen wurden jeweils die
+Für die so entstandenen verrauschten Zeitreihen wurden jeweils die
 Kovarianzmatrix $\gmat \Xi$ und ihre Eigenwerte $\sigma_i^2$ bestimmt (siehe \psref{svdvalnoise}).
 \noafterpage{
 \epsfigsingle{svd/noise/lorsvd}
-{Logarithmus der Eigenwerte der Kovarianzmatrix $\gmat \Xi$ f"ur verschiedene
+{Logarithmus der Eigenwerte der Kovarianzmatrix $\gmat \Xi$ für verschiedene
 Rauschpegel (0\%;0,2\%;0,5\%;1,0\%;2,0\%;5,0\% von unten nach oben)}
 {svdvalnoise}{-0.2cm}
 }
 
-Man erkennt deutlich, da"s die Eigenwerte $\sigma_i$ ab $i=4$ nur durch die St"arke des
+Man erkennt deutlich, daß die Eigenwerte $\sigma_i$ ab $i=4$ nur durch die Stärke des
 Rauschens bestimmt sind. 
-Die Verh"altnisse der Eigenwerte sind durch die relative St"arke der
+Die Verhältnisse der Eigenwerte sind durch die relative Stärke der
 Rauschamplitude gegeben. 
 
 Verschiedene Rekonstruktionen des Lorenz-Attraktors aus der Zeitreihe mit 5\% Rauschen sind
 in \psref{svdrecnoise} abgebildet. Hierbei wurden unterschiedliche Verfahren angewendet.
-In der oberen Abbildung wurde einfach durch die Verz"ogerungskoordinatenabbildung das 2-Tupel
-$(x_i,x_{i+k_R})$ rekonstruiert, wobei die Verz"ogerung $k_R=19$ durch Redundanzanalyse
+In der oberen Abbildung wurde einfach durch die Verzögerungskoordinatenabbildung das 2-Tupel
+$(x_i,x_{i+k_R})$ rekonstruiert, wobei die Verzögerung $k_R=19$ durch Redundanzanalyse
 gewonnen wurde. Unten links wurden die ersten beiden Komponenten
-$(x'_{i,1},x'_{i,2})$ der SVD-Rekonstruktion eingebettet, w"ahrend unten rechts die erste Komponente
-$x'_{i,1}$ mit der um $k_R$ verz"ogerten Komponente $x'_{i+k_R,1}$ eingebettet wurde.
+$(x'_{i,1},x'_{i,2})$ der SVD-Rekonstruktion eingebettet, während unten rechts die erste Komponente
+$x'_{i,1}$ mit der um $k_R$ verzögerten Komponente $x'_{i+k_R,1}$ eingebettet wurde.
 Man sieht deutlich, wie der Signal-Rausch-Abstand durch die SVD-Rekonstruktion verbessert
 wird.
 
 \afterpage{
 \epsfigtriplebot{svd/noise/lorrec50_1}{svd/noise/lorsrec50_1}{svd/noise/lorrecs50_1}
 {Rekonstruktionen des Lorenz-Attraktors bei 5\% Rauschen. 
-Oben durch einfache Verz"ogerungskoordinatenabbildung, unten links durch normale
-SVD-Rekonstruktion, unten rechts durch Verz"ogerungskoordinateneinbettung der ersten Komponente
+Oben durch einfache Verzögerungskoordinatenabbildung, unten links durch normale
+SVD-Rekonstruktion, unten rechts durch Verzögerungskoordinateneinbettung der ersten Komponente
 der SVD-Rekonstruktion. 
 }
 {svdrecnoise}{-0.2cm}
 }
 
 Die Vorteile der Singular Value Decomposition zur Rauschverminderung sind klar
-ersichtlich. Auf der anderen Seite kann die Rekonstruktion "uber Verz"ogerungskoordinaten
-bei Verwendung der durch Redundanzanalyse gewonnenen Verz"ogerungszeit $\delay_R$
+ersichtlich. Auf der anderen Seite kann die Rekonstruktion über Verzögerungskoordinaten
+bei Verwendung der durch Redundanzanalyse gewonnenen Verzögerungszeit $\delay_R$
 \naja(bessere) Einbettungen liefern. Dies zeigte \autor(Fraser), indem er ein
 sogenanntes \begriff(Verzerrungsfunktional) (engl.: distortion functional)
-einf"uhrte \cite{Fraser}. Dieses mi"st, wie gut die Lage eines Punktes im Originalphasenraum aus der
-Kenntnis seines rekonstruierten Bildes bestimmt ist. Das Funktional mi"st
+einführte \cite{Fraser}. Dieses mißt, wie gut die Lage eines Punktes im Originalphasenraum aus der
+Kenntnis seines rekonstruierten Bildes bestimmt ist. Das Funktional mißt
 -- mit Frasers Worten --, wie \naja(diffeomorph) die Rekonstruktion ist bzw.\  welche
 Rekonstruktion \naja(diffeomorpher) zum Original ist. Das Ergebnis dieses Vergleichs ist,
-da"s die durch Redundanzanalyse gewonnenen Rekonstruktionen den SVD-Rekonstruktionen
-"uberlegen sind. Wir werden also im folgenden das kombinierte Verfahren verwenden. Die
+daß die durch Redundanzanalyse gewonnenen Rekonstruktionen den SVD-Rekonstruktionen
+überlegen sind. Wir werden also im folgenden das kombinierte Verfahren verwenden. Die
 Zeitreihe wird durch SVD eingebettet, die erste, rauschgefilterte Komponente wird
-extrahiert und "uber Redundanzanalyse wieder eingebettet. Dies steht auch in Einklang mit
+extrahiert und über Redundanzanalyse wieder eingebettet. Dies steht auch in Einklang mit
 den Ergebnissen von \autor(Mees \etal) , die zwar die rauschmindernden
-Eigenschaften der SVD best"atigen, die M"oglichkeit, den vom Attraktor aufgespannten
+Eigenschaften der SVD bestätigen, die Möglichkeit, den vom Attraktor aufgespannten
 Unterraum zu identifizieren, jedoch zweifelhaft erscheinen lassen\cite{Mees87}.
 
 
