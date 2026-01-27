@@ -1,3 +1,7 @@
+# Documentation:
+# - https://www.cantab.net/users/johncollins/latexmk/latexmk-487.txt
+# - https://www.reddit.com/r/LaTeX/comments/1blcqs6/latexmkrc_any_suggestions/ 
+
 $ENV{'TEXINPUTS'}='./tex//:.//:'; 
 $ENV{'BSTINPUTS'}='./bst//:';
 $ENV{'BIBINPUTS'}='./bib//:';
