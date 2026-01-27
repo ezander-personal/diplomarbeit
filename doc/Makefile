@@ -1,20 +1,12 @@
-.PHONY: arbeit all gliederung bib view print ps backup tar disk clean
+.PHONY: default rebuild pdf clean
 
-#
-# normal targets section
-#
+# Everything that was normally here is now in latexmkrc... 
 
-default: pdf
+all: pdf
 
-clear_first: clean pdf
-
-
-#
-# commands section
-#
+rebuild: clean pdf
 
 pdf:
-	TEXINPUTS=".//:" latexmk -pdf gliederung
-
+	latexmk
 clean:
-	latexmk -C gliederung
+	latexmk -C

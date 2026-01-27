@@ -1,0 +1,35 @@
+$ENV{'TEXINPUTS'}='./tex//:.//:'; 
+$ENV{'BSTINPUTS'}='./bst//:';
+
+@default_files = ('gliederung.tex');
+
+
+# PDF-generating modes are:
+# 1: pdflatex, as specified by $pdflatex variable (still largely in use)
+# 2: postscript conversion, as specified by the $ps2pdf variable (useless)
+# 3: dvi conversion, as specified by the $dvipdf variable (useless)
+# 4: lualatex, as specified by the $lualatex variable (best - EZ: Not for me handles ß incorrectly -> SS)
+# 5: xelatex, as specified by the $xelatex variable (second best)
+$pdf_mode = 1;
+$postscript_mode = 0;
+$dvi_mode = 0;
+
+# `set_tex_cmds` applies to all *latex commands (latex, xelatex, lualatex, ...), so
+# no need to specify these each. This allows to simply change `$pdf_mode` to get a
+# different engine. Check if this works with `latexmk --commands`.
+set_tex_cmds("--shell-escape --synctex=1 %O %S");
+
+# option 2 is same as 1 (run biber when necessary), but also deletes the
+# regeneratable bbl-file in a clenaup (`latexmk -c`). Do not use if original
+# bib file is not available!
+$bibtex_use = 2;  # default: 1
+
+# Change default `biber` call, help catch errors faster/clearer. See
+# https://web.archive.org/web/20200526101657/https://www.semipol.de/2018/06/12/latex-best-practices.html#database-entries
+$biber = "biber --validate-datamodel %O %S";
+
+# Let latexmk know about generated files, so they can be used to detect if a
+# rerun is required, or be deleted in a cleanup.
+@generated_exts = ( 'aux', 'bcf', 'fls', 'idx', 'ind', 'loe', 'lof', 'lol', 'lor', 'lot',
+                     'out', 'run.xml', 'toc', 'gls', 'glo', 'ilg', 'hd', 'log',
+                     'glg', 'atfi', 'glstex', 'bbl' );
