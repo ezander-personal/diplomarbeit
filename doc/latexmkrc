@@ -1,5 +1,6 @@
 $ENV{'TEXINPUTS'}='./tex//:.//:'; 
 $ENV{'BSTINPUTS'}='./bst//:';
+$ENV{'BIBINPUTS'}='./bib//:';
 
 @default_files = ('gliederung.tex');
 
